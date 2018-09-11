@@ -102,7 +102,8 @@ export default {
             defaultValue: '',
             required: false,
             dataType: 'string',
-            pattern: ''
+            pattern: '',
+            placeholder: ''
           }
         },
         {
@@ -113,7 +114,8 @@ export default {
             width: '100%',
             defaultValue: '',
             required: false,
-            pattern: ''
+            pattern: '',
+            placeholder: ''
           }
         },
         {
@@ -138,18 +140,23 @@ export default {
           options: {
             inline: false,
             defaultValue: '',
+            showLabel: false,
             options: [
               {
-                value: '选项1'
+                value: '选项1',
+                label: '选项1'
               },
               {
-                value: '选项2'
+                value: '选项2',
+                label: '选项2'
               },
               {
-                value: '选项3'
+                value: '选项3',
+                label: '选项3'
               }
             ],
-            required: false
+            required: false,
+            width: '',
           }
         },
         {
@@ -159,6 +166,7 @@ export default {
           options: {
             inline: false,
             defaultValue: [],
+            showLabel: false,
             options: [
               {
                 value: '选项1'
@@ -170,7 +178,8 @@ export default {
                 value: '选项3'
               }
             ],
-            required: false
+            required: false,
+            width: '',
           }
         },
         {
@@ -189,7 +198,8 @@ export default {
             isRange: false,
             arrowControl: true,
             format: 'HH:mm:ss',
-            required: false
+            required: false,
+            width: '',
           }
         },
         {
@@ -208,6 +218,8 @@ export default {
             type: 'date',
             format: 'yyyy-MM-dd',
             timestamp: false,
+            required: false,
+            width: '',
           }
         },
         {
@@ -219,7 +231,69 @@ export default {
             max: 5,
             disabled: false,
             allowHalf: false,
-            
+            required: false
+          }
+        },
+        {
+          type: 'color',
+          name: '颜色选择器',
+          icon: 'palette',
+          options: {
+            defaultValue: '',
+            disabled: false,
+            showAlpha: false,
+            required: false
+          }
+        },
+        {
+          type: 'select',
+          name: '下拉选择框',
+          icon: 'regular/caret-square-down',
+          options: {
+            defaultValue: '',
+            multiple: false,
+            disabled: false,
+            clearable: false,
+            placeholder: '',
+            required: false,
+            showLabel: false,
+            width: '',
+            options: [
+              {
+                value: '下拉框1'
+              },
+              {
+                value: '下拉框2'
+              },{
+                value: '下拉框3'
+              }
+            ]
+          }
+        },
+        {
+          type: 'switch',
+          name: '开关',
+          icon: 'toggle-off',
+          options: {
+            defaultValue: false,
+            required: false,
+            disabled: false,
+          }
+        },
+        {
+          type: 'slider',
+          name: '滑块',
+          icon: 'sliders-h',
+          options: {
+            defaultValue: 0,
+            disabled: false,
+            required: false,
+            min: 0,
+            max: 100,
+            step: 1,
+            showInput: false,
+            range: false,
+            width: ''
           }
         }
       ],

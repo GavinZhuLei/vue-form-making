@@ -66,6 +66,13 @@ $primary-background-color: #ecf5ff;
         margin-right: 6px;
         margin-left: 8px;
         font-size: 14px;
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      span{
+        display: inline-block;
+        vertical-align: middle;
       }
     }
   }
@@ -103,7 +110,7 @@ $primary-background-color: #ecf5ff;
         bottom: 0;
         top: 0;
         display: block;
-        z-index: 1;
+        z-index: 1001;
       }
 
       &:hover{
@@ -121,14 +128,14 @@ $primary-background-color: #ecf5ff;
       position: absolute;
       right: 20px;
       bottom: -35px;
-      z-index: 9;
+      z-index: 1009;
     }
 
     .widget-action-clone{
       position: absolute;
       right: 70px;
       bottom: -35px;
-      z-index: 9;
+      z-index: 1009;
     }
   }
 

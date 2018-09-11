@@ -7,10 +7,9 @@
       <el-form-item label="宽度" v-if="Object.keys(data.options).indexOf('width')>=0">
         <el-input v-model="data.options.width"></el-input>
       </el-form-item>
-      <el-form-item label="默认值" v-if="Object.keys(data.options).indexOf('defaultValue')>=0 && (data.type == 'textarea' || data.type == 'input' || data.type=='rate')">
-        <el-input v-if="data.type=='textarea'" type="textarea" :rows="5" v-model="data.options.defaultValue"></el-input>
-        <el-input v-if="data.type=='input'" v-model="data.options.defaultValue"></el-input>
-        <el-rate v-if="data.type == 'rate'" :allow-half="data.options.allowHalf" v-model="data.options.defaultValue"></el-rate>
+      
+      <el-form-item label="占位内容" v-if="Object.keys(data.options).indexOf('placeholder')>=0 && (data.type!='time' || data.type!='date')">
+        <el-input v-model="data.options.placeholder"></el-input>
       </el-form-item>
       <el-form-item label="布局方式" v-if="Object.keys(data.options).indexOf('inline')>=0">
         <el-radio-group v-model="data.options.inline">
@@ -18,14 +17,42 @@
           <el-radio-button :label="true">行内</el-radio-button>
         </el-radio-group>
       </el-form-item>
+      <el-form-item label="显示输入框" v-if="Object.keys(data.options).indexOf('showInput')>=0">
+        <el-switch v-model="data.options.showInput" ></el-switch>
+      </el-form-item>
+      <el-form-item label="最小值" v-if="Object.keys(data.options).indexOf('min')>=0">
+        <el-input-number v-model="data.options.min" :min="0" :max="100" :step="1"></el-input-number>
+      </el-form-item>
+      <el-form-item label="最小值" v-if="Object.keys(data.options).indexOf('max')>=0">
+        <el-input-number v-model="data.options.max" :min="0" :max="100" :step="1"></el-input-number>
+      </el-form-item>
+      <el-form-item label="步长" v-if="Object.keys(data.options).indexOf('step')>=0">
+        <el-input-number v-model="data.options.step" :min="0" :max="100" :step="1"></el-input-number>
+      </el-form-item>
+      <el-form-item label="是否多选" v-if="data.type=='select'">
+        <el-switch v-model="data.options.multiple" @change="handleSelectMuliple"></el-switch>
+      </el-form-item>
       <el-form-item label="允许半选" v-if="Object.keys(data.options).indexOf('allowHalf')>=0">
         <el-switch
             v-model="data.options.allowHalf"
           >
           </el-switch>
       </el-form-item>
+      <el-form-item label="支持透明度选择" v-if="Object.keys(data.options).indexOf('showAlpha')>=0">
+        <el-switch
+            v-model="data.options.showAlpha"
+          >
+          </el-switch>
+      </el-form-item>
+      <el-form-item label="是否显示标签" v-if="Object.keys(data.options).indexOf('showLabel')>=0">
+        <el-switch
+            v-model="data.options.showLabel"
+          >
+        </el-switch>
+      </el-form-item>
       <el-form-item label="选项" v-if="Object.keys(data.options).indexOf('options')>=0">
-        <template v-if="data.type=='radio'">
+        
+        <template v-if="data.type=='radio' || (data.type=='select'&&!data.options.multiple)">
           <el-radio-group v-model="data.options.defaultValue">
             <draggable element="ul" :list="data.options.options" 
               :options="{group:{ name:'options'}, ghostClass: 'ghost',handle: '.drag-item'}"
@@ -35,7 +62,8 @@
                   :label="item.value" 
                   style="margin-right: 5px;"
                 >
-                  <el-input style="width: 190px;" size="mini" v-model="item.value"></el-input>
+                  <el-input :style="{'width': data.options.showLabel? '90px': '190px' }" size="mini" v-model="item.value"></el-input>
+                  <el-input style="width:100px;" size="mini" v-if="data.options.showLabel" v-model="item.label"></el-input>
                   <!-- <input v-model="item.value"/> -->
                 </el-radio>
                 <i class="drag-item" style="font-size: 16px;margin: 0 5px;cursor: move;"><icon name="bars" ></icon></i>
@@ -47,7 +75,7 @@
           </el-radio-group>
         </template>
 
-        <template v-if="data.type=='checkbox'">
+        <template v-if="data.type=='checkbox' || (data.type=='select' && data.options.multiple)">
           <el-checkbox-group v-model="data.options.defaultValue">
 
             <draggable element="ul" :list="data.options.options" 
@@ -58,8 +86,8 @@
                   :label="item.value"
                   style="margin-right: 5px;"
                 >
-                  <el-input style="width: 190px;" size="mini" v-model="item.value"></el-input>
-                  <!-- <input v-model="item.value"/> -->
+                  <el-input :style="{'width': data.options.showLabel? '90px': '190px' }" size="mini" v-model="item.value"></el-input>
+                  <el-input style="width:100px;" size="mini" v-if="data.options.showLabel" v-model="item.label"></el-input>
                 </el-checkbox>
                 <i class="drag-item" style="font-size: 16px;margin: 0 5px;cursor: move;"><icon name="bars" ></icon></i>
                 <el-button @click="handleOptionsRemove(index)" circle plain type="danger" size="mini" icon="el-icon-minus" style="padding: 4px;margin-left: 5px;"></el-button>
@@ -73,14 +101,20 @@
         </div>
       </el-form-item>
 
-      <template 
-        v-if="data.type == 'time' || data.type == 'date' ||
-        data.type == 'year' || data.type == 'month' ||
-        data.type == 'dates' || data.type == 'week' ||
-        data.type == 'datetime' || data.type == 'datetimerange' ||
-        data.type == 'daterange'"
-      >
-        <el-form-item label="显示类型">
+      <el-form-item label="默认值" v-if="Object.keys(data.options).indexOf('defaultValue')>=0 && (data.type == 'textarea' || data.type == 'input' || data.type=='rate' || data.type=='color' || data.type=='switch')">
+        <el-input v-if="data.type=='textarea'" type="textarea" :rows="5" v-model="data.options.defaultValue"></el-input>
+        <el-input v-if="data.type=='input'" v-model="data.options.defaultValue"></el-input>
+        <el-rate v-if="data.type == 'rate'" :allow-half="data.options.allowHalf" v-model="data.options.defaultValue"></el-rate>
+        <el-color-picker 
+          v-if="data.type == 'color'"
+          v-model="data.options.defaultValue"
+          :show-alpha="data.options.showAlpha"
+        ></el-color-picker>
+        <el-switch v-if="data.type=='switch'" v-model="data.options.defaultValue"></el-switch>
+      </el-form-item>
+
+      <template v-if="data.type == 'time' || data.type == 'date'">
+        <el-form-item label="显示类型" v-if="data.type == 'date'">
           <el-select v-model="data.options.type">
             <el-option value="year"></el-option>
             <el-option value="month"></el-option>
@@ -104,7 +138,7 @@
           >
           </el-switch>
         </el-form-item>
-        <el-form-item label="占位内容" v-if="(!data.options.isRange && data.type == 'time') || (data.options.type != 'datetimerange' && data.options.type != 'daterange')">
+        <el-form-item label="占位内容" v-if="(!data.options.isRange && data.type == 'time') || (data.type != 'time' && data.options.type != 'datetimerange' && data.options.type != 'daterange')">
           <el-input v-model="data.options.placeholder"></el-input>
         </el-form-item>
         <el-form-item label="开始时间占位内容" v-if="(data.options.isRange) || data.options.type=='datetimerange' || data.options.type=='daterange'">
@@ -116,7 +150,7 @@
         <el-form-item label="格式">
           <el-input v-model="data.options.format"></el-input>
         </el-form-item>
-        <el-form-item label="默认值" v-if="data.type=='time'">
+        <el-form-item label="默认值" v-if="data.type=='time' && Object.keys(data.options).indexOf('isRange')>=0">
           <el-time-picker 
             key="1"
             style="width: 100%;"
@@ -250,9 +284,17 @@ export default {
       
     },
     handleAddOption () {
-      this.data.options.options.push({
-        value: '新选项'
-      })
+      if (this.data.options.showLabel) {
+        this.data.options.options.push({
+          value: '新选项',
+          label: '新选项'
+        })
+      } else {
+        this.data.options.options.push({
+          value: '新选项'
+        })
+      }
+      
     },
     handleAddColumn () {
       this.data.columns.push({
@@ -267,15 +309,35 @@ export default {
           this.data.rules.push(this.validator[key])
         }
       })
+    },
+    handleSelectMuliple (value) {
+      if (value) {
+        if (this.data.options.defaultValue) {
+          this.data.options.defaultValue = [this.data.options.defaultValue]
+        } else {
+          this.data.options.defaultValue = []
+        }
+        
+      } else {
+        if (this.data.options.defaultValue.length>0){
+          this.data.options.defaultValue = this.data.options.defaultValue[0]
+        } else {
+          this.data.options.defaultValue = ''
+        }
+        
+      }
     }
   },
   watch: {
     'data.options.isRange': function(val) {
-      console.log(val)
-      if (val) {
-        this.data.options.defaultValue = null
-      } else {
-        this.data.options.defaultValue = ''
+      console.log('range,', val)
+      if (typeof val !== 'undefined') {
+        if (val) {
+          this.data.options.defaultValue = null
+        } else {
+          if (Object.keys(this.data.options).indexOf('defaultValue')>=0) 
+            this.data.options.defaultValue = ''
+        }
       }
     },
     'data.options.required': function(val) {

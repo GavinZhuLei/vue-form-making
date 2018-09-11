@@ -9,6 +9,7 @@
           <el-input 
             v-model="element.options.defaultValue"
             :style="{width: element.options.width}"
+            :placeholder="element.options.placeholder"
           ></el-input>
         </template>
 
@@ -16,6 +17,7 @@
           <el-input type="textarea" :rows="5"
             v-model="element.options.defaultValue"
             :style="{width: element.options.width}"
+            :placeholder="element.options.placeholder"
           ></el-input>
         </template>
 
@@ -24,28 +26,32 @@
             v-model="element.options.defaultValue" 
             :disabled="element.options.disabled"
             :controls-position="element.options.controlsPosition"
-            :style="{width: element.options.width ? element.options.width + 'px' : ''}"
+            :style="{width: element.options.width}"
           ></el-input-number>
         </template>
 
         <template v-if="element.type == 'radio'">
-          <el-radio-group v-model="element.options.defaultValue">
+          <el-radio-group v-model="element.options.defaultValue"
+            :style="{width: element.options.width}"
+          >
             <el-radio  
               :style="{display: element.options.inline ? 'inline-block' : 'block'}"
               :label="item.value" v-for="(item, index) in element.options.options" :key="item.value + index"
             >
-              {{item.value}}
+              {{element.options.showLabel ? item.label : item.value}}
             </el-radio>
           </el-radio-group>
         </template>
 
         <template v-if="element.type == 'checkbox'">
-          <el-checkbox-group v-model="element.options.defaultValue">
+          <el-checkbox-group v-model="element.options.defaultValue"
+            :style="{width: element.options.width}"
+          >
             <el-checkbox
               :style="{display: element.options.inline ? 'inline-block' : 'block'}"
               :label="item.value" v-for="(item, index) in element.options.options" :key="item.value + index"
             >
-              {{item.value}}
+              {{element.options.showLabel ? item.label : item.value}}
             </el-checkbox>
           </el-checkbox-group>
         </template>
@@ -62,6 +68,7 @@
             :editable="element.options.editable"
             :clearable="element.options.clearable"
             :arrowControl="element.options.arrowControl"
+            :style="{width: element.options.width}"
           >
           </el-time-picker>
         </template>
@@ -77,7 +84,9 @@
             :readonly="element.options.readonly"
             :disabled="element.options.disabled"
             :editable="element.options.editable"
-            :clearable="element.options.clearable">
+            :clearable="element.options.clearable"
+            :style="{width: element.options.width}"  
+          >
           </el-date-picker>
         </template>
 
@@ -87,6 +96,48 @@
             :disabled="element.options.disabled"
             :allow-half="element.options.allowHalf"
           ></el-rate>
+        </template>
+
+        <template v-if="element.type == 'color'">
+          <el-color-picker 
+            v-model="element.options.defaultValue"
+            :disabled="element.options.disabled"
+            :show-alpha="element.options.showAlpha"
+          ></el-color-picker>
+        </template>
+
+        <template v-if="element.type == 'select'">
+          <el-select
+            v-model="element.options.defaultValue"
+            :disabled="element.options.disabled"
+            :multiple="element.options.multiple"
+            :clearable="element.options.clearable"
+            :placeholder="element.options.placeholder"
+            :style="{width: element.options.width}"
+          >
+            <el-option v-for="item in element.options.options" :key="item.value" :value="item.value" :label="element.options.showLabel?item.label:item.value"></el-option>
+          </el-select>
+        </template>
+
+        <template v-if="element.type=='switch'">
+          <el-switch
+            v-model="element.options.defaultValue"
+            :disabled="element.options.disabled"
+          >
+          </el-switch>
+        </template>
+
+        <template v-if="element.type=='slider'">
+          <el-slider 
+            v-model="element.options.defaultValue"
+            :min="element.options.min"
+            :max="element.options.max"
+            :disabled="element.options.disabled"
+            :step="element.options.step"
+            :show-input="element.options.showInput"
+            :range="element.options.range"
+            :style="{width: element.options.width}"
+          ></el-slider>
         </template>
 
         <el-button title="删除" @click.stop="handleWidgetDelete(index)" class="widget-action-delete" v-if="selectWidget.key == element.key" circle plain type="danger">

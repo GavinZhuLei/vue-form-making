@@ -5,12 +5,14 @@
         v-if="widget.options.dataType == 'number' || widget.options.dataType == 'integer' || widget.options.dataType == 'float'"
         :type="widget.options.dataType"
         v-model.number="dataModel"
+        :placeholder="widget.options.placeholder"
         :style="{width: widget.options.width}"
       ></el-input>
       <el-input 
         v-else
         :type="widget.options.dataType"
         v-model="dataModel"
+        :placeholder="widget.options.placeholder"
         :style="{width: widget.options.width}"
       ></el-input>
     </template>
@@ -18,6 +20,7 @@
     <template v-if="widget.type == 'textarea'">
       <el-input type="textarea" :rows="5"
         v-model="dataModel"
+        :placeholder="widget.options.placeholder"
         :style="{width: widget.options.width}"
       ></el-input>
     </template>
@@ -25,32 +28,36 @@
     <template v-if="widget.type == 'number'">
       <el-input-number 
         v-model="widget.options.defaultValue" 
-        
+        :style="{width: widget.options.width}"
         :step="widget.options.step"
         controls-position="right"
       ></el-input-number>
     </template>
 
     <template v-if="widget.type == 'radio'">
-      <el-radio-group v-model="dataModel">
+      <el-radio-group v-model="dataModel"
+        :style="{width: widget.options.width}"
+      >
         <el-radio  
           
           :style="{display: widget.options.inline ? 'inline-block' : 'block'}"
           :label="item.value" v-for="(item, index) in widget.options.options" :key="index"
         >
-          {{item.value}}
+          {{widget.options.showLabel ? item.label : item.value}}
         </el-radio>
       </el-radio-group>
     </template>
 
     <template v-if="widget.type == 'checkbox'">
-      <el-checkbox-group v-model="dataModel">
+      <el-checkbox-group v-model="dataModel"
+        :style="{width: widget.options.width}"
+      >
         <el-checkbox
           
           :style="{display: widget.options.inline ? 'inline-block' : 'block'}"
           :label="item.value" v-for="(item, index) in widget.options.options" :key="index"
         >
-          {{item.value}}
+          {{widget.options.showLabel ? item.label : item.value}}
         </el-checkbox>
       </el-checkbox-group>
     </template>
@@ -68,6 +75,7 @@
         :clearable="widget.options.clearable"
         :arrowControl="widget.options.arrowControl"
         :value-format="widget.options.format"
+        :style="{width: widget.options.width}"
       >
       </el-time-picker>
     </template>
@@ -85,6 +93,7 @@
         :clearable="widget.options.clearable"
         :value-format="widget.options.timestamp ? 'timestamp' : widget.options.format"
         :format="widget.options.format"
+        :style="{width: widget.options.width}"
       >
       </el-date-picker>
     </template>
@@ -95,6 +104,48 @@
         :disabled="widget.options.disabled"
         :allow-half="widget.options.allowHalf"
       ></el-rate>
+    </template>
+
+    <template v-if="widget.type == 'color'">
+      <el-color-picker 
+        v-model="dataModel"
+        :disabled="widget.options.disabled"
+        :show-alpha="widget.options.showAlpha"
+      ></el-color-picker>
+    </template>
+
+    <template v-if="widget.type == 'select'">
+      <el-select
+        v-model="dataModel"
+        :disabled="widget.options.disabled"
+        :multiple="widget.options.multiple"
+        :clearable="widget.options.clearable"
+        :placeholder="widget.options.placeholder"
+        :style="{width: widget.options.width}"
+      >
+        <el-option v-for="item in widget.options.options" :key="item.value" :value="item.value" :label="widget.options.showLabel?item.label:item.value"></el-option>
+      </el-select>
+    </template>
+
+    <template v-if="widget.type=='switch'">
+      <el-switch
+        v-model="dataModel"
+        :disabled="widget.options.disabled"
+      >
+      </el-switch>
+    </template>
+
+    <template v-if="widget.type=='slider'">
+      <el-slider 
+        v-model="dataModel"
+        :min="widget.options.min"
+        :max="widget.options.max"
+        :disabled="widget.options.disabled"
+        :step="widget.options.step"
+        :show-input="widget.options.showInput"
+        :range="widget.options.range"
+        :style="{width: widget.options.width}"
+      ></el-slider>
     </template>
   </el-form-item>
 </template>

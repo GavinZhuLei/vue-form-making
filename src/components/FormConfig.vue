@@ -10,7 +10,7 @@
       </el-form-item>
 
       <el-form-item label="表单字段宽度">
-        <el-input-number v-model="data.labelWidth" :min="50" :max="200" :step="10"></el-input-number>
+        <el-input-number v-model="data.labelWidth" :min="0" :max="200" :step="10"></el-input-number>
       </el-form-item>
     </el-form>
   </div>
