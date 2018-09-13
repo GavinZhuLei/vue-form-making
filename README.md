@@ -1,11 +1,6 @@
 # vue-form-making
 基于Vue,ElementUI快速创建表单，进行数据校验，获取表单数据
 
-## Install
-```shell
-npm install form-making -S
-```
-
 ## CDN
 ``` html
 <!-- 引入样式 -->
@@ -40,6 +35,11 @@ npm install form-making -S
     })
   </script>
 </html>
+```
+
+## Install
+```shell
+npm install form-making -S
 ```
 
 ## Quick Start
