@@ -1,6 +1,9 @@
 # vue-form-making
 基于Vue,ElementUI快速创建表单，进行数据校验，获取表单数据
 
+![](https://github.com/GavinZhuLei/vue-form-making/blob/master/images/1.png)
+![](https://github.com/GavinZhuLei/vue-form-making/blob/master/images/2.png)
+
 ## CDN
 ``` html
 <!-- 引入样式 -->
