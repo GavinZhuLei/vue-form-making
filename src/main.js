@@ -23,10 +23,14 @@ import 'vue-awesome/icons/regular/caret-square-down'
 import 'vue-awesome/icons/toggle-off'
 import 'vue-awesome/icons/sliders-h'
 
+// import FormMaking from '../dist/FormMaking.umd'
+// import '../dist/FormMaking.css'
+
 Vue.config.productionTip = false
 
 Vue.use(ElementUI, { size: 'small' })
 Vue.component('icon', Icon)
+// Vue.use(FormMaking)
 
 new Vue({
   router,
