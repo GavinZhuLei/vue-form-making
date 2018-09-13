@@ -1,18 +1,16 @@
 <template>
-  <making-form></making-form>
+  <MarkingForm></MarkingForm>
   <!-- <form-making></form-making> -->
 </template>
 
 <script>
-// import {MakingForm} from 'FormMaking'
-import '../../dist/FormMaking.common.js'
-import '../../dist/FormMaking.css'
+// import formmaking from 'form-making'
 export default {
   components:{
-    // MakingForm: MakingForm.default 
+    // MakingForm: formmaking.MakingForm
   },
   mounted () {
-    console.log(MakingForm)
+    // console.log(formmaking.MakingForm)
   }
 }
 </script>

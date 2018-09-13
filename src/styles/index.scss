@@ -1,6 +1,16 @@
 $primary-color: #409EFF;
 $primary-background-color: #ecf5ff;
 
+.fa-icon{
+  width: auto;
+  height: 1em; /* 或任意其它字体大小相对值 */
+
+  /* 要在 Safari 中正常工作，需要再引入如下两行代码 */
+  max-width: 100%;
+  max-height: 100%;
+  vertical-align: middle;
+}
+
 .center-container{
   border-left: 1px solid #e0e0e0;
   border-right: 1px solid #e0e0e0;

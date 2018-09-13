@@ -1,8 +1,9 @@
 {
-  "name": "form-making",
+  "name": "gz-form-making",
   "description": "通过拖拽快速创建表单，进行数据校验，获取表单数据",
-  "version": "0.1.0",
+  "version": "0.1.7",
   "author": "GavinZhulei",
+  "license": "MIT",
   "keywords": [
     "component",
     "vue",
@@ -14,15 +15,16 @@
     "type": "git",
     "url": "https://github.com/GavinZhuLei/vue-form-making"
   },
-  "main": "dist/FormMaking.umd.js",
+  "main": "dist/index.common.js",
   "scripts": {
     "serve": "vue-cli-service serve --open",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "build-bundle": "vue-cli-service build --target lib --name FormMaking ./src/index.js"
+    "build-bundle": "vue-cli-service build --target lib --name index ./src/index.js"
   },
   "dependencies": {
     "element-ui": "^2.3.8",
+    "form-making": "^0.1.7",
     "normalize.css": "^8.0.0",
     "vue": "^2.5.16",
     "vue-awesome": "^3.0.0",
