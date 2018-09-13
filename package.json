@@ -23,7 +23,9 @@
     "build-bundle": "vue-cli-service build --target lib --name FormMaking ./src/index.js"
   },
   "dependencies": {
+    "clipboard": "^2.0.1",
     "element-ui": "^2.3.8",
+    "jsoneditor": "^5.24.6",
     "normalize.css": "^8.0.0",
     "vue": "^2.5.16",
     "vue-awesome": "^3.0.0",

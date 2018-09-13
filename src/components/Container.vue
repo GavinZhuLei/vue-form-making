@@ -40,6 +40,8 @@
     <el-container class="center-container" direction="vertical">
       <el-header class="btn-bar" style="height: 45px;">
         <el-button type="text" size="medium" icon="el-icon-view" @click="handlePreview">预览</el-button>
+        <el-button type="text" size="medium" icon="el-icon-tickets" @click="handleGenerateJson">生成JSON</el-button>
+        <el-button type="text" size="medium" icon="el-icon-document" >生成代码</el-button>
       </el-header>
       <el-main>
         
@@ -70,6 +72,22 @@
     >
       <generate-form :data="widgetForm" ref="generateForm"></generate-form>
     </cus-dialog>
+
+    <cus-dialog
+      :visible="jsonVisible"
+      @on-close="jsonVisible = false"
+      ref="jsonPreview"
+      width="800px"
+      form
+    >
+      <div id="jsoneditor" style="height: 400px;">
+
+      </div>
+      
+      <template slot="action">
+        <el-button id="copybtn" data-clipboard-target=".ace_text-input">双击复制</el-button>
+      </template>
+    </cus-dialog>
   </el-container>
 </template>
 
@@ -80,6 +98,9 @@ import FormConfig from './FormConfig'
 import WidgetForm from './WidgetForm'
 import CusDialog from './CusDialog'
 import GenerateForm from './GenerateForm'
+import JSONEditor from 'jsoneditor'
+import 'jsoneditor/dist/jsoneditor.min.css'
+import Clipboard from 'clipboard'
 
 export default {
   name: 'fm-making-form',
@@ -329,7 +350,8 @@ export default {
       },
       configTab: 'widget',
       widgetFormSelect: null,
-      previewVisible: false
+      previewVisible: false,
+      jsonVisible: false
     }
   },
   methods: {
@@ -355,6 +377,18 @@ export default {
       }).catch(e => {
         console.log(e)
         this.$refs.widgetPreview.end()
+      })
+    },
+    handleGenerateJson () {
+      console.log(JSON.stringify(this.widgetForm))
+      this.jsonVisible = true
+      this.$nextTick(() => {
+        const editor = new JSONEditor(document.getElementById("jsoneditor"), {
+          "mode": "code"
+        })
+        editor.set(this.widgetForm)
+
+        const btnCopy = new Clipboard('#copybtn')
       })
     }
   },
