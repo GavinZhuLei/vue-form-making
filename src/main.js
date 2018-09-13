@@ -5,11 +5,10 @@ import ElementUI from 'element-ui'
 
 import 'element-ui/lib/theme-chalk/index.css'
 
-// import 'form-making/dist/index.css'
-// import {MakingForm} from 'form-making'
-
-import {MakingForm} from './index'
-Vue.component(MakingForm.name, MakingForm)
+// import 'form-making/dist/FormMaking.css'
+// import FormMaking from 'form-making'
+import FormMaking from './index'
+Vue.use(FormMaking)
 
 Vue.config.productionTip = false
 

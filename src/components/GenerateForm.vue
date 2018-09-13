@@ -30,7 +30,7 @@
 import GenetateFormItem from './GenerateFormItem'
 
 export default {
-  name: 'GenerateForm',
+  name: 'fm-generate-form',
   components: {
     GenetateFormItem
   },

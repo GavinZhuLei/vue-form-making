@@ -1,5 +1,5 @@
 <template>
-  <MarkingForm></MarkingForm>
+  <fm-making-form></fm-making-form>
   <!-- <form-making></form-making> -->
 </template>
 

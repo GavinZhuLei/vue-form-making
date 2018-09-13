@@ -82,7 +82,7 @@ import CusDialog from './CusDialog'
 import GenerateForm from './GenerateForm'
 
 export default {
-  name: 'MarkingForm',
+  name: 'fm-making-form',
   components: {
     Draggable,
     WidgetConfig,
