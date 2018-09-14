@@ -16,6 +16,7 @@ import 'vue-awesome/icons/palette'
 import 'vue-awesome/icons/regular/caret-square-down'
 import 'vue-awesome/icons/toggle-off'
 import 'vue-awesome/icons/sliders-h'
+import 'vue-awesome/icons/regular/image'
 import MakingForm from './components/Container.vue'
 import GenerateForm from './components/GenerateForm.vue'
 

@@ -226,7 +226,14 @@ export const basicComponents = [
 ]
 
 export const advanceComponents = [
-
+  {
+    type: 'imgupload',
+    name: '图片',
+    icon: 'regular/image',
+    options: {
+      
+    }
+  }
 ]
 
 export const layoutComponents = [

@@ -18,6 +18,22 @@
             </a>
           </li>
         </draggable>
+
+        <div class="widget-cate">高级字段</div>
+        <draggable element="ul" :list="advanceComponents" 
+          :options="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
+          @end="handleMoveEnd"
+          @start="handleMoveStart"
+          :move="handleMove"
+        >
+          
+          <li class="form-edit-widget-label" v-for="(item, index) in advanceComponents" :key="index">
+            <a>
+              <icon class="icon" :name="item.icon"></icon>
+              <span>{{item.name}}</span>
+            </a>
+          </li>
+        </draggable>
         
         <div class="widget-cate">布局字段</div>
         <draggable element="ul" :list="layoutComponents" 
@@ -101,7 +117,7 @@ import GenerateForm from './GenerateForm'
 // import JSONEditor from 'jsoneditor'
 // import 'jsoneditor/dist/jsoneditor.min.css'
 import Clipboard from 'clipboard'
-import {basicComponents, layoutComponents} from './componentsConfig.js'
+import {basicComponents, layoutComponents, advanceComponents} from './componentsConfig.js'
 import {loadJs, loadCss} from '../util/index.js'
 
 export default {
@@ -118,6 +134,7 @@ export default {
     return {
       basicComponents,
       layoutComponents,
+      advanceComponents,
       widgetForm: {
         list: [],
         config: {
