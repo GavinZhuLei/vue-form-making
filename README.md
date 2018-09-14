@@ -19,7 +19,7 @@
   <meta charset="UTF-8">
   <!-- import CSS -->
   <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-  <link rel="stylesheet" href="https://unpkg.com/form-making@0.1.8/dist/FormMaking.css">
+  <link rel="stylesheet" href="https://unpkg.com/form-making/dist/FormMaking.css">
 </head>
 <body>
   <div id="app">
@@ -30,7 +30,7 @@
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
   <!-- import JavaScript -->
   <script src="https://unpkg.com/element-ui/lib/index.js"></script>
-  <script src="https://unpkg.com/form-making@0.1.8/dist/FormMaking.umd.js"></script>
+  <script src="https://unpkg.com/form-making/dist/FormMaking.umd.js"></script>
   <script>
     new Vue({
       el: '#app'
@@ -102,7 +102,7 @@ new Vue({
     data () {
         return {
             jsonData: {}, // 表单配置中生成的json数据
-            values: {}, // 例如:编辑的情况下表单获取的编辑数据
+            values: {}, // 表单需要显示的表单数据
             remoteFuncs: {
                 // 组件配置时配置的远端方法,保持和配置时输入的名称一致
                 func_test (resolve) {
