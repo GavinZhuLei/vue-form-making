@@ -68,15 +68,11 @@ Vue.component(MakingForm.name, MakingForm)
 
 ## 功能介绍
 
-## 介绍
-
 工具提供两个组件 MakingForm(表单配置)，GenerateForm(表单渲染)
 
 首先看看 MakingForm 的功能介绍
 
-
 ![](https://user-gold-cdn.xitu.io/2018/9/14/165d7578d36b0654?w=2878&h=1108&f=png&s=233664)
-
 
 ![](https://user-gold-cdn.xitu.io/2018/9/14/165d75fc8f26c49c?w=2266&h=1402&f=png&s=255307)
 
