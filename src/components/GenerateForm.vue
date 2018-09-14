@@ -34,7 +34,7 @@ export default {
   components: {
     GenetateFormItem
   },
-  props: ['data', 'remote'],
+  props: ['data', 'remote', 'value'],
   data () {
     return {
       models: {},
@@ -43,6 +43,8 @@ export default {
   },
   created () {
     console.log('generate', this.data)
+
+    console.log('value', this.value)
 
     this.generateModle(this.data.list)
   },
@@ -54,7 +56,12 @@ export default {
             this.generateModle(item.list)
           })
         } else {
-          this.models[genList[i].model] = genList[i].options.defaultValue
+          if (Object.keys(this.value).indexOf(genList[i].model) >= 0) {
+            this.models[genList[i].model] = this.value[genList[i].model]
+          } else {
+            this.models[genList[i].model] = genList[i].options.defaultValue
+          }
+          
           if (this.rules[genList[i].model]) {
             this.rules[genList[i].model] = [...this.rules[genList[i].model], ...genList[i].rules]
           } else {

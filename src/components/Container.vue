@@ -86,7 +86,7 @@
       @on-submit="handleTest"
       width="1000px"
     >
-      <generate-form :data="widgetForm" :remote="remoteFuncs" ref="generateForm"></generate-form>
+      <generate-form :data="widgetForm" :remote="remoteFuncs" :value="widgetModels" ref="generateForm"></generate-form>
     </cus-dialog>
 
     <cus-dialog
@@ -158,6 +158,10 @@ export default {
             resolve(options)
           }, 2000)
         }
+      },
+      widgetModels: {
+        key1: '啦啦啦啦啦',
+        key2: '选项2'
       }
     }
   },

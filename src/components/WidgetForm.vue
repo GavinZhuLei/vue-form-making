@@ -95,7 +95,7 @@ export default {
         ...this.data.list[newIndex],
         options: {
           ...this.data.list[newIndex].options,
-          remoteFunc: 'func_test'
+          remoteFunc: 'func_' + key
         },
         key,
         // 绑定键值
@@ -149,7 +149,7 @@ export default {
         ...row.columns[colIndex].list[newIndex],
         options: {
           ...row.columns[colIndex].list[newIndex].options,
-          remoteFunc: 'func_test'
+          remoteFunc: 'func_' + key
         },
         key,
         // 绑定键值

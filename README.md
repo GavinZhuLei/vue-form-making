@@ -1,12 +1,14 @@
 # vue-form-making
 基于Vue,ElementUI快速创建表单，进行数据校验，获取表单数据
 
+演示地址：http://tools.xiaoyaoji.cn/form-marking
+
 ## CDN
 ``` html
 <!-- 引入样式 -->
-<link rel="stylesheet" href="https://unpkg.com/form-making@0.1.8/dist/FormMaking.css">
+<link rel="stylesheet" href="https://unpkg.com/form-making/dist/FormMaking.css">
 <!-- 引入组件库 -->
-<script src="https://unpkg.com/form-making@0.1.8/dist/FormMaking.umd.js"></script>
+<script src="https://unpkg.com/form-making/dist/FormMaking.umd.js"></script>
 ```
 
 ## Hello world
@@ -90,6 +92,7 @@ Vue.component(MakingForm.name, MakingForm)
 <fm-generate-form 
     :data="jsonData" 
     :remote="remoteFuncs" 
+    :value="values"
     ref="generateForm">
 </fm-generate-form>
 ```
@@ -98,7 +101,8 @@ new Vue({
     ...
     data () {
         return {
-            jsonData: {} // 表单配置中生成的json数据
+            jsonData: {}, // 表单配置中生成的json数据
+            values: {}, // 例如:编辑的情况下表单获取的编辑数据
             remoteFuncs: {
                 // 组件配置时配置的远端方法,保持和配置时输入的名称一致
                 func_test (resolve) {
