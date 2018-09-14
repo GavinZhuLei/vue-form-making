@@ -94,7 +94,8 @@ export default {
       this.$set(this.data.list, newIndex, {
         ...this.data.list[newIndex],
         options: {
-          ...this.data.list[newIndex].options
+          ...this.data.list[newIndex].options,
+          remoteFunc: 'func_test'
         },
         key,
         // 绑定键值
@@ -147,7 +148,8 @@ export default {
       this.$set(row.columns[colIndex].list, newIndex, {
         ...row.columns[colIndex].list[newIndex],
         options: {
-          ...row.columns[colIndex].list[newIndex].options
+          ...row.columns[colIndex].list[newIndex].options,
+          remoteFunc: 'func_test'
         },
         key,
         // 绑定键值

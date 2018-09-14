@@ -3703,6 +3703,25 @@ module.exports = !__webpack_require__("79e5")(function () {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   components: {
@@ -3952,6 +3971,930 @@ for (var collections = getKeys(DOMIterables), i = 0; i < collections.length; i++
   }
 }
 
+
+/***/ }),
+
+/***/ "b311":
+/***/ (function(module, exports, __webpack_require__) {
+
+/*!
+ * clipboard.js v2.0.1
+ * https://zenorocha.github.io/clipboard.js
+ * 
+ * Licensed MIT © Zeno Rocha
+ */
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(true)
+		module.exports = factory();
+	else {}
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// identity function for calling harmony imports with the correct context
+/******/ 	__webpack_require__.i = function(value) { return value; };
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
+    if (true) {
+        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(7)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+    } else { var mod; }
+})(this, function (module, _select) {
+    'use strict';
+
+    var _select2 = _interopRequireDefault(_select);
+
+    function _interopRequireDefault(obj) {
+        return obj && obj.__esModule ? obj : {
+            default: obj
+        };
+    }
+
+    var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+        return typeof obj;
+    } : function (obj) {
+        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+
+    function _classCallCheck(instance, Constructor) {
+        if (!(instance instanceof Constructor)) {
+            throw new TypeError("Cannot call a class as a function");
+        }
+    }
+
+    var _createClass = function () {
+        function defineProperties(target, props) {
+            for (var i = 0; i < props.length; i++) {
+                var descriptor = props[i];
+                descriptor.enumerable = descriptor.enumerable || false;
+                descriptor.configurable = true;
+                if ("value" in descriptor) descriptor.writable = true;
+                Object.defineProperty(target, descriptor.key, descriptor);
+            }
+        }
+
+        return function (Constructor, protoProps, staticProps) {
+            if (protoProps) defineProperties(Constructor.prototype, protoProps);
+            if (staticProps) defineProperties(Constructor, staticProps);
+            return Constructor;
+        };
+    }();
+
+    var ClipboardAction = function () {
+        /**
+         * @param {Object} options
+         */
+        function ClipboardAction(options) {
+            _classCallCheck(this, ClipboardAction);
+
+            this.resolveOptions(options);
+            this.initSelection();
+        }
+
+        /**
+         * Defines base properties passed from constructor.
+         * @param {Object} options
+         */
+
+
+        _createClass(ClipboardAction, [{
+            key: 'resolveOptions',
+            value: function resolveOptions() {
+                var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+                this.action = options.action;
+                this.container = options.container;
+                this.emitter = options.emitter;
+                this.target = options.target;
+                this.text = options.text;
+                this.trigger = options.trigger;
+
+                this.selectedText = '';
+            }
+        }, {
+            key: 'initSelection',
+            value: function initSelection() {
+                if (this.text) {
+                    this.selectFake();
+                } else if (this.target) {
+                    this.selectTarget();
+                }
+            }
+        }, {
+            key: 'selectFake',
+            value: function selectFake() {
+                var _this = this;
+
+                var isRTL = document.documentElement.getAttribute('dir') == 'rtl';
+
+                this.removeFake();
+
+                this.fakeHandlerCallback = function () {
+                    return _this.removeFake();
+                };
+                this.fakeHandler = this.container.addEventListener('click', this.fakeHandlerCallback) || true;
+
+                this.fakeElem = document.createElement('textarea');
+                // Prevent zooming on iOS
+                this.fakeElem.style.fontSize = '12pt';
+                // Reset box model
+                this.fakeElem.style.border = '0';
+                this.fakeElem.style.padding = '0';
+                this.fakeElem.style.margin = '0';
+                // Move element out of screen horizontally
+                this.fakeElem.style.position = 'absolute';
+                this.fakeElem.style[isRTL ? 'right' : 'left'] = '-9999px';
+                // Move element to the same position vertically
+                var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+                this.fakeElem.style.top = yPosition + 'px';
+
+                this.fakeElem.setAttribute('readonly', '');
+                this.fakeElem.value = this.text;
+
+                this.container.appendChild(this.fakeElem);
+
+                this.selectedText = (0, _select2.default)(this.fakeElem);
+                this.copyText();
+            }
+        }, {
+            key: 'removeFake',
+            value: function removeFake() {
+                if (this.fakeHandler) {
+                    this.container.removeEventListener('click', this.fakeHandlerCallback);
+                    this.fakeHandler = null;
+                    this.fakeHandlerCallback = null;
+                }
+
+                if (this.fakeElem) {
+                    this.container.removeChild(this.fakeElem);
+                    this.fakeElem = null;
+                }
+            }
+        }, {
+            key: 'selectTarget',
+            value: function selectTarget() {
+                this.selectedText = (0, _select2.default)(this.target);
+                this.copyText();
+            }
+        }, {
+            key: 'copyText',
+            value: function copyText() {
+                var succeeded = void 0;
+
+                try {
+                    succeeded = document.execCommand(this.action);
+                } catch (err) {
+                    succeeded = false;
+                }
+
+                this.handleResult(succeeded);
+            }
+        }, {
+            key: 'handleResult',
+            value: function handleResult(succeeded) {
+                this.emitter.emit(succeeded ? 'success' : 'error', {
+                    action: this.action,
+                    text: this.selectedText,
+                    trigger: this.trigger,
+                    clearSelection: this.clearSelection.bind(this)
+                });
+            }
+        }, {
+            key: 'clearSelection',
+            value: function clearSelection() {
+                if (this.trigger) {
+                    this.trigger.focus();
+                }
+
+                window.getSelection().removeAllRanges();
+            }
+        }, {
+            key: 'destroy',
+            value: function destroy() {
+                this.removeFake();
+            }
+        }, {
+            key: 'action',
+            set: function set() {
+                var action = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'copy';
+
+                this._action = action;
+
+                if (this._action !== 'copy' && this._action !== 'cut') {
+                    throw new Error('Invalid "action" value, use either "copy" or "cut"');
+                }
+            },
+            get: function get() {
+                return this._action;
+            }
+        }, {
+            key: 'target',
+            set: function set(target) {
+                if (target !== undefined) {
+                    if (target && (typeof target === 'undefined' ? 'undefined' : _typeof(target)) === 'object' && target.nodeType === 1) {
+                        if (this.action === 'copy' && target.hasAttribute('disabled')) {
+                            throw new Error('Invalid "target" attribute. Please use "readonly" instead of "disabled" attribute');
+                        }
+
+                        if (this.action === 'cut' && (target.hasAttribute('readonly') || target.hasAttribute('disabled'))) {
+                            throw new Error('Invalid "target" attribute. You can\'t cut text from elements with "readonly" or "disabled" attributes');
+                        }
+
+                        this._target = target;
+                    } else {
+                        throw new Error('Invalid "target" value, use a valid Element');
+                    }
+                }
+            },
+            get: function get() {
+                return this._target;
+            }
+        }]);
+
+        return ClipboardAction;
+    }();
+
+    module.exports = ClipboardAction;
+});
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var is = __webpack_require__(6);
+var delegate = __webpack_require__(5);
+
+/**
+ * Validates all params and calls the right
+ * listener function based on its target type.
+ *
+ * @param {String|HTMLElement|HTMLCollection|NodeList} target
+ * @param {String} type
+ * @param {Function} callback
+ * @return {Object}
+ */
+function listen(target, type, callback) {
+    if (!target && !type && !callback) {
+        throw new Error('Missing required arguments');
+    }
+
+    if (!is.string(type)) {
+        throw new TypeError('Second argument must be a String');
+    }
+
+    if (!is.fn(callback)) {
+        throw new TypeError('Third argument must be a Function');
+    }
+
+    if (is.node(target)) {
+        return listenNode(target, type, callback);
+    }
+    else if (is.nodeList(target)) {
+        return listenNodeList(target, type, callback);
+    }
+    else if (is.string(target)) {
+        return listenSelector(target, type, callback);
+    }
+    else {
+        throw new TypeError('First argument must be a String, HTMLElement, HTMLCollection, or NodeList');
+    }
+}
+
+/**
+ * Adds an event listener to a HTML element
+ * and returns a remove listener function.
+ *
+ * @param {HTMLElement} node
+ * @param {String} type
+ * @param {Function} callback
+ * @return {Object}
+ */
+function listenNode(node, type, callback) {
+    node.addEventListener(type, callback);
+
+    return {
+        destroy: function() {
+            node.removeEventListener(type, callback);
+        }
+    }
+}
+
+/**
+ * Add an event listener to a list of HTML elements
+ * and returns a remove listener function.
+ *
+ * @param {NodeList|HTMLCollection} nodeList
+ * @param {String} type
+ * @param {Function} callback
+ * @return {Object}
+ */
+function listenNodeList(nodeList, type, callback) {
+    Array.prototype.forEach.call(nodeList, function(node) {
+        node.addEventListener(type, callback);
+    });
+
+    return {
+        destroy: function() {
+            Array.prototype.forEach.call(nodeList, function(node) {
+                node.removeEventListener(type, callback);
+            });
+        }
+    }
+}
+
+/**
+ * Add an event listener to a selector
+ * and returns a remove listener function.
+ *
+ * @param {String} selector
+ * @param {String} type
+ * @param {Function} callback
+ * @return {Object}
+ */
+function listenSelector(selector, type, callback) {
+    return delegate(document.body, selector, type, callback);
+}
+
+module.exports = listen;
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+function E () {
+  // Keep this empty so it's easier to inherit from
+  // (via https://github.com/lipsmack from https://github.com/scottcorgan/tiny-emitter/issues/3)
+}
+
+E.prototype = {
+  on: function (name, callback, ctx) {
+    var e = this.e || (this.e = {});
+
+    (e[name] || (e[name] = [])).push({
+      fn: callback,
+      ctx: ctx
+    });
+
+    return this;
+  },
+
+  once: function (name, callback, ctx) {
+    var self = this;
+    function listener () {
+      self.off(name, listener);
+      callback.apply(ctx, arguments);
+    };
+
+    listener._ = callback
+    return this.on(name, listener, ctx);
+  },
+
+  emit: function (name) {
+    var data = [].slice.call(arguments, 1);
+    var evtArr = ((this.e || (this.e = {}))[name] || []).slice();
+    var i = 0;
+    var len = evtArr.length;
+
+    for (i; i < len; i++) {
+      evtArr[i].fn.apply(evtArr[i].ctx, data);
+    }
+
+    return this;
+  },
+
+  off: function (name, callback) {
+    var e = this.e || (this.e = {});
+    var evts = e[name];
+    var liveEvents = [];
+
+    if (evts && callback) {
+      for (var i = 0, len = evts.length; i < len; i++) {
+        if (evts[i].fn !== callback && evts[i].fn._ !== callback)
+          liveEvents.push(evts[i]);
+      }
+    }
+
+    // Remove event from queue to prevent memory leak
+    // Suggested by https://github.com/lazd
+    // Ref: https://github.com/scottcorgan/tiny-emitter/commit/c6ebfaa9bc973b33d110a84a307742b7cf94c953#commitcomment-5024910
+
+    (liveEvents.length)
+      ? e[name] = liveEvents
+      : delete e[name];
+
+    return this;
+  }
+};
+
+module.exports = E;
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
+    if (true) {
+        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(0), __webpack_require__(2), __webpack_require__(1)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+    } else { var mod; }
+})(this, function (module, _clipboardAction, _tinyEmitter, _goodListener) {
+    'use strict';
+
+    var _clipboardAction2 = _interopRequireDefault(_clipboardAction);
+
+    var _tinyEmitter2 = _interopRequireDefault(_tinyEmitter);
+
+    var _goodListener2 = _interopRequireDefault(_goodListener);
+
+    function _interopRequireDefault(obj) {
+        return obj && obj.__esModule ? obj : {
+            default: obj
+        };
+    }
+
+    var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+        return typeof obj;
+    } : function (obj) {
+        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+
+    function _classCallCheck(instance, Constructor) {
+        if (!(instance instanceof Constructor)) {
+            throw new TypeError("Cannot call a class as a function");
+        }
+    }
+
+    var _createClass = function () {
+        function defineProperties(target, props) {
+            for (var i = 0; i < props.length; i++) {
+                var descriptor = props[i];
+                descriptor.enumerable = descriptor.enumerable || false;
+                descriptor.configurable = true;
+                if ("value" in descriptor) descriptor.writable = true;
+                Object.defineProperty(target, descriptor.key, descriptor);
+            }
+        }
+
+        return function (Constructor, protoProps, staticProps) {
+            if (protoProps) defineProperties(Constructor.prototype, protoProps);
+            if (staticProps) defineProperties(Constructor, staticProps);
+            return Constructor;
+        };
+    }();
+
+    function _possibleConstructorReturn(self, call) {
+        if (!self) {
+            throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+        }
+
+        return call && (typeof call === "object" || typeof call === "function") ? call : self;
+    }
+
+    function _inherits(subClass, superClass) {
+        if (typeof superClass !== "function" && superClass !== null) {
+            throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+        }
+
+        subClass.prototype = Object.create(superClass && superClass.prototype, {
+            constructor: {
+                value: subClass,
+                enumerable: false,
+                writable: true,
+                configurable: true
+            }
+        });
+        if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+    }
+
+    var Clipboard = function (_Emitter) {
+        _inherits(Clipboard, _Emitter);
+
+        /**
+         * @param {String|HTMLElement|HTMLCollection|NodeList} trigger
+         * @param {Object} options
+         */
+        function Clipboard(trigger, options) {
+            _classCallCheck(this, Clipboard);
+
+            var _this = _possibleConstructorReturn(this, (Clipboard.__proto__ || Object.getPrototypeOf(Clipboard)).call(this));
+
+            _this.resolveOptions(options);
+            _this.listenClick(trigger);
+            return _this;
+        }
+
+        /**
+         * Defines if attributes would be resolved using internal setter functions
+         * or custom functions that were passed in the constructor.
+         * @param {Object} options
+         */
+
+
+        _createClass(Clipboard, [{
+            key: 'resolveOptions',
+            value: function resolveOptions() {
+                var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+                this.action = typeof options.action === 'function' ? options.action : this.defaultAction;
+                this.target = typeof options.target === 'function' ? options.target : this.defaultTarget;
+                this.text = typeof options.text === 'function' ? options.text : this.defaultText;
+                this.container = _typeof(options.container) === 'object' ? options.container : document.body;
+            }
+        }, {
+            key: 'listenClick',
+            value: function listenClick(trigger) {
+                var _this2 = this;
+
+                this.listener = (0, _goodListener2.default)(trigger, 'click', function (e) {
+                    return _this2.onClick(e);
+                });
+            }
+        }, {
+            key: 'onClick',
+            value: function onClick(e) {
+                var trigger = e.delegateTarget || e.currentTarget;
+
+                if (this.clipboardAction) {
+                    this.clipboardAction = null;
+                }
+
+                this.clipboardAction = new _clipboardAction2.default({
+                    action: this.action(trigger),
+                    target: this.target(trigger),
+                    text: this.text(trigger),
+                    container: this.container,
+                    trigger: trigger,
+                    emitter: this
+                });
+            }
+        }, {
+            key: 'defaultAction',
+            value: function defaultAction(trigger) {
+                return getAttributeValue('action', trigger);
+            }
+        }, {
+            key: 'defaultTarget',
+            value: function defaultTarget(trigger) {
+                var selector = getAttributeValue('target', trigger);
+
+                if (selector) {
+                    return document.querySelector(selector);
+                }
+            }
+        }, {
+            key: 'defaultText',
+            value: function defaultText(trigger) {
+                return getAttributeValue('text', trigger);
+            }
+        }, {
+            key: 'destroy',
+            value: function destroy() {
+                this.listener.destroy();
+
+                if (this.clipboardAction) {
+                    this.clipboardAction.destroy();
+                    this.clipboardAction = null;
+                }
+            }
+        }], [{
+            key: 'isSupported',
+            value: function isSupported() {
+                var action = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : ['copy', 'cut'];
+
+                var actions = typeof action === 'string' ? [action] : action;
+                var support = !!document.queryCommandSupported;
+
+                actions.forEach(function (action) {
+                    support = support && !!document.queryCommandSupported(action);
+                });
+
+                return support;
+            }
+        }]);
+
+        return Clipboard;
+    }(_tinyEmitter2.default);
+
+    /**
+     * Helper function to retrieve attribute value.
+     * @param {String} suffix
+     * @param {Element} element
+     */
+    function getAttributeValue(suffix, element) {
+        var attribute = 'data-clipboard-' + suffix;
+
+        if (!element.hasAttribute(attribute)) {
+            return;
+        }
+
+        return element.getAttribute(attribute);
+    }
+
+    module.exports = Clipboard;
+});
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
+var DOCUMENT_NODE_TYPE = 9;
+
+/**
+ * A polyfill for Element.matches()
+ */
+if (typeof Element !== 'undefined' && !Element.prototype.matches) {
+    var proto = Element.prototype;
+
+    proto.matches = proto.matchesSelector ||
+                    proto.mozMatchesSelector ||
+                    proto.msMatchesSelector ||
+                    proto.oMatchesSelector ||
+                    proto.webkitMatchesSelector;
+}
+
+/**
+ * Finds the closest parent that matches a selector.
+ *
+ * @param {Element} element
+ * @param {String} selector
+ * @return {Function}
+ */
+function closest (element, selector) {
+    while (element && element.nodeType !== DOCUMENT_NODE_TYPE) {
+        if (typeof element.matches === 'function' &&
+            element.matches(selector)) {
+          return element;
+        }
+        element = element.parentNode;
+    }
+}
+
+module.exports = closest;
+
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var closest = __webpack_require__(4);
+
+/**
+ * Delegates event to a selector.
+ *
+ * @param {Element} element
+ * @param {String} selector
+ * @param {String} type
+ * @param {Function} callback
+ * @param {Boolean} useCapture
+ * @return {Object}
+ */
+function _delegate(element, selector, type, callback, useCapture) {
+    var listenerFn = listener.apply(this, arguments);
+
+    element.addEventListener(type, listenerFn, useCapture);
+
+    return {
+        destroy: function() {
+            element.removeEventListener(type, listenerFn, useCapture);
+        }
+    }
+}
+
+/**
+ * Delegates event to a selector.
+ *
+ * @param {Element|String|Array} [elements]
+ * @param {String} selector
+ * @param {String} type
+ * @param {Function} callback
+ * @param {Boolean} useCapture
+ * @return {Object}
+ */
+function delegate(elements, selector, type, callback, useCapture) {
+    // Handle the regular Element usage
+    if (typeof elements.addEventListener === 'function') {
+        return _delegate.apply(null, arguments);
+    }
+
+    // Handle Element-less usage, it defaults to global delegation
+    if (typeof type === 'function') {
+        // Use `document` as the first parameter, then apply arguments
+        // This is a short way to .unshift `arguments` without running into deoptimizations
+        return _delegate.bind(null, document).apply(null, arguments);
+    }
+
+    // Handle Selector-based usage
+    if (typeof elements === 'string') {
+        elements = document.querySelectorAll(elements);
+    }
+
+    // Handle Array-like based usage
+    return Array.prototype.map.call(elements, function (element) {
+        return _delegate(element, selector, type, callback, useCapture);
+    });
+}
+
+/**
+ * Finds closest match and invokes callback.
+ *
+ * @param {Element} element
+ * @param {String} selector
+ * @param {String} type
+ * @param {Function} callback
+ * @return {Function}
+ */
+function listener(element, selector, type, callback) {
+    return function(e) {
+        e.delegateTarget = closest(e.target, selector);
+
+        if (e.delegateTarget) {
+            callback.call(element, e);
+        }
+    }
+}
+
+module.exports = delegate;
+
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+/**
+ * Check if argument is a HTML element.
+ *
+ * @param {Object} value
+ * @return {Boolean}
+ */
+exports.node = function(value) {
+    return value !== undefined
+        && value instanceof HTMLElement
+        && value.nodeType === 1;
+};
+
+/**
+ * Check if argument is a list of HTML elements.
+ *
+ * @param {Object} value
+ * @return {Boolean}
+ */
+exports.nodeList = function(value) {
+    var type = Object.prototype.toString.call(value);
+
+    return value !== undefined
+        && (type === '[object NodeList]' || type === '[object HTMLCollection]')
+        && ('length' in value)
+        && (value.length === 0 || exports.node(value[0]));
+};
+
+/**
+ * Check if argument is a string.
+ *
+ * @param {Object} value
+ * @return {Boolean}
+ */
+exports.string = function(value) {
+    return typeof value === 'string'
+        || value instanceof String;
+};
+
+/**
+ * Check if argument is a function.
+ *
+ * @param {Object} value
+ * @return {Boolean}
+ */
+exports.fn = function(value) {
+    var type = Object.prototype.toString.call(value);
+
+    return type === '[object Function]';
+};
+
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports) {
+
+function select(element) {
+    var selectedText;
+
+    if (element.nodeName === 'SELECT') {
+        element.focus();
+
+        selectedText = element.value;
+    }
+    else if (element.nodeName === 'INPUT' || element.nodeName === 'TEXTAREA') {
+        var isReadOnly = element.hasAttribute('readonly');
+
+        if (!isReadOnly) {
+            element.setAttribute('readonly', '');
+        }
+
+        element.select();
+        element.setSelectionRange(0, element.value.length);
+
+        if (!isReadOnly) {
+            element.removeAttribute('readonly');
+        }
+
+        selectedText = element.value;
+    }
+    else {
+        if (element.hasAttribute('contenteditable')) {
+            element.focus();
+        }
+
+        var selection = window.getSelection();
+        var range = document.createRange();
+
+        range.selectNodeContents(element);
+        selection.removeAllRanges();
+        selection.addRange(range);
+
+        selectedText = selection.toString();
+    }
+
+    return selectedText;
+}
+
+module.exports = select;
+
+
+/***/ })
+/******/ ]);
+});
 
 /***/ }),
 
@@ -4704,23 +5647,23 @@ Icon.register({"toggle-off":{"width":576,"height":512,"paths":[{"d":"M384 64H192
 
 Icon.register({"sliders-h":{"width":512,"height":512,"paths":[{"d":"M496 384H160V368C160 359.2 152.8 352 144 352H112C103.2 352 96 359.2 96 368V384H16C7.2 384 0 391.2 0 400V432C0 440.8 7.2 448 16 448H96V464C96 472.8 103.2 480 112 480H144C152.8 480 160 472.8 160 464V448H496C504.8 448 512 440.8 512 432V400C512 391.2 504.8 384 496 384zM496 224H416V208C416 199.2 408.8 192 400 192H368C359.2 192 352 199.2 352 208V224H16C7.2 224 0 231.2 0 240V272C0 280.8 7.2 288 16 288H352V304C352 312.8 359.2 320 368 320H400C408.8 320 416 312.8 416 304V288H496C504.8 288 512 280.8 512 272V240C512 231.2 504.8 224 496 224zM496 64H288V48C288 39.2 280.8 32 272 32H240C231.2 32 224 39.2 224 48V64H16C7.2 64 0 71.2 0 80V112C0 120.8 7.2 128 16 128H224V144C224 152.8 231.2 160 240 160H272C280.8 160 288 152.8 288 144V128H496C504.8 128 512 120.8 512 112V80C512 71.2 504.8 64 496 64z"}]}})
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"3a86e180-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Container.vue?vue&type=template&id=111cb29e&
-var Containervue_type_template_id_111cb29e_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('el-container',[_c('el-aside',{staticStyle:{"wdith":"250px"}},[_c('div',{staticClass:"components-list"},[_c('div',{staticClass:"widget-cate"},[_vm._v("基础字段")]),_c('draggable',{attrs:{"element":"ul","list":_vm.basicComponents,"options":{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'},"move":_vm.handleMove},on:{"end":_vm.handleMoveEnd,"start":_vm.handleMoveStart}},_vm._l((_vm.basicComponents),function(item,index){return _c('li',{key:index,staticClass:"form-edit-widget-label"},[_c('a',[_c('icon',{staticClass:"icon",attrs:{"name":item.icon}}),_c('span',[_vm._v(_vm._s(item.name))])],1)])})),_c('div',{staticClass:"widget-cate"},[_vm._v("布局字段")]),_c('draggable',{attrs:{"element":"ul","list":_vm.layoutComponents,"options":{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'},"move":_vm.handleMove},on:{"end":_vm.handleMoveEnd,"start":_vm.handleMoveStart}},_vm._l((_vm.layoutComponents),function(item,index){return _c('li',{key:index,staticClass:"form-edit-widget-label data-grid"},[_c('a',[_c('icon',{staticClass:"icon",attrs:{"name":item.icon}}),_c('span',[_vm._v(_vm._s(item.name))])],1)])}))],1)]),_c('el-container',{staticClass:"center-container",attrs:{"direction":"vertical"}},[_c('el-header',{staticClass:"btn-bar",staticStyle:{"height":"45px"}},[_c('el-button',{attrs:{"type":"text","size":"medium","icon":"el-icon-view"},on:{"click":_vm.handlePreview}},[_vm._v("预览")])],1),_c('el-main',[_c('widget-form',{ref:"widgetForm",attrs:{"data":_vm.widgetForm,"select":_vm.widgetFormSelect},on:{"update:select":function($event){_vm.widgetFormSelect=$event}}})],1)],1),_c('el-aside',{staticClass:"widget-config-container"},[_c('el-container',[_c('el-header',{attrs:{"height":"45px"}},[_c('div',{staticClass:"config-tab",class:{active: _vm.configTab=='widget'},on:{"click":function($event){_vm.handleConfigSelect('widget')}}},[_vm._v("字段属性")]),_c('div',{staticClass:"config-tab",class:{active: _vm.configTab=='form'},on:{"click":function($event){_vm.handleConfigSelect('form')}}},[_vm._v("表单属性")])]),_c('el-main',{staticClass:"config-content"},[_c('widget-config',{directives:[{name:"show",rawName:"v-show",value:(_vm.configTab=='widget'),expression:"configTab=='widget'"}],attrs:{"data":_vm.widgetFormSelect}}),_c('form-config',{directives:[{name:"show",rawName:"v-show",value:(_vm.configTab=='form'),expression:"configTab=='form'"}],attrs:{"data":_vm.widgetForm.config}})],1)],1)],1),_c('cus-dialog',{ref:"widgetPreview",attrs:{"visible":_vm.previewVisible,"width":"1000px"},on:{"on-close":function($event){_vm.previewVisible = false},"on-submit":_vm.handleTest}},[_c('generate-form',{ref:"generateForm",attrs:{"data":_vm.widgetForm}})],1)],1)}
-var Containervue_type_template_id_111cb29e_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"3a86e180-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Container.vue?vue&type=template&id=8fe806ca&
+var Containervue_type_template_id_8fe806ca_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('el-container',[_c('el-aside',{staticStyle:{"wdith":"250px"}},[_c('div',{staticClass:"components-list"},[_c('div',{staticClass:"widget-cate"},[_vm._v("基础字段")]),_c('draggable',{attrs:{"element":"ul","list":_vm.basicComponents,"options":{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'},"move":_vm.handleMove},on:{"end":_vm.handleMoveEnd,"start":_vm.handleMoveStart}},_vm._l((_vm.basicComponents),function(item,index){return _c('li',{key:index,staticClass:"form-edit-widget-label"},[_c('a',[_c('icon',{staticClass:"icon",attrs:{"name":item.icon}}),_c('span',[_vm._v(_vm._s(item.name))])],1)])})),_c('div',{staticClass:"widget-cate"},[_vm._v("布局字段")]),_c('draggable',{attrs:{"element":"ul","list":_vm.layoutComponents,"options":{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'},"move":_vm.handleMove},on:{"end":_vm.handleMoveEnd,"start":_vm.handleMoveStart}},_vm._l((_vm.layoutComponents),function(item,index){return _c('li',{key:index,staticClass:"form-edit-widget-label data-grid"},[_c('a',[_c('icon',{staticClass:"icon",attrs:{"name":item.icon}}),_c('span',[_vm._v(_vm._s(item.name))])],1)])}))],1)]),_c('el-container',{staticClass:"center-container",attrs:{"direction":"vertical"}},[_c('el-header',{staticClass:"btn-bar",staticStyle:{"height":"45px"}},[_c('el-button',{attrs:{"type":"text","size":"medium","icon":"el-icon-view"},on:{"click":_vm.handlePreview}},[_vm._v("预览")]),_c('el-button',{attrs:{"type":"text","size":"medium","icon":"el-icon-tickets"},on:{"click":_vm.handleGenerateJson}},[_vm._v("生成JSON")]),_c('el-button',{attrs:{"type":"text","size":"medium","icon":"el-icon-document"}},[_vm._v("生成代码")])],1),_c('el-main',[_c('widget-form',{ref:"widgetForm",attrs:{"data":_vm.widgetForm,"select":_vm.widgetFormSelect},on:{"update:select":function($event){_vm.widgetFormSelect=$event}}})],1)],1),_c('el-aside',{staticClass:"widget-config-container"},[_c('el-container',[_c('el-header',{attrs:{"height":"45px"}},[_c('div',{staticClass:"config-tab",class:{active: _vm.configTab=='widget'},on:{"click":function($event){_vm.handleConfigSelect('widget')}}},[_vm._v("字段属性")]),_c('div',{staticClass:"config-tab",class:{active: _vm.configTab=='form'},on:{"click":function($event){_vm.handleConfigSelect('form')}}},[_vm._v("表单属性")])]),_c('el-main',{staticClass:"config-content"},[_c('widget-config',{directives:[{name:"show",rawName:"v-show",value:(_vm.configTab=='widget'),expression:"configTab=='widget'"}],attrs:{"data":_vm.widgetFormSelect}}),_c('form-config',{directives:[{name:"show",rawName:"v-show",value:(_vm.configTab=='form'),expression:"configTab=='form'"}],attrs:{"data":_vm.widgetForm.config}})],1)],1)],1),_c('cus-dialog',{ref:"widgetPreview",attrs:{"visible":_vm.previewVisible,"width":"1000px"},on:{"on-close":function($event){_vm.previewVisible = false},"on-submit":_vm.handleTest}},[_c('generate-form',{ref:"generateForm",attrs:{"data":_vm.widgetForm,"remote":_vm.remoteFuncs}})],1),_c('cus-dialog',{ref:"jsonPreview",attrs:{"visible":_vm.jsonVisible,"width":"800px","form":""},on:{"on-close":function($event){_vm.jsonVisible = false}}},[_c('div',{staticStyle:{"height":"400px"},attrs:{"id":"jsoneditor"}}),_c('template',{slot:"action"},[_c('el-button',{attrs:{"id":"copybtn","data-clipboard-target":".ace_text-input"}},[_vm._v("双击复制")])],1)],2)],1)}
+var Containervue_type_template_id_8fe806ca_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/Container.vue?vue&type=template&id=111cb29e&
+// CONCATENATED MODULE: ./src/components/Container.vue?vue&type=template&id=8fe806ca&
 
 // EXTERNAL MODULE: ./node_modules/vuedraggable/dist/vuedraggable.js
 var vuedraggable = __webpack_require__("1516");
 var vuedraggable_default = /*#__PURE__*/__webpack_require__.n(vuedraggable);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"3a86e180-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/WidgetConfig.vue?vue&type=template&id=00323108&
-var WidgetConfigvue_type_template_id_00323108_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.show)?_c('div',[_c('el-form',{attrs:{"label-position":"top"}},[(_vm.data.type!='grid')?_c('el-form-item',{attrs:{"label":"标题"}},[_c('el-input',{model:{value:(_vm.data.name),callback:function ($$v) {_vm.$set(_vm.data, "name", $$v)},expression:"data.name"}})],1):_vm._e(),(Object.keys(_vm.data.options).indexOf('width')>=0)?_c('el-form-item',{attrs:{"label":"宽度"}},[_c('el-input',{model:{value:(_vm.data.options.width),callback:function ($$v) {_vm.$set(_vm.data.options, "width", $$v)},expression:"data.options.width"}})],1):_vm._e(),(Object.keys(_vm.data.options).indexOf('placeholder')>=0 && (_vm.data.type!='time' || _vm.data.type!='date'))?_c('el-form-item',{attrs:{"label":"占位内容"}},[_c('el-input',{model:{value:(_vm.data.options.placeholder),callback:function ($$v) {_vm.$set(_vm.data.options, "placeholder", $$v)},expression:"data.options.placeholder"}})],1):_vm._e(),(Object.keys(_vm.data.options).indexOf('inline')>=0)?_c('el-form-item',{attrs:{"label":"布局方式"}},[_c('el-radio-group',{model:{value:(_vm.data.options.inline),callback:function ($$v) {_vm.$set(_vm.data.options, "inline", $$v)},expression:"data.options.inline"}},[_c('el-radio-button',{attrs:{"label":false}},[_vm._v("块级")]),_c('el-radio-button',{attrs:{"label":true}},[_vm._v("行内")])],1)],1):_vm._e(),(Object.keys(_vm.data.options).indexOf('showInput')>=0)?_c('el-form-item',{attrs:{"label":"显示输入框"}},[_c('el-switch',{model:{value:(_vm.data.options.showInput),callback:function ($$v) {_vm.$set(_vm.data.options, "showInput", $$v)},expression:"data.options.showInput"}})],1):_vm._e(),(Object.keys(_vm.data.options).indexOf('min')>=0)?_c('el-form-item',{attrs:{"label":"最小值"}},[_c('el-input-number',{attrs:{"min":0,"max":100,"step":1},model:{value:(_vm.data.options.min),callback:function ($$v) {_vm.$set(_vm.data.options, "min", $$v)},expression:"data.options.min"}})],1):_vm._e(),(Object.keys(_vm.data.options).indexOf('max')>=0)?_c('el-form-item',{attrs:{"label":"最小值"}},[_c('el-input-number',{attrs:{"min":0,"max":100,"step":1},model:{value:(_vm.data.options.max),callback:function ($$v) {_vm.$set(_vm.data.options, "max", $$v)},expression:"data.options.max"}})],1):_vm._e(),(Object.keys(_vm.data.options).indexOf('step')>=0)?_c('el-form-item',{attrs:{"label":"步长"}},[_c('el-input-number',{attrs:{"min":0,"max":100,"step":1},model:{value:(_vm.data.options.step),callback:function ($$v) {_vm.$set(_vm.data.options, "step", $$v)},expression:"data.options.step"}})],1):_vm._e(),(_vm.data.type=='select')?_c('el-form-item',{attrs:{"label":"是否多选"}},[_c('el-switch',{on:{"change":_vm.handleSelectMuliple},model:{value:(_vm.data.options.multiple),callback:function ($$v) {_vm.$set(_vm.data.options, "multiple", $$v)},expression:"data.options.multiple"}})],1):_vm._e(),(Object.keys(_vm.data.options).indexOf('allowHalf')>=0)?_c('el-form-item',{attrs:{"label":"允许半选"}},[_c('el-switch',{model:{value:(_vm.data.options.allowHalf),callback:function ($$v) {_vm.$set(_vm.data.options, "allowHalf", $$v)},expression:"data.options.allowHalf"}})],1):_vm._e(),(Object.keys(_vm.data.options).indexOf('showAlpha')>=0)?_c('el-form-item',{attrs:{"label":"支持透明度选择"}},[_c('el-switch',{model:{value:(_vm.data.options.showAlpha),callback:function ($$v) {_vm.$set(_vm.data.options, "showAlpha", $$v)},expression:"data.options.showAlpha"}})],1):_vm._e(),(Object.keys(_vm.data.options).indexOf('showLabel')>=0)?_c('el-form-item',{attrs:{"label":"是否显示标签"}},[_c('el-switch',{model:{value:(_vm.data.options.showLabel),callback:function ($$v) {_vm.$set(_vm.data.options, "showLabel", $$v)},expression:"data.options.showLabel"}})],1):_vm._e(),(Object.keys(_vm.data.options).indexOf('options')>=0)?_c('el-form-item',{attrs:{"label":"选项"}},[(_vm.data.type=='radio' || (_vm.data.type=='select'&&!_vm.data.options.multiple))?[_c('el-radio-group',{model:{value:(_vm.data.options.defaultValue),callback:function ($$v) {_vm.$set(_vm.data.options, "defaultValue", $$v)},expression:"data.options.defaultValue"}},[_c('draggable',{attrs:{"element":"ul","list":_vm.data.options.options,"options":{group:{ name:'options'}, ghostClass: 'ghost',handle: '.drag-item'}}},_vm._l((_vm.data.options.options),function(item,index){return _c('li',{key:index},[_c('el-radio',{staticStyle:{"margin-right":"5px"},attrs:{"label":item.value}},[_c('el-input',{style:({'width': _vm.data.options.showLabel? '90px': '190px' }),attrs:{"size":"mini"},model:{value:(item.value),callback:function ($$v) {_vm.$set(item, "value", $$v)},expression:"item.value"}}),(_vm.data.options.showLabel)?_c('el-input',{staticStyle:{"width":"100px"},attrs:{"size":"mini"},model:{value:(item.label),callback:function ($$v) {_vm.$set(item, "label", $$v)},expression:"item.label"}}):_vm._e()],1),_c('i',{staticClass:"drag-item",staticStyle:{"font-size":"16px","margin":"0 5px","cursor":"move"}},[_c('icon',{attrs:{"name":"bars"}})],1),_c('el-button',{staticStyle:{"padding":"4px","margin-left":"5px"},attrs:{"circle":"","plain":"","type":"danger","size":"mini","icon":"el-icon-minus"},on:{"click":function($event){_vm.handleOptionsRemove(index)}}})],1)}))],1)]:_vm._e(),(_vm.data.type=='checkbox' || (_vm.data.type=='select' && _vm.data.options.multiple))?[_c('el-checkbox-group',{model:{value:(_vm.data.options.defaultValue),callback:function ($$v) {_vm.$set(_vm.data.options, "defaultValue", $$v)},expression:"data.options.defaultValue"}},[_c('draggable',{attrs:{"element":"ul","list":_vm.data.options.options,"options":{group:{ name:'options'}, ghostClass: 'ghost',handle: '.drag-item'}}},_vm._l((_vm.data.options.options),function(item,index){return _c('li',{key:index},[_c('el-checkbox',{staticStyle:{"margin-right":"5px"},attrs:{"label":item.value}},[_c('el-input',{style:({'width': _vm.data.options.showLabel? '90px': '190px' }),attrs:{"size":"mini"},model:{value:(item.value),callback:function ($$v) {_vm.$set(item, "value", $$v)},expression:"item.value"}}),(_vm.data.options.showLabel)?_c('el-input',{staticStyle:{"width":"100px"},attrs:{"size":"mini"},model:{value:(item.label),callback:function ($$v) {_vm.$set(item, "label", $$v)},expression:"item.label"}}):_vm._e()],1),_c('i',{staticClass:"drag-item",staticStyle:{"font-size":"16px","margin":"0 5px","cursor":"move"}},[_c('icon',{attrs:{"name":"bars"}})],1),_c('el-button',{staticStyle:{"padding":"4px","margin-left":"5px"},attrs:{"circle":"","plain":"","type":"danger","size":"mini","icon":"el-icon-minus"},on:{"click":function($event){_vm.handleOptionsRemove(index)}}})],1)}))],1)]:_vm._e(),_c('div',{staticStyle:{"margin-left":"22px"}},[_c('el-button',{attrs:{"type":"text"},on:{"click":_vm.handleAddOption}},[_vm._v("添加选项")])],1)],2):_vm._e(),(Object.keys(_vm.data.options).indexOf('defaultValue')>=0 && (_vm.data.type == 'textarea' || _vm.data.type == 'input' || _vm.data.type=='rate' || _vm.data.type=='color' || _vm.data.type=='switch'))?_c('el-form-item',{attrs:{"label":"默认值"}},[(_vm.data.type=='textarea')?_c('el-input',{attrs:{"type":"textarea","rows":5},model:{value:(_vm.data.options.defaultValue),callback:function ($$v) {_vm.$set(_vm.data.options, "defaultValue", $$v)},expression:"data.options.defaultValue"}}):_vm._e(),(_vm.data.type=='input')?_c('el-input',{model:{value:(_vm.data.options.defaultValue),callback:function ($$v) {_vm.$set(_vm.data.options, "defaultValue", $$v)},expression:"data.options.defaultValue"}}):_vm._e(),(_vm.data.type == 'rate')?_c('el-rate',{attrs:{"allow-half":_vm.data.options.allowHalf},model:{value:(_vm.data.options.defaultValue),callback:function ($$v) {_vm.$set(_vm.data.options, "defaultValue", $$v)},expression:"data.options.defaultValue"}}):_vm._e(),(_vm.data.type == 'color')?_c('el-color-picker',{attrs:{"show-alpha":_vm.data.options.showAlpha},model:{value:(_vm.data.options.defaultValue),callback:function ($$v) {_vm.$set(_vm.data.options, "defaultValue", $$v)},expression:"data.options.defaultValue"}}):_vm._e(),(_vm.data.type=='switch')?_c('el-switch',{model:{value:(_vm.data.options.defaultValue),callback:function ($$v) {_vm.$set(_vm.data.options, "defaultValue", $$v)},expression:"data.options.defaultValue"}}):_vm._e()],1):_vm._e(),(_vm.data.type == 'time' || _vm.data.type == 'date')?[(_vm.data.type == 'date')?_c('el-form-item',{attrs:{"label":"显示类型"}},[_c('el-select',{model:{value:(_vm.data.options.type),callback:function ($$v) {_vm.$set(_vm.data.options, "type", $$v)},expression:"data.options.type"}},[_c('el-option',{attrs:{"value":"year"}}),_c('el-option',{attrs:{"value":"month"}}),_c('el-option',{attrs:{"value":"date"}}),_c('el-option',{attrs:{"value":"dates"}}),_c('el-option',{attrs:{"value":"datetime"}}),_c('el-option',{attrs:{"value":"datetimerange"}}),_c('el-option',{attrs:{"value":"daterange"}})],1)],1):_vm._e(),(_vm.data.type == 'time')?_c('el-form-item',{attrs:{"label":"是否为范围选择"}},[_c('el-switch',{model:{value:(_vm.data.options.isRange),callback:function ($$v) {_vm.$set(_vm.data.options, "isRange", $$v)},expression:"data.options.isRange"}})],1):_vm._e(),(_vm.data.type == 'date')?_c('el-form-item',{attrs:{"label":"是否获取时间戳"}},[_c('el-switch',{model:{value:(_vm.data.options.timestamp),callback:function ($$v) {_vm.$set(_vm.data.options, "timestamp", $$v)},expression:"data.options.timestamp"}})],1):_vm._e(),((!_vm.data.options.isRange && _vm.data.type == 'time') || (_vm.data.type != 'time' && _vm.data.options.type != 'datetimerange' && _vm.data.options.type != 'daterange'))?_c('el-form-item',{attrs:{"label":"占位内容"}},[_c('el-input',{model:{value:(_vm.data.options.placeholder),callback:function ($$v) {_vm.$set(_vm.data.options, "placeholder", $$v)},expression:"data.options.placeholder"}})],1):_vm._e(),((_vm.data.options.isRange) || _vm.data.options.type=='datetimerange' || _vm.data.options.type=='daterange')?_c('el-form-item',{attrs:{"label":"开始时间占位内容"}},[_c('el-input',{model:{value:(_vm.data.options.startPlaceholder),callback:function ($$v) {_vm.$set(_vm.data.options, "startPlaceholder", $$v)},expression:"data.options.startPlaceholder"}})],1):_vm._e(),(_vm.data.options.isRange || _vm.data.options.type=='datetimerange' || _vm.data.options.type=='daterange')?_c('el-form-item',{attrs:{"label":"结束时间占位内容"}},[_c('el-input',{model:{value:(_vm.data.options.endPlaceholder),callback:function ($$v) {_vm.$set(_vm.data.options, "endPlaceholder", $$v)},expression:"data.options.endPlaceholder"}})],1):_vm._e(),_c('el-form-item',{attrs:{"label":"格式"}},[_c('el-input',{model:{value:(_vm.data.options.format),callback:function ($$v) {_vm.$set(_vm.data.options, "format", $$v)},expression:"data.options.format"}})],1),(_vm.data.type=='time' && Object.keys(_vm.data.options).indexOf('isRange')>=0)?_c('el-form-item',{attrs:{"label":"默认值"}},[(!_vm.data.options.isRange)?_c('el-time-picker',{key:"1",staticStyle:{"width":"100%"},attrs:{"arrowControl":_vm.data.options.arrowControl,"value-format":_vm.data.options.format},model:{value:(_vm.data.options.defaultValue),callback:function ($$v) {_vm.$set(_vm.data.options, "defaultValue", $$v)},expression:"data.options.defaultValue"}}):_vm._e(),(_vm.data.options.isRange)?_c('el-time-picker',{key:"2",staticStyle:{"width":"100%"},attrs:{"is-range":"","arrowControl":_vm.data.options.arrowControl,"value-format":_vm.data.options.format},model:{value:(_vm.data.options.defaultValue),callback:function ($$v) {_vm.$set(_vm.data.options, "defaultValue", $$v)},expression:"data.options.defaultValue"}}):_vm._e()],1):_vm._e()]:_vm._e(),(_vm.data.type == 'grid')?[_c('el-form-item',{attrs:{"label":"栅格间隔"}},[_c('el-input',{attrs:{"type":"number"},model:{value:(_vm.data.options.gutter),callback:function ($$v) {_vm.$set(_vm.data.options, "gutter", _vm._n($$v))},expression:"data.options.gutter"}})],1),_c('el-form-item',{attrs:{"label":"列配置项"}},[_c('draggable',{attrs:{"element":"ul","list":_vm.data.columns,"options":{group:{ name:'options'}, ghostClass: 'ghost',handle: '.drag-item'}}},_vm._l((_vm.data.columns),function(item,index){return _c('li',{key:index},[_c('i',{staticClass:"drag-item",staticStyle:{"font-size":"16px","margin":"0 5px","cursor":"move"}},[_c('icon',{attrs:{"name":"bars"}})],1),_c('el-input',{staticStyle:{"width":"100px"},attrs:{"placeholder":"栅格值","size":"mini","type":"number"},model:{value:(item.span),callback:function ($$v) {_vm.$set(item, "span", _vm._n($$v))},expression:"item.span"}}),_c('el-button',{staticStyle:{"padding":"4px","margin-left":"5px"},attrs:{"circle":"","plain":"","type":"danger","size":"mini","icon":"el-icon-minus"},on:{"click":function($event){_vm.handleOptionsRemove(index)}}})],1)})),_c('div',{staticStyle:{"margin-left":"22px"}},[_c('el-button',{attrs:{"type":"text"},on:{"click":_vm.handleAddColumn}},[_vm._v("添加列")])],1)],1),_c('el-form-item',{attrs:{"label":"水平排列方式"}},[_c('el-select',{model:{value:(_vm.data.options.justify),callback:function ($$v) {_vm.$set(_vm.data.options, "justify", $$v)},expression:"data.options.justify"}},[_c('el-option',{attrs:{"value":"start","label":"左对齐"}}),_c('el-option',{attrs:{"value":"end","label":"右对齐"}}),_c('el-option',{attrs:{"value":"center","label":"居中"}}),_c('el-option',{attrs:{"value":"space-around","label":"两侧间隔相等"}}),_c('el-option',{attrs:{"value":"space-between","label":"两端对齐"}})],1)],1),_c('el-form-item',{attrs:{"label":"垂直排列方式"}},[_c('el-select',{model:{value:(_vm.data.options.align),callback:function ($$v) {_vm.$set(_vm.data.options, "align", $$v)},expression:"data.options.align"}},[_c('el-option',{attrs:{"value":"top","label":"顶部对齐"}}),_c('el-option',{attrs:{"value":"middle","label":"居中"}}),_c('el-option',{attrs:{"value":"bottom","label":"底部对齐"}})],1)],1)]:_vm._e(),(_vm.data.type != 'grid')?[_c('el-form-item',{attrs:{"label":"操作属性"}},[(Object.keys(_vm.data.options).indexOf('readonly')>=0)?_c('el-checkbox',{model:{value:(_vm.data.options.readonly),callback:function ($$v) {_vm.$set(_vm.data.options, "readonly", $$v)},expression:"data.options.readonly"}},[_vm._v("完全只读")]):_vm._e(),(Object.keys(_vm.data.options).indexOf('disabled')>=0)?_c('el-checkbox',{model:{value:(_vm.data.options.disabled),callback:function ($$v) {_vm.$set(_vm.data.options, "disabled", $$v)},expression:"data.options.disabled"}},[_vm._v("禁用\t")]):_vm._e(),(Object.keys(_vm.data.options).indexOf('editable')>=0)?_c('el-checkbox',{model:{value:(_vm.data.options.editable),callback:function ($$v) {_vm.$set(_vm.data.options, "editable", $$v)},expression:"data.options.editable"}},[_vm._v("文本框可输入")]):_vm._e(),(Object.keys(_vm.data.options).indexOf('clearable')>=0)?_c('el-checkbox',{model:{value:(_vm.data.options.clearable),callback:function ($$v) {_vm.$set(_vm.data.options, "clearable", $$v)},expression:"data.options.clearable"}},[_vm._v("显示清除按钮")]):_vm._e(),(Object.keys(_vm.data.options).indexOf('arrowControl')>=0)?_c('el-checkbox',{model:{value:(_vm.data.options.arrowControl),callback:function ($$v) {_vm.$set(_vm.data.options, "arrowControl", $$v)},expression:"data.options.arrowControl"}},[_vm._v("使用箭头进行时间选择")]):_vm._e()],1),_c('el-form-item',{attrs:{"label":"数据绑定键值"}},[_c('el-input',{model:{value:(_vm.data.model),callback:function ($$v) {_vm.$set(_vm.data, "model", $$v)},expression:"data.model"}})],1),_c('el-form-item',{attrs:{"label":"校验"}},[_c('div',[_c('el-checkbox',{model:{value:(_vm.data.options.required),callback:function ($$v) {_vm.$set(_vm.data.options, "required", $$v)},expression:"data.options.required"}},[_vm._v("必填")])],1),(Object.keys(_vm.data.options).indexOf('dataType')>=0)?_c('el-select',{attrs:{"size":"mini"},model:{value:(_vm.data.options.dataType),callback:function ($$v) {_vm.$set(_vm.data.options, "dataType", $$v)},expression:"data.options.dataType"}},[_c('el-option',{attrs:{"value":"string","label":"字符串"}}),_c('el-option',{attrs:{"value":"number","label":"数字"}}),_c('el-option',{attrs:{"value":"boolean","label":"布尔值"}}),_c('el-option',{attrs:{"value":"integer","label":"整数"}}),_c('el-option',{attrs:{"value":"float","label":"浮点数"}}),_c('el-option',{attrs:{"value":"url","label":"URL地址"}}),_c('el-option',{attrs:{"value":"email","label":"邮箱地址"}}),_c('el-option',{attrs:{"value":"hex","label":"十六进制"}})],1):_vm._e(),(Object.keys(_vm.data.options).indexOf('pattern')>=0)?_c('div',[_c('el-input',{staticStyle:{"width":"240px"},attrs:{"size":"mini","placeholder":"填写正则表达式"},model:{value:(_vm.data.options.pattern),callback:function ($$v) {_vm.$set(_vm.data.options, "pattern", $$v)},expression:"data.options.pattern"}})],1):_vm._e()],1)]:_vm._e()],2)],1):_vm._e()}
-var WidgetConfigvue_type_template_id_00323108_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"3a86e180-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/WidgetConfig.vue?vue&type=template&id=26a15900&
+var WidgetConfigvue_type_template_id_26a15900_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.show)?_c('div',[_c('el-form',{attrs:{"label-position":"top"}},[(_vm.data.type!='grid')?_c('el-form-item',{attrs:{"label":"标题"}},[_c('el-input',{model:{value:(_vm.data.name),callback:function ($$v) {_vm.$set(_vm.data, "name", $$v)},expression:"data.name"}})],1):_vm._e(),(Object.keys(_vm.data.options).indexOf('width')>=0)?_c('el-form-item',{attrs:{"label":"宽度"}},[_c('el-input',{model:{value:(_vm.data.options.width),callback:function ($$v) {_vm.$set(_vm.data.options, "width", $$v)},expression:"data.options.width"}})],1):_vm._e(),(Object.keys(_vm.data.options).indexOf('placeholder')>=0 && (_vm.data.type!='time' || _vm.data.type!='date'))?_c('el-form-item',{attrs:{"label":"占位内容"}},[_c('el-input',{model:{value:(_vm.data.options.placeholder),callback:function ($$v) {_vm.$set(_vm.data.options, "placeholder", $$v)},expression:"data.options.placeholder"}})],1):_vm._e(),(Object.keys(_vm.data.options).indexOf('inline')>=0)?_c('el-form-item',{attrs:{"label":"布局方式"}},[_c('el-radio-group',{model:{value:(_vm.data.options.inline),callback:function ($$v) {_vm.$set(_vm.data.options, "inline", $$v)},expression:"data.options.inline"}},[_c('el-radio-button',{attrs:{"label":false}},[_vm._v("块级")]),_c('el-radio-button',{attrs:{"label":true}},[_vm._v("行内")])],1)],1):_vm._e(),(Object.keys(_vm.data.options).indexOf('showInput')>=0)?_c('el-form-item',{attrs:{"label":"显示输入框"}},[_c('el-switch',{model:{value:(_vm.data.options.showInput),callback:function ($$v) {_vm.$set(_vm.data.options, "showInput", $$v)},expression:"data.options.showInput"}})],1):_vm._e(),(Object.keys(_vm.data.options).indexOf('min')>=0)?_c('el-form-item',{attrs:{"label":"最小值"}},[_c('el-input-number',{attrs:{"min":0,"max":100,"step":1},model:{value:(_vm.data.options.min),callback:function ($$v) {_vm.$set(_vm.data.options, "min", $$v)},expression:"data.options.min"}})],1):_vm._e(),(Object.keys(_vm.data.options).indexOf('max')>=0)?_c('el-form-item',{attrs:{"label":"最小值"}},[_c('el-input-number',{attrs:{"min":0,"max":100,"step":1},model:{value:(_vm.data.options.max),callback:function ($$v) {_vm.$set(_vm.data.options, "max", $$v)},expression:"data.options.max"}})],1):_vm._e(),(Object.keys(_vm.data.options).indexOf('step')>=0)?_c('el-form-item',{attrs:{"label":"步长"}},[_c('el-input-number',{attrs:{"min":0,"max":100,"step":1},model:{value:(_vm.data.options.step),callback:function ($$v) {_vm.$set(_vm.data.options, "step", $$v)},expression:"data.options.step"}})],1):_vm._e(),(_vm.data.type=='select')?_c('el-form-item',{attrs:{"label":"是否多选"}},[_c('el-switch',{on:{"change":_vm.handleSelectMuliple},model:{value:(_vm.data.options.multiple),callback:function ($$v) {_vm.$set(_vm.data.options, "multiple", $$v)},expression:"data.options.multiple"}})],1):_vm._e(),(Object.keys(_vm.data.options).indexOf('allowHalf')>=0)?_c('el-form-item',{attrs:{"label":"允许半选"}},[_c('el-switch',{model:{value:(_vm.data.options.allowHalf),callback:function ($$v) {_vm.$set(_vm.data.options, "allowHalf", $$v)},expression:"data.options.allowHalf"}})],1):_vm._e(),(Object.keys(_vm.data.options).indexOf('showAlpha')>=0)?_c('el-form-item',{attrs:{"label":"支持透明度选择"}},[_c('el-switch',{model:{value:(_vm.data.options.showAlpha),callback:function ($$v) {_vm.$set(_vm.data.options, "showAlpha", $$v)},expression:"data.options.showAlpha"}})],1):_vm._e(),(Object.keys(_vm.data.options).indexOf('showLabel')>=0)?_c('el-form-item',{attrs:{"label":"是否显示标签"}},[_c('el-switch',{model:{value:(_vm.data.options.showLabel),callback:function ($$v) {_vm.$set(_vm.data.options, "showLabel", $$v)},expression:"data.options.showLabel"}})],1):_vm._e(),(Object.keys(_vm.data.options).indexOf('options')>=0)?_c('el-form-item',{attrs:{"label":"选项"}},[_c('el-radio-group',{staticStyle:{"margin-bottom":"10px"},attrs:{"size":"mini"},model:{value:(_vm.data.options.remote),callback:function ($$v) {_vm.$set(_vm.data.options, "remote", $$v)},expression:"data.options.remote"}},[_c('el-radio-button',{attrs:{"label":false}},[_vm._v("静态数据")]),_c('el-radio-button',{attrs:{"label":true}},[_vm._v("远端数据")])],1),(_vm.data.options.remote)?[_c('div',[_c('el-input',{attrs:{"size":"mini"},model:{value:(_vm.data.options.remoteFunc),callback:function ($$v) {_vm.$set(_vm.data.options, "remoteFunc", $$v)},expression:"data.options.remoteFunc"}},[_c('template',{slot:"prepend"},[_vm._v("远端方法")])],2),_c('el-input',{attrs:{"size":"mini"},model:{value:(_vm.data.options.props.value),callback:function ($$v) {_vm.$set(_vm.data.options.props, "value", $$v)},expression:"data.options.props.value"}},[_c('template',{slot:"prepend"},[_vm._v("值")])],2),_c('el-input',{attrs:{"size":"mini"},model:{value:(_vm.data.options.props.label),callback:function ($$v) {_vm.$set(_vm.data.options.props, "label", $$v)},expression:"data.options.props.label"}},[_c('template',{slot:"prepend"},[_vm._v("标签")])],2)],1)]:[(_vm.data.type=='radio' || (_vm.data.type=='select'&&!_vm.data.options.multiple))?[_c('el-radio-group',{model:{value:(_vm.data.options.defaultValue),callback:function ($$v) {_vm.$set(_vm.data.options, "defaultValue", $$v)},expression:"data.options.defaultValue"}},[_c('draggable',{attrs:{"element":"ul","list":_vm.data.options.options,"options":{group:{ name:'options'}, ghostClass: 'ghost',handle: '.drag-item'}}},_vm._l((_vm.data.options.options),function(item,index){return _c('li',{key:index},[_c('el-radio',{staticStyle:{"margin-right":"5px"},attrs:{"label":item.value}},[_c('el-input',{style:({'width': _vm.data.options.showLabel? '90px': '190px' }),attrs:{"size":"mini"},model:{value:(item.value),callback:function ($$v) {_vm.$set(item, "value", $$v)},expression:"item.value"}}),(_vm.data.options.showLabel)?_c('el-input',{staticStyle:{"width":"100px"},attrs:{"size":"mini"},model:{value:(item.label),callback:function ($$v) {_vm.$set(item, "label", $$v)},expression:"item.label"}}):_vm._e()],1),_c('i',{staticClass:"drag-item",staticStyle:{"font-size":"16px","margin":"0 5px","cursor":"move"}},[_c('icon',{attrs:{"name":"bars"}})],1),_c('el-button',{staticStyle:{"padding":"4px","margin-left":"5px"},attrs:{"circle":"","plain":"","type":"danger","size":"mini","icon":"el-icon-minus"},on:{"click":function($event){_vm.handleOptionsRemove(index)}}})],1)}))],1)]:_vm._e(),(_vm.data.type=='checkbox' || (_vm.data.type=='select' && _vm.data.options.multiple))?[_c('el-checkbox-group',{model:{value:(_vm.data.options.defaultValue),callback:function ($$v) {_vm.$set(_vm.data.options, "defaultValue", $$v)},expression:"data.options.defaultValue"}},[_c('draggable',{attrs:{"element":"ul","list":_vm.data.options.options,"options":{group:{ name:'options'}, ghostClass: 'ghost',handle: '.drag-item'}}},_vm._l((_vm.data.options.options),function(item,index){return _c('li',{key:index},[_c('el-checkbox',{staticStyle:{"margin-right":"5px"},attrs:{"label":item.value}},[_c('el-input',{style:({'width': _vm.data.options.showLabel? '90px': '190px' }),attrs:{"size":"mini"},model:{value:(item.value),callback:function ($$v) {_vm.$set(item, "value", $$v)},expression:"item.value"}}),(_vm.data.options.showLabel)?_c('el-input',{staticStyle:{"width":"100px"},attrs:{"size":"mini"},model:{value:(item.label),callback:function ($$v) {_vm.$set(item, "label", $$v)},expression:"item.label"}}):_vm._e()],1),_c('i',{staticClass:"drag-item",staticStyle:{"font-size":"16px","margin":"0 5px","cursor":"move"}},[_c('icon',{attrs:{"name":"bars"}})],1),_c('el-button',{staticStyle:{"padding":"4px","margin-left":"5px"},attrs:{"circle":"","plain":"","type":"danger","size":"mini","icon":"el-icon-minus"},on:{"click":function($event){_vm.handleOptionsRemove(index)}}})],1)}))],1)]:_vm._e(),_c('div',{staticStyle:{"margin-left":"22px"}},[_c('el-button',{attrs:{"type":"text"},on:{"click":_vm.handleAddOption}},[_vm._v("添加选项")])],1)]],2):_vm._e(),(Object.keys(_vm.data.options).indexOf('defaultValue')>=0 && (_vm.data.type == 'textarea' || _vm.data.type == 'input' || _vm.data.type=='rate' || _vm.data.type=='color' || _vm.data.type=='switch'))?_c('el-form-item',{attrs:{"label":"默认值"}},[(_vm.data.type=='textarea')?_c('el-input',{attrs:{"type":"textarea","rows":5},model:{value:(_vm.data.options.defaultValue),callback:function ($$v) {_vm.$set(_vm.data.options, "defaultValue", $$v)},expression:"data.options.defaultValue"}}):_vm._e(),(_vm.data.type=='input')?_c('el-input',{model:{value:(_vm.data.options.defaultValue),callback:function ($$v) {_vm.$set(_vm.data.options, "defaultValue", $$v)},expression:"data.options.defaultValue"}}):_vm._e(),(_vm.data.type == 'rate')?_c('el-rate',{attrs:{"allow-half":_vm.data.options.allowHalf},model:{value:(_vm.data.options.defaultValue),callback:function ($$v) {_vm.$set(_vm.data.options, "defaultValue", $$v)},expression:"data.options.defaultValue"}}):_vm._e(),(_vm.data.type == 'color')?_c('el-color-picker',{attrs:{"show-alpha":_vm.data.options.showAlpha},model:{value:(_vm.data.options.defaultValue),callback:function ($$v) {_vm.$set(_vm.data.options, "defaultValue", $$v)},expression:"data.options.defaultValue"}}):_vm._e(),(_vm.data.type=='switch')?_c('el-switch',{model:{value:(_vm.data.options.defaultValue),callback:function ($$v) {_vm.$set(_vm.data.options, "defaultValue", $$v)},expression:"data.options.defaultValue"}}):_vm._e()],1):_vm._e(),(_vm.data.type == 'time' || _vm.data.type == 'date')?[(_vm.data.type == 'date')?_c('el-form-item',{attrs:{"label":"显示类型"}},[_c('el-select',{model:{value:(_vm.data.options.type),callback:function ($$v) {_vm.$set(_vm.data.options, "type", $$v)},expression:"data.options.type"}},[_c('el-option',{attrs:{"value":"year"}}),_c('el-option',{attrs:{"value":"month"}}),_c('el-option',{attrs:{"value":"date"}}),_c('el-option',{attrs:{"value":"dates"}}),_c('el-option',{attrs:{"value":"datetime"}}),_c('el-option',{attrs:{"value":"datetimerange"}}),_c('el-option',{attrs:{"value":"daterange"}})],1)],1):_vm._e(),(_vm.data.type == 'time')?_c('el-form-item',{attrs:{"label":"是否为范围选择"}},[_c('el-switch',{model:{value:(_vm.data.options.isRange),callback:function ($$v) {_vm.$set(_vm.data.options, "isRange", $$v)},expression:"data.options.isRange"}})],1):_vm._e(),(_vm.data.type == 'date')?_c('el-form-item',{attrs:{"label":"是否获取时间戳"}},[_c('el-switch',{model:{value:(_vm.data.options.timestamp),callback:function ($$v) {_vm.$set(_vm.data.options, "timestamp", $$v)},expression:"data.options.timestamp"}})],1):_vm._e(),((!_vm.data.options.isRange && _vm.data.type == 'time') || (_vm.data.type != 'time' && _vm.data.options.type != 'datetimerange' && _vm.data.options.type != 'daterange'))?_c('el-form-item',{attrs:{"label":"占位内容"}},[_c('el-input',{model:{value:(_vm.data.options.placeholder),callback:function ($$v) {_vm.$set(_vm.data.options, "placeholder", $$v)},expression:"data.options.placeholder"}})],1):_vm._e(),((_vm.data.options.isRange) || _vm.data.options.type=='datetimerange' || _vm.data.options.type=='daterange')?_c('el-form-item',{attrs:{"label":"开始时间占位内容"}},[_c('el-input',{model:{value:(_vm.data.options.startPlaceholder),callback:function ($$v) {_vm.$set(_vm.data.options, "startPlaceholder", $$v)},expression:"data.options.startPlaceholder"}})],1):_vm._e(),(_vm.data.options.isRange || _vm.data.options.type=='datetimerange' || _vm.data.options.type=='daterange')?_c('el-form-item',{attrs:{"label":"结束时间占位内容"}},[_c('el-input',{model:{value:(_vm.data.options.endPlaceholder),callback:function ($$v) {_vm.$set(_vm.data.options, "endPlaceholder", $$v)},expression:"data.options.endPlaceholder"}})],1):_vm._e(),_c('el-form-item',{attrs:{"label":"格式"}},[_c('el-input',{model:{value:(_vm.data.options.format),callback:function ($$v) {_vm.$set(_vm.data.options, "format", $$v)},expression:"data.options.format"}})],1),(_vm.data.type=='time' && Object.keys(_vm.data.options).indexOf('isRange')>=0)?_c('el-form-item',{attrs:{"label":"默认值"}},[(!_vm.data.options.isRange)?_c('el-time-picker',{key:"1",staticStyle:{"width":"100%"},attrs:{"arrowControl":_vm.data.options.arrowControl,"value-format":_vm.data.options.format},model:{value:(_vm.data.options.defaultValue),callback:function ($$v) {_vm.$set(_vm.data.options, "defaultValue", $$v)},expression:"data.options.defaultValue"}}):_vm._e(),(_vm.data.options.isRange)?_c('el-time-picker',{key:"2",staticStyle:{"width":"100%"},attrs:{"is-range":"","arrowControl":_vm.data.options.arrowControl,"value-format":_vm.data.options.format},model:{value:(_vm.data.options.defaultValue),callback:function ($$v) {_vm.$set(_vm.data.options, "defaultValue", $$v)},expression:"data.options.defaultValue"}}):_vm._e()],1):_vm._e()]:_vm._e(),(_vm.data.type == 'grid')?[_c('el-form-item',{attrs:{"label":"栅格间隔"}},[_c('el-input',{attrs:{"type":"number"},model:{value:(_vm.data.options.gutter),callback:function ($$v) {_vm.$set(_vm.data.options, "gutter", _vm._n($$v))},expression:"data.options.gutter"}})],1),_c('el-form-item',{attrs:{"label":"列配置项"}},[_c('draggable',{attrs:{"element":"ul","list":_vm.data.columns,"options":{group:{ name:'options'}, ghostClass: 'ghost',handle: '.drag-item'}}},_vm._l((_vm.data.columns),function(item,index){return _c('li',{key:index},[_c('i',{staticClass:"drag-item",staticStyle:{"font-size":"16px","margin":"0 5px","cursor":"move"}},[_c('icon',{attrs:{"name":"bars"}})],1),_c('el-input',{staticStyle:{"width":"100px"},attrs:{"placeholder":"栅格值","size":"mini","type":"number"},model:{value:(item.span),callback:function ($$v) {_vm.$set(item, "span", _vm._n($$v))},expression:"item.span"}}),_c('el-button',{staticStyle:{"padding":"4px","margin-left":"5px"},attrs:{"circle":"","plain":"","type":"danger","size":"mini","icon":"el-icon-minus"},on:{"click":function($event){_vm.handleOptionsRemove(index)}}})],1)})),_c('div',{staticStyle:{"margin-left":"22px"}},[_c('el-button',{attrs:{"type":"text"},on:{"click":_vm.handleAddColumn}},[_vm._v("添加列")])],1)],1),_c('el-form-item',{attrs:{"label":"水平排列方式"}},[_c('el-select',{model:{value:(_vm.data.options.justify),callback:function ($$v) {_vm.$set(_vm.data.options, "justify", $$v)},expression:"data.options.justify"}},[_c('el-option',{attrs:{"value":"start","label":"左对齐"}}),_c('el-option',{attrs:{"value":"end","label":"右对齐"}}),_c('el-option',{attrs:{"value":"center","label":"居中"}}),_c('el-option',{attrs:{"value":"space-around","label":"两侧间隔相等"}}),_c('el-option',{attrs:{"value":"space-between","label":"两端对齐"}})],1)],1),_c('el-form-item',{attrs:{"label":"垂直排列方式"}},[_c('el-select',{model:{value:(_vm.data.options.align),callback:function ($$v) {_vm.$set(_vm.data.options, "align", $$v)},expression:"data.options.align"}},[_c('el-option',{attrs:{"value":"top","label":"顶部对齐"}}),_c('el-option',{attrs:{"value":"middle","label":"居中"}}),_c('el-option',{attrs:{"value":"bottom","label":"底部对齐"}})],1)],1)]:_vm._e(),(_vm.data.type != 'grid')?[_c('el-form-item',{attrs:{"label":"操作属性"}},[(Object.keys(_vm.data.options).indexOf('readonly')>=0)?_c('el-checkbox',{model:{value:(_vm.data.options.readonly),callback:function ($$v) {_vm.$set(_vm.data.options, "readonly", $$v)},expression:"data.options.readonly"}},[_vm._v("完全只读")]):_vm._e(),(Object.keys(_vm.data.options).indexOf('disabled')>=0)?_c('el-checkbox',{model:{value:(_vm.data.options.disabled),callback:function ($$v) {_vm.$set(_vm.data.options, "disabled", $$v)},expression:"data.options.disabled"}},[_vm._v("禁用\t")]):_vm._e(),(Object.keys(_vm.data.options).indexOf('editable')>=0)?_c('el-checkbox',{model:{value:(_vm.data.options.editable),callback:function ($$v) {_vm.$set(_vm.data.options, "editable", $$v)},expression:"data.options.editable"}},[_vm._v("文本框可输入")]):_vm._e(),(Object.keys(_vm.data.options).indexOf('clearable')>=0)?_c('el-checkbox',{model:{value:(_vm.data.options.clearable),callback:function ($$v) {_vm.$set(_vm.data.options, "clearable", $$v)},expression:"data.options.clearable"}},[_vm._v("显示清除按钮")]):_vm._e(),(Object.keys(_vm.data.options).indexOf('arrowControl')>=0)?_c('el-checkbox',{model:{value:(_vm.data.options.arrowControl),callback:function ($$v) {_vm.$set(_vm.data.options, "arrowControl", $$v)},expression:"data.options.arrowControl"}},[_vm._v("使用箭头进行时间选择")]):_vm._e()],1),_c('el-form-item',{attrs:{"label":"数据绑定Key"}},[_c('el-input',{model:{value:(_vm.data.model),callback:function ($$v) {_vm.$set(_vm.data, "model", $$v)},expression:"data.model"}})],1),_c('el-form-item',{attrs:{"label":"校验"}},[_c('div',[_c('el-checkbox',{model:{value:(_vm.data.options.required),callback:function ($$v) {_vm.$set(_vm.data.options, "required", $$v)},expression:"data.options.required"}},[_vm._v("必填")])],1),(Object.keys(_vm.data.options).indexOf('dataType')>=0)?_c('el-select',{attrs:{"size":"mini"},model:{value:(_vm.data.options.dataType),callback:function ($$v) {_vm.$set(_vm.data.options, "dataType", $$v)},expression:"data.options.dataType"}},[_c('el-option',{attrs:{"value":"string","label":"字符串"}}),_c('el-option',{attrs:{"value":"number","label":"数字"}}),_c('el-option',{attrs:{"value":"boolean","label":"布尔值"}}),_c('el-option',{attrs:{"value":"integer","label":"整数"}}),_c('el-option',{attrs:{"value":"float","label":"浮点数"}}),_c('el-option',{attrs:{"value":"url","label":"URL地址"}}),_c('el-option',{attrs:{"value":"email","label":"邮箱地址"}}),_c('el-option',{attrs:{"value":"hex","label":"十六进制"}})],1):_vm._e(),(Object.keys(_vm.data.options).indexOf('pattern')>=0)?_c('div',[_c('el-input',{staticStyle:{"width":"240px"},attrs:{"size":"mini","placeholder":"填写正则表达式"},model:{value:(_vm.data.options.pattern),callback:function ($$v) {_vm.$set(_vm.data.options, "pattern", $$v)},expression:"data.options.pattern"}})],1):_vm._e()],1)]:_vm._e()],2)],1):_vm._e()}
+var WidgetConfigvue_type_template_id_26a15900_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/WidgetConfig.vue?vue&type=template&id=00323108&
+// CONCATENATED MODULE: ./src/components/WidgetConfig.vue?vue&type=template&id=26a15900&
 
 // EXTERNAL MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/WidgetConfig.vue?vue&type=script&lang=js&
 var WidgetConfigvue_type_script_lang_js_ = __webpack_require__("9ea2");
@@ -4737,8 +5680,8 @@ var WidgetConfigvue_type_script_lang_js_ = __webpack_require__("9ea2");
 
 var WidgetConfig_component = normalizeComponent(
   components_WidgetConfigvue_type_script_lang_js_,
-  WidgetConfigvue_type_template_id_00323108_render,
-  WidgetConfigvue_type_template_id_00323108_staticRenderFns,
+  WidgetConfigvue_type_template_id_26a15900_render,
+  WidgetConfigvue_type_template_id_26a15900_staticRenderFns,
   false,
   null,
   null,
@@ -4800,12 +5743,12 @@ var FormConfig_component = normalizeComponent(
 
 FormConfig_component.options.__file = "FormConfig.vue"
 /* harmony default export */ var FormConfig = (FormConfig_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"3a86e180-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/WidgetForm.vue?vue&type=template&id=2ed70e82&
-var WidgetFormvue_type_template_id_2ed70e82_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"widget-form-container"},[_c('el-form',{attrs:{"label-position":_vm.data.config.labelPosition,"label-width":_vm.data.config.labelWidth + 'px'}},[_c('draggable',{staticClass:"widget-form-list",attrs:{"options":{group:'people', ghostClass: 'ghost'}},on:{"end":_vm.handleMoveEnd,"add":_vm.handleWidgetAdd},model:{value:(_vm.data.list),callback:function ($$v) {_vm.$set(_vm.data, "list", $$v)},expression:"data.list"}},[_vm._l((_vm.data.list),function(element,index){return [(element.type == 'grid')?[(element && element.key)?_c('div',{key:element.key,staticClass:"widget-grid-container data-grid",staticStyle:{"position":"relative"}},[_c('el-row',{staticClass:"widget-grid ",class:{active: _vm.selectWidget.key == element.key},attrs:{"type":"flex","gutter":element.options.gutter ? element.options.gutter : 0,"justify":element.options.justify,"align":element.options.align},nativeOn:{"click":function($event){_vm.handleSelectWidget(index)}}},_vm._l((element.columns),function(col,colIndex){return _c('el-col',{key:colIndex,attrs:{"span":col.span ? col.span : 0}},[_c('div',{staticStyle:{"border":"1px dashed #999"}},[_c('draggable',{staticClass:"widget-form-list",staticStyle:{"padding-bottom":"50px"},attrs:{"filter":"widget-grid-container","options":{group:'people', ghostClass: 'ghost'}},on:{"end":_vm.handleMoveEnd,"add":function($event){_vm.handleWidgetColAdd($event, element, colIndex)}},model:{value:(col.list),callback:function ($$v) {_vm.$set(col, "list", $$v)},expression:"col.list"}},_vm._l((col.list),function(el,i){return (el.key)?_c('widget-form-item',{key:el.key,attrs:{"element":el,"select":_vm.selectWidget,"index":i,"data":col},on:{"update:select":function($event){_vm.selectWidget=$event}}}):_vm._e()}))],1)])})),(_vm.selectWidget.key == element.key)?_c('el-button',{staticClass:"widget-action-delete",staticStyle:{"bottom":"-20px"},attrs:{"title":"删除","circle":"","plain":"","type":"danger"},on:{"click":function($event){$event.stopPropagation();_vm.handleWidgetDelete(index)}}},[_c('icon',{staticStyle:{"width":"12px","height":"12px"},attrs:{"name":"regular/trash-alt"}})],1):_vm._e()],1):_vm._e()]:[(element && element.key)?_c('widget-form-item',{key:element.key,attrs:{"element":element,"select":_vm.selectWidget,"index":index,"data":_vm.data},on:{"update:select":function($event){_vm.selectWidget=$event}}}):_vm._e()]]})],2)],1)],1)}
-var WidgetFormvue_type_template_id_2ed70e82_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"3a86e180-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/WidgetForm.vue?vue&type=template&id=512a6bd4&
+var WidgetFormvue_type_template_id_512a6bd4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"widget-form-container"},[_c('el-form',{attrs:{"label-position":_vm.data.config.labelPosition,"label-width":_vm.data.config.labelWidth + 'px'}},[_c('draggable',{staticClass:"widget-form-list",attrs:{"options":{group:'people', ghostClass: 'ghost'}},on:{"end":_vm.handleMoveEnd,"add":_vm.handleWidgetAdd},model:{value:(_vm.data.list),callback:function ($$v) {_vm.$set(_vm.data, "list", $$v)},expression:"data.list"}},[_vm._l((_vm.data.list),function(element,index){return [(element.type == 'grid')?[(element && element.key)?_c('div',{key:element.key,staticClass:"widget-grid-container data-grid",staticStyle:{"position":"relative"}},[_c('el-row',{staticClass:"widget-grid ",class:{active: _vm.selectWidget.key == element.key},attrs:{"type":"flex","gutter":element.options.gutter ? element.options.gutter : 0,"justify":element.options.justify,"align":element.options.align},nativeOn:{"click":function($event){_vm.handleSelectWidget(index)}}},_vm._l((element.columns),function(col,colIndex){return _c('el-col',{key:colIndex,attrs:{"span":col.span ? col.span : 0}},[_c('div',{staticStyle:{"border":"1px dashed #999"}},[_c('draggable',{staticClass:"widget-form-list",staticStyle:{"padding-bottom":"50px"},attrs:{"filter":"widget-grid-container","options":{group:'people', ghostClass: 'ghost'}},on:{"end":_vm.handleMoveEnd,"add":function($event){_vm.handleWidgetColAdd($event, element, colIndex)}},model:{value:(col.list),callback:function ($$v) {_vm.$set(col, "list", $$v)},expression:"col.list"}},_vm._l((col.list),function(el,i){return (el.key)?_c('widget-form-item',{key:el.key,attrs:{"element":el,"select":_vm.selectWidget,"index":i,"data":col},on:{"update:select":function($event){_vm.selectWidget=$event}}}):_vm._e()}))],1)])})),(_vm.selectWidget.key == element.key)?_c('el-button',{staticClass:"widget-action-delete",staticStyle:{"bottom":"-20px"},attrs:{"title":"删除","circle":"","plain":"","type":"danger"},on:{"click":function($event){$event.stopPropagation();_vm.handleWidgetDelete(index)}}},[_c('icon',{staticStyle:{"width":"12px","height":"12px"},attrs:{"name":"regular/trash-alt"}})],1):_vm._e()],1):_vm._e()]:[(element && element.key)?_c('widget-form-item',{key:element.key,attrs:{"element":element,"select":_vm.selectWidget,"index":index,"data":_vm.data},on:{"update:select":function($event){_vm.selectWidget=$event}}}):_vm._e()]]})],2)],1)],1)}
+var WidgetFormvue_type_template_id_512a6bd4_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/WidgetForm.vue?vue&type=template&id=2ed70e82&
+// CONCATENATED MODULE: ./src/components/WidgetForm.vue?vue&type=template&id=512a6bd4&
 
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/builtin/es6/defineProperty.js
 function _defineProperty(obj, key, value) {
@@ -5186,7 +6129,9 @@ WidgetFormItem_component.options.__file = "WidgetFormItem.vue"
 
       var key = Date.parse(new Date()) + '_' + Math.ceil(Math.random() * 99999);
       this.$set(this.data.list, newIndex, _objectSpread({}, this.data.list[newIndex], {
-        options: _objectSpread({}, this.data.list[newIndex].options),
+        options: _objectSpread({}, this.data.list[newIndex].options, {
+          remoteFunc: 'func_test'
+        }),
         key: key,
         // 绑定键值
         model: this.data.list[newIndex].type + '_' + key,
@@ -5229,7 +6174,9 @@ WidgetFormItem_component.options.__file = "WidgetFormItem.vue"
       console.log('from', item);
       var key = Date.parse(new Date()) + '_' + Math.ceil(Math.random() * 99999);
       this.$set(row.columns[colIndex].list, newIndex, _objectSpread({}, row.columns[colIndex].list[newIndex], {
-        options: _objectSpread({}, row.columns[colIndex].list[newIndex].options),
+        options: _objectSpread({}, row.columns[colIndex].list[newIndex].options, {
+          remoteFunc: 'func_test'
+        }),
         key: key,
         // 绑定键值
         model: row.columns[colIndex].list[newIndex].type + '_' + key,
@@ -5290,8 +6237,8 @@ WidgetFormItem_component.options.__file = "WidgetFormItem.vue"
 
 var WidgetForm_component = normalizeComponent(
   components_WidgetFormvue_type_script_lang_js_,
-  WidgetFormvue_type_template_id_2ed70e82_render,
-  WidgetFormvue_type_template_id_2ed70e82_staticRenderFns,
+  WidgetFormvue_type_template_id_512a6bd4_render,
+  WidgetFormvue_type_template_id_512a6bd4_staticRenderFns,
   false,
   null,
   null,
@@ -5436,12 +6383,12 @@ var CusDialog_component = normalizeComponent(
 
 CusDialog_component.options.__file = "CusDialog.vue"
 /* harmony default export */ var CusDialog = (CusDialog_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"3a86e180-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/GenerateForm.vue?vue&type=template&id=2f4e4f62&
-var GenerateFormvue_type_template_id_2f4e4f62_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('el-form',{ref:"generateForm",attrs:{"model":_vm.models,"rules":_vm.rules,"label-position":_vm.data.config.labelPosition,"label-width":_vm.data.config.labelWidth + 'px'}},[_vm._l((_vm.data.list),function(item){return [(item.type == 'grid')?[_c('el-row',{key:item.key,attrs:{"type":"flex","gutter":item.options.gutter ? item.options.gutter : 0,"justify":item.options.justify,"align":item.options.align}},_vm._l((item.columns),function(col,colIndex){return _c('el-col',{key:colIndex,attrs:{"span":col.span}},_vm._l((col.list),function(citem){return _c('genetate-form-item',{key:citem.key,attrs:{"models":_vm.models,"rules":_vm.rules,"widget":citem},on:{"update:models":function($event){_vm.models=$event}}})}))}))]:[_c('genetate-form-item',{key:item.key,attrs:{"models":_vm.models,"rules":_vm.rules,"widget":item},on:{"update:models":function($event){_vm.models=$event}}})]]})],2)],1)}
-var GenerateFormvue_type_template_id_2f4e4f62_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"3a86e180-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/GenerateForm.vue?vue&type=template&id=a7b0987c&
+var GenerateFormvue_type_template_id_a7b0987c_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('el-form',{ref:"generateForm",attrs:{"model":_vm.models,"rules":_vm.rules,"label-position":_vm.data.config.labelPosition,"label-width":_vm.data.config.labelWidth + 'px'}},[_vm._l((_vm.data.list),function(item){return [(item.type == 'grid')?[_c('el-row',{key:item.key,attrs:{"type":"flex","gutter":item.options.gutter ? item.options.gutter : 0,"justify":item.options.justify,"align":item.options.align}},_vm._l((item.columns),function(col,colIndex){return _c('el-col',{key:colIndex,attrs:{"span":col.span}},_vm._l((col.list),function(citem){return _c('genetate-form-item',{key:citem.key,attrs:{"models":_vm.models,"remote":_vm.remote,"rules":_vm.rules,"widget":citem},on:{"update:models":function($event){_vm.models=$event}}})}))}))]:[_c('genetate-form-item',{key:item.key,attrs:{"models":_vm.models,"rules":_vm.rules,"widget":item,"remote":_vm.remote},on:{"update:models":function($event){_vm.models=$event}}})]]})],2)],1)}
+var GenerateFormvue_type_template_id_a7b0987c_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/GenerateForm.vue?vue&type=template&id=2f4e4f62&
+// CONCATENATED MODULE: ./src/components/GenerateForm.vue?vue&type=template&id=a7b0987c&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.promise.js
 var es6_promise = __webpack_require__("551c");
@@ -5471,12 +6418,12 @@ function _nonIterableSpread() {
 function _toConsumableArray(arr) {
   return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
 }
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"3a86e180-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/GenerateFormItem.vue?vue&type=template&id=a6849a3c&
-var GenerateFormItemvue_type_template_id_a6849a3c_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('el-form-item',{attrs:{"label":_vm.widget.name,"prop":_vm.widget.model}},[(_vm.widget.type == 'input')?[(_vm.widget.options.dataType == 'number' || _vm.widget.options.dataType == 'integer' || _vm.widget.options.dataType == 'float')?_c('el-input',{style:({width: _vm.widget.options.width}),attrs:{"type":_vm.widget.options.dataType,"placeholder":_vm.widget.options.placeholder},model:{value:(_vm.dataModel),callback:function ($$v) {_vm.dataModel=_vm._n($$v)},expression:"dataModel"}}):_c('el-input',{style:({width: _vm.widget.options.width}),attrs:{"type":_vm.widget.options.dataType,"placeholder":_vm.widget.options.placeholder},model:{value:(_vm.dataModel),callback:function ($$v) {_vm.dataModel=$$v},expression:"dataModel"}})]:_vm._e(),(_vm.widget.type == 'textarea')?[_c('el-input',{style:({width: _vm.widget.options.width}),attrs:{"type":"textarea","rows":5,"placeholder":_vm.widget.options.placeholder},model:{value:(_vm.dataModel),callback:function ($$v) {_vm.dataModel=$$v},expression:"dataModel"}})]:_vm._e(),(_vm.widget.type == 'number')?[_c('el-input-number',{style:({width: _vm.widget.options.width}),attrs:{"step":_vm.widget.options.step,"controls-position":"right"},model:{value:(_vm.widget.options.defaultValue),callback:function ($$v) {_vm.$set(_vm.widget.options, "defaultValue", $$v)},expression:"widget.options.defaultValue"}})]:_vm._e(),(_vm.widget.type == 'radio')?[_c('el-radio-group',{style:({width: _vm.widget.options.width}),model:{value:(_vm.dataModel),callback:function ($$v) {_vm.dataModel=$$v},expression:"dataModel"}},_vm._l((_vm.widget.options.options),function(item,index){return _c('el-radio',{key:index,style:({display: _vm.widget.options.inline ? 'inline-block' : 'block'}),attrs:{"label":item.value}},[_vm._v("\n        "+_vm._s(_vm.widget.options.showLabel ? item.label : item.value)+"\n      ")])}))]:_vm._e(),(_vm.widget.type == 'checkbox')?[_c('el-checkbox-group',{style:({width: _vm.widget.options.width}),model:{value:(_vm.dataModel),callback:function ($$v) {_vm.dataModel=$$v},expression:"dataModel"}},_vm._l((_vm.widget.options.options),function(item,index){return _c('el-checkbox',{key:index,style:({display: _vm.widget.options.inline ? 'inline-block' : 'block'}),attrs:{"label":item.value}},[_vm._v("\n        "+_vm._s(_vm.widget.options.showLabel ? item.label : item.value)+"\n      ")])}))]:_vm._e(),(_vm.widget.type == 'time')?[_c('el-time-picker',{style:({width: _vm.widget.options.width}),attrs:{"is-range":_vm.widget.options.isRange,"placeholder":_vm.widget.options.placeholder,"start-placeholder":_vm.widget.options.startPlaceholder,"end-placeholder":_vm.widget.options.endPlaceholder,"readonly":_vm.widget.options.readonly,"disabled":_vm.widget.options.disabled,"editable":_vm.widget.options.editable,"clearable":_vm.widget.options.clearable,"arrowControl":_vm.widget.options.arrowControl,"value-format":_vm.widget.options.format},model:{value:(_vm.dataModel),callback:function ($$v) {_vm.dataModel=$$v},expression:"dataModel"}})]:_vm._e(),(_vm.widget.type=='date')?[_c('el-date-picker',{style:({width: _vm.widget.options.width}),attrs:{"type":_vm.widget.options.type,"placeholder":_vm.widget.options.placeholder,"start-placeholder":_vm.widget.options.startPlaceholder,"end-placeholder":_vm.widget.options.endPlaceholder,"readonly":_vm.widget.options.readonly,"disabled":_vm.widget.options.disabled,"editable":_vm.widget.options.editable,"clearable":_vm.widget.options.clearable,"value-format":_vm.widget.options.timestamp ? 'timestamp' : _vm.widget.options.format,"format":_vm.widget.options.format},model:{value:(_vm.dataModel),callback:function ($$v) {_vm.dataModel=$$v},expression:"dataModel"}})]:_vm._e(),(_vm.widget.type =='rate')?[_c('el-rate',{attrs:{"max":_vm.widget.options.max,"disabled":_vm.widget.options.disabled,"allow-half":_vm.widget.options.allowHalf},model:{value:(_vm.dataModel),callback:function ($$v) {_vm.dataModel=$$v},expression:"dataModel"}})]:_vm._e(),(_vm.widget.type == 'color')?[_c('el-color-picker',{attrs:{"disabled":_vm.widget.options.disabled,"show-alpha":_vm.widget.options.showAlpha},model:{value:(_vm.dataModel),callback:function ($$v) {_vm.dataModel=$$v},expression:"dataModel"}})]:_vm._e(),(_vm.widget.type == 'select')?[_c('el-select',{style:({width: _vm.widget.options.width}),attrs:{"disabled":_vm.widget.options.disabled,"multiple":_vm.widget.options.multiple,"clearable":_vm.widget.options.clearable,"placeholder":_vm.widget.options.placeholder},model:{value:(_vm.dataModel),callback:function ($$v) {_vm.dataModel=$$v},expression:"dataModel"}},_vm._l((_vm.widget.options.options),function(item){return _c('el-option',{key:item.value,attrs:{"value":item.value,"label":_vm.widget.options.showLabel?item.label:item.value}})}))]:_vm._e(),(_vm.widget.type=='switch')?[_c('el-switch',{attrs:{"disabled":_vm.widget.options.disabled},model:{value:(_vm.dataModel),callback:function ($$v) {_vm.dataModel=$$v},expression:"dataModel"}})]:_vm._e(),(_vm.widget.type=='slider')?[_c('el-slider',{style:({width: _vm.widget.options.width}),attrs:{"min":_vm.widget.options.min,"max":_vm.widget.options.max,"disabled":_vm.widget.options.disabled,"step":_vm.widget.options.step,"show-input":_vm.widget.options.showInput,"range":_vm.widget.options.range},model:{value:(_vm.dataModel),callback:function ($$v) {_vm.dataModel=$$v},expression:"dataModel"}})]:_vm._e()],2)}
-var GenerateFormItemvue_type_template_id_a6849a3c_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"3a86e180-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/GenerateFormItem.vue?vue&type=template&id=6718f93c&
+var GenerateFormItemvue_type_template_id_6718f93c_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('el-form-item',{attrs:{"label":_vm.widget.name,"prop":_vm.widget.model}},[(_vm.widget.type == 'input')?[(_vm.widget.options.dataType == 'number' || _vm.widget.options.dataType == 'integer' || _vm.widget.options.dataType == 'float')?_c('el-input',{style:({width: _vm.widget.options.width}),attrs:{"type":_vm.widget.options.dataType,"placeholder":_vm.widget.options.placeholder},model:{value:(_vm.dataModel),callback:function ($$v) {_vm.dataModel=_vm._n($$v)},expression:"dataModel"}}):_c('el-input',{style:({width: _vm.widget.options.width}),attrs:{"type":_vm.widget.options.dataType,"placeholder":_vm.widget.options.placeholder},model:{value:(_vm.dataModel),callback:function ($$v) {_vm.dataModel=$$v},expression:"dataModel"}})]:_vm._e(),(_vm.widget.type == 'textarea')?[_c('el-input',{style:({width: _vm.widget.options.width}),attrs:{"type":"textarea","rows":5,"placeholder":_vm.widget.options.placeholder},model:{value:(_vm.dataModel),callback:function ($$v) {_vm.dataModel=$$v},expression:"dataModel"}})]:_vm._e(),(_vm.widget.type == 'number')?[_c('el-input-number',{style:({width: _vm.widget.options.width}),attrs:{"step":_vm.widget.options.step,"controls-position":"right"},model:{value:(_vm.widget.options.defaultValue),callback:function ($$v) {_vm.$set(_vm.widget.options, "defaultValue", $$v)},expression:"widget.options.defaultValue"}})]:_vm._e(),(_vm.widget.type == 'radio')?[_c('el-radio-group',{style:({width: _vm.widget.options.width}),model:{value:(_vm.dataModel),callback:function ($$v) {_vm.dataModel=$$v},expression:"dataModel"}},_vm._l(((_vm.widget.options.remote ? _vm.widget.options.remoteOptions : _vm.widget.options.options)),function(item,index){return _c('el-radio',{key:index,style:({display: _vm.widget.options.inline ? 'inline-block' : 'block'}),attrs:{"label":item.value}},[(_vm.widget.options.remote)?[_vm._v(_vm._s(item.label))]:[_vm._v(_vm._s(_vm.widget.options.showLabel ? item.label : item.value))]],2)}))]:_vm._e(),(_vm.widget.type == 'checkbox')?[_c('el-checkbox-group',{style:({width: _vm.widget.options.width}),model:{value:(_vm.dataModel),callback:function ($$v) {_vm.dataModel=$$v},expression:"dataModel"}},_vm._l(((_vm.widget.options.remote ? _vm.widget.options.remoteOptions : _vm.widget.options.options)),function(item,index){return _c('el-checkbox',{key:index,style:({display: _vm.widget.options.inline ? 'inline-block' : 'block'}),attrs:{"label":item.value}},[(_vm.widget.options.remote)?[_vm._v(_vm._s(item.label))]:[_vm._v(_vm._s(_vm.widget.options.showLabel ? item.label : item.value))]],2)}))]:_vm._e(),(_vm.widget.type == 'time')?[_c('el-time-picker',{style:({width: _vm.widget.options.width}),attrs:{"is-range":_vm.widget.options.isRange,"placeholder":_vm.widget.options.placeholder,"start-placeholder":_vm.widget.options.startPlaceholder,"end-placeholder":_vm.widget.options.endPlaceholder,"readonly":_vm.widget.options.readonly,"disabled":_vm.widget.options.disabled,"editable":_vm.widget.options.editable,"clearable":_vm.widget.options.clearable,"arrowControl":_vm.widget.options.arrowControl,"value-format":_vm.widget.options.format},model:{value:(_vm.dataModel),callback:function ($$v) {_vm.dataModel=$$v},expression:"dataModel"}})]:_vm._e(),(_vm.widget.type=='date')?[_c('el-date-picker',{style:({width: _vm.widget.options.width}),attrs:{"type":_vm.widget.options.type,"placeholder":_vm.widget.options.placeholder,"start-placeholder":_vm.widget.options.startPlaceholder,"end-placeholder":_vm.widget.options.endPlaceholder,"readonly":_vm.widget.options.readonly,"disabled":_vm.widget.options.disabled,"editable":_vm.widget.options.editable,"clearable":_vm.widget.options.clearable,"value-format":_vm.widget.options.timestamp ? 'timestamp' : _vm.widget.options.format,"format":_vm.widget.options.format},model:{value:(_vm.dataModel),callback:function ($$v) {_vm.dataModel=$$v},expression:"dataModel"}})]:_vm._e(),(_vm.widget.type =='rate')?[_c('el-rate',{attrs:{"max":_vm.widget.options.max,"disabled":_vm.widget.options.disabled,"allow-half":_vm.widget.options.allowHalf},model:{value:(_vm.dataModel),callback:function ($$v) {_vm.dataModel=$$v},expression:"dataModel"}})]:_vm._e(),(_vm.widget.type == 'color')?[_c('el-color-picker',{attrs:{"disabled":_vm.widget.options.disabled,"show-alpha":_vm.widget.options.showAlpha},model:{value:(_vm.dataModel),callback:function ($$v) {_vm.dataModel=$$v},expression:"dataModel"}})]:_vm._e(),(_vm.widget.type == 'select')?[_c('el-select',{style:({width: _vm.widget.options.width}),attrs:{"disabled":_vm.widget.options.disabled,"multiple":_vm.widget.options.multiple,"clearable":_vm.widget.options.clearable,"placeholder":_vm.widget.options.placeholder},model:{value:(_vm.dataModel),callback:function ($$v) {_vm.dataModel=$$v},expression:"dataModel"}},_vm._l(((_vm.widget.options.remote ? _vm.widget.options.remoteOptions : _vm.widget.options.options)),function(item){return _c('el-option',{key:item.value,attrs:{"value":item.value,"label":_vm.widget.options.showLabel || _vm.widget.options.remote?item.label:item.value}})}))]:_vm._e(),(_vm.widget.type=='switch')?[_c('el-switch',{attrs:{"disabled":_vm.widget.options.disabled},model:{value:(_vm.dataModel),callback:function ($$v) {_vm.dataModel=$$v},expression:"dataModel"}})]:_vm._e(),(_vm.widget.type=='slider')?[_c('el-slider',{style:({width: _vm.widget.options.width}),attrs:{"min":_vm.widget.options.min,"max":_vm.widget.options.max,"disabled":_vm.widget.options.disabled,"step":_vm.widget.options.step,"show-input":_vm.widget.options.showInput,"range":_vm.widget.options.range},model:{value:(_vm.dataModel),callback:function ($$v) {_vm.dataModel=$$v},expression:"dataModel"}})]:_vm._e()],2)}
+var GenerateFormItemvue_type_template_id_6718f93c_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/GenerateFormItem.vue?vue&type=template&id=a6849a3c&
+// CONCATENATED MODULE: ./src/components/GenerateFormItem.vue?vue&type=template&id=6718f93c&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/GenerateFormItem.vue?vue&type=script&lang=js&
 
@@ -5633,12 +6580,29 @@ var GenerateFormItemvue_type_template_id_a6849a3c_staticRenderFns = []
 //
 //
 //
+//
 /* harmony default export */ var GenerateFormItemvue_type_script_lang_js_ = ({
-  props: ['widget', 'models', 'rules'],
+  props: ['widget', 'models', 'rules', 'remote'],
   data: function data() {
     return {
       dataModel: this.models[this.widget.model]
     };
+  },
+  created: function created() {
+    var _this = this;
+
+    console.log('remote', this.remote);
+
+    if (this.widget.options.remote) {
+      this.remote[this.widget.options.remoteFunc](function (data) {
+        _this.widget.options.remoteOptions = data.map(function (item) {
+          return {
+            value: item[_this.widget.options.props.value],
+            label: item[_this.widget.options.props.label]
+          };
+        });
+      });
+    }
   },
   watch: {
     dataModel: {
@@ -5668,8 +6632,8 @@ var GenerateFormItemvue_type_template_id_a6849a3c_staticRenderFns = []
 
 var GenerateFormItem_component = normalizeComponent(
   components_GenerateFormItemvue_type_script_lang_js_,
-  GenerateFormItemvue_type_template_id_a6849a3c_render,
-  GenerateFormItemvue_type_template_id_a6849a3c_staticRenderFns,
+  GenerateFormItemvue_type_template_id_6718f93c_render,
+  GenerateFormItemvue_type_template_id_6718f93c_staticRenderFns,
   false,
   null,
   null,
@@ -5717,7 +6681,7 @@ GenerateFormItem_component.options.__file = "GenerateFormItem.vue"
   components: {
     GenetateFormItem: GenerateFormItem
   },
-  props: ['data'],
+  props: ['data', 'remote'],
   data: function data() {
     return {
       models: {},
@@ -5775,8 +6739,8 @@ GenerateFormItem_component.options.__file = "GenerateFormItem.vue"
 
 var GenerateForm_component = normalizeComponent(
   components_GenerateFormvue_type_script_lang_js_,
-  GenerateFormvue_type_template_id_2f4e4f62_render,
-  GenerateFormvue_type_template_id_2f4e4f62_staticRenderFns,
+  GenerateFormvue_type_template_id_a7b0987c_render,
+  GenerateFormvue_type_template_id_a7b0987c_staticRenderFns,
   false,
   null,
   null,
@@ -5786,6 +6750,257 @@ var GenerateForm_component = normalizeComponent(
 
 GenerateForm_component.options.__file = "GenerateForm.vue"
 /* harmony default export */ var GenerateForm = (GenerateForm_component.exports);
+// EXTERNAL MODULE: ./node_modules/clipboard/dist/clipboard.js
+var clipboard = __webpack_require__("b311");
+var clipboard_default = /*#__PURE__*/__webpack_require__.n(clipboard);
+
+// CONCATENATED MODULE: ./src/components/componentsConfig.js
+var basicComponents = [{
+  type: 'input',
+  name: '单行文本',
+  icon: 'regular/keyboard',
+  options: {
+    width: '100%',
+    defaultValue: '',
+    required: false,
+    dataType: 'string',
+    pattern: '',
+    placeholder: ''
+  }
+}, {
+  type: 'textarea',
+  name: '多行文本',
+  icon: 'regular/keyboard',
+  options: {
+    width: '100%',
+    defaultValue: '',
+    required: false,
+    pattern: '',
+    placeholder: ''
+  }
+}, {
+  type: 'number',
+  name: '计数器',
+  icon: 'sort-numeric-up',
+  options: {
+    width: '',
+    required: false,
+    defaultValue: 0,
+    min: '',
+    max: '',
+    step: 1,
+    disabled: false,
+    controlsPosition: ''
+  }
+}, {
+  type: 'radio',
+  name: '单选框组',
+  icon: 'regular/dot-circle',
+  options: {
+    inline: false,
+    defaultValue: '',
+    showLabel: false,
+    options: [{
+      value: '选项1',
+      label: '选项1'
+    }, {
+      value: '选项2',
+      label: '选项2'
+    }, {
+      value: '选项3',
+      label: '选项3'
+    }],
+    required: false,
+    width: '',
+    remote: false,
+    remoteOptions: [],
+    props: {
+      value: 'value',
+      label: 'label'
+    },
+    remoteFunc: ''
+  }
+}, {
+  type: 'checkbox',
+  name: '多选框组',
+  icon: 'regular/check-square',
+  options: {
+    inline: false,
+    defaultValue: [],
+    showLabel: false,
+    options: [{
+      value: '选项1'
+    }, {
+      value: '选项2'
+    }, {
+      value: '选项3'
+    }],
+    required: false,
+    width: '',
+    remote: false,
+    remoteOptions: [],
+    props: {
+      value: 'value',
+      label: 'label'
+    },
+    remoteFunc: ''
+  }
+}, {
+  type: 'time',
+  name: '时间选择器',
+  icon: 'regular/clock',
+  options: {
+    defaultValue: '21:19:56',
+    readonly: false,
+    disabled: false,
+    editable: true,
+    clearable: true,
+    placeholder: '',
+    startPlaceholder: '',
+    endPlaceholder: '',
+    isRange: false,
+    arrowControl: true,
+    format: 'HH:mm:ss',
+    required: false,
+    width: ''
+  }
+}, {
+  type: 'date',
+  name: '日期选择器',
+  icon: 'regular/calendar-alt',
+  options: {
+    defaultValue: '',
+    readonly: false,
+    disabled: false,
+    editable: true,
+    clearable: true,
+    placeholder: '',
+    startPlaceholder: '',
+    endPlaceholder: '',
+    type: 'date',
+    format: 'yyyy-MM-dd',
+    timestamp: false,
+    required: false,
+    width: ''
+  }
+}, {
+  type: 'rate',
+  name: '评分',
+  icon: 'regular/star',
+  options: {
+    defaultValue: null,
+    max: 5,
+    disabled: false,
+    allowHalf: false,
+    required: false
+  }
+}, {
+  type: 'color',
+  name: '颜色选择器',
+  icon: 'palette',
+  options: {
+    defaultValue: '',
+    disabled: false,
+    showAlpha: false,
+    required: false
+  }
+}, {
+  type: 'select',
+  name: '下拉选择框',
+  icon: 'regular/caret-square-down',
+  options: {
+    defaultValue: '',
+    multiple: false,
+    disabled: false,
+    clearable: false,
+    placeholder: '',
+    required: false,
+    showLabel: false,
+    width: '',
+    options: [{
+      value: '下拉框1'
+    }, {
+      value: '下拉框2'
+    }, {
+      value: '下拉框3'
+    }],
+    remote: false,
+    remoteOptions: [],
+    props: {
+      value: 'value',
+      label: 'label'
+    },
+    remoteFunc: ''
+  }
+}, {
+  type: 'switch',
+  name: '开关',
+  icon: 'toggle-off',
+  options: {
+    defaultValue: false,
+    required: false,
+    disabled: false
+  }
+}, {
+  type: 'slider',
+  name: '滑块',
+  icon: 'sliders-h',
+  options: {
+    defaultValue: 0,
+    disabled: false,
+    required: false,
+    min: 0,
+    max: 100,
+    step: 1,
+    showInput: false,
+    range: false,
+    width: ''
+  }
+}];
+var advanceComponents = [];
+var layoutComponents = [{
+  type: 'grid',
+  name: '栅格布局',
+  icon: 'th',
+  columns: [{
+    span: 12,
+    list: []
+  }, {
+    span: 12,
+    list: []
+  }],
+  options: {
+    gutter: 0,
+    justify: 'start',
+    align: 'top'
+  }
+}];
+// CONCATENATED MODULE: ./src/util/index.js
+
+var loadJs = function loadJs(url) {
+  return new Promise(function (resolve, reject) {
+    var script = document.createElement('script');
+    script.src = url;
+    script.type = 'text/javascript';
+    document.body.appendChild(script);
+
+    script.onload = function () {
+      resolve();
+    };
+  });
+};
+var loadCss = function loadCss(url) {
+  return new Promise(function (resolve, reject) {
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = url;
+    document.head.appendChild(link);
+
+    link.onload = function () {
+      resolve();
+    };
+  });
+};
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Container.vue?vue&type=script&lang=js&
 //
 //
@@ -5862,8 +7077,31 @@ GenerateForm_component.options.__file = "GenerateForm.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
+
+
+
+ // import JSONEditor from 'jsoneditor'
+// import 'jsoneditor/dist/jsoneditor.min.css'
 
 
 
@@ -5880,204 +7118,8 @@ GenerateForm_component.options.__file = "GenerateForm.vue"
   },
   data: function data() {
     return {
-      basicComponents: [{
-        type: 'input',
-        name: '单行文本',
-        icon: 'regular/keyboard',
-        options: {
-          width: '100%',
-          defaultValue: '',
-          required: false,
-          dataType: 'string',
-          pattern: '',
-          placeholder: ''
-        }
-      }, {
-        type: 'textarea',
-        name: '多行文本',
-        icon: 'regular/keyboard',
-        options: {
-          width: '100%',
-          defaultValue: '',
-          required: false,
-          pattern: '',
-          placeholder: ''
-        }
-      }, {
-        type: 'number',
-        name: '计数器',
-        icon: 'sort-numeric-up',
-        options: {
-          width: '',
-          required: false,
-          defaultValue: 0,
-          min: '',
-          max: '',
-          step: 1,
-          disabled: false,
-          controlsPosition: ''
-        }
-      }, {
-        type: 'radio',
-        name: '单选框组',
-        icon: 'regular/dot-circle',
-        options: {
-          inline: false,
-          defaultValue: '',
-          showLabel: false,
-          options: [{
-            value: '选项1',
-            label: '选项1'
-          }, {
-            value: '选项2',
-            label: '选项2'
-          }, {
-            value: '选项3',
-            label: '选项3'
-          }],
-          required: false,
-          width: ''
-        }
-      }, {
-        type: 'checkbox',
-        name: '多选框组',
-        icon: 'regular/check-square',
-        options: {
-          inline: false,
-          defaultValue: [],
-          showLabel: false,
-          options: [{
-            value: '选项1'
-          }, {
-            value: '选项2'
-          }, {
-            value: '选项3'
-          }],
-          required: false,
-          width: ''
-        }
-      }, {
-        type: 'time',
-        name: '时间选择器',
-        icon: 'regular/clock',
-        options: {
-          defaultValue: '21:19:56',
-          readonly: false,
-          disabled: false,
-          editable: true,
-          clearable: true,
-          placeholder: '',
-          startPlaceholder: '',
-          endPlaceholder: '',
-          isRange: false,
-          arrowControl: true,
-          format: 'HH:mm:ss',
-          required: false,
-          width: ''
-        }
-      }, {
-        type: 'date',
-        name: '日期选择器',
-        icon: 'regular/calendar-alt',
-        options: {
-          defaultValue: '',
-          readonly: false,
-          disabled: false,
-          editable: true,
-          clearable: true,
-          placeholder: '',
-          startPlaceholder: '',
-          endPlaceholder: '',
-          type: 'date',
-          format: 'yyyy-MM-dd',
-          timestamp: false,
-          required: false,
-          width: ''
-        }
-      }, {
-        type: 'rate',
-        name: '评分',
-        icon: 'regular/star',
-        options: {
-          defaultValue: null,
-          max: 5,
-          disabled: false,
-          allowHalf: false,
-          required: false
-        }
-      }, {
-        type: 'color',
-        name: '颜色选择器',
-        icon: 'palette',
-        options: {
-          defaultValue: '',
-          disabled: false,
-          showAlpha: false,
-          required: false
-        }
-      }, {
-        type: 'select',
-        name: '下拉选择框',
-        icon: 'regular/caret-square-down',
-        options: {
-          defaultValue: '',
-          multiple: false,
-          disabled: false,
-          clearable: false,
-          placeholder: '',
-          required: false,
-          showLabel: false,
-          width: '',
-          options: [{
-            value: '下拉框1'
-          }, {
-            value: '下拉框2'
-          }, {
-            value: '下拉框3'
-          }]
-        }
-      }, {
-        type: 'switch',
-        name: '开关',
-        icon: 'toggle-off',
-        options: {
-          defaultValue: false,
-          required: false,
-          disabled: false
-        }
-      }, {
-        type: 'slider',
-        name: '滑块',
-        icon: 'sliders-h',
-        options: {
-          defaultValue: 0,
-          disabled: false,
-          required: false,
-          min: 0,
-          max: 100,
-          step: 1,
-          showInput: false,
-          range: false,
-          width: ''
-        }
-      }],
-      layoutComponents: [{
-        type: 'grid',
-        name: '栅格布局',
-        icon: 'th',
-        columns: [{
-          span: 12,
-          list: []
-        }, {
-          span: 12,
-          list: []
-        }],
-        options: {
-          gutter: 0,
-          justify: 'start',
-          align: 'top'
-        }
-      }],
+      basicComponents: basicComponents,
+      layoutComponents: layoutComponents,
       widgetForm: {
         list: [],
         config: {
@@ -6087,8 +7129,30 @@ GenerateForm_component.options.__file = "GenerateForm.vue"
       },
       configTab: 'widget',
       widgetFormSelect: null,
-      previewVisible: false
+      previewVisible: false,
+      jsonVisible: false,
+      remoteFuncs: {
+        func_test: function func_test(resolve) {
+          setTimeout(function () {
+            var options = [{
+              id: '1',
+              name: '1111'
+            }, {
+              id: '2',
+              name: '2222'
+            }, {
+              id: '3',
+              name: '3333'
+            }];
+            resolve(options);
+          }, 2000);
+        }
+      }
     };
+  },
+  mounted: function mounted() {
+    loadCss('https://unpkg.com/jsoneditor/dist/jsoneditor.min.css');
+    loadJs('https://unpkg.com/jsoneditor/dist/jsoneditor.min.js');
   },
   methods: {
     handleConfigSelect: function handleConfigSelect(value) {
@@ -6113,11 +7177,26 @@ GenerateForm_component.options.__file = "GenerateForm.vue"
       this.$refs.generateForm.getData().then(function (data) {
         console.log('form', data);
 
+        _this.$alert(data, '').catch(function (e) {});
+
         _this.$refs.widgetPreview.end();
       }).catch(function (e) {
         console.log(e);
 
         _this.$refs.widgetPreview.end();
+      });
+    },
+    handleGenerateJson: function handleGenerateJson() {
+      var _this2 = this;
+
+      console.log(JSON.stringify(this.widgetForm));
+      this.jsonVisible = true;
+      this.$nextTick(function () {
+        var editor = new JSONEditor(document.getElementById("jsoneditor"), {
+          "mode": "code"
+        });
+        editor.set(_this2.widgetForm);
+        var btnCopy = new clipboard_default.a('#copybtn');
       });
     }
   },
@@ -6147,8 +7226,8 @@ var Containervue_type_style_index_0_lang_scss_ = __webpack_require__("314e");
 
 var Container_component = normalizeComponent(
   components_Containervue_type_script_lang_js_,
-  Containervue_type_template_id_111cb29e_render,
-  Containervue_type_template_id_111cb29e_staticRenderFns,
+  Containervue_type_template_id_8fe806ca_render,
+  Containervue_type_template_id_8fe806ca_staticRenderFns,
   false,
   null,
   null,

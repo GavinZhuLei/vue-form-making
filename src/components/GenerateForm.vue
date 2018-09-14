@@ -12,13 +12,13 @@
             :align="item.options.align"
           >
             <el-col v-for="(col, colIndex) in item.columns" :key="colIndex" :span="col.span">
-              <genetate-form-item v-for="citem in col.list" :key="citem.key" :models.sync="models" :rules="rules" :widget="citem"></genetate-form-item>
+              <genetate-form-item v-for="citem in col.list" :key="citem.key" :models.sync="models" :remote="remote" :rules="rules" :widget="citem"></genetate-form-item>
             </el-col>
           </el-row>
         </template>
 
         <template v-else>
-          <genetate-form-item :key="item.key" :models.sync="models" :rules="rules" :widget="item"></genetate-form-item>
+          <genetate-form-item :key="item.key" :models.sync="models" :rules="rules" :widget="item" :remote="remote"></genetate-form-item>
         </template>
         
       </template>
@@ -34,7 +34,7 @@ export default {
   components: {
     GenetateFormItem
   },
-  props: ['data'],
+  props: ['data', 'remote'],
   data () {
     return {
       models: {},

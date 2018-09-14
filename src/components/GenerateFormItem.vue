@@ -38,12 +38,12 @@
       <el-radio-group v-model="dataModel"
         :style="{width: widget.options.width}"
       >
-        <el-radio  
-          
+        <el-radio
           :style="{display: widget.options.inline ? 'inline-block' : 'block'}"
-          :label="item.value" v-for="(item, index) in widget.options.options" :key="index"
+          :label="item.value" v-for="(item, index) in (widget.options.remote ? widget.options.remoteOptions : widget.options.options)" :key="index"
         >
-          {{widget.options.showLabel ? item.label : item.value}}
+          <template v-if="widget.options.remote">{{item.label}}</template>
+          <template v-else>{{widget.options.showLabel ? item.label : item.value}}</template>
         </el-radio>
       </el-radio-group>
     </template>
@@ -55,9 +55,10 @@
         <el-checkbox
           
           :style="{display: widget.options.inline ? 'inline-block' : 'block'}"
-          :label="item.value" v-for="(item, index) in widget.options.options" :key="index"
+          :label="item.value" v-for="(item, index) in (widget.options.remote ? widget.options.remoteOptions : widget.options.options)" :key="index"
         >
-          {{widget.options.showLabel ? item.label : item.value}}
+          <template v-if="widget.options.remote">{{item.label}}</template>
+          <template v-else>{{widget.options.showLabel ? item.label : item.value}}</template>
         </el-checkbox>
       </el-checkbox-group>
     </template>
@@ -123,7 +124,7 @@
         :placeholder="widget.options.placeholder"
         :style="{width: widget.options.width}"
       >
-        <el-option v-for="item in widget.options.options" :key="item.value" :value="item.value" :label="widget.options.showLabel?item.label:item.value"></el-option>
+        <el-option v-for="item in (widget.options.remote ? widget.options.remoteOptions : widget.options.options)" :key="item.value" :value="item.value" :label="widget.options.showLabel || widget.options.remote?item.label:item.value"></el-option>
       </el-select>
     </template>
 
@@ -152,10 +153,23 @@
 
 <script>
 export default {
-  props: ['widget', 'models', 'rules'],
+  props: ['widget', 'models', 'rules', 'remote'],
   data () {
     return {
       dataModel: this.models[this.widget.model]
+    }
+  },
+  created () {
+    console.log('remote', this.remote)
+    if (this.widget.options.remote) {
+      this.remote[this.widget.options.remoteFunc]((data) => {
+        this.widget.options.remoteOptions = data.map(item => {
+          return {
+            value: item[this.widget.options.props.value],
+            label: item[this.widget.options.props.label]
+          }
+        })
+      })
     }
   },
   watch: {
