@@ -3,18 +3,22 @@
 
     <div 
       :style="{width: width+'px', height: height+'px'}"
-      :class="{uploading: item.status=='uploading'}"
+      :class="{uploading: item.status=='uploading', 'is-success': item.status=='success'}"
       class="upload-file" v-for="(item) in fileList" :key="item.key">
       <img :src="item.url" />
 
-      <el-progress :width="miniWidth*0.9" class="upload-progress" type="circle" :percentage="0"></el-progress>
+      <el-progress v-if="item.status=='uploading'" :width="miniWidth*0.9" class="upload-progress" type="circle" :percentage="item.percent"></el-progress>
+
+      <label class="item-status" v-if="item.status=='success'">
+        <i class="el-icon-upload-success el-icon-check"></i>
+      </label>
     </div>
 
     <div class="el-upload el-upload--picture-card"
       :style="{width: width+'px', height: height+'px'}"
     >
       <i class="el-icon-plus" :style="{fontSize:miniWidth/4+'px',marginTop: (-miniWidth/8)+'px', marginLeft: (-miniWidth/8)+'px'}"></i>
-      <input ref="uploadInput" @change="handleChange" type="file" :style="{width: width+'px', height: height+'px'}" name="file" class="el-upload__input upload-input">
+      <input multiple ref="uploadInput" @change="handleChange" type="file" :style="{width: width+'px', height: height+'px'}" name="file" class="el-upload__input upload-input">
     </div>
   </div>
 </template>
@@ -67,8 +71,42 @@ export default {
             percent: 0,
             status: 'uploading'
           })
+
+          this.$nextTick(() => {
+            this.uplaodAction(reader.result, file, key)
+          })
         }
       }
+
+      this.$refs.uploadInput.value = []
+    }, 
+
+    uplaodAction (res, file, key) {
+      let changeIndex = this.fileList.findIndex(item => item.key === key)
+      console.log(this.fileList.findIndex(item => item.key === key))
+      setTimeout(() => {
+        this.$set(this.fileList, this.fileList.findIndex(item => item.key === key), {
+          ...this.fileList[this.fileList.findIndex(item => item.key === key)],
+          percent: 50
+        })
+      }, 1000)
+      setTimeout(() => {
+        if (changeIndex === 1) {
+          this.$set(this.fileList, this.fileList.findIndex(item => item.key === key), {
+            ...this.fileList[this.fileList.findIndex(item => item.key === key)],
+            status: 'error',
+            percent: 100
+          })
+          this.fileList.splice(this.fileList.findIndex(item => item.key === key), 1)
+        } else {
+          this.$set(this.fileList, this.fileList.findIndex(item => item.key === key), {
+            ...this.fileList[this.fileList.findIndex(item => item.key === key)],
+            status: 'success',
+            percent: 100
+          })
+        }
+        
+      }, 2000)
     }
   }
 }
@@ -89,6 +127,27 @@ export default {
     box-sizing: border-box;
     position: relative;
     vertical-align: top;
+
+    &.is-success{
+      .item-status{
+        position: absolute;
+        right: -15px;
+        top: -6px;
+        width: 40px;
+        height: 24px;
+        background: #13ce66;
+        text-align: center;
+        transform: rotate(45deg);
+        box-shadow: 0 0 1pc 1px rgba(0,0,0,.2);
+
+        &>i{
+          font-size: 12px;
+          margin-top: 11px;
+          color: #fff;
+          transform: rotate(-45deg);
+        }
+      }
+    }
 
     &.uploading{
       &:before{
