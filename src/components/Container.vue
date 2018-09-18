@@ -90,8 +90,8 @@
       <generate-form :data="widgetForm" :remote="remoteFuncs" :value="widgetModels" ref="generateForm">
 
         <template slot="blank" slot-scope="scope">
-          宽度：<el-input v-model="scope.model.blank.width" style="width: 200px"></el-input>
-          高度：<el-input v-model="scope.model.blank.height" style="width: 200px"></el-input>
+          宽度：<el-input v-model="scope.model.blank.width" style="width: 100px"></el-input>
+          高度：<el-input v-model="scope.model.blank.height" style="width: 100px"></el-input>
         </template>
       </generate-form>
     </cus-dialog>

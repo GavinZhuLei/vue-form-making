@@ -12,7 +12,14 @@
             :align="item.options.align"
           >
             <el-col v-for="(col, colIndex) in item.columns" :key="colIndex" :span="col.span">
-              <genetate-form-item v-for="citem in col.list" :key="citem.key" :models.sync="models" :remote="remote" :rules="rules" :widget="citem"></genetate-form-item>
+              
+
+              <template v-for="citem in col.list" >
+                <el-form-item v-if="citem.type=='blank'" :label="citem.name" :prop="citem.model" :key="citem.key">
+                  <slot :name="citem.model" :model="models"></slot>
+                </el-form-item>
+                <genetate-form-item v-else :key="citem.key" :models.sync="models" :remote="remote" :rules="rules" :widget="citem"></genetate-form-item>
+              </template>
             </el-col>
           </el-row>
         </template>
