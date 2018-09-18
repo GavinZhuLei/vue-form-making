@@ -148,12 +148,30 @@
         :style="{width: widget.options.width}"
       ></el-slider>
     </template>
+
+    <template v-if="widget.type=='imgupload'">
+      <fm-upload
+        v-model="dataModel"
+        :disabled="widget.options.disabled"
+        :style="{'width': widget.options.width}"
+        :width="widget.options.size.width"
+        :height="widget.options.size.height"
+        :token="widget.options.token"
+        :domain="widget.options.domain"
+      >
+      </fm-upload>
+    </template>
   </el-form-item>
 </template>
 
 <script>
+import FmUpload from './Upload'
+
 export default {
   props: ['widget', 'models', 'rules', 'remote'],
+  components: {
+    FmUpload
+  },
   data () {
     return {
       dataModel: this.models[this.widget.model]
@@ -169,6 +187,12 @@ export default {
             label: item[this.widget.options.props.label]
           }
         })
+      })
+    }
+
+    if (this.widget.type === 'imgupload') {
+      this.remote[this.widget.options.tokenFunc]((data) => {
+        this.widget.options.token = data
       })
     }
   },

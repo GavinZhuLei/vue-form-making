@@ -227,11 +227,30 @@ export const basicComponents = [
 
 export const advanceComponents = [
   {
+    type: 'blank',
+    name: '自定义',
+    icon: 'chalkboard',
+    options: {
+      defaultType: 'String'
+    }
+  },
+  {
     type: 'imgupload',
     name: '图片',
     icon: 'regular/image',
     options: {
-      
+      defaultValue: [],
+      size: {
+        width: 100,
+        height: 100,
+      },
+      width: '',
+      tokenFunc: 'funcGetToken',
+      token: '',
+      domain: 'http://pakhu39nl.bkt.clouddn.com/',
+      disabled: false,
+      length: 8,
+      multiple: true
     }
   }
 ]

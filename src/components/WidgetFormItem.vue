@@ -140,6 +140,24 @@
           ></el-slider>
         </template>
 
+        <template v-if="element.type=='imgupload'">
+          <fm-upload
+            v-model="element.options.defaultValue"
+            :disabled="element.options.disabled"
+            :style="{'width': element.options.width}"
+            :width="element.options.size.width"
+            :height="element.options.size.height"
+            token="xxx"
+            domain="xxx"
+          >
+            
+          </fm-upload>
+        </template>
+
+        <template v-if="element.type=='blank'">
+          <div style="height: 50px;color: #999;background: #eee;line-height:50px;text-align:center;">自定义区域</div>
+        </template>
+
         <el-button title="删除" @click.stop="handleWidgetDelete(index)" class="widget-action-delete" v-if="selectWidget.key == element.key" circle plain type="danger">
           <icon name="regular/trash-alt" style="width: 12px;height: 12px;"></icon>
         </el-button>
@@ -151,8 +169,12 @@
 </template>
 
 <script>
+import FmUpload from './Upload'
 export default {
   props: ['element', 'select', 'index', 'data'],
+  components: {
+    FmUpload
+  },
   data () {
     return {
       selectWidget: this.select

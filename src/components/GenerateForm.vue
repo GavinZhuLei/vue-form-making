@@ -17,6 +17,12 @@
           </el-row>
         </template>
 
+        <template v-else-if="item.type == 'blank'">
+          <el-form-item :label="item.name" :prop="item.model" :key="item.key">
+            <slot :name="item.model" :model="models"></slot>
+          </el-form-item>
+        </template>
+
         <template v-else>
           <genetate-form-item :key="item.key" :models.sync="models" :rules="rules" :widget="item" :remote="remote"></genetate-form-item>
         </template>
@@ -59,7 +65,12 @@ export default {
           if (Object.keys(this.value).indexOf(genList[i].model) >= 0) {
             this.models[genList[i].model] = this.value[genList[i].model]
           } else {
-            this.models[genList[i].model] = genList[i].options.defaultValue
+            if (genList[i].type === 'blank') {
+              this.models[genList[i].model] = genList[i].options.defaultType === 'String' ? '' : (genList[i].options.defaultType === 'Object' ? {} : [])
+            } else {
+              this.models[genList[i].model] = genList[i].options.defaultValue
+            }
+            
           }
           
           if (this.rules[genList[i].model]) {
@@ -81,6 +92,14 @@ export default {
           }
         })
       })
+    }
+  },
+  watch: {
+    'aaa': {
+      deep: true,
+      handler (val) {
+        console.log('aaa', val)
+      }
     }
   }
 }

@@ -87,7 +87,13 @@
       @on-submit="handleTest"
       width="1000px"
     >
-      <generate-form :data="widgetForm" :remote="remoteFuncs" :value="widgetModels" ref="generateForm"></generate-form>
+      <generate-form :data="widgetForm" :remote="remoteFuncs" :value="widgetModels" ref="generateForm">
+
+        <template slot="blank" slot-scope="scope">
+          宽度：<el-input v-model="scope.model.blank.width" style="width: 200px"></el-input>
+          高度：<el-input v-model="scope.model.blank.height" style="width: 200px"></el-input>
+        </template>
+      </generate-form>
     </cus-dialog>
 
     <cus-dialog
@@ -120,6 +126,7 @@ import GenerateForm from './GenerateForm'
 import Clipboard from 'clipboard'
 import {basicComponents, layoutComponents, advanceComponents} from './componentsConfig.js'
 import {loadJs, loadCss} from '../util/index.js'
+import request from '../util/request.js'
 
 export default {
   name: 'fm-making-form',
@@ -158,12 +165,18 @@ export default {
 
             resolve(options)
           }, 2000)
+        },
+        funcGetToken (resolve) {
+          request.get('http://localhost:9000/api/uptoken').then(res => {
+            resolve(res.uptoken)
+          })
         }
       },
       widgetModels: {
         key1: '啦啦啦啦啦',
         key2: '选项2'
-      }
+      },
+      blank: ''
     }
   },
   mounted () {

@@ -7,6 +7,11 @@
       <el-form-item label="宽度" v-if="Object.keys(data.options).indexOf('width')>=0">
         <el-input v-model="data.options.width"></el-input>
       </el-form-item>
+
+      <el-form-item label="大小" v-if="Object.keys(data.options).indexOf('size')>=0">
+        宽度：<el-input style="width: 90px;" type="number" v-model.number="data.options.size.width"></el-input>
+        高度：<el-input style="width: 90px;" type="number" v-model.number="data.options.size.height"></el-input>
+      </el-form-item>
       
       <el-form-item label="占位内容" v-if="Object.keys(data.options).indexOf('placeholder')>=0 && (data.type!='time' || data.type!='date')">
         <el-input v-model="data.options.placeholder"></el-input>
@@ -192,6 +197,28 @@
         </el-form-item>
       </template>
 
+      <template v-if="data.type=='imgupload'">
+        <el-form-item label="最大上传数">
+          <el-input type="number" v-model.number="data.options.length"></el-input>
+        </el-form-item>
+        <el-form-item label="Domain" :required="true">
+          <el-input v-model="data.options.domain"></el-input>
+        </el-form-item>
+        <el-form-item label="获取七牛Token方法" :required="true">
+          <el-input v-model="data.options.tokenFunc"></el-input>
+        </el-form-item>
+      </template>
+
+      <template v-if="data.type=='blank'">
+        <el-form-item label="绑定数据类型">
+          <el-select v-model="data.options.defaultType">
+            <el-option value="String" label="字符"></el-option>
+            <el-option value="Object" label="对象"></el-option>
+            <el-option value="Array" label="数组"></el-option>
+          </el-select>
+        </el-form-item>
+      </template>
+
       <template v-if="data.type == 'grid'">
         <el-form-item label="栅格间隔">
           <el-input type="number" v-model.number="data.options.gutter"></el-input>
@@ -232,15 +259,16 @@
       
 
       <template v-if="data.type != 'grid'">
+        
+        <el-form-item label="数据绑定Key">
+          <el-input v-model="data.model"></el-input>
+        </el-form-item>
         <el-form-item label="操作属性">
           <el-checkbox v-model="data.options.readonly" v-if="Object.keys(data.options).indexOf('readonly')>=0">完全只读</el-checkbox>
           <el-checkbox v-model="data.options.disabled" v-if="Object.keys(data.options).indexOf('disabled')>=0">禁用	</el-checkbox>
           <el-checkbox v-model="data.options.editable" v-if="Object.keys(data.options).indexOf('editable')>=0">文本框可输入</el-checkbox>
           <el-checkbox v-model="data.options.clearable" v-if="Object.keys(data.options).indexOf('clearable')>=0">显示清除按钮</el-checkbox>
           <el-checkbox v-model="data.options.arrowControl" v-if="Object.keys(data.options).indexOf('arrowControl')>=0">使用箭头进行时间选择</el-checkbox>
-        </el-form-item>
-        <el-form-item label="数据绑定Key">
-          <el-input v-model="data.model"></el-input>
         </el-form-item>
         <el-form-item label="校验">
           <div>
