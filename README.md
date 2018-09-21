@@ -1,7 +1,7 @@
 # vue-form-making
 基于Vue,ElementUI快速创建表单，进行数据校验，获取表单数据
 
-演示地址：http://tools.xiaoyaoji.cn/form-marking
+演示地址：http://tools.xiaoyaoji.cn/form
 
 ## CDN
 ``` html
