@@ -3,8 +3,6 @@
 
 演示地址：http://tools.xiaoyaoji.cn/form
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/APXf9zbJp-I" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
 ## CDN
 ``` html
 <!-- 引入样式 -->
