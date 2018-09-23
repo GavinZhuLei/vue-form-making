@@ -1,7 +1,9 @@
 # vue-form-making
-基于Vue,ElementUI快速创建表单，进行数据校验，获取表单数据
+基于Vue,ElementUI开发的一款表单设计器，为开发者减轻工作量的利器
 
 演示地址：http://tools.xiaoyaoji.cn/form
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/APXf9zbJp-I" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 ## CDN
 ``` html
@@ -119,7 +121,7 @@ new Vue({
         
                     resolve(options) // 将后端获取的数据放入回调函数中
                   }, 2000)
-                }，
+                },
                 func_test2....
             }
         }
