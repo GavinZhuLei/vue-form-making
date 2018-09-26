@@ -58,7 +58,7 @@
         <el-button type="text" size="medium" @click="handleGoGithub">GitHub</el-button>
         <el-button type="text" size="medium" icon="el-icon-view" @click="handlePreview">预览</el-button>
         <el-button type="text" size="medium" icon="el-icon-tickets" @click="handleGenerateJson">生成JSON</el-button>
-        <el-button type="text" size="medium" icon="el-icon-document" >生成代码</el-button>
+        <el-button type="text" size="medium" icon="el-icon-document" @click="handleGenerateCode">生成代码</el-button>
       </el-header>
       <el-main>
         
@@ -103,13 +103,22 @@
       width="800px"
       form
     >
-      <div id="jsoneditor" style="height: 400px;">
-
-      </div>
+      <div id="jsoneditor" style="height: 400px;width: 100%;">{{jsonTemplate}}</div>
       
       <template slot="action">
         <el-button id="copybtn" data-clipboard-target=".ace_text-input">双击复制</el-button>
       </template>
+    </cus-dialog>
+
+    <cus-dialog
+      :visible="codeVisible"
+      @on-close="codeVisible = false"
+      ref="codePreview"
+      width="800px"
+      form
+      :action="false"
+    >
+      <div id="codeeditor" style="height: 400px; width: 100%;">{{htmlTemplate}}</div>
     </cus-dialog>
   </el-container>
 </template>
@@ -127,6 +136,7 @@ import Clipboard from 'clipboard'
 import {basicComponents, layoutComponents, advanceComponents} from './componentsConfig.js'
 import {loadJs, loadCss} from '../util/index.js'
 import request from '../util/request.js'
+import generateCode from './generateCode.js'
 
 export default {
   name: 'fm-making-form',
@@ -154,6 +164,7 @@ export default {
       widgetFormSelect: null,
       previewVisible: false,
       jsonVisible: false,
+      codeVisible: false,
       remoteFuncs: {
         func_test (resolve) {
           setTimeout(() => {
@@ -176,12 +187,15 @@ export default {
         key1: '啦啦啦啦啦',
         key2: '选项2'
       },
-      blank: ''
+      blank: '',
+      htmlTemplate: '',
+      jsonTemplate: ''
     }
   },
   mounted () {
-    loadCss('https://unpkg.com/jsoneditor/dist/jsoneditor.min.css')
-    loadJs('https://unpkg.com/jsoneditor/dist/jsoneditor.min.js')
+    // loadCss('https://unpkg.com/jsoneditor/dist/jsoneditor.min.css')
+    // loadJs('https://unpkg.com/jsoneditor/dist/jsoneditor.min.js')
+    loadJs('lib/ace/src/ace.js')
   },
   methods: {
     handleGoGithub () {
@@ -215,13 +229,21 @@ export default {
     handleGenerateJson () {
       console.log(JSON.stringify(this.widgetForm))
       this.jsonVisible = true
+      this.jsonTemplate = this.widgetForm
       this.$nextTick(() => {
-        const editor = new JSONEditor(document.getElementById("jsoneditor"), {
-          "mode": "code"
-        })
-        editor.set(this.widgetForm)
+
+        const editor = ace.edit('jsoneditor')
+        editor.session.setMode("ace/mode/json")
 
         const btnCopy = new Clipboard('#copybtn')
+      })
+    },
+    handleGenerateCode () {
+      this.codeVisible = true
+      this.htmlTemplate = generateCode(JSON.stringify(this.widgetForm))
+      this.$nextTick(() => {
+        const editor = ace.edit('codeeditor')
+        editor.session.setMode("ace/mode/html")
       })
     }
   },
