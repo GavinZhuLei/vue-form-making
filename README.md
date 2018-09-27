@@ -3,7 +3,7 @@
 
 工具地址：http://tools.xiaoyaoji.cn/form
 
-![](https://github.com/GavinZhuLei/vue-form-making/blob/master/images/learn_01.gif)
+![](https://user-gold-cdn.xitu.io/2018/9/27/1661a4fde04cff7f?w=717&h=378&f=gif&s=1587372)
 
 ## 特性
 
@@ -51,7 +51,7 @@ Vue.component(GenerateForm.name, GenerateForm)
 ## 功能介绍
 
 通过 [在线地址](http://tools.xiaoyaoji.cn/form) 或者拉取代码自己打包到项目生成的JSON，用于表单渲染
-![](https://github.com/GavinZhuLei/vue-form-making/blob/master/images/learn_02.png)
+![](https://user-gold-cdn.xitu.io/2018/9/27/1661a50b64f77e5f?w=1580&h=1080&f=png&s=162948)
 
 下面就是加载对应的数据用于展示，假设你已经正确加载组件
 
