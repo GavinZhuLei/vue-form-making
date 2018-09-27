@@ -118,7 +118,7 @@
       form
       :action="false"
     >
-      <div id="codeeditor" style="height: 400px; width: 100%;">{{htmlTemplate}}</div>
+      <div id="codeeditor" style="height: 500px; width: 100%;">{{htmlTemplate}}</div>
     </cus-dialog>
   </el-container>
 </template>

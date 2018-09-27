@@ -3,6 +3,8 @@
 
 演示地址：http://tools.xiaoyaoji.cn/form
 
+![](https://github.com/GavinZhuLei/vue-form-making/blob/master/images/learn_01.gif)
+
 ## CDN
 ``` html
 <!-- 引入样式 -->
@@ -138,4 +140,4 @@ new Vue({
 })
 ```
 
-自此一个表单就制作完毕
+至此一个表单就制作完毕
