@@ -28,7 +28,7 @@
       <el-form-item label="最小值" v-if="Object.keys(data.options).indexOf('min')>=0">
         <el-input-number v-model="data.options.min" :min="0" :max="100" :step="1"></el-input-number>
       </el-form-item>
-      <el-form-item label="最小值" v-if="Object.keys(data.options).indexOf('max')>=0">
+      <el-form-item label="最大值" v-if="Object.keys(data.options).indexOf('max')>=0">
         <el-input-number v-model="data.options.max" :min="0" :max="100" :step="1"></el-input-number>
       </el-form-item>
       <el-form-item label="步长" v-if="Object.keys(data.options).indexOf('step')>=0">
@@ -128,7 +128,8 @@
       <el-form-item label="默认值" v-if="Object.keys(data.options).indexOf('defaultValue')>=0 && (data.type == 'textarea' || data.type == 'input' || data.type=='rate' || data.type=='color' || data.type=='switch')">
         <el-input v-if="data.type=='textarea'" type="textarea" :rows="5" v-model="data.options.defaultValue"></el-input>
         <el-input v-if="data.type=='input'" v-model="data.options.defaultValue"></el-input>
-        <el-rate v-if="data.type == 'rate'" :allow-half="data.options.allowHalf" v-model="data.options.defaultValue"></el-rate>
+        <el-rate v-if="data.type == 'rate'" style="display:inline-block;vertical-align: middle;" :max="data.options.max" :allow-half="data.options.allowHalf" v-model="data.options.defaultValue"></el-rate>
+        <el-button type="text" v-if="data.type == 'rate'" style="display:inline-block;vertical-align: middle;margin-left: 10px;" @click="data.options.defaultValue=0">清空</el-button>
         <el-color-picker 
           v-if="data.type == 'color'"
           v-model="data.options.defaultValue"
