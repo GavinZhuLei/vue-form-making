@@ -50,7 +50,7 @@ Vue.component(GenerateForm.name, GenerateForm)
 
 ## 功能介绍
 
-通过 ![在线地址](http://tools.xiaoyaoji.cn/form) 或者拉取代码自己打包到项目生成的JSON，用于表单渲染
+通过 [在线地址](http://tools.xiaoyaoji.cn/form) 或者拉取代码自己打包到项目生成的JSON，用于表单渲染
 ![](https://github.com/GavinZhuLei/vue-form-making/blob/master/images/learn_02.png)
 
 下面就是加载对应的数据用于展示，假设你已经正确加载组件
