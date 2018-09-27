@@ -3,7 +3,7 @@
 
 工具地址：http://tools.xiaoyaoji.cn/form
 
-![](https://user-gold-cdn.xitu.io/2018/9/27/1661a4fde04cff7f?w=717&h=378&f=gif&s=1587372)
+![](https://user-gold-cdn.xitu.io/2018/9/27/1661a6cd60454273)
 
 ## 特性
 
