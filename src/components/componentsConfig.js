@@ -247,7 +247,7 @@ export const advanceComponents = [
       width: '',
       tokenFunc: 'funcGetToken',
       token: '',
-      domain: 'http://pakhu39nl.bkt.clouddn.com/',
+      domain: 'http://pfp81ptt6.bkt.clouddn.com/',
       disabled: false,
       length: 8,
       multiple: true
