@@ -1,9 +1,19 @@
-# vue-form-making
-基于Vue,ElementUI开发的一款表单设计器，为开发者减轻工作量的利器
+# form-making
+基于Vue,ElementUI开发的一款表单设计器，提高表单开发效率的利器，让开发者从枯燥的表单代码编写中解放出来
 
-演示地址：http://tools.xiaoyaoji.cn/form
+工具地址：http://tools.xiaoyaoji.cn/form
 
 ![](https://github.com/GavinZhuLei/vue-form-making/blob/master/images/learn_01.gif)
+
+## 特性
+
+* 图形化配置页面
+* 一键预览配置的效果
+* 一键生成配置json数据
+* 一键生成代码，立即可运行
+* 提供自定义组件满足用户自定义需求
+* 提供远端数据接口，方便用户需要异步数据加载
+* 提供功能强大的高级组件
 
 ## CDN
 ``` html
@@ -13,34 +23,6 @@
 <script src="https://unpkg.com/form-making/dist/FormMaking.umd.js"></script>
 ```
 
-## Hello world
-``` html
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <!-- import CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-  <link rel="stylesheet" href="https://unpkg.com/form-making/dist/FormMaking.css">
-</head>
-<body>
-  <div id="app">
-    <fm-making-form></fm-making-form>
-  </div>
-</body>
-  <!-- import Vue before Element -->
-  <script src="https://unpkg.com/vue/dist/vue.js"></script>
-  <!-- import JavaScript -->
-  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
-  <script src="https://unpkg.com/form-making/dist/FormMaking.umd.js"></script>
-  <script>
-    new Vue({
-      el: '#app'
-    })
-  </script>
-</html>
-```
-
 ## Install
 ```shell
 npm install form-making -S
@@ -48,47 +30,31 @@ npm install form-making -S
 
 ## Quick Start
 ``` javascript
-import Vue from 'vue'
-import Element from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
 import FormMaking from 'form-making'
 import 'form-making/dist/FormMaking.css'
-Vue.use(ElementUI, { size: 'small' })
 Vue.use(FormMaking)
 
 // or
 import {
-  MakingForm
+  GenerateForm
 } from 'form-making'
 import 'form-making/dist/FormMaking.css'
 
-Vue.component(MakingForm.name, MakingForm)
+Vue.component(GenerateForm.name, GenerateForm)
 ```
 
 ## Template
 ``` html
-<fm-making-form></fm-making-form>
+<fm-generate-form></fm-generate-form>
 ```
 
 ## 功能介绍
 
-工具提供两个组件 MakingForm(表单配置)，GenerateForm(表单渲染)
+通过![在线地址](http://tools.xiaoyaoji.cn/form)或者拉取代码自己打包到项目生成的JSON，用于表单渲染
 
-首先看看 MakingForm 的功能介绍
+![](https://github.com/GavinZhuLei/vue-form-making/blob/master/images/learn_02.png)
 
-![](https://user-gold-cdn.xitu.io/2018/9/14/165d7578d36b0654?w=2878&h=1108&f=png&s=233664)
-
-![](https://user-gold-cdn.xitu.io/2018/9/14/165d75fc8f26c49c?w=2266&h=1402&f=png&s=255307)
-
-预览可以实时预览你编辑表单的表单渲染的效果，并可以查看获取到填写的数据结构
-
-![](https://user-gold-cdn.xitu.io/2018/9/14/165d762ed2d9ec62?w=1966&h=836&f=png&s=137285)
-
-生成JSON操作为渲染组件生成JSON数据
-![](https://user-gold-cdn.xitu.io/2018/9/14/165d76fd6941702a?w=1552&h=982&f=png&s=142989)
-
-
-接下来就是 GenerateForm 如何使用，这里默认你已经将该组件正确引入项目
+下面就是加载对应的数据用于展示，假设你已经正确加载组件
 
 ``` html
 <fm-generate-form 
@@ -139,5 +105,3 @@ new Vue({
     }
 })
 ```
-
-至此一个表单就制作完毕

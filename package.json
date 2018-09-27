@@ -1,7 +1,7 @@
 {
   "name": "form-making",
-  "description": "基于Vue,ElementUI快速创建表单，进行数据校验，获取表单数据",
-  "version": "0.1.12",
+  "description": "基于Vue,ElementUI开发的一款表单设计器，提高表单开发效率的利器，让开发者从枯燥的表单代码编写中解放出来",
+  "version": "1.0.0",
   "author": "GavinZhulei",
   "license": "MIT",
   "keywords": [
@@ -20,7 +20,7 @@
     "serve": "vue-cli-service serve --open",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "build-bundle": "vue-cli-service build --target lib --name FormMaking ./src/index.js"
+    "build-bundle": "vue-cli-service build --target lib --name FormMaking ./src/indexBundle.js"
   },
   "dependencies": {
     "ace": "^1.3.0",
