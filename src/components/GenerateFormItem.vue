@@ -178,7 +178,6 @@ export default {
     }
   },
   created () {
-    console.log('remote', this.remote)
     if (this.widget.options.remote && this.remote[this.widget.options.remoteFunc]) {
       this.remote[this.widget.options.remoteFunc]((data) => {
         this.widget.options.remoteOptions = data.map(item => {

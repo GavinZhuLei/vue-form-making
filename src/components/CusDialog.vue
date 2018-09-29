@@ -79,7 +79,6 @@ export default {
     }
   },
   mounted () {
-    console.log(this.$refs.elDialog)
   },
   watch: {
     dialogVisible (val) {

@@ -55,10 +55,6 @@ export default {
     }
   },
   created () {
-    console.log('generate', this.data)
-
-    console.log('value', this.value)
-
     this.generateModle(this.data.list)
   },
   methods: {
@@ -99,14 +95,6 @@ export default {
           }
         })
       })
-    }
-  },
-  watch: {
-    'aaa': {
-      deep: true,
-      handler (val) {
-        console.log('aaa', val)
-      }
     }
   }
 }

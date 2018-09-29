@@ -378,7 +378,6 @@ export default {
   },
   watch: {
     'data.options.isRange': function(val) {
-      console.log('range,', val)
       if (typeof val !== 'undefined') {
         if (val) {
           this.data.options.defaultValue = null

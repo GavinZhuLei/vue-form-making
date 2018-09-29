@@ -218,16 +218,13 @@ export default {
     },
     handleTest () {
       this.$refs.generateForm.getData().then(data => {
-        console.log('form', data)
         this.$alert(data, '').catch(e=>{})
         this.$refs.widgetPreview.end()
       }).catch(e => {
-        console.log(e)
         this.$refs.widgetPreview.end()
       })
     },
     handleGenerateJson () {
-      console.log(JSON.stringify(this.widgetForm))
       this.jsonVisible = true
       this.jsonTemplate = this.widgetForm
       this.$nextTick(() => {
@@ -251,7 +248,6 @@ export default {
     widgetForm: {
       deep: true,
       handler: function (val) {
-        console.log('######', val)
         console.log(this.$refs.widgetForm)
       }
     }

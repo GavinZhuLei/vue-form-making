@@ -182,7 +182,6 @@ export default {
   },
   methods: {
     handleSelectWidget (index) {
-      console.log(index, '#####')
       this.selectWidget = this.data.list[index]
     },
     handleWidgetDelete (index) {
