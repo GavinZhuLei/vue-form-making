@@ -11,6 +11,7 @@
       <div class="fm-link">
         <a href="https://github.com/GavinZhuLei/vue-form-making">GitHub</a>
         <a href="https://gitee.com/gavinzhulei/vue-form-making">码云</a>
+        <a href="http://www.xiaoyaoji.cn" target="_blank">小幺鸡接口文档</a>
       </div>
     </div>
     <div class="fm-container"><router-view/></div>
