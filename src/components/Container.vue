@@ -55,12 +55,12 @@
     </el-aside>
     <el-container class="center-container" direction="vertical">
       <el-header class="btn-bar" style="height: 45px;">
-        <el-button type="text" size="medium" @click="handleGoGithub">GitHub</el-button>
+        <!-- <el-button type="text" size="medium" @click="handleGoGithub">GitHub</el-button> -->
         <el-button type="text" size="medium" icon="el-icon-view" @click="handlePreview">预览</el-button>
         <el-button type="text" size="medium" icon="el-icon-tickets" @click="handleGenerateJson">生成JSON</el-button>
         <el-button type="text" size="medium" icon="el-icon-document" @click="handleGenerateCode">生成代码</el-button>
       </el-header>
-      <el-main>
+      <el-main :class="{'widget-empty': widgetForm.list.length == 0}">
         
         <widget-form ref="widgetForm" :data="widgetForm" :select.sync="widgetFormSelect"></widget-form>
       </el-main>
@@ -258,5 +258,10 @@ export default {
 <style lang="scss">
 @import '../styles/cover.scss';
 @import '../styles/index.scss';
+
+.widget-empty{
+  background: url('../assets/form_empty.png') no-repeat;
+  background-position: 50%;
+}
 
 </style>
