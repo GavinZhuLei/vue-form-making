@@ -4,6 +4,10 @@
       <img class="fm-logo" src="./assets/logo.png">
       <div class="fm-title">表单设计器</div>
 
+      <div style="color: #fff; font-size: 13px; position: absolute; top: 24px; left: 200px;">
+        QQ交流群：902048874
+      </div>
+
       <div class="fm-link">
         <a href="https://github.com/GavinZhuLei/vue-form-making">GitHub</a>
         <a href="https://gitee.com/gavinzhulei/vue-form-making">码云</a>
@@ -26,6 +30,7 @@ export default {
   box-shadow: 0 2px 10px rgba(70,160,252, 0.6);
   padding: 0 10px;
   background-image: linear-gradient(to right,#1278f6,#00b4aa);
+  position: relative;
 
   .fm-logo{
     height: 26px;
