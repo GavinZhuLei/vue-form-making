@@ -86,8 +86,9 @@
       ref="widgetPreview"
       @on-submit="handleTest"
       width="1000px"
+      form
     >
-      <generate-form :data="widgetForm" :remote="remoteFuncs" :value="widgetModels" ref="generateForm">
+      <generate-form v-if="previewVisible" :data="widgetForm" :remote="remoteFuncs" :value="widgetModels" ref="generateForm">
 
         <template slot="blank" slot-scope="scope">
           宽度：<el-input v-model="scope.model.blank.width" style="width: 100px"></el-input>
@@ -183,10 +184,7 @@ export default {
           })
         }
       },
-      widgetModels: {
-        key1: '啦啦啦啦啦',
-        key2: '选项2'
-      },
+      widgetModels: {},
       blank: '',
       htmlTemplate: '',
       jsonTemplate: ''

@@ -209,6 +209,7 @@ export default {
     models: {
       deep: true,
       handler (val) {
+        console.log('--------')
         this.dataModel = val[this.widget.model]
       }
     }
