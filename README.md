@@ -148,7 +148,8 @@ new Vue({
 
 ## 高级字段使用
 
-
+* [自定义扩展](https://github.com/GavinZhuLei/vue-form-making/blob/master/doc/blank.md "自定义扩展")
+* [图片上传](https://github.com/GavinZhuLei/vue-form-making/blob/master/doc/imgupload.md "图片上传")
 
 ## 问题交流
 
