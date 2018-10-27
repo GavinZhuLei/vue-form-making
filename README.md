@@ -27,11 +27,13 @@
 ```
 
 ## Install
+
 ```shell
 npm install form-making -S
 ```
 
 ## Quick Start
+
 ``` javascript
 import FormMaking from 'form-making'
 import 'form-making/dist/FormMaking.css'
@@ -51,21 +53,57 @@ Vue.component(GenerateForm.name, GenerateForm)
 <fm-generate-form></fm-generate-form>
 ```
 
-## 功能介绍
+## 设计器引用
 
-通过 [在线地址](http://tools.xiaoyaoji.cn/form) 或者拉取代码自己打包到项目生成的JSON，用于表单渲染
+``` javascript
+import {MakingForm} from 'form-making'
+Vue.component(MakingForm.name, MakingForm)
+```
+
+```html
+<fm-making-form  preview generate-code generate-json>
+    <template slot="action">
+    </template>
+  </fm-making-form>
+```
+
+##### props
+| Prop name  | Description  | Type  | Default value |
+| ------------ | ------------ | ------------ | ------------ |
+| preview  | 预览，头部操作按钮  | Boolean  | false |
+| generate-json  | 生成JSON  | Boolean  | false |
+| generate-code  | 生成代码  | Boolean  | false |
+
+
+##### methods
+| Function name | Description                    |
+| ------------- | ------------------------------ |
+| `getJSON`      | 获取设计器生成的JSON数据       |
+| `getHtml`   | 获取生成可使用的html代码    |
+| `setJSON(value)`   | 根据value值设置表单设计器    |
+
+##### slots
+| Slot name | Description                    |
+| ------------- | ------------------------------ |
+|   action    | 自定义设计器操作按钮，展示在设计头部区域       |
+
+
+## 表单渲染
+
+通过 [在线地址](http://tools.xiaoyaoji.cn/form) 或者引用设计器生成的JSON，用于表单渲染
 ![](https://user-gold-cdn.xitu.io/2018/9/27/1661a50b64f77e5f?w=1580&h=1080&f=png&s=162948)
 
 下面就是加载对应的数据用于展示，假设你已经正确加载组件
 
 ``` html
-<fm-generate-form 
-    :data="jsonData" 
-    :remote="remoteFuncs" 
+<fm-generate-form
+    :data="jsonData"
+    :remote="remoteFuncs"
     :value="values"
     ref="generateForm">
 </fm-generate-form>
 ```
+
 ``` javascript
 new Vue({
     ...
@@ -107,6 +145,11 @@ new Vue({
     }
 })
 ```
+
+## 高级字段使用
+
+
+
 ## 问题交流
 
 QQ群：902048874

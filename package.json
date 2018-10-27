@@ -1,7 +1,7 @@
 {
   "name": "form-making",
   "description": "基于Vue,ElementUI开发的一款表单设计器，提高表单开发效率的利器，让开发者从枯燥的表单代码编写中解放出来",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "GavinZhulei",
   "license": "MIT",
   "keywords": [
@@ -31,6 +31,10 @@
     "multiparty": "^4.2.1",
     "normalize.css": "^8.0.0",
     "qiniu": "^7.2.1",
+    "qiniu-js": "^2.5.1",
+    "tinymce": "^4.8.4",
+    "tui-color-picker": "^2.2.0",
+    "tui-editor": "^1.2.6",
     "viewerjs": "^1.2.0",
     "vue": "^2.5.16",
     "vue-awesome": "^3.0.0",
