@@ -151,6 +151,16 @@ new Vue({
 * [自定义扩展](https://github.com/GavinZhuLei/vue-form-making/blob/master/doc/blank.md "自定义扩展")
 * [图片上传](https://github.com/GavinZhuLei/vue-form-making/blob/master/doc/imgupload.md "图片上传")
 
+## 支持
+
+* 如果你发现了新的 bug，或者有新的 feature request，请新建一个 issue
+
+## 捐赠 
+
+如果觉得还不错，请作者喝杯咖啡吧 ☺
+
+![](https://user-gold-cdn.xitu.io/2018/10/28/166ba780bb01fef7?w=2304&h=1050&f=jpeg&s=197327)
+
 ## 问题交流
 
 QQ群：902048874
