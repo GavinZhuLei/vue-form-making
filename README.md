@@ -19,7 +19,7 @@
 * 快速获取表单数据
 
 ## 开源协议
-![LGPL](https://opensource.org/licenses/LGPL-3.0)
+[LGPL](https://opensource.org/licenses/LGPL-3.0)
 
 请您遵守开源协议标准，若需要用于商业软件而不开源代码请通过引用方式(npm 或者 cdn)使用
 
