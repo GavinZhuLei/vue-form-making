@@ -18,6 +18,11 @@
 * 支持表单验证
 * 快速获取表单数据
 
+## 开源协议
+![LGPL](https://opensource.org/licenses/LGPL-3.0)
+
+请您遵守开源协议标准，若需要用于商业软件而不开源代码请通过引用方式(npm 或者 cdn)使用
+
 ## CDN
 ``` html
 <!-- 引入样式 -->
@@ -150,12 +155,6 @@ new Vue({
 
 * [自定义扩展](https://github.com/GavinZhuLei/vue-form-making/blob/master/doc/blank.md "自定义扩展")
 * [图片上传](https://github.com/GavinZhuLei/vue-form-making/blob/master/doc/imgupload.md "图片上传")
-
-## 社区资料笔记
-
-* [Vue.Draggable](https://note.youdao.com/share/?id=f525c8897d9d7f6648bc28d59f5d03f4&type=note#/) （by @[jianhunxia](https://github.com/jianhunxia) 提供)
-
-* [jsonEditor、ace和clipboard](https://note.youdao.com/share/?id=4cb3b53c76cb9f5f733f171529f71501&type=note#/) （by @[jianhunxia](https://github.com/jianhunxia) 提供)
 
 ## 支持
 
