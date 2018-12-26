@@ -1,239 +1,352 @@
 <template>
-  <el-form-item class="widget-view "
-      v-if="element && element.key" 
+  <div>
+    <!-- <div
+      v-if="element && element.key && element.type == 'div'"
+      @click.stop="handleSelectWidget(index)"
+      class="div-layout"
+      :class="{active: selectWidget.key == element.key}"
+      :style="element.options">
+      <span v-if="!element.list.length">div</span>
+      <draggable
+        class="widget-form-list"
+        style="padding-bottom: 50px;"
+        v-model="element.list"
+        filter="widget-grid-container"
+        :options="{group:'people', ghostClass: 'ghost'}"
+        @end="handleMoveEnd"
+        @add="handleDivWidgetAdd($event, element)"
+      >
+        <template v-if="element.list.length" v-for="(el, i) in element.list">
+          <widget-form-item
+            :key="el.key"
+            v-if="el.key"
+            :element="el"
+            :select.sync="selectWidget"
+            :index="i"
+            :data="element"
+          ></widget-form-item>
+        </template>
+      </draggable>
+      <el-button
+        title="删除"
+        @click.stop="handleWidgetDelete(index)"
+        class="div-action-delete"
+        v-if="selectWidget.key == element.key"
+        circle
+        plain
+        type="danger"
+      >
+        <icon name="regular/trash-alt" style="width: 12px;height: 12px;"></icon>
+      </el-button>
+    </div> -->
+
+    <el-form-item
+      class="widget-view"
+      v-if="element && element.key && !element.islayout && element.type != 'div'"
       :class="{active: selectWidget.key == element.key, 'is_req': element.options.required}"
       :label="element.name"
       @click.native="handleSelectWidget(index)"
     >
-        <template v-if="element.type == 'input'">
-          <el-input 
-            v-model="element.options.defaultValue"
-            :style="{width: element.options.width}"
-            :placeholder="element.options.placeholder"
-          ></el-input>
-        </template>
+      <template v-if="element.type == 'input'">
+        <el-input
+          v-model="element.options.defaultValue"
+          :style="{width: element.options.width}"
+          :placeholder="element.options.placeholder"
+        ></el-input>
+      </template>
 
-        <template v-if="element.type == 'textarea'">
-          <el-input type="textarea" :rows="5"
-            v-model="element.options.defaultValue"
-            :style="{width: element.options.width}"
-            :placeholder="element.options.placeholder"
-          ></el-input>
-        </template>
+      <template v-if="element.type == 'textarea'">
+        <el-input
+          type="textarea"
+          :rows="5"
+          v-model="element.options.defaultValue"
+          :style="{width: element.options.width}"
+          :placeholder="element.options.placeholder"
+        ></el-input>
+      </template>
 
-        <template v-if="element.type == 'number'">
-          <el-input-number 
-            v-model="element.options.defaultValue" 
-            :disabled="element.options.disabled"
-            :controls-position="element.options.controlsPosition"
-            :style="{width: element.options.width}"
-          ></el-input-number>
-        </template>
+      <template v-if="element.type == 'number'">
+        <el-input-number
+          v-model="element.options.defaultValue"
+          :disabled="element.options.disabled"
+          :controls-position="element.options.controlsPosition"
+          :style="{width: element.options.width}"
+        ></el-input-number>
+      </template>
 
-        <template v-if="element.type == 'radio'">
-          <el-radio-group v-model="element.options.defaultValue"
-            :style="{width: element.options.width}"
-          >
-            <el-radio  
-              :style="{display: element.options.inline ? 'inline-block' : 'block'}"
-              :label="item.value" v-for="(item, index) in element.options.options" :key="item.value + index"
-            >
-              {{element.options.showLabel ? item.label : item.value}}
-            </el-radio>
-          </el-radio-group>
-        </template>
+      <template v-if="element.type == 'radio'">
+        <el-radio-group
+          v-model="element.options.defaultValue"
+          :style="{width: element.options.width}"
+        >
+          <el-radio
+            :style="{display: element.options.inline ? 'inline-block' : 'block'}"
+            :label="item.value"
+            v-for="(item, index) in element.options.options"
+            :key="item.value + index"
+          >{{element.options.showLabel ? item.label : item.value}}</el-radio>
+        </el-radio-group>
+      </template>
 
-        <template v-if="element.type == 'checkbox'">
-          <el-checkbox-group v-model="element.options.defaultValue"
-            :style="{width: element.options.width}"
-          >
-            <el-checkbox
-              :style="{display: element.options.inline ? 'inline-block' : 'block'}"
-              :label="item.value" v-for="(item, index) in element.options.options" :key="item.value + index"
-            >
-              {{element.options.showLabel ? item.label : item.value}}
-            </el-checkbox>
-          </el-checkbox-group>
-        </template>
+      <template v-if="element.type == 'checkbox'">
+        <el-checkbox-group
+          v-model="element.options.defaultValue"
+          :style="{width: element.options.width}"
+        >
+          <el-checkbox
+            :style="{display: element.options.inline ? 'inline-block' : 'block'}"
+            :label="item.value"
+            v-for="(item, index) in element.options.options"
+            :key="item.value + index"
+          >{{element.options.showLabel ? item.label : item.value}}</el-checkbox>
+        </el-checkbox-group>
+      </template>
 
-        <template v-if="element.type == 'time'">
-          <el-time-picker 
-            v-model="element.options.defaultValue"
-            :is-range="element.options.isRange"
-            :placeholder="element.options.placeholder"
-            :start-placeholder="element.options.startPlaceholder"
-            :end-placeholder="element.options.endPlaceholder"
-            :readonly="element.options.readonly"
-            :disabled="element.options.disabled"
-            :editable="element.options.editable"
-            :clearable="element.options.clearable"
-            :arrowControl="element.options.arrowControl"
-            :style="{width: element.options.width}"
-          >
-          </el-time-picker>
-        </template>
+      <template v-if="element.type == 'time'">
+        <el-time-picker
+          v-model="element.options.defaultValue"
+          :is-range="element.options.isRange"
+          :placeholder="element.options.placeholder"
+          :start-placeholder="element.options.startPlaceholder"
+          :end-placeholder="element.options.endPlaceholder"
+          :readonly="element.options.readonly"
+          :disabled="element.options.disabled"
+          :editable="element.options.editable"
+          :clearable="element.options.clearable"
+          :arrowControl="element.options.arrowControl"
+          :style="{width: element.options.width}"
+        ></el-time-picker>
+      </template>
 
-        <template v-if="element.type == 'date'">
-          <el-date-picker
-            v-model="element.options.defaultValue"
-            :type="element.options.type"
-            :is-range="element.options.isRange"
-            :placeholder="element.options.placeholder"
-            :start-placeholder="element.options.startPlaceholder"
-            :end-placeholder="element.options.endPlaceholder"
-            :readonly="element.options.readonly"
-            :disabled="element.options.disabled"
-            :editable="element.options.editable"
-            :clearable="element.options.clearable"
-            :style="{width: element.options.width}"  
-          >
-          </el-date-picker>
-        </template>
+      <template v-if="element.type == 'date'">
+        <el-date-picker
+          v-model="element.options.defaultValue"
+          :type="element.options.type"
+          :is-range="element.options.isRange"
+          :placeholder="element.options.placeholder"
+          :start-placeholder="element.options.startPlaceholder"
+          :end-placeholder="element.options.endPlaceholder"
+          :readonly="element.options.readonly"
+          :disabled="element.options.disabled"
+          :editable="element.options.editable"
+          :clearable="element.options.clearable"
+          :style="{width: element.options.width}"
+        ></el-date-picker>
+      </template>
 
-        <template v-if="element.type == 'rate'">
-          <el-rate v-model="element.options.defaultValue"
-            :max="element.options.max"
-            :disabled="element.options.disabled"
-            :allow-half="element.options.allowHalf"
-          ></el-rate>
-        </template>
+      <template v-if="element.type == 'rate'">
+        <el-rate
+          v-model="element.options.defaultValue"
+          :max="element.options.max"
+          :disabled="element.options.disabled"
+          :allow-half="element.options.allowHalf"
+        ></el-rate>
+      </template>
 
-        <template v-if="element.type == 'color'">
-          <el-color-picker 
-            v-model="element.options.defaultValue"
-            :disabled="element.options.disabled"
-            :show-alpha="element.options.showAlpha"
-          ></el-color-picker>
-        </template>
+      <template v-if="element.type == 'color'">
+        <el-color-picker
+          v-model="element.options.defaultValue"
+          :disabled="element.options.disabled"
+          :show-alpha="element.options.showAlpha"
+        ></el-color-picker>
+      </template>
 
-        <template v-if="element.type == 'select'">
-          <el-select
-            v-model="element.options.defaultValue"
-            :disabled="element.options.disabled"
-            :multiple="element.options.multiple"
-            :clearable="element.options.clearable"
-            :placeholder="element.options.placeholder"
-            :style="{width: element.options.width}"
-          >
-            <el-option v-for="item in element.options.options" :key="item.value" :value="item.value" :label="element.options.showLabel?item.label:item.value"></el-option>
-          </el-select>
-        </template>
+      <template v-if="element.type == 'select'">
+        <el-select
+          v-model="element.options.defaultValue"
+          :disabled="element.options.disabled"
+          :multiple="element.options.multiple"
+          :clearable="element.options.clearable"
+          :placeholder="element.options.placeholder"
+          :style="{width: element.options.width}"
+        >
+          <el-option
+            v-for="item in element.options.options"
+            :key="item.value"
+            :value="item.value"
+            :label="element.options.showLabel?item.label:item.value"
+          ></el-option>
+        </el-select>
+      </template>
 
-        <template v-if="element.type=='switch'">
-          <el-switch
-            v-model="element.options.defaultValue"
-            :disabled="element.options.disabled"
-          >
-          </el-switch>
-        </template>
+      <template v-if="element.type=='switch'">
+        <el-switch v-model="element.options.defaultValue" :disabled="element.options.disabled"></el-switch>
+      </template>
 
-        <template v-if="element.type=='slider'">
-          <el-slider 
-            v-model="element.options.defaultValue"
-            :min="element.options.min"
-            :max="element.options.max"
-            :disabled="element.options.disabled"
-            :step="element.options.step"
-            :show-input="element.options.showInput"
-            :range="element.options.range"
-            :style="{width: element.options.width}"
-          ></el-slider>
-        </template>
+      <template v-if="element.type=='slider'">
+        <el-slider
+          v-model="element.options.defaultValue"
+          :min="element.options.min"
+          :max="element.options.max"
+          :disabled="element.options.disabled"
+          :step="element.options.step"
+          :show-input="element.options.showInput"
+          :range="element.options.range"
+          :style="{width: element.options.width}"
+        ></el-slider>
+      </template>
 
-        <template v-if="element.type=='imgupload'">
-          <fm-upload
-            v-model="element.options.defaultValue"
-            :disabled="element.options.disabled"
-            :style="{'width': element.options.width}"
-            :width="element.options.size.width"
-            :height="element.options.size.height"
-            token="xxx"
-            domain="xxx"
-          >
-            
-          </fm-upload>
-        </template>
+      <template v-if="element.type=='imgupload'">
+        <fm-upload
+          v-model="element.options.defaultValue"
+          :disabled="element.options.disabled"
+          :style="{'width': element.options.width}"
+          :width="element.options.size.width"
+          :height="element.options.size.height"
+          token="xxx"
+          domain="xxx"
+        ></fm-upload>
+      </template>
 
-        <template v-if="element.type=='blank'">
-          <div style="height: 50px;color: #999;background: #eee;line-height:50px;text-align:center;">自定义区域</div>
-        </template>
+      <template v-if="element.type=='blank'">
+        <div
+          style="height: 50px;color: #999;background: #eee;line-height:50px;text-align:center;"
+        >自定义区域</div>
+      </template>
 
-        <el-button title="删除" @click.stop="handleWidgetDelete(index)" class="widget-action-delete" v-if="selectWidget.key == element.key" circle plain type="danger">
-          <icon name="regular/trash-alt" style="width: 12px;height: 12px;"></icon>
-        </el-button>
-        <el-button title="复制" @click.stop="handleWidgetClone(index)" class="widget-action-clone" v-if="selectWidget.key == element.key" circle plain type="primary">
-          <icon name="regular/clone" style="width: 12px;height: 12px;"></icon>
-        </el-button>
-        
+      <el-button
+        title="删除"
+        @click.stop="handleWidgetDelete(index)"
+        class="widget-action-delete"
+        v-if="selectWidget.key == element.key"
+        circle
+        plain
+        type="danger"
+      >
+        <icon name="regular/trash-alt" style="width: 12px;height: 12px;"></icon>
+      </el-button>
+      <el-button
+        title="复制"
+        @click.stop="handleWidgetClone(index)"
+        class="widget-action-clone"
+        v-if="selectWidget.key == element.key"
+        circle
+        plain
+        type="primary"
+      >
+        <icon name="regular/clone" style="width: 12px;height: 12px;"></icon>
+      </el-button>
     </el-form-item>
+  </div>
 </template>
 
 <script>
-import FmUpload from './Upload'
+import FmUpload from "./Upload";
+import Draggable from "vuedraggable";
 export default {
-  props: ['element', 'select', 'index', 'data'],
+  name: "WidgetFormItem",
+  props: ["element", "select", "index", "data"],
   components: {
-    FmUpload
+    FmUpload,
+    Draggable
   },
-  data () {
+  data() {
     return {
       selectWidget: this.select
-    }
+    };
   },
   methods: {
-    handleSelectWidget (index) {
-      this.selectWidget = this.data.list[index]
+    handleMoveEnd({ newIndex, oldIndex }) {
+      console.log("index", newIndex, oldIndex);
     },
-    handleWidgetDelete (index) {
+    handleSelectWidget(index) {
+      console.log("select subcomponent", this.data);
+      this.selectWidget = this.data.list[index];
+    },
+    handleDivWidgetAdd($event, row) {
+      console.log("divcoladd", $event, row);
+      const newIndex = $event.newIndex;
+      const oldIndex = $event.oldIndex;
+      const item = $event.item;
+
+      // 防止布局元素的嵌套拖拽
+      // if (item.className.indexOf("data-grid") >= 0) {
+      //   // 如果是列表中拖拽的元素需要还原到原来位置
+      //   item.tagName === "DIV" &&
+      //     this.data.list.splice(oldIndex, 0, row.list[newIndex]);
+
+      //   row.list.splice(newIndex, 1);
+
+      //   return false;
+      // }
+
+      const key =
+        Date.parse(new Date()) + "_" + Math.ceil(Math.random() * 99999);
+
+      this.$set(row.list, newIndex, {
+        ...row.list[newIndex],
+        options: {
+          ...row.list[newIndex].options,
+          remoteFunc: "func_" + key
+        },
+        key,
+        // 绑定键值
+        model: row.list[newIndex].type + "_" + key,
+        rules: []
+      });
+
+      this.selectWidget = row.list[newIndex];
+    },
+    handleWidgetDelete(index) {
       if (this.data.list.length - 1 === index) {
         if (index === 0) {
-          this.selectWidget = {}
+          this.selectWidget = {};
         } else {
-          this.selectWidget = this.data.list[index - 1]
+          this.selectWidget = this.data.list[index - 1];
         }
       } else {
-        this.selectWidget = this.data.list[index + 1]
+        this.selectWidget = this.data.list[index + 1];
       }
 
       this.$nextTick(() => {
-        this.data.list.splice(index, 1)
-      })
+        this.data.list.splice(index, 1);
+      });
     },
-    handleWidgetClone (index) {
+    handleWidgetClone(index) {
       let cloneData = {
         ...this.data.list[index],
-        options: {...this.data.list[index].options},
-        key: Date.parse(new Date()) + '_' + Math.ceil(Math.random() * 99999)
-      }
+        options: { ...this.data.list[index].options },
+        key: Date.parse(new Date()) + "_" + Math.ceil(Math.random() * 99999)
+      };
 
-      if (this.data.list[index].type === 'radio' || this.data.list[index].type === 'checkbox') {
-
+      if (
+        this.data.list[index].type === "radio" ||
+        this.data.list[index].type === "checkbox"
+      ) {
         cloneData = {
           ...cloneData,
           options: {
             ...cloneData.options,
-            options: cloneData.options.options.map(item => ({...item}))
+            options: cloneData.options.options.map(item => ({ ...item }))
           }
-        }
+        };
       }
 
-      this.data.list.splice(index, 0, cloneData)
+      this.data.list.splice(index, 0, cloneData);
 
       this.$nextTick(() => {
-        this.selectWidget = this.data.list[index + 1]
-      })
-    },
+        this.selectWidget = this.data.list[index + 1];
+      });
+    }
   },
   watch: {
-    select (val) {
-      this.selectWidget = val
+    select(val) {
+      this.selectWidget = val;
     },
     selectWidget: {
-      handler (val) {
-        this.$emit('update:select', val)
+      handler(val) {
+        this.$emit("update:select", val);
       },
       deep: true
     }
   }
-}
+};
 </script>
+<style lang="scss">
+.div-action-delete {
+  position: relative;
+  right: 21px;
+  bottom: 25px;
+  z-index: 1009;
+}
+</style>

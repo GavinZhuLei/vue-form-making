@@ -168,6 +168,17 @@ $primary-background-color: #ecf5ff;
     }
   }
 
+  .div-layout{
+    background: #F4F6FC;
+    position: relative;
+    border-left: 5px solid transparent;
+
+    &.active{
+      border-left: 5px solid $primary-color;
+      background: #b3d8ff;
+    }
+  }
+
   .widget-grid-container{
     &.ghost{
       &::after{

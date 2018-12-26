@@ -203,10 +203,10 @@ export default {
       this.configTab = value
     },
     handleMoveEnd (evt) {
-      console.log('end', evt)
+      // console.log('end', evt)
     },
     handleMoveStart ({oldIndex}) {
-      console.log('start', oldIndex, this.basicComponents)
+      // console.log('start', oldIndex, this.basicComponents)
     },
     handleMove () {
       return true
@@ -246,7 +246,7 @@ export default {
     widgetForm: {
       deep: true,
       handler: function (val) {
-        console.log(this.$refs.widgetForm)
+        console.log(val, 'widgetForm data')
       }
     }
   }

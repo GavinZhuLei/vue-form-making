@@ -1,11 +1,35 @@
 <template>
   <div v-if="show">
     <el-form label-position="top">
-      <el-form-item label="标题" v-if="data.type!='grid'">
+      <el-form-item label="标题" v-if="data.type!='grid' && data.type != 'div'">
         <el-input v-model="data.name"></el-input>
       </el-form-item>
       <el-form-item label="宽度" v-if="Object.keys(data.options).indexOf('width')>=0">
         <el-input v-model="data.options.width"></el-input>
+      </el-form-item>
+      <el-form-item label="左侧宽度" v-if="Object.keys(data.options).indexOf('widthleft')>=0">
+        <el-input v-model="data.options.widthleft"></el-input>
+      </el-form-item>
+      <el-form-item label="右侧宽度" v-if="Object.keys(data.options).indexOf('widthright')>=0">
+        <el-input v-model="data.options.widthright"></el-input>
+      </el-form-item>
+      <el-form-item label="列间距" v-if="Object.keys(data.options).indexOf('gutter')>=0">
+        <el-input v-model="data.options.gutter"></el-input>
+      </el-form-item>
+      <el-form-item label="高度" v-if="Object.keys(data.options).indexOf('height')>=0">
+        <el-input v-model="data.options.height"></el-input>
+      </el-form-item>
+      <el-form-item label="外边距" v-if="Object.keys(data.options).indexOf('margin')>=0">
+        <el-input v-model="data.options.margin"></el-input>
+      </el-form-item>
+      <el-form-item label="内边距" v-if="Object.keys(data.options).indexOf('padding')>=0">
+        <el-input v-model="data.options.padding"></el-input>
+      </el-form-item>
+      <el-form-item label="float" v-if="Object.keys(data.options).indexOf('float')>=0">
+        <el-input v-model="data.options.float"></el-input>
+      </el-form-item>
+      <el-form-item label="边框" v-if="Object.keys(data.options).indexOf('border')>=0">
+        <el-input v-model="data.options.border"></el-input>
       </el-form-item>
 
       <el-form-item label="大小" v-if="Object.keys(data.options).indexOf('size')>=0">
@@ -220,10 +244,10 @@
         </el-form-item>
       </template>
 
-      <template v-if="data.type == 'grid'">
-        <el-form-item label="栅格间隔">
+      <template v-if="data.type == 'GridLayout'">
+        <!-- <el-form-item label="栅格间隔">
           <el-input type="number" v-model.number="data.options.gutter"></el-input>
-        </el-form-item>
+        </el-form-item> -->
         <el-form-item label="列配置项">
           <draggable element="ul" :list="data.columns" 
             :options="{group:{ name:'options'}, ghostClass: 'ghost',handle: '.drag-item'}"
@@ -259,7 +283,7 @@
       </template>
       
 
-      <template v-if="data.type != 'grid'">
+      <template v-if="!data.islayout">
         
         <el-form-item label="数据绑定Key">
           <el-input v-model="data.model"></el-input>
@@ -324,7 +348,7 @@ export default {
   },
   methods: {
     handleOptionsRemove (index) {
-      if (this.data.type === 'grid') {
+      if (this.data.type === 'GridLayout') {
         this.data.columns.splice(index, 1)
       } else {
         this.data.options.options.splice(index, 1)

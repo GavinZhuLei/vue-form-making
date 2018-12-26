@@ -257,9 +257,10 @@ export const advanceComponents = [
 
 export const layoutComponents = [
   {
-    type: 'grid',
+    type: 'GridLayout',
     name: '栅格布局',
     icon: 'th',
+    islayout: true,
     columns: [
       {
         span: 12,
@@ -274,6 +275,72 @@ export const layoutComponents = [
       gutter: 0,
       justify: 'start',
       align: 'top'
+    }
+  },
+  {
+    type: 'DivLayout',
+    name: 'div',
+    icon: 'th',
+    list: [],
+    islayout: true,
+    options: {
+      width: '100%',
+      height: '150px',
+      margin: '0 auto',
+      padding: '10px 10px',
+      position: 'static',
+      float: 'none',
+      boxSizing: 'border-box',
+      border: ' 1px dashed #eee'
+      //minHeight: '200px',
+     // opacity: 0.5
+    }
+  },
+  {
+    type: 'TwoColumns',
+    name: '2列布局（左侧固定+右侧自适应）',
+    icon: 'th',
+    islayout: true,
+    columns: [
+      { // 左侧
+        position: 'left',
+        list: []
+      },
+      { // 右侧
+        position: 'right',
+        list: []
+      }
+    ],
+    options: {
+      widthleft: 200, 
+      gutter: 20,
+      height: 300,
+    }
+  },
+  {
+    type: 'ThreeColumns',
+    name: '3列布局（两侧固定+中间自适应）',
+    icon: 'th',
+    islayout: true,
+    columns: [
+      { // 左侧
+        position: 'left',
+        list: []
+      },
+      { // 中间
+        position: 'center',
+        list: []
+      },
+      { // 右侧
+        position: 'right',
+        list: []
+      }
+    ],
+    options: {
+      widthleft: 150, 
+      widthright: 150,
+      gutter: 20,
+      height: 300,
     }
   }
 ]
