@@ -342,5 +342,25 @@ export const layoutComponents = [
       gutter: 20,
       height: 300,
     }
+  },
+  {
+    type: 'MultiRows',
+    name: '多行布局',
+    icon: 'th',
+    islayout: true,
+    columns: [ // 为了数据格式一致，还是用列来命名吧
+      {
+        list: [],
+        height: 100,
+      },
+      {
+        list: [],
+        height: 100,
+      }
+    ],
+    options: {
+      // width: 100,
+      gutter: 20
+    }
   }
 ]

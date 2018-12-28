@@ -20,18 +20,18 @@ import 'vue-awesome/icons/regular/image'
 import 'vue-awesome/icons/chalkboard'
 import MakingForm from './components/Container.vue'
 import GenerateForm from './components/GenerateForm.vue'
-import layoutComponents from './components/layoutComponents.js'
 
 import GridLayout from './components/GridLayout.vue'
 import DivLayout from './components/DivLayout.vue'
 import TwoColumns from './components/TwoColumns.vue'
 import ThreeColumns from './components/ThreeColumns.vue'
-
+import MultiRows from './components/MultiRows.vue'
 Vue.component('icon', Icon)
 Vue.component(GridLayout.name, GridLayout)
 Vue.component(DivLayout.name, DivLayout)
 Vue.component(TwoColumns.name, TwoColumns)
 Vue.component(ThreeColumns.name, ThreeColumns)
+Vue.component(MultiRows.name, MultiRows)
 
 // Object.values(layoutComponents).forEach(component => {
 //   console.log(component)

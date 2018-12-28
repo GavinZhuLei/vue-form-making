@@ -13,8 +13,8 @@
       <el-form-item label="右侧宽度" v-if="Object.keys(data.options).indexOf('widthright')>=0">
         <el-input v-model="data.options.widthright"></el-input>
       </el-form-item>
-      <el-form-item label="列间距" v-if="Object.keys(data.options).indexOf('gutter')>=0">
-        <el-input v-model="data.options.gutter"></el-input>
+      <el-form-item label="间隔" v-if="Object.keys(data.options).indexOf('gutter')>=0">
+        <el-input type="number" v-model.number="data.options.gutter"></el-input>
       </el-form-item>
       <el-form-item label="高度" v-if="Object.keys(data.options).indexOf('height')>=0">
         <el-input v-model="data.options.height"></el-input>
@@ -281,6 +281,44 @@
           </el-select>
         </el-form-item>
       </template>
+      <template v-if="data.type == 'MultiRows'">
+        <!-- <el-form-item label="栅格间隔">
+          <el-input type="number" v-model.number="data.options.gutter"></el-input>
+        </el-form-item> -->
+        <el-form-item label="行配置项">
+          <draggable element="ul" :list="data.columns" 
+            :options="{group:{ name:'options'}, ghostClass: 'ghost',handle: '.drag-item'}"
+          >
+            <li v-for="(item, index) in data.columns" :key="index" >
+              <i class="drag-item" style="font-size: 16px;margin: 0 7px;cursor: move;"><icon name="bars" ></icon></i>
+              <label class="el-form-item__label" >行高</label>
+              <el-input placeholder="栅格值" size="mini" style="width: 100px;margin-left:5px;" type="number" v-model.number="item.height"></el-input>
+              
+              <el-button @click="handleOptionsRemove(index)" circle plain type="danger" size="mini" icon="el-icon-minus" style="padding: 4px;margin-left: 5px;"></el-button>
+              
+            </li>
+          </draggable>
+          <div style="margin-left: 22px;">
+            <el-button type="text" @click="handleAddRow">添加行</el-button>
+          </div>
+        </el-form-item>
+        <!-- <el-form-item label="水平排列方式">
+          <el-select v-model="data.options.justify">
+            <el-option value="start" label="左对齐"></el-option>
+            <el-option value="end" label="右对齐"></el-option>
+            <el-option value="center" label="居中"></el-option>
+            <el-option value="space-around" label="两侧间隔相等"></el-option>
+            <el-option value="space-between" label="两端对齐"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="垂直排列方式">
+          <el-select v-model="data.options.align">
+            <el-option value="top" label="顶部对齐"></el-option>
+            <el-option value="middle" label="居中"></el-option>
+            <el-option value="bottom" label="底部对齐"></el-option>
+          </el-select>
+        </el-form-item> -->
+      </template>
       
 
       <template v-if="!data.islayout">
@@ -348,7 +386,7 @@ export default {
   },
   methods: {
     handleOptionsRemove (index) {
-      if (this.data.type === 'GridLayout') {
+      if (this.data.type === 'GridLayout' || this.data.type === 'MultiRows') {
         this.data.columns.splice(index, 1)
       } else {
         this.data.options.options.splice(index, 1)
@@ -371,6 +409,12 @@ export default {
     handleAddColumn () {
       this.data.columns.push({
         span: '',
+        list: []
+      })
+    },
+    handleAddRow () {
+      this.data.columns.push({
+        height: 100,
         list: []
       })
     },
