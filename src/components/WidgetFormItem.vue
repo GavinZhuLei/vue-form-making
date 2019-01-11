@@ -17,6 +17,7 @@
           <el-input type="textarea" :rows="5"
             v-model="element.options.defaultValue"
             :style="{width: element.options.width}"
+            :disabled="element.options.disabled"
             :placeholder="element.options.placeholder"
           ></el-input>
         </template>

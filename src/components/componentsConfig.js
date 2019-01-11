@@ -20,6 +20,7 @@ export const basicComponents = [
       width: '100%',
       defaultValue: '',
       required: false,
+      disabled: false,
       pattern: '',
       placeholder: ''
     }

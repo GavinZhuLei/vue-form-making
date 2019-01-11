@@ -20,6 +20,7 @@
     <template v-if="widget.type == 'textarea'">
       <el-input type="textarea" :rows="5"
         v-model="dataModel"
+        :disabled="widget.options.disabled"
         :placeholder="widget.options.placeholder"
         :style="{width: widget.options.width}"
       ></el-input>
