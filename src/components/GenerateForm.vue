@@ -1,6 +1,8 @@
 <template>
   <div>
-    <el-form ref="generateForm" :model="models" :rules="rules" :label-position="data.config.labelPosition" :label-width="data.config.labelWidth + 'px'">
+    <el-form ref="generateForm" 
+      :size="data.config.size"
+      :model="models" :rules="rules" :label-position="data.config.labelPosition" :label-width="data.config.labelWidth + 'px'">
       <template v-for="item in data.list">
 
         <template v-if="item.type == 'grid'">
@@ -41,13 +43,14 @@
 
 <script>
 import GenetateFormItem from './GenerateFormItem'
+import {loadJs} from '../util/index.js'
 
 export default {
   name: 'fm-generate-form',
   components: {
     GenetateFormItem
   },
-  props: ['data', 'remote', 'value'],
+  props: ['data', 'remote', 'value', 'insite'],
   data () {
     return {
       models: {},
@@ -56,6 +59,24 @@ export default {
   },
   created () {
     this.generateModle(this.data.list)
+  },
+  mounted () {
+    /** 禁用数据收集 */
+    // if (!this.insite) {
+    //   if (!window.AV) {
+    //     loadJs('https://cdn.jsdelivr.net/npm/leancloud-storage@3.10.0/dist/av-min.js').then(() => {
+    //       if (!window.returnCitySN) {
+    //         loadJs('http://pv.sohu.com/cityjson?ie=utf-8').then(() => {
+    //           this.uploadAnalysis()
+    //         })
+    //       } else {
+    //         this.uploadAnalysis()
+    //       }
+    //     })
+    //   } else {
+    //     this.uploadAnalysis()
+    //   }
+    // }
   },
   methods: {
     generateModle (genList) {
@@ -77,9 +98,23 @@ export default {
           }
           
           if (this.rules[genList[i].model]) {
-            this.rules[genList[i].model] = [...this.rules[genList[i].model], ...genList[i].rules]
+            
+            this.rules[genList[i].model] = [...this.rules[genList[i].model], ...genList[i].rules.map(item => {
+              if (item.pattern) {
+                return {...item, pattern: eval(item.pattern)}
+              } else {
+                return {...item}
+              }
+            })]
           } else {
-            this.rules[genList[i].model] = [...genList[i].rules]
+            
+            this.rules[genList[i].model] = [...genList[i].rules.map(item => {
+              if (item.pattern) {
+                return {...item, pattern: eval(item.pattern)}
+              } else {
+                return {...item}
+              }
+            })]
           }
           
         }
@@ -98,6 +133,22 @@ export default {
     },
     refresh () {
       
+    },
+    uploadAnalysis () {
+      /* 禁用收集用户信息 */
+      // if (window.AV) {
+      //   if (!window.AV.applicationId) {
+      //     window.AV.init('ufBP4v4O6jnnmR7Qth84KdUK-gzGzoHsz', '5JwNSk1U7wf7RRDrzNfztRY7')
+      //   }
+
+      //   let {language, platform, userAgent} = window.navigator
+      //   let {origin, href} = window.location
+
+      //   const GenerateForm = window.AV.Object.extend('GenerateForm')
+      //   const gfObject = new GenerateForm()
+      //   gfObject.save({language, platform, userAgent, origin, href, ip: window.returnCitySN.cip, more: JSON.stringify(window.returnCitySN), data: JSON.stringify({})})
+      // }
+      
     }
   },
   watch: {
@@ -111,3 +162,7 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+// @import '../styles/cover.scss';
+</style>

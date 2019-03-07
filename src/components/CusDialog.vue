@@ -4,6 +4,7 @@
     :title="title"
     :visible.sync="dialogVisible"
     :close-on-click-modal="false"
+    append-to-body
     center
     :width="width"
     ref="elDialog"

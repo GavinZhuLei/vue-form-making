@@ -7,11 +7,26 @@
 }
 .el-radio{
   margin-right: 30px;
-  line-height: 32px;
+  
 }
 .el-checkbox+.el-checkbox{
   margin-left: 0 !important;
 }
 .el-checkbox{
   margin-right: 30px;
+}
+.el-form-item--small{
+  .el-radio{
+    line-height: 32px !important;
+  }
+}
+.el-form-item--mini{
+  .el-radio{
+    line-height: 28px !important;
+  }
+}
+.el-form-item--medium{
+  .el-radio{
+    line-height: 36px !important;
+  }
 }

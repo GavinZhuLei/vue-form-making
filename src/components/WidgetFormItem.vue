@@ -3,7 +3,7 @@
       v-if="element && element.key" 
       :class="{active: selectWidget.key == element.key, 'is_req': element.options.required}"
       :label="element.name"
-      @click.native="handleSelectWidget(index)"
+      @click.native.stop="handleSelectWidget(index)"
     >
         <template v-if="element.type == 'input'">
           <el-input 
@@ -154,15 +154,40 @@
           </fm-upload>
         </template>
 
+        <template v-if="element.type == 'cascader'">
+          <el-cascader
+            v-model="element.options.defaultValue"
+            :disabled="element.options.disabled"
+            :clearable="element.options.clearable"
+            :placeholder="element.options.placeholder"
+            :style="{width: element.options.width}"
+            :options="element.options.remoteOptions"
+          >
+
+          </el-cascader>
+        </template>
+
+        <template v-if="element.type == 'editor'">
+          <fm-editor
+            v-model="element.options.defaultValue"
+            :width="element.options.width"
+            :height="element.options.height"
+          >
+
+          </fm-editor>
+        </template>
+
         <template v-if="element.type=='blank'">
           <div style="height: 50px;color: #999;background: #eee;line-height:50px;text-align:center;">自定义区域</div>
         </template>
 
         <el-button title="删除" @click.stop="handleWidgetDelete(index)" class="widget-action-delete" v-if="selectWidget.key == element.key" circle plain type="danger">
-          <icon name="regular/trash-alt" style="width: 12px;height: 12px;"></icon>
+          <!-- <icon name="icon-trash" style="width: 12px;height: 12px;"></icon> -->
+          <i class="iconfont icon-trash"></i>
         </el-button>
         <el-button title="复制" @click.stop="handleWidgetClone(index)" class="widget-action-clone" v-if="selectWidget.key == element.key" circle plain type="primary">
-          <icon name="regular/clone" style="width: 12px;height: 12px;"></icon>
+          <!-- <icon name="icon-icon_clone" style="width: 12px;height: 12px;"></icon> -->
+          <i class="iconfont icon-icon_clone"></i>
         </el-button>
         
     </el-form-item>
@@ -170,15 +195,20 @@
 
 <script>
 import FmUpload from './Upload'
+import FmEditor from './Editor/tinymce'
 export default {
   props: ['element', 'select', 'index', 'data'],
   components: {
-    FmUpload
+    FmUpload,
+    FmEditor
   },
   data () {
     return {
       selectWidget: this.select
     }
+  },
+  mounted () {
+    
   },
   methods: {
     handleSelectWidget (index) {
