@@ -26,13 +26,14 @@
       :style="{width: width+'px', height: height+'px'}"
     >
       <i class="el-icon-plus" :style="{fontSize:miniWidth/4+'px',marginTop: (-miniWidth/8)+'px', marginLeft: (-miniWidth/8)+'px'}"></i>
-      <input accept="image/*" multiple ref="uploadInput" @change="handleChange" type="file" :style="{width: width+'px', height: height+'px'}" name="file" class="el-upload__input upload-input">
+      <input accept="image/*"  multiple ref="uploadInput" @change="handleChange" type="file" :style="{width: width+'px', height: height+'px'}" name="file" class="el-upload__input upload-input">
     </div>
   </div>
 </template>
 
 <script>
 import Viewer from 'viewerjs'
+import * as qiniu from 'qiniu-js'
 require('viewerjs/dist/viewer.css')
 
 export default {
@@ -68,7 +69,14 @@ export default {
   },
   data () {
     return {
-      fileList: [],
+      fileList: this.value.map(item => {
+        return {
+          key: item.key ? item.key : (new Date().getTime()) + '_' + Math.ceil(Math.random() * 99999),
+          url: item.url,
+          percent: item.percent ? item.percent : 100,
+          status: item.status ? item.status : 'success'
+        }
+      }),
       viewer: null,
       uploadId: 'upload_' + new Date().getTime()
     }
@@ -102,7 +110,7 @@ export default {
           })
 
           this.$nextTick(() => {
-            this.uplaodAction(reader.result, file, key)
+            this.uplaodAction2(reader.result, file, key)
           })
         }
       }
@@ -155,6 +163,47 @@ export default {
       }
     },
 
+    uplaodAction2 (res, file, key) {
+      const _this = this
+
+      const observable = qiniu.upload(file, key, this.token, {
+        fname: key,
+        mimeType: []
+      }, {
+        useCdnDomain: true,
+        region: qiniu.region.z2
+      })
+
+      observable.subscribe({
+        next (res) {
+          _this.$set(_this.fileList[_this.fileList.findIndex(item => item.key === key)], 'percent', parseInt(res.total.percent))
+          
+        },
+        error (err) {
+          _this.$set(_this.fileList, _this.fileList.findIndex(item => item.key === key), {
+            ..._this.fileList[_this.fileList.findIndex(item => item.key === key)],
+            status: 'error'
+          })
+          _this.fileList.splice(_this.fileList.findIndex(item => item.key === key), 1)
+        },
+        complete (res) {
+          _this.$set(_this.fileList, _this.fileList.findIndex(item => item.key === key), {
+            ..._this.fileList[_this.fileList.findIndex(item => item.key === key)],
+            url: _this.domain + res.key,
+            percent: 100
+          })
+          setTimeout(() => {
+            _this.$set(_this.fileList, _this.fileList.findIndex(item => item.key === key), {
+              ..._this.fileList[_this.fileList.findIndex(item => item.key === key)],
+              status: 'success'
+            })
+
+            _this.$emit('input', _this.fileList)
+          }, 200)
+        }
+      })
+    },
+
     handleRemove (key) {
       this.fileList.splice(this.fileList.findIndex(item => item.key === key), 1)
     },
@@ -169,6 +218,9 @@ export default {
         this.viewer.view(this.fileList.findIndex(item => item.key === key))
       })
     }
+  },
+  watch: {
+
   }
 }
 </script>

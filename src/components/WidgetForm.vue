@@ -1,6 +1,6 @@
 <template>
   <div class="widget-form-container">
-    <el-form :label-position="data.config.labelPosition" :label-width="data.config.labelWidth + 'px'">
+    <el-form :size="data.config.size" :label-position="data.config.labelPosition" :label-width="data.config.labelWidth + 'px'">
       
       <draggable class="widget-form-list" 
         
@@ -45,7 +45,8 @@
                 
               </el-row>
               <el-button title="删除" style="bottom: -20px;" @click.stop="handleWidgetDelete(index)" class="widget-action-delete" v-if="selectWidget.key == element.key" circle plain type="danger">
-                <icon name="regular/trash-alt" style="width: 12px;height: 12px;"></icon>
+                <!-- <icon name="icon-trash" style="width: 12px;height: 12px;"></icon> -->
+                <i class="iconfont icon-trash" ></i>
               </el-button>
             </div>
           </template>
@@ -72,6 +73,15 @@ export default {
   data () {
     return {
       selectWidget: this.select
+    }
+  },
+  mounted () {
+    document.body.ondrop = function (event) {
+      let isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1
+      if (isFirefox) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
     }
   },
   methods: {
@@ -103,7 +113,7 @@ export default {
         rules: []
       })
 
-      if (this.data.list[newIndex].type === 'radio' || this.data.list[newIndex].type === 'checkbox') {
+      if (this.data.list[newIndex].type === 'radio' || this.data.list[newIndex].type === 'checkbox' || this.data.list[newIndex].type === 'select') {
         this.$set(this.data.list, newIndex, {
           ...this.data.list[newIndex],
           options: {
@@ -157,7 +167,7 @@ export default {
         rules: []
       })
 
-      if (row.columns[colIndex].list[newIndex].type === 'radio' || row.columns[colIndex].list[newIndex].type === 'checkbox') {
+      if (row.columns[colIndex].list[newIndex].type === 'radio' || row.columns[colIndex].list[newIndex].type === 'checkbox' || this.data.list[newIndex].type === 'select') {
         this.$set(row.columns[colIndex].list, newIndex, {
           ...row.columns[colIndex].list[newIndex],
           options: {

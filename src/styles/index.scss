@@ -200,8 +200,6 @@ $primary-background-color: #ecf5ff;
   }
 }
 
-
-
 .widget-config-container{
   position: relative;
 
@@ -269,3 +267,6 @@ $primary-background-color: #ecf5ff;
   }
 }
 
+.viewer-container{
+  z-index: 99999 !important;
+}

@@ -8,6 +8,10 @@
         <el-input v-model="data.options.width"></el-input>
       </el-form-item>
 
+      <el-form-item label="高度" v-if="Object.keys(data.options).indexOf('height')>=0">
+        <el-input v-model="data.options.height"></el-input>
+      </el-form-item>
+
       <el-form-item label="大小" v-if="Object.keys(data.options).indexOf('size')>=0">
         宽度：<el-input style="width: 90px;" type="number" v-model.number="data.options.size.width"></el-input>
         高度：<el-input style="width: 90px;" type="number" v-model.number="data.options.size.height"></el-input>
@@ -36,6 +40,9 @@
       </el-form-item>
       <el-form-item label="是否多选" v-if="data.type=='select'">
         <el-switch v-model="data.options.multiple" @change="handleSelectMuliple"></el-switch>
+      </el-form-item>
+      <el-form-item label="是否可搜索" v-if="data.type=='select'">
+        <el-switch v-model="data.options.filterable"></el-switch>
       </el-form-item>
       <el-form-item label="允许半选" v-if="Object.keys(data.options).indexOf('allowHalf')>=0">
         <el-switch
@@ -88,7 +95,7 @@
                     <el-input style="width:100px;" size="mini" v-if="data.options.showLabel" v-model="item.label"></el-input>
                     <!-- <input v-model="item.value"/> -->
                   </el-radio>
-                  <i class="drag-item" style="font-size: 16px;margin: 0 5px;cursor: move;"><icon name="bars" ></icon></i>
+                  <i class="drag-item" style="font-size: 16px;margin: 0 5px;cursor: move;"><i class="iconfont icon-icon_bars"></i></i>
                   <el-button @click="handleOptionsRemove(index)" circle plain type="danger" size="mini" icon="el-icon-minus" style="padding: 4px;margin-left: 5px;"></el-button>
                   
                 </li>
@@ -111,7 +118,7 @@
                     <el-input :style="{'width': data.options.showLabel? '90px': '190px' }" size="mini" v-model="item.value"></el-input>
                     <el-input style="width:100px;" size="mini" v-if="data.options.showLabel" v-model="item.label"></el-input>
                   </el-checkbox>
-                  <i class="drag-item" style="font-size: 16px;margin: 0 5px;cursor: move;"><icon name="bars" ></icon></i>
+                  <i class="drag-item" style="font-size: 16px;margin: 0 5px;cursor: move;"><i class="iconfont icon-icon_bars"></i></i>
                   <el-button @click="handleOptionsRemove(index)" circle plain type="danger" size="mini" icon="el-icon-minus" style="padding: 4px;margin-left: 5px;"></el-button>
                   
                 </li>
@@ -123,6 +130,23 @@
           </div>
         </template>
         
+      </el-form-item>
+
+      <el-form-item label="远端数据" v-if="data.type=='cascader'">
+        <div>
+          <el-input size="mini" style="" v-model="data.options.remoteFunc">
+            <template slot="prepend">远端方法</template>
+          </el-input>
+          <el-input size="mini" style="" v-model="data.options.props.value">
+            <template slot="prepend">值</template>
+          </el-input>
+          <el-input size="mini" style="" v-model="data.options.props.label">
+            <template slot="prepend">标签</template>
+          </el-input>
+          <el-input size="mini" style="" v-model="data.options.props.children">
+            <template slot="prepend">子选项</template>
+          </el-input>
+        </div>
       </el-form-item>
 
       <el-form-item label="默认值" v-if="Object.keys(data.options).indexOf('defaultValue')>=0 && (data.type == 'textarea' || data.type == 'input' || data.type=='rate' || data.type=='color' || data.type=='switch')">
@@ -229,7 +253,7 @@
             :options="{group:{ name:'options'}, ghostClass: 'ghost',handle: '.drag-item'}"
           >
             <li v-for="(item, index) in data.columns" :key="index" >
-              <i class="drag-item" style="font-size: 16px;margin: 0 5px;cursor: move;"><icon name="bars" ></icon></i>
+              <i class="drag-item" style="font-size: 16px;margin: 0 5px;cursor: move;"><i class="iconfont icon-icon_bars"></i></i>
               <el-input placeholder="栅格值" size="mini" style="width: 100px;" type="number" v-model.number="item.span"></el-input>
               
               <el-button @click="handleOptionsRemove(index)" circle plain type="danger" size="mini" icon="el-icon-minus" style="padding: 4px;margin-left: 5px;"></el-button>
@@ -417,7 +441,7 @@ export default {
       }
 
       if (val) {
-        this.validator.pattern = {pattern: eval(val), message: this.data.name + '格式不匹配'}
+        this.validator.pattern = {pattern: val, message: this.data.name + '格式不匹配'}
       } else {
         this.validator.pattern = null
       }

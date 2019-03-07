@@ -1,6 +1,8 @@
 <template>
   <div>
-    <el-form ref="generateForm" :model="models" :rules="rules" :label-position="data.config.labelPosition" :label-width="data.config.labelWidth + 'px'">
+    <el-form ref="generateForm" 
+      :size="data.config.size"
+      :model="models" :rules="rules" :label-position="data.config.labelPosition" :label-width="data.config.labelWidth + 'px'">
       <template v-for="item in data.list">
 
         <template v-if="item.type == 'grid'">
@@ -41,13 +43,14 @@
 
 <script>
 import GenetateFormItem from './GenerateFormItem'
+import {loadJs} from '../util/index.js'
 
 export default {
   name: 'fm-generate-form',
   components: {
     GenetateFormItem
   },
-  props: ['data', 'remote', 'value'],
+  props: ['data', 'remote', 'value', 'insite'],
   data () {
     return {
       models: {},
@@ -56,6 +59,8 @@ export default {
   },
   created () {
     this.generateModle(this.data.list)
+  },
+  mounted () {
   },
   methods: {
     generateModle (genList) {
@@ -72,16 +77,28 @@ export default {
               this.models[genList[i].model] = genList[i].options.defaultType === 'String' ? '' : (genList[i].options.defaultType === 'Object' ? {} : [])
             } else {
               this.models[genList[i].model] = genList[i].options.defaultValue
-            }
-            
+            }      
           }
           
           if (this.rules[genList[i].model]) {
-            this.rules[genList[i].model] = [...this.rules[genList[i].model], ...genList[i].rules]
+            
+            this.rules[genList[i].model] = [...this.rules[genList[i].model], ...genList[i].rules.map(item => {
+              if (item.pattern) {
+                return {...item, pattern: eval(item.pattern)}
+              } else {
+                return {...item}
+              }
+            })]
           } else {
-            this.rules[genList[i].model] = [...genList[i].rules]
-          }
-          
+            
+            this.rules[genList[i].model] = [...genList[i].rules.map(item => {
+              if (item.pattern) {
+                return {...item, pattern: eval(item.pattern)}
+              } else {
+                return {...item}
+              }
+            })]
+          }      
         }
       }
     },
@@ -111,3 +128,7 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+// @import '../styles/cover.scss';
+</style>

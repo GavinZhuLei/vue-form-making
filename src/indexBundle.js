@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import GenerateForm from './components/GenerateForm.vue'
 
+import './styles/cover.scss'
+import './styles/index.scss'
+
 GenerateForm.install = function (Vue) {
   Vue.component(GenerateForm.name, GenerateForm)
 }

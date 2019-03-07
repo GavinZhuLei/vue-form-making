@@ -28,7 +28,7 @@
 
     <template v-if="widget.type == 'number'">
       <el-input-number 
-        v-model="widget.options.defaultValue" 
+        v-model="dataModel" 
         :style="{width: widget.options.width}"
         :step="widget.options.step"
         controls-position="right"
@@ -124,6 +124,7 @@
         :clearable="widget.options.clearable"
         :placeholder="widget.options.placeholder"
         :style="{width: widget.options.width}"
+        :filterable="widget.options.filterable"
       >
         <el-option v-for="item in (widget.options.remote ? widget.options.remoteOptions : widget.options.options)" :key="item.value" :value="item.value" :label="widget.options.showLabel || widget.options.remote?item.label:item.value"></el-option>
       </el-select>
@@ -162,16 +163,41 @@
       >
       </fm-upload>
     </template>
+
+    <template v-if="widget.type == 'editor'">
+      <fm-editor
+        v-model="dataModel"
+        :width="widget.options.width"
+        :height="widget.options.height"
+      >
+
+      </fm-editor>
+    </template>
+
+    <template v-if="widget.type == 'cascader'">
+      <el-cascader
+        v-model="dataModel"
+        :disabled="widget.options.disabled"
+        :clearable="widget.options.clearable"
+        :placeholder="widget.options.placeholder"
+        :style="{width: widget.options.width}"
+        :options="widget.options.remoteOptions"
+      >
+
+      </el-cascader>
+    </template>
   </el-form-item>
 </template>
 
 <script>
 import FmUpload from './Upload'
+import FmEditor from './Editor/tinymce'
 
 export default {
   props: ['widget', 'models', 'rules', 'remote'],
   components: {
-    FmUpload
+    FmUpload,
+    FmEditor
   },
   data () {
     return {
@@ -184,7 +210,8 @@ export default {
         this.widget.options.remoteOptions = data.map(item => {
           return {
             value: item[this.widget.options.props.value],
-            label: item[this.widget.options.props.label]
+            label: item[this.widget.options.props.label],
+            children: item[this.widget.options.props.children]
           }
         })
       })
@@ -195,6 +222,8 @@ export default {
         this.widget.options.token = data
       })
     }
+  },
+  methods: {
   },
   watch: {
     dataModel: {
@@ -210,7 +239,6 @@ export default {
     models: {
       deep: true,
       handler (val) {
-        console.log('--------')
         this.dataModel = val[this.widget.model]
       }
     }
