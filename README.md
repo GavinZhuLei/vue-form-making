@@ -18,11 +18,6 @@
 * 支持表单验证
 * 快速获取表单数据
 
-## 开源协议
-[LGPL](https://opensource.org/licenses/LGPL-3.0)
-
-请您遵守开源协议标准，若需要用于商业软件而不开源代码请通过引用方式(npm 或者 cdn)使用
-
 ## CDN
 ``` html
 <!-- 引入样式 -->
@@ -172,6 +167,10 @@ new Vue({
 
 ![](https://user-gold-cdn.xitu.io/2018/10/28/166ba780bb01fef7?w=2304&h=1050&f=jpeg&s=197327)
 
-## 问题交流
+## 开源协议
 
-QQ群：902048874
+[LGPL](https://opensource.org/licenses/LGPL-3.0)
+
+## 商业许可
+
+开源版本遵循 LGPL 条款发布，如果您不能接受 LGPL，并且需要将该项目用于商业用途且不想保留版权信息（底部“Powered by GavinZhuLei”版权及链接），为保障您的合法权益，需购买[商业授权](http://tools.xiaoyaoji.cn/form/#/price)

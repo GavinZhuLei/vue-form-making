@@ -2,14 +2,10 @@
   <div id="app">
     <div class="fm-header">
       <img class="fm-logo" src="./assets/logo.png">
-      <div class="fm-title">表单设计器</div>
-
-      <div style="color: #fff; font-size: 13px; position: absolute; top: 24px; left: 200px;">
-        QQ交流群：902048874
-      </div>
+      <div class="fm-title" @click="handleHome">表单设计器</div>
 
       <div class="fm-link">
-        
+        <a target="_blank" href="#/price">商业授权</a>
         <a href="https://github.com/GavinZhuLei/vue-form-making">GitHub</a>
         <a href="https://gitee.com/gavinzhulei/vue-form-making">码云</a>
         <a href="http://www.xiaoyaoji.cn" target="_blank">小幺鸡接口文档</a>
@@ -22,7 +18,12 @@
 <script>
 
 export default {
-  name: 'app'
+  name: 'app',
+  methods: {
+    handleHome () {
+      this.$router.push({path: '/'})
+    }
+  }
 }
 </script>
 
@@ -47,6 +48,7 @@ export default {
     font-weight: 600;
     opacity: 0.8;
     margin-left: 6px;
+    cursor: pointer;
   }
   .fm-link{
     height: 50px;

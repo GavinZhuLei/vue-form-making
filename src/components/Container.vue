@@ -1,142 +1,148 @@
 <template>
   <el-container>
-    <el-aside style="wdith: 250px;">
-
-      <div class="components-list">
-        <div class="widget-cate">基础字段</div>
-        <draggable element="ul" :list="basicComponents" 
-          :options="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
-          @end="handleMoveEnd"
-          @start="handleMoveStart"
-          :move="handleMove"
-        >
-          
-          <li class="form-edit-widget-label" v-for="(item, index) in basicComponents" :key="index">
-            <a>
-              <i class="icon iconfont" :class="item.icon"></i>
-              <span>{{item.name}}</span>
-            </a>
-          </li>
-        </draggable>
-
-        <div class="widget-cate">高级字段</div>
-        <draggable element="ul" :list="advanceComponents" 
-          :options="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
-          @end="handleMoveEnd"
-          @start="handleMoveStart"
-          :move="handleMove"
-        >
-          
-          <li class="form-edit-widget-label" v-for="(item, index) in advanceComponents" :key="index">
-            <a>
-              <i class="icon iconfont" :class="item.icon"></i>
-              <span>{{item.name}}</span>
-            </a>
-          </li>
-        </draggable>
-        
-        <div class="widget-cate">布局字段</div>
-        <draggable element="ul" :list="layoutComponents" 
-          :options="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
-          @end="handleMoveEnd"
-          @start="handleMoveStart"
-          :move="handleMove"
-        >
-          
-          <li class="form-edit-widget-label data-grid" v-for="(item, index) in layoutComponents" :key="index">
-            <a>
-              <i class="icon iconfont" :class="item.icon"></i>
-              <span>{{item.name}}</span>
-            </a>
-          </li>
-        </draggable>
-      </div>
-      
-    </el-aside>
-    <el-container class="center-container" direction="vertical">
-      <el-header class="btn-bar" style="height: 45px;">
-        <slot name="action">
-        </slot>
-        <el-button v-if="upload" type="text" size="medium" icon="el-icon-upload2" @click="handleUpload">导入JSON</el-button>
-        <el-button v-if="preview" type="text" size="medium" icon="el-icon-view" @click="handlePreview">预览</el-button>
-        <el-button v-if="generateJson" type="text" size="medium" icon="el-icon-tickets" @click="handleGenerateJson">生成JSON</el-button>
-        <el-button v-if="generateCode" type="text" size="medium" icon="el-icon-document" @click="handleGenerateCode">生成代码</el-button>
-      </el-header>
-      <el-main :class="{'widget-empty': widgetForm.list.length == 0}">
-        
-        <widget-form v-if="!resetJson"  ref="widgetForm" :data="widgetForm" :select.sync="widgetFormSelect"></widget-form>
-      </el-main>
-    </el-container>
-    
-    <el-aside class="widget-config-container">
+    <el-main >
       <el-container>
-        <el-header height="45px">
-          <div class="config-tab" :class="{active: configTab=='widget'}" @click="handleConfigSelect('widget')">字段属性</div>
-          <div class="config-tab" :class="{active: configTab=='form'}" @click="handleConfigSelect('form')">表单属性</div>
-        </el-header>
-        <el-main class="config-content">
-          <widget-config v-show="configTab=='widget'" :data="widgetFormSelect"></widget-config>
-          <form-config v-show="configTab=='form'" :data="widgetForm.config"></form-config>
-        </el-main>
+        <el-aside style="wdith: 250px;">
+
+          <div class="components-list">
+            <div class="widget-cate">基础字段</div>
+            <draggable element="ul" :list="basicComponents" 
+              :options="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
+              @end="handleMoveEnd"
+              @start="handleMoveStart"
+              :move="handleMove"
+            >
+              
+              <li class="form-edit-widget-label" v-for="(item, index) in basicComponents" :key="index">
+                <a>
+                  <i class="icon iconfont" :class="item.icon"></i>
+                  <span>{{item.name}}</span>
+                </a>
+              </li>
+            </draggable>
+
+            <div class="widget-cate">高级字段</div>
+            <draggable element="ul" :list="advanceComponents" 
+              :options="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
+              @end="handleMoveEnd"
+              @start="handleMoveStart"
+              :move="handleMove"
+            >
+              
+              <li class="form-edit-widget-label" v-for="(item, index) in advanceComponents" :key="index">
+                <a>
+                  <i class="icon iconfont" :class="item.icon"></i>
+                  <span>{{item.name}}</span>
+                </a>
+              </li>
+            </draggable>
+            
+            <div class="widget-cate">布局字段</div>
+            <draggable element="ul" :list="layoutComponents" 
+              :options="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
+              @end="handleMoveEnd"
+              @start="handleMoveStart"
+              :move="handleMove"
+            >
+              
+              <li class="form-edit-widget-label data-grid" v-for="(item, index) in layoutComponents" :key="index">
+                <a>
+                  <i class="icon iconfont" :class="item.icon"></i>
+                  <span>{{item.name}}</span>
+                </a>
+              </li>
+            </draggable>
+          </div>
+          
+        </el-aside>
+        <el-container class="center-container" direction="vertical">
+          <el-header class="btn-bar" style="height: 45px;">
+            <slot name="action">
+            </slot>
+            <el-button v-if="upload" type="text" size="medium" icon="el-icon-upload2" @click="handleUpload">导入JSON</el-button>
+            <el-button v-if="preview" type="text" size="medium" icon="el-icon-view" @click="handlePreview">预览</el-button>
+            <el-button v-if="generateJson" type="text" size="medium" icon="el-icon-tickets" @click="handleGenerateJson">生成JSON</el-button>
+            <el-button v-if="generateCode" type="text" size="medium" icon="el-icon-document" @click="handleGenerateCode">生成代码</el-button>
+          </el-header>
+          <el-main :class="{'widget-empty': widgetForm.list.length == 0}">
+            
+            <widget-form v-if="!resetJson"  ref="widgetForm" :data="widgetForm" :select.sync="widgetFormSelect"></widget-form>
+          </el-main>
+        </el-container>
+        
+        <el-aside class="widget-config-container">
+          <el-container>
+            <el-header height="45px">
+              <div class="config-tab" :class="{active: configTab=='widget'}" @click="handleConfigSelect('widget')">字段属性</div>
+              <div class="config-tab" :class="{active: configTab=='form'}" @click="handleConfigSelect('form')">表单属性</div>
+            </el-header>
+            <el-main class="config-content">
+              <widget-config v-show="configTab=='widget'" :data="widgetFormSelect"></widget-config>
+              <form-config v-show="configTab=='form'" :data="widgetForm.config"></form-config>
+            </el-main>
+          </el-container>
+          
+        </el-aside>
+
+        <cus-dialog
+          :visible="previewVisible"
+          @on-close="previewVisible = false"
+          ref="widgetPreview"
+          @on-submit="handleTest"
+          width="1000px"
+          form
+        >
+          <generate-form insite="true" v-if="previewVisible" :data="widgetForm" :remote="remoteFuncs" :value="widgetModels" ref="generateForm">
+
+            <template slot="blank" slot-scope="scope">
+              宽度：<el-input v-model="scope.model.blank.width" style="width: 100px"></el-input>
+              高度：<el-input v-model="scope.model.blank.height" style="width: 100px"></el-input>
+            </template>
+          </generate-form>
+        </cus-dialog>
+
+        <cus-dialog
+          :visible="uploadVisible"
+          @on-close="uploadVisible = false"
+          @on-submit="handleUploadJson"
+          ref="uploadJson"
+          width="800px"
+          form
+        >
+          <el-alert type="info" title="JSON格式如下，直接复制生成的json覆盖此处代码点击确定即可"></el-alert>
+          <div id="uploadeditor" style="height: 400px;width: 100%;">{{jsonEg}}</div>
+        </cus-dialog>
+
+        <cus-dialog
+          :visible="jsonVisible"
+          @on-close="jsonVisible = false"
+          ref="jsonPreview"
+          width="800px"
+          form
+        >
+          
+          <div id="jsoneditor" style="height: 400px;width: 100%;">{{jsonTemplate}}</div>
+          
+          <template slot="action">
+            <el-button id="copybtn" data-clipboard-target=".ace_text-input">双击复制</el-button>
+          </template>
+        </cus-dialog>
+
+        <cus-dialog
+          :visible="codeVisible"
+          @on-close="codeVisible = false"
+          ref="codePreview"
+          width="800px"
+          form
+          :action="false"
+        >
+          <div id="codeeditor" style="height: 500px; width: 100%;">{{htmlTemplate}}</div>
+        </cus-dialog>
       </el-container>
-      
-    </el-aside>
-
-    <cus-dialog
-      :visible="previewVisible"
-      @on-close="previewVisible = false"
-      ref="widgetPreview"
-      @on-submit="handleTest"
-      width="1000px"
-      form
-    >
-      <generate-form insite="true" v-if="previewVisible" :data="widgetForm" :remote="remoteFuncs" :value="widgetModels" ref="generateForm">
-
-        <template slot="blank" slot-scope="scope">
-          宽度：<el-input v-model="scope.model.blank.width" style="width: 100px"></el-input>
-          高度：<el-input v-model="scope.model.blank.height" style="width: 100px"></el-input>
-        </template>
-      </generate-form>
-    </cus-dialog>
-
-    <cus-dialog
-      :visible="uploadVisible"
-      @on-close="uploadVisible = false"
-      @on-submit="handleUploadJson"
-      ref="uploadJson"
-      width="800px"
-      form
-    >
-      <el-alert type="info" title="JSON格式如下，直接复制生成的json覆盖此处代码点击确定即可"></el-alert>
-      <div id="uploadeditor" style="height: 400px;width: 100%;">{{jsonEg}}</div>
-    </cus-dialog>
-
-    <cus-dialog
-      :visible="jsonVisible"
-      @on-close="jsonVisible = false"
-      ref="jsonPreview"
-      width="800px"
-      form
-    >
-      
-      <div id="jsoneditor" style="height: 400px;width: 100%;">{{jsonTemplate}}</div>
-      
-      <template slot="action">
-        <el-button id="copybtn" data-clipboard-target=".ace_text-input">双击复制</el-button>
-      </template>
-    </cus-dialog>
-
-    <cus-dialog
-      :visible="codeVisible"
-      @on-close="codeVisible = false"
-      ref="codePreview"
-      width="800px"
-      form
-      :action="false"
-    >
-      <div id="codeeditor" style="height: 500px; width: 100%;">{{htmlTemplate}}</div>
-    </cus-dialog>
+    </el-main>
+    <el-footer height="30px">Powered by <a target="_blank" href="https://github.com/GavinZhuLei/vue-form-making">GavinZhuLei</a></el-footer>
   </el-container>
+  
 </template>
 
 <script>
@@ -475,7 +481,8 @@ export default {
     }
   },
   mounted () {
-    loadJs('http://tools.xiaoyaoji.cn/form/lib/ace/src/ace.js')
+    loadJs('lib/ace/src-min/ace.js')
+
   },
   methods: {
     handleGoGithub () {

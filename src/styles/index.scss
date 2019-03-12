@@ -17,6 +17,30 @@ $primary-background-color: #ecf5ff;
   vertical-align: middle;
 }
 
+.fm-container{
+  background: #f5f5f5;
+
+  &>.el-container{
+    background: #fff;
+  }
+  main{
+    padding: 0;
+  }
+
+  footer{
+    height: 30px;
+    line-height: 30px;
+    border-top: 1px solid #e0e0e0;
+    font-size: 12px;
+    text-align: right;
+    color: $primary-color;
+
+    a{
+      color: $primary-color;
+    }
+  }
+}
+
 .center-container{
   border-left: 1px solid #e0e0e0;
   border-right: 1px solid #e0e0e0;
