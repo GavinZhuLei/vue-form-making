@@ -1,5 +1,5 @@
 <template>
-  <el-container>
+  <el-container class="fm2-container">
     <el-main >
       <el-container>
         <el-aside style="wdith: 250px;">
@@ -481,7 +481,6 @@ export default {
     }
   },
   mounted () {
-    loadJs('lib/ace/src-min/ace.js')
 
   },
   methods: {

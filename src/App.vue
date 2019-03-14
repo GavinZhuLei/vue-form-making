@@ -11,7 +11,7 @@
         <a href="http://www.xiaoyaoji.cn" target="_blank">小幺鸡接口文档</a>
       </div>
     </div>
-    <div class="fm-container"><router-view/></div>
+    <div  class="fm-container"><router-view/></div>
   </div>
 </template>
 

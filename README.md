@@ -24,6 +24,9 @@
 <link rel="stylesheet" href="https://unpkg.com/form-making/dist/FormMaking.css">
 <!-- 引入组件库 -->
 <script src="https://unpkg.com/form-making/dist/FormMaking.umd.js"></script>
+
+<!-- 需要在设计器中预览代码需要引入ace.js库 -->
+<script src="https://unpkg.com/form-making/public/lib/ace/src-min/ace.js"></script>
 ```
 
 ## Install
@@ -65,6 +68,9 @@ Vue.component(MakingForm.name, MakingForm)
     <template slot="action">
     </template>
   </fm-making-form>
+
+<!-- 需要在设计器中预览代码需要引入ace.js库 -->
+<script src="https://unpkg.com/form-making/public/lib/ace/src-min/ace.js"></script>
 ```
 
 ##### props
