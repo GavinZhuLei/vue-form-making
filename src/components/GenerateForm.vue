@@ -70,7 +70,7 @@ export default {
             this.generateModle(item.list)
           })
         } else {
-          if (Object.keys(this.value).indexOf(genList[i].model) >= 0) {
+          if (this.value && Object.keys(this.value).indexOf(genList[i].model) >= 0) {
             this.models[genList[i].model] = this.value[genList[i].model]
           } else {
             if (genList[i].type === 'blank') {

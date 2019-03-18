@@ -6,8 +6,8 @@
 
           <div class="components-list">
             <div class="widget-cate">基础字段</div>
-            <draggable element="ul" :list="basicComponents" 
-              :options="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
+            <draggable tag="ul" :list="basicComponents" 
+              v-bind="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
               @end="handleMoveEnd"
               @start="handleMoveStart"
               :move="handleMove"
@@ -22,8 +22,8 @@
             </draggable>
 
             <div class="widget-cate">高级字段</div>
-            <draggable element="ul" :list="advanceComponents" 
-              :options="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
+            <draggable tag="ul" :list="advanceComponents" 
+              v-bind="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
               @end="handleMoveEnd"
               @start="handleMoveStart"
               :move="handleMove"
@@ -38,8 +38,8 @@
             </draggable>
             
             <div class="widget-cate">布局字段</div>
-            <draggable element="ul" :list="layoutComponents" 
-              :options="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
+            <draggable tag="ul" :list="layoutComponents" 
+              v-bind="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
               @end="handleMoveEnd"
               @start="handleMoveStart"
               :move="handleMove"
@@ -92,9 +92,9 @@
           width="1000px"
           form
         >
-          <generate-form insite="true" v-if="previewVisible" :data="widgetForm" :remote="remoteFuncs" :value="widgetModels" ref="generateForm">
+          <generate-form insite="true" v-if="previewVisible" :data="widgetForm" :value="widgetModels" :remote="remoteFuncs" ref="generateForm">
 
-            <template slot="blank" slot-scope="scope">
+            <template v-slot:blank="scope">
               宽度：<el-input v-model="scope.model.blank.width" style="width: 100px"></el-input>
               高度：<el-input v-model="scope.model.blank.height" style="width: 100px"></el-input>
             </template>
@@ -426,7 +426,8 @@ export default {
           console.log('callback', response, file, fileList)
         }
       },
-      widgetModels: {},
+      widgetModels: {
+      },
       blank: '',
       htmlTemplate: '',
       jsonTemplate: '',
@@ -559,6 +560,10 @@ export default {
       if (json.list.length> 0) {
         this.widgetFormSelect = json.list[0]
       }
+    },
+    handleInput (val) {
+      console.log(val)
+      this.blank = val
     }
   },
   watch: {

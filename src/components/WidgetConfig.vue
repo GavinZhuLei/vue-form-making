@@ -83,8 +83,9 @@
         <template v-else>
           <template v-if="data.type=='radio' || (data.type=='select'&&!data.options.multiple)">
             <el-radio-group v-model="data.options.defaultValue">
-              <draggable element="ul" :list="data.options.options" 
-                :options="{group:{ name:'options'}, ghostClass: 'ghost',handle: '.drag-item'}"
+              <draggable tag="ul" :list="data.options.options" 
+                v-bind="{group:{ name:'options'}, ghostClass: 'ghost',handle: '.drag-item'}"
+                handle=".drag-item"
               >
                 <li v-for="(item, index) in data.options.options" :key="index" >
                   <el-radio
@@ -107,8 +108,9 @@
           <template v-if="data.type=='checkbox' || (data.type=='select' && data.options.multiple)">
             <el-checkbox-group v-model="data.options.defaultValue">
 
-              <draggable element="ul" :list="data.options.options" 
-                :options="{group:{ name:'options'}, ghostClass: 'ghost',handle: '.drag-item'}"
+              <draggable tag="ul" :list="data.options.options" 
+                v-bind="{group:{ name:'options'}, ghostClass: 'ghost',handle: '.drag-item'}"
+                handle=".drag-item"
               >
                 <li v-for="(item, index) in data.options.options" :key="index" >
                   <el-checkbox
@@ -249,8 +251,9 @@
           <el-input type="number" v-model.number="data.options.gutter"></el-input>
         </el-form-item>
         <el-form-item label="列配置项">
-          <draggable element="ul" :list="data.columns" 
-            :options="{group:{ name:'options'}, ghostClass: 'ghost',handle: '.drag-item'}"
+          <draggable tag="ul" :list="data.columns" 
+            v-bind="{group:{ name:'options'}, ghostClass: 'ghost',handle: '.drag-item'}"
+            handle=".drag-item"
           >
             <li v-for="(item, index) in data.columns" :key="index" >
               <i class="drag-item" style="font-size: 16px;margin: 0 5px;cursor: move;"><i class="iconfont icon-icon_bars"></i></i>

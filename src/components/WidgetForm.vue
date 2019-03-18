@@ -5,7 +5,7 @@
       <draggable class="widget-form-list" 
         
         v-model="data.list" 
-        :options="{group:'people', ghostClass: 'ghost'}"
+        v-bind="{group:'people', ghostClass: 'ghost'}"
         @end="handleMoveEnd"
         @add="handleWidgetAdd"
       >
@@ -27,7 +27,7 @@
                       style="padding-bottom: 50px;"
                       v-model="col.list"
                       filter="widget-grid-container"
-                      :options="{group:'people', ghostClass: 'ghost'}"
+                      v-bind="{group:'people', ghostClass: 'ghost'}"
                       @end="handleMoveEnd"
                       @add="handleWidgetColAdd($event, element, colIndex)"
                     >
