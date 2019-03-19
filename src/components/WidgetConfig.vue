@@ -83,8 +83,8 @@
         <template v-else>
           <template v-if="data.type=='radio' || (data.type=='select'&&!data.options.multiple)">
             <el-radio-group v-model="data.options.defaultValue">
-              <draggable element="ul" :list="data.options.options" 
-                :options="{group:{ name:'options'}, ghostClass: 'ghost',handle: '.drag-item'}"
+              <draggable tag="ul" :list="data.options.options" 
+                v-bind="{group:{ name:'options'}, ghostClass: 'ghost',handle: '.drag-item'}"
               >
                 <li v-for="(item, index) in data.options.options" :key="index" >
                   <el-radio
@@ -107,8 +107,8 @@
           <template v-if="data.type=='checkbox' || (data.type=='select' && data.options.multiple)">
             <el-checkbox-group v-model="data.options.defaultValue">
 
-              <draggable element="ul" :list="data.options.options" 
-                :options="{group:{ name:'options'}, ghostClass: 'ghost',handle: '.drag-item'}"
+              <draggable tag="ul" :list="data.options.options" 
+                v-bind="{group:{ name:'options'}, ghostClass: 'ghost',handle: '.drag-item'}"
               >
                 <li v-for="(item, index) in data.options.options" :key="index" >
                   <el-checkbox
@@ -249,8 +249,8 @@
           <el-input type="number" v-model.number="data.options.gutter"></el-input>
         </el-form-item>
         <el-form-item label="列配置项">
-          <draggable element="ul" :list="data.columns" 
-            :options="{group:{ name:'options'}, ghostClass: 'ghost',handle: '.drag-item'}"
+          <draggable tag="ul" :list="data.columns" 
+            :v-bind="{group:{ name:'options'}, ghostClass: 'ghost',handle: '.drag-item'}"
           >
             <li v-for="(item, index) in data.columns" :key="index" >
               <i class="drag-item" style="font-size: 16px;margin: 0 5px;cursor: move;"><i class="iconfont icon-icon_bars"></i></i>
@@ -290,7 +290,7 @@
         </el-form-item>
         <el-form-item label="操作属性">
           <el-checkbox v-model="data.options.readonly" v-if="Object.keys(data.options).indexOf('readonly')>=0">完全只读</el-checkbox>
-          <el-checkbox v-model="data.options.disabled" v-if="Object.keys(data.options).indexOf('disabled')>=0">禁用	</el-checkbox>
+          <el-checkbox v-model="data.options.disabled" v-if="Object.keys(data.options).indexOf('disabled')>=0">禁用 </el-checkbox>
           <el-checkbox v-model="data.options.editable" v-if="Object.keys(data.options).indexOf('editable')>=0">文本框可输入</el-checkbox>
           <el-checkbox v-model="data.options.clearable" v-if="Object.keys(data.options).indexOf('clearable')>=0">显示清除按钮</el-checkbox>
           <el-checkbox v-model="data.options.arrowControl" v-if="Object.keys(data.options).indexOf('arrowControl')>=0">使用箭头进行时间选择</el-checkbox>

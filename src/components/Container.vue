@@ -6,8 +6,8 @@
 
           <div class="components-list">
             <div class="widget-cate">基础字段</div>
-            <draggable element="ul" :list="basicComponents" 
-              :options="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
+            <draggable tag="ul" :list="basicComponents" 
+              v-bind="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
               @end="handleMoveEnd"
               @start="handleMoveStart"
               :move="handleMove"
@@ -22,8 +22,8 @@
             </draggable>
 
             <div class="widget-cate">高级字段</div>
-            <draggable element="ul" :list="advanceComponents" 
-              :options="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
+            <draggable tag="ul" :list="advanceComponents" 
+              v-bind="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
               @end="handleMoveEnd"
               @start="handleMoveStart"
               :move="handleMove"
@@ -38,8 +38,8 @@
             </draggable>
             
             <div class="widget-cate">布局字段</div>
-            <draggable element="ul" :list="layoutComponents" 
-              :options="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
+            <draggable tag="ul" :list="layoutComponents" 
+              v-bind="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
               @end="handleMoveEnd"
               @start="handleMoveStart"
               :move="handleMove"
