@@ -118,6 +118,12 @@ export default {
     }
   },
   watch: {
+    data: {
+      deep: true,
+      handler (val) {
+        this.generateModle(val.list)
+      }
+    },
     value: {
       deep: true,
       handler (val) {
