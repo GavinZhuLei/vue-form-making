@@ -1,6 +1,6 @@
 <template>
   <el-container class="fm2-container">
-    <el-main >
+    <el-main class="fm2-main">
       <el-container>
         <el-aside style="wdith: 250px;">
 

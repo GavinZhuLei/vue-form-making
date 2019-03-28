@@ -23,6 +23,17 @@ $primary-background-color: #ecf5ff;
   &>.el-container{
     background: #fff;
   }
+  .fm2-main{
+    position: relative;
+
+    &>.el-container{
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+  }
   main{
     padding: 0;
   }
