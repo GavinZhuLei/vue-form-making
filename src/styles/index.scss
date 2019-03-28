@@ -19,6 +19,11 @@ $primary-background-color: #ecf5ff;
 
 .fm2-container{
   background: #fff;
+  height: 100%;
+
+  .el-container{
+    height: 100% !important;
+  }
 
   &>.el-container{
     background: #fff;

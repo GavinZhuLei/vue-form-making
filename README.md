@@ -64,7 +64,8 @@ Vue.component(MakingForm.name, MakingForm)
 ```
 
 ```html
-<fm-making-form  preview generate-code generate-json>
+<!-- 需要设置 -->
+<fm-making-form style="height: 500px;" preview generate-code generate-json>
     <template slot="action">
     </template>
   </fm-making-form>
