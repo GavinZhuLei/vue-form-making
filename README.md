@@ -64,7 +64,7 @@ Vue.component(MakingForm.name, MakingForm)
 ```
 
 ```html
-<!-- 需要设置 -->
+<!-- 需要设置编辑区域高度 -->
 <fm-making-form style="height: 500px;" preview generate-code generate-json>
     <template slot="action">
     </template>
