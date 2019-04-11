@@ -20,8 +20,8 @@
 
 ## 文档
 
-*[快速使用](https://www.yuque.com/zhulei-sbpfz/ua9nar/mdgwki)
-*[组件](https://www.yuque.com/zhulei-sbpfz/ua9nar/vtebqs)
+* [快速使用](https://www.yuque.com/zhulei-sbpfz/ua9nar/mdgwki)
+* [组件](https://www.yuque.com/zhulei-sbpfz/ua9nar/vtebqs)
 
 ## 高级字段使用
 
