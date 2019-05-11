@@ -252,7 +252,12 @@ export const advanceComponents = [
       domain: 'http://pfp81ptt6.bkt.clouddn.com/',
       disabled: false,
       length: 8,
-      multiple: true
+      multiple: false,
+      isQiniu: false,
+      isDelete: false,
+      min: 0,
+      isEdit: false,
+      action: 'https://jsonplaceholder.typicode.com/photos/'
     }
   },
   {

@@ -20,6 +20,7 @@ $primary-background-color: #ecf5ff;
 .fm2-container{
   background: #fff;
   height: 100%;
+  border: 1px solid #e0e0e0;
 
   .el-container{
     height: 100% !important;
@@ -50,6 +51,7 @@ $primary-background-color: #ecf5ff;
     font-size: 12px;
     text-align: right;
     color: $primary-color;
+    background: #fafafa;
 
     a{
       color: $primary-color;

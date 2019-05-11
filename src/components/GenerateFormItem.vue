@@ -160,6 +160,13 @@
         :height="widget.options.size.height"
         :token="widget.options.token"
         :domain="widget.options.domain"
+        :multiple="widget.options.multiple"
+        :length="widget.options.length"
+        :is-qiniu="widget.options.isQiniu"
+        :is-delete="widget.options.isDelete"
+        :min="widget.options.min"
+        :is-edit="widget.options.isEdit"
+        :action="widget.options.action"
       >
       </fm-upload>
     </template>
@@ -217,7 +224,7 @@ export default {
       })
     }
 
-    if (this.widget.type === 'imgupload') {
+    if (this.widget.type === 'imgupload' && this.widget.options.isQiniu) {
       this.remote[this.widget.options.tokenFunc]((data) => {
         this.widget.options.token = data
       })

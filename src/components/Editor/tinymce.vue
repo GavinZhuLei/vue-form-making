@@ -111,9 +111,6 @@ export default {
 
 <style lang="scss">
 .fm-editor-container{
-  .mce-branding{
-    display: none;
-  }
 
   .mce-tinymce{
     box-shadow: 0 0 0 0;

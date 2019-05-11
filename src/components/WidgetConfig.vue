@@ -38,7 +38,7 @@
       <el-form-item label="步长" v-if="Object.keys(data.options).indexOf('step')>=0">
         <el-input-number v-model="data.options.step" :min="0" :max="100" :step="1"></el-input-number>
       </el-form-item>
-      <el-form-item label="是否多选" v-if="data.type=='select'">
+      <el-form-item label="是否多选" v-if="data.type=='select' || data.type=='imgupload'">
         <el-switch v-model="data.options.multiple" @change="handleSelectMuliple"></el-switch>
       </el-form-item>
       <el-form-item label="是否可搜索" v-if="data.type=='select'">
@@ -225,15 +225,26 @@
       </template>
 
       <template v-if="data.type=='imgupload'">
+        
         <el-form-item label="最大上传数">
           <el-input type="number" v-model.number="data.options.length"></el-input>
         </el-form-item>
-        <el-form-item label="Domain" :required="true">
+        <el-form-item label="使用七牛上传">
+          <el-switch v-model="data.options.isQiniu"></el-switch>
+        </el-form-item>
+        <template v-if="data.options.isQiniu">
+          <el-form-item label="Domain" :required="true">
           <el-input v-model="data.options.domain"></el-input>
-        </el-form-item>
-        <el-form-item label="获取七牛Token方法" :required="true">
-          <el-input v-model="data.options.tokenFunc"></el-input>
-        </el-form-item>
+          </el-form-item>
+          <el-form-item label="获取七牛Token方法" :required="true">
+            <el-input v-model="data.options.tokenFunc"></el-input>
+          </el-form-item>
+        </template>
+        <template v-else>
+          <el-form-item label="图片上传地址" :required="true">
+            <el-input v-model="data.options.action"></el-input>
+          </el-form-item>
+        </template>
       </template>
 
       <template v-if="data.type=='blank'">
@@ -297,6 +308,9 @@
           <el-checkbox v-model="data.options.editable" v-if="Object.keys(data.options).indexOf('editable')>=0">文本框可输入</el-checkbox>
           <el-checkbox v-model="data.options.clearable" v-if="Object.keys(data.options).indexOf('clearable')>=0">显示清除按钮</el-checkbox>
           <el-checkbox v-model="data.options.arrowControl" v-if="Object.keys(data.options).indexOf('arrowControl')>=0">使用箭头进行时间选择</el-checkbox>
+          <el-checkbox v-model="data.options.isDelete" v-if="Object.keys(data.options).indexOf('isDelete')>=0">删除</el-checkbox>
+          <el-checkbox v-model="data.options.isEdit" v-if="Object.keys(data.options).indexOf('isEdit')>=0">编辑</el-checkbox>
+          
         </el-form-item>
         <el-form-item label="校验">
           <div>
