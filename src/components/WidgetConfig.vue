@@ -415,6 +415,45 @@ export default {
         }
         
       }
+    },
+
+    validateRequired (val) {
+      if (val) {
+        this.validator.required = {required: true, message: `${this.data.name}必须填写`}
+      } else {
+        this.validator.required = null
+      }
+
+      this.$nextTick(() => {
+        this.generateRule()
+      })
+    },
+
+    validateDataType (val) {
+      if (!this.show) {
+        return false
+      }
+      
+      if (val) {
+        this.validator.type = {type: val, message: this.data.name + '格式不正确'}
+      } else {
+        this.validator.type = null
+      }
+
+      this.generateRule()
+    },
+    valiatePattern (val) {
+      if (!this.show) {
+        return false
+      }
+
+      if (val) {
+        this.validator.pattern = {pattern: val, message: this.data.name + '格式不匹配'}
+      } else {
+        this.validator.pattern = null
+      }
+
+      this.generateRule()
     }
   },
   watch: {
@@ -429,41 +468,18 @@ export default {
       }
     },
     'data.options.required': function(val) {
-      if (val) {
-        this.validator.required = {required: true, message: `${this.data.name}必须填写`}
-      } else {
-        this.validator.required = null
-      }
-
-      this.$nextTick(() => {
-        this.generateRule()
-      })
+      this.validateRequired(val)
     },
     'data.options.dataType': function (val) {
-      if (!this.show) {
-        return false
-      }
-      
-      if (val) {
-        this.validator.type = {type: val, message: this.data.name + '格式不正确'}
-      } else {
-        this.validator.type = null
-      }
-
-      this.generateRule()
+      this.validateDataType(val)
     },
     'data.options.pattern': function (val) {
-      if (!this.show) {
-        return false
-      }
-
-      if (val) {
-        this.validator.pattern = {pattern: val, message: this.data.name + '格式不匹配'}
-      } else {
-        this.validator.pattern = null
-      }
-
-      this.generateRule()
+      this.valiatePattern(val)
+    },
+    'data.name': function (val) {
+      this.validateRequired(this.data.options.required)
+      this.validateDataType(this.data.options.dataType)
+      this.valiatePattern(this.data.options.pattern)
     }
   }
 }

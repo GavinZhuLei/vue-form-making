@@ -167,7 +167,7 @@ export default {
         rules: []
       })
 
-      if (row.columns[colIndex].list[newIndex].type === 'radio' || row.columns[colIndex].list[newIndex].type === 'checkbox' || this.data.list[newIndex].type === 'select') {
+      if (row.columns[colIndex].list[newIndex].type === 'radio' || row.columns[colIndex].list[newIndex].type === 'checkbox' || row.columns[colIndex].list[newIndex].type === 'select') {
         this.$set(row.columns[colIndex].list, newIndex, {
           ...row.columns[colIndex].list[newIndex],
           options: {

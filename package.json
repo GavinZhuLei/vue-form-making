@@ -1,7 +1,7 @@
 {
   "name": "form-making",
   "description": "基于Vue,ElementUI开发的一款表单设计器，提高表单开发效率的利器，让开发者从枯燥的表单代码编写中解放出来",
-  "version": "1.1.18",
+  "version": "1.1.19",
   "author": "GavinZhulei",
   "license": "MIT",
   "keywords": [
@@ -53,6 +53,7 @@
     "rollup-plugin-uglify-es": "0.0.1",
     "rollup-plugin-vue": "^3.0.0",
     "sass-loader": "^7.0.1",
+    "terser-webpack-plugin": "^1.2.4",
     "uglifyjs-webpack-plugin": "^2.0.1",
     "vue-template-compiler": "^2.6.5"
   },

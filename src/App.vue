@@ -5,6 +5,7 @@
       <div class="fm-title" @click="handleHome">表单设计器</div>
 
       <div class="fm-link">
+        <a target="_blank" href="https://www.yuque.com/zhulei-sbpfz/ua9nar">开始使用</a>
         <a target="_blank" href="#/price">商业授权</a>
         <a href="https://github.com/GavinZhuLei/vue-form-making">GitHub</a>
         <a href="https://gitee.com/gavinzhulei/vue-form-making">码云</a>

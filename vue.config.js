@@ -1,12 +1,13 @@
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 
 module.exports = {
   productionSourceMap: false,
   publicPath: './',
   configureWebpack: config => {
     let plugins = [
-      new UglifyJsPlugin({
-        uglifyOptions: {
+      new TerserPlugin({
+        terserOptions: {
           compress: {
             warnings: false,
             drop_debugger: false,
