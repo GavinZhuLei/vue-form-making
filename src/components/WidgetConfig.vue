@@ -477,9 +477,11 @@ export default {
       this.valiatePattern(val)
     },
     'data.name': function (val) {
-      this.validateRequired(this.data.options.required)
-      this.validateDataType(this.data.options.dataType)
-      this.valiatePattern(this.data.options.pattern)
+      if (this.data.options) {
+        this.validateRequired(this.data.options.required)
+        this.validateDataType(this.data.options.dataType)
+        this.valiatePattern(this.data.options.pattern)
+      }
     }
   }
 }
