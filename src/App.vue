@@ -5,6 +5,7 @@
       <div class="fm-title" @click="handleHome">表单设计器</div>
 
       <div class="fm-link">
+        <a class="ad" target="_blank" href="https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=x5oqy0nh">阿里云限量红包</a>
         <a target="_blank" href="https://www.yuque.com/zhulei-sbpfz/ua9nar">开始使用</a>
         <a target="_blank" href="#/price">商业授权</a>
         <a href="https://github.com/GavinZhuLei/vue-form-making">GitHub</a>
@@ -61,10 +62,14 @@ export default {
       font-size: 14px;
       line-height: 50px;
       font-weight: 500;
-      margin-left: 10px;
+      margin-left: 15px;
       
       &:hover{
         opacity: 0.8;
+      }
+
+      &.ad{
+        color: #f5dab1;
       }
     }
   }
