@@ -74,7 +74,7 @@ export default {
             this.models[genList[i].model] = this.value[genList[i].model]
           } else {
             if (genList[i].type === 'blank') {
-              this.models[genList[i].model] = genList[i].options.defaultType === 'String' ? '' : (genList[i].options.defaultType === 'Object' ? {} : [])
+              this.$set(this.models, genList[i].model, genList[i].options.defaultType === 'String' ? '' : (genList[i].options.defaultType === 'Object' ? {} : []))
             } else {
               this.models[genList[i].model] = genList[i].options.defaultValue
             }      
