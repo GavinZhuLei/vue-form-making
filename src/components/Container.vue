@@ -3,9 +3,6 @@
     <el-main class="fm2-main">
       <el-container>
         <el-aside style="wdith: 250px;">
-          <a style="margin: 10px 10px 0; display: block;" target="_blank" href="https://promotion.aliyun.com/ntms/act/qwbk.html?userCode=x5oqy0nh">
-            <img src="http://tools.xiaoyaoji.cn/form/img/ad2.301da306.jpg" style="width: 100%;">
-          </a>
           <div class="components-list">
             <div class="widget-cate">基础字段</div>
             <draggable tag="ul" :list="basicComponents" 
