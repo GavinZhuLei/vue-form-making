@@ -1,5 +1,5 @@
 <template>
-  <fm-making-form ref="makingForm" upload preview generate-code generate-json>
+  <fm-making-form ref="makingForm" upload preview generate-code generate-json clearable>
     <template slot="action">
     </template>
   </fm-making-form>

@@ -10,6 +10,7 @@
             v-model="element.options.defaultValue"
             :style="{width: element.options.width}"
             :placeholder="element.options.placeholder"
+            :disabled="element.options.disabled"
           ></el-input>
         </template>
 
@@ -34,10 +35,12 @@
         <template v-if="element.type == 'radio'">
           <el-radio-group v-model="element.options.defaultValue"
             :style="{width: element.options.width}"
+            :disabled="element.options.disabled"
           >
             <el-radio  
               :style="{display: element.options.inline ? 'inline-block' : 'block'}"
               :label="item.value" v-for="(item, index) in element.options.options" :key="item.value + index"
+              
             >
               {{element.options.showLabel ? item.label : item.value}}
             </el-radio>
@@ -47,6 +50,7 @@
         <template v-if="element.type == 'checkbox'">
           <el-checkbox-group v-model="element.options.defaultValue"
             :style="{width: element.options.width}"
+            :disabled="element.options.disabled"
           >
             <el-checkbox
               :style="{display: element.options.inline ? 'inline-block' : 'block'}"
@@ -182,14 +186,14 @@
           <div style="height: 50px;color: #999;background: #eee;line-height:50px;text-align:center;">自定义区域</div>
         </template>
 
-        <el-button title="删除" @click.stop="handleWidgetDelete(index)" class="widget-action-delete" v-if="selectWidget.key == element.key" circle plain type="danger">
-          <!-- <icon name="icon-trash" style="width: 12px;height: 12px;"></icon> -->
-          <i class="iconfont icon-trash"></i>
-        </el-button>
-        <el-button title="复制" @click.stop="handleWidgetClone(index)" class="widget-action-clone" v-if="selectWidget.key == element.key" circle plain type="primary">
-          <!-- <icon name="icon-icon_clone" style="width: 12px;height: 12px;"></icon> -->
-          <i class="iconfont icon-icon_clone"></i>
-        </el-button>
+        <div class="widget-view-action" v-if="selectWidget.key == element.key">
+          <i class="iconfont icon-icon_clone" @click.stop="handleWidgetClone(index)"></i>
+          <i class="iconfont icon-trash" @click.stop="handleWidgetDelete(index)"></i>
+        </div>
+
+        <div class="widget-view-drag" v-if="selectWidget.key == element.key">
+          <i class="iconfont icon-drag drag-widget"></i>
+        </div>
         
     </el-form-item>
 </template>

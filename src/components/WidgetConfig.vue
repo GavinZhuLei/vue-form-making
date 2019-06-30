@@ -92,8 +92,8 @@
                     :label="item.value" 
                     style="margin-right: 5px;"
                   >
-                    <el-input :style="{'width': data.options.showLabel? '90px': '190px' }" size="mini" v-model="item.value"></el-input>
-                    <el-input style="width:100px;" size="mini" v-if="data.options.showLabel" v-model="item.label"></el-input>
+                    <el-input :style="{'width': data.options.showLabel? '90px': '180px' }" size="mini" v-model="item.value"></el-input>
+                    <el-input style="width:90px;" size="mini" v-if="data.options.showLabel" v-model="item.label"></el-input>
                     <!-- <input v-model="item.value"/> -->
                   </el-radio>
                   <i class="drag-item" style="font-size: 16px;margin: 0 5px;cursor: move;"><i class="iconfont icon-icon_bars"></i></i>
@@ -117,8 +117,8 @@
                     :label="item.value"
                     style="margin-right: 5px;"
                   >
-                    <el-input :style="{'width': data.options.showLabel? '90px': '190px' }" size="mini" v-model="item.value"></el-input>
-                    <el-input style="width:100px;" size="mini" v-if="data.options.showLabel" v-model="item.label"></el-input>
+                    <el-input :style="{'width': data.options.showLabel? '90px': '180px' }" size="mini" v-model="item.value"></el-input>
+                    <el-input style="width:90px;" size="mini" v-if="data.options.showLabel" v-model="item.label"></el-input>
                   </el-checkbox>
                   <i class="drag-item" style="font-size: 16px;margin: 0 5px;cursor: move;"><i class="iconfont icon-icon_bars"></i></i>
                   <el-button @click="handleOptionsRemove(index)" circle plain type="danger" size="mini" icon="el-icon-minus" style="padding: 4px;margin-left: 5px;"></el-button>

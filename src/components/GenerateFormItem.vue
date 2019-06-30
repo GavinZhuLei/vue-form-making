@@ -7,11 +7,13 @@
         v-model.number="dataModel"
         :placeholder="widget.options.placeholder"
         :style="{width: widget.options.width}"
+        :disabled="widget.options.disabled"
       ></el-input>
       <el-input 
         v-else
         :type="widget.options.dataType"
         v-model="dataModel"
+        :disabled="widget.options.disabled"
         :placeholder="widget.options.placeholder"
         :style="{width: widget.options.width}"
       ></el-input>
@@ -32,12 +34,14 @@
         :style="{width: widget.options.width}"
         :step="widget.options.step"
         controls-position="right"
+        :disabled="widget.options.disabled"
       ></el-input-number>
     </template>
 
     <template v-if="widget.type == 'radio'">
       <el-radio-group v-model="dataModel"
         :style="{width: widget.options.width}"
+        :disabled="widget.options.disabled"
       >
         <el-radio
           :style="{display: widget.options.inline ? 'inline-block' : 'block'}"
@@ -52,6 +56,7 @@
     <template v-if="widget.type == 'checkbox'">
       <el-checkbox-group v-model="dataModel"
         :style="{width: widget.options.width}"
+        :disabled="widget.options.disabled"
       >
         <el-checkbox
           

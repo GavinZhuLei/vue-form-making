@@ -1,60 +1,63 @@
 <template>
   <div class="widget-form-container">
-    <el-form :size="data.config.size" :label-position="data.config.labelPosition" :label-width="data.config.labelWidth + 'px'">
+    <div v-if="data.list.length == 0" class="form-empty">从左侧拖拽来添加字段</div>
+    <el-form :size="data.config.size" label-suffix=":" :label-position="data.config.labelPosition" :label-width="data.config.labelWidth + 'px'">
       
-      <draggable class="widget-form-list" 
-        
+      <draggable class="" 
         v-model="data.list" 
-        v-bind="{group:'people', ghostClass: 'ghost'}"
+        v-bind="{group:'people', ghostClass: 'ghost',animation: 200, handle: '.drag-widget'}"
         @end="handleMoveEnd"
         @add="handleWidgetAdd"
       >
 
-        <template v-for="(element, index) in data.list">
-          <template v-if="element.type == 'grid'">
-            <div v-if="element && element.key"  class="widget-grid-container data-grid" :key="element.key" style="position: relative;">
-              <el-row class="widget-grid "
-                type="flex"
-                :class="{active: selectWidget.key == element.key}"
-                :gutter="element.options.gutter ? element.options.gutter : 0"
-                :justify="element.options.justify"
-                :align="element.options.align"
-                @click.native="handleSelectWidget(index)">
-                <el-col  v-for="(col, colIndex) in element.columns" :key="colIndex" :span="col.span ? col.span : 0">
-                  <div style="border: 1px dashed #999;">
-                    <draggable
-                      class="widget-form-list" 
-                      style="padding-bottom: 50px;"
-                      v-model="col.list"
-                      filter="widget-grid-container"
-                      v-bind="{group:'people', ghostClass: 'ghost'}"
-                      @end="handleMoveEnd"
-                      @add="handleWidgetColAdd($event, element, colIndex)"
-                    >
-                      <widget-form-item 
-                        v-for="(el, i) in col.list"
-                        :key="el.key"
-                        v-if="el.key"
-                        :element="el" 
-                        :select.sync="selectWidget" 
-                        :index="i" 
-                        :data="col"></widget-form-item>
-                    </draggable>
+        <transition-group name="fade" tag="div" class="widget-form-list">
+          <template v-for="(element, index) in data.list">
+            <template v-if="element.type == 'grid'">
+                <el-row class="widget-col widget-view" v-if="element && element.key" :key="element.key" 
+                  type="flex"
+                  :class="{active: selectWidget.key == element.key}"
+                  :gutter="element.options.gutter ? element.options.gutter : 0"
+                  :justify="element.options.justify"
+                  :align="element.options.align"
+                  @click.native="handleSelectWidget(index)">
+                  <el-col  v-for="(col, colIndex) in element.columns" :key="colIndex" :span="col.span ? col.span : 0">
+                    
+                      <draggable
+                        v-model="col.list"
+                        :no-transition-on-drag="true"
+                        v-bind="{group:'people', ghostClass: 'ghost',animation: 200, handle: '.drag-widget'}"
+                        @end="handleMoveEnd"
+                        @add="handleWidgetColAdd($event, element, colIndex)"
+                      >
+                        <transition-group name="fade" tag="div" class="widget-col-list">
+                          <widget-form-item 
+                            v-for="(el, i) in col.list"
+                            :key="el.key"
+                            v-if="el.key"
+                            :element="el" 
+                            :select.sync="selectWidget" 
+                            :index="i" 
+                            :data="col">
+                          </widget-form-item>
+                        </transition-group>
+                        
+                      </draggable>
+                  </el-col>
+                  <div class="widget-view-action widget-col-action" v-if="selectWidget.key == element.key">
+        
+                    <i class="iconfont icon-trash" @click.stop="handleWidgetDelete(index)"></i>
                   </div>
-                </el-col>
-                
-              </el-row>
-              <el-button title="删除" style="bottom: -20px;" @click.stop="handleWidgetDelete(index)" class="widget-action-delete" v-if="selectWidget.key == element.key" circle plain type="danger">
-                <!-- <icon name="icon-trash" style="width: 12px;height: 12px;"></icon> -->
-                <i class="iconfont icon-trash" ></i>
-              </el-button>
-            </div>
+
+                  <div class="widget-view-drag widget-col-drag" v-if="selectWidget.key == element.key">
+                    <i class="iconfont icon-drag drag-widget"></i>
+                  </div>
+                </el-row>
+            </template>
+            <template v-else>
+              <widget-form-item v-if="element && element.key"  :key="element.key" :element="element" :select.sync="selectWidget" :index="index" :data="data"></widget-form-item>
+            </template>
           </template>
-          <template v-else>
-            <widget-form-item v-if="element && element.key"  :key="element.key" :element="element" :select.sync="selectWidget" :index="index" :data="data"></widget-form-item>
-          </template>
-        </template>
-            
+        </transition-group>
       </draggable>
     </el-form>
   </div>

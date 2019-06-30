@@ -16,14 +16,26 @@
   .el-radio{
     line-height: 32px !important;
   }
+
+  .el-rate{
+    margin-top: 6px;
+  }
 }
 .el-form-item--mini{
   .el-radio{
     line-height: 28px !important;
   }
+
+  .el-rate{
+    margin-top: 4px;
+  }
 }
 .el-form-item--medium{
   .el-radio{
     line-height: 36px !important;
+  }
+
+  .el-rate{
+    margin-top: 8px;
   }
 }
