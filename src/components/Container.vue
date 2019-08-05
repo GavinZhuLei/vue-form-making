@@ -99,7 +99,7 @@
           width="1000px"
           form
         >
-          <generate-form insite="true" v-if="previewVisible" :data="widgetForm" :value="widgetModels" :remote="remoteFuncs" ref="generateForm">
+          <generate-form insite="true" @on-change="handleDataChange" v-if="previewVisible" :data="widgetForm" :value="widgetModels" :remote="remoteFuncs" ref="generateForm">
 
             <template v-slot:blank="scope">
               宽度：<el-input v-model="scope.model.blank.width" style="width: 100px"></el-input>
@@ -416,6 +416,9 @@ export default {
     handleInput (val) {
       console.log(val)
       this.blank = val
+    },
+    handleDataChange (field, value, data) {
+      console.log(field, value, data)
     }
   },
   watch: {

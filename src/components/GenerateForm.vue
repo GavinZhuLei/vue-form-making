@@ -21,7 +21,14 @@
                 <el-form-item v-if="citem.type=='blank'" :label="citem.name" :prop="citem.model" :key="citem.key">
                   <slot :name="citem.model" :model="models"></slot>
                 </el-form-item>
-                <genetate-form-item v-else :key="citem.key" :models.sync="models" :remote="remote" :rules="rules" :widget="citem"></genetate-form-item>
+                <genetate-form-item v-else 
+                  :key="citem.key" 
+                  :models.sync="models" 
+                  :remote="remote" 
+                  :rules="rules" 
+                  :widget="citem"
+                  @input-change="onInputChange">
+                </genetate-form-item>
               </template>
             </el-col>
           </el-row>
@@ -34,7 +41,14 @@
         </template>
 
         <template v-else>
-          <genetate-form-item :key="item.key" :models.sync="models" :rules="rules" :widget="item" :remote="remote"></genetate-form-item>
+          <genetate-form-item 
+            :key="item.key" 
+            :models.sync="models" 
+            :rules="rules" 
+            :widget="item" 
+            @input-change="onInputChange"
+            :remote="remote">
+          </genetate-form-item>
         </template>
         
       </template>
@@ -116,6 +130,9 @@ export default {
     },
     reset () {
       this.$refs.generateForm.resetFields()
+    },
+    onInputChange (value, field) {
+      this.$emit('on-change', field, value, this.models)
     },
     refresh () {
       
