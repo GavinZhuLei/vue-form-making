@@ -5,12 +5,13 @@
       <div class="fm-title" @click="handleHome">表单设计器</div>
 
       <div class="fm-link">
-        <a class="ad" target="_blank" href="https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=x5oqy0nh">阿里云限量红包</a>
-        <a target="_blank" href="https://www.yuque.com/zhulei-sbpfz/ua9nar">开始使用</a>
+        <a target="_blank" href="https://www.yuque.com/zhulei-sbpfz/ua9nar/mdgwki">使用文档</a>
+        <a target="_blank" href="https://www.yuque.com/zhulei-sbpfz/ua9nar/umgwk6">教程</a>
         <a target="_blank" href="#/price">商业授权</a>
         <a href="https://github.com/GavinZhuLei/vue-form-making">GitHub</a>
         <a href="https://gitee.com/gavinzhulei/vue-form-making">码云</a>
-        <a href="http://www.xiaoyaoji.cn" target="_blank">小幺鸡接口文档</a>
+        <a class="ad" href="http://www.xiaoyaoji.cn" target="_blank">小幺鸡接口文档</a>
+        <a class="ad" target="_blank" href="http://book.wawo.xyz/">WAWO 好神奇</a>
       </div>
     </div>
     <div  class="fm-container"><router-view/></div>
