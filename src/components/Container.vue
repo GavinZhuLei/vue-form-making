@@ -4,53 +4,61 @@
       <el-container>
         <el-aside width="250px">
           <div class="components-list">
-            <div class="widget-cate">基础字段</div>
-            <draggable tag="ul" :list="basicComponents" 
-              v-bind="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
-              @end="handleMoveEnd"
-              @start="handleMoveStart"
-              :move="handleMove"
-            >
-              
-              <li class="form-edit-widget-label" v-for="(item, index) in basicComponents" :key="index">
-                <a>
-                  <i class="icon iconfont" :class="item.icon"></i>
-                  <span>{{item.name}}</span>
-                </a>
-              </li>
-            </draggable>
-
-            <div class="widget-cate">高级字段</div>
-            <draggable tag="ul" :list="advanceComponents" 
-              v-bind="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
-              @end="handleMoveEnd"
-              @start="handleMoveStart"
-              :move="handleMove"
-            >
-              
-              <li class="form-edit-widget-label" v-for="(item, index) in advanceComponents" :key="index">
-                <a>
-                  <i class="icon iconfont" :class="item.icon"></i>
-                  <span>{{item.name}}</span>
-                </a>
-              </li>
-            </draggable>
+            <template v-if="basicFields.length">
+              <div class="widget-cate">基础字段</div>
+              <draggable tag="ul" :list="basicComponents" 
+                v-bind="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
+                @end="handleMoveEnd"
+                @start="handleMoveStart"
+                :move="handleMove"
+              >
+                
+                <li v-if="basicFields.indexOf(item.type)>=0" class="form-edit-widget-label" :class="{'no-put': item.type == 'divider'}" v-for="(item, index) in basicComponents" :key="index">
+                  <a>
+                    <i class="icon iconfont" :class="item.icon"></i>
+                    <span>{{item.name}}</span>
+                  </a>
+                </li>
+              </draggable>
+            </template>
             
-            <div class="widget-cate">布局字段</div>
-            <draggable tag="ul" :list="layoutComponents" 
-              v-bind="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
-              @end="handleMoveEnd"
-              @start="handleMoveStart"
-              :move="handleMove"
-            >
-              
-              <li class="form-edit-widget-label data-grid" v-for="(item, index) in layoutComponents" :key="index">
-                <a>
-                  <i class="icon iconfont" :class="item.icon"></i>
-                  <span>{{item.name}}</span>
-                </a>
-              </li>
-            </draggable>
+            <template v-if="advanceFields.length">
+              <div class="widget-cate">高级字段</div>
+              <draggable tag="ul" :list="advanceComponents" 
+                v-bind="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
+                @end="handleMoveEnd"
+                @start="handleMoveStart"
+                :move="handleMove"
+              >
+                
+                <li v-if="advanceFields.indexOf(item.type) >= 0" class="form-edit-widget-label" :class="{'no-put': item.type == 'table'}" v-for="(item, index) in advanceComponents" :key="index">
+                  <a>
+                    <i class="icon iconfont" :class="item.icon"></i>
+                    <span>{{item.name}}</span>
+                  </a>
+                </li>
+              </draggable>
+            </template>
+
+            
+            <template v-if="layoutFields.length">
+              <div class="widget-cate">布局字段</div>
+              <draggable tag="ul" :list="layoutComponents" 
+                v-bind="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
+                @end="handleMoveEnd"
+                @start="handleMoveStart"
+                :move="handleMove"
+              >
+                
+                <li v-if="layoutFields.indexOf(item.type) >=0" class="form-edit-widget-label no-put" v-for="(item, index) in layoutComponents" :key="index">
+                  <a>
+                    <i class="icon iconfont" :class="item.icon"></i>
+                    <span>{{item.name}}</span>
+                  </a>
+                </li>
+              </draggable>
+            </template>
+            
           </div>
           
         </el-aside>
@@ -192,6 +200,18 @@ export default {
     clearable: {
       type: Boolean,
       default: false
+    },
+    basicFields: {
+      type: Array,
+      default: () => ['input', 'textarea', 'number', 'radio', 'checkbox', 'time', 'date', 'rate', 'color', 'select', 'switch', 'slider']
+    },
+    advanceFields: {
+      type: Array,
+      default: () => ['blank', 'imgupload', 'editor', 'cascader']
+    },
+    layoutFields: {
+      type: Array,
+      default: () => ['grid']
     }
   },
   data () {
