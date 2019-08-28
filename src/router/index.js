@@ -10,11 +10,6 @@ export default new Router({
     {
       path: '/',
       component: Home
-    },
-    {
-      path: '/price',
-      name: 'price',
-      component: () => import('../demo/Price.vue')
     }
   ]
 })

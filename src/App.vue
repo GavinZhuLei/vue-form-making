@@ -5,11 +5,11 @@
       <div class="fm-title" @click="handleHome">表单设计器</div>
 
       <div class="fm-link">
-        <a target="_blank" href="https://www.yuque.com/zhulei-sbpfz/ua9nar/mdgwki">使用文档</a>
-        <a target="_blank" href="https://www.yuque.com/zhulei-sbpfz/ua9nar/umgwk6">教程</a>
-        <a target="_blank" href="#/price">商业授权</a>
-        <a href="https://github.com/GavinZhuLei/vue-form-making">GitHub</a>
-        <a href="https://gitee.com/gavinzhulei/vue-form-making">码云</a>
+        <a target="_blank" href="http://tools.xiaoyaoji.cn/guide/installation.html">使用文档</a>
+        <a target="_blank" href="http://tools.xiaoyaoji.cn/other/course.html">教程</a>
+        <a target="_blank" href="http://tools.xiaoyaoji.cn/form/#/price">商业授权</a>
+        <a target="_blank" href="https://github.com/GavinZhuLei/vue-form-making">GitHub</a>
+        <a target="_blank" href="https://gitee.com/gavinzhulei/vue-form-making">码云</a>
         <a class="ad" href="http://www.xiaoyaoji.cn" target="_blank">小幺鸡接口文档</a>
         <a class="ad" target="_blank" href="http://book.wawo.xyz/">WAWO 好神奇</a>
       </div>

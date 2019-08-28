@@ -1,9 +1,10 @@
-# form-making
-基于Vue,ElementUI开发的一款表单设计器，提高表单开发效率的利器，让开发者从枯燥的表单代码编写中解放出来
+# vue-form-making
 
-工具地址：http://tools.xiaoyaoji.cn/form
+基于Vue的表单设计器，让表单开发简单而高效
 
-![](https://user-gold-cdn.xitu.io/2018/9/27/1661a6cd60454273)
+设计器地址：http://tools.xiaoyaoji.cn/form
+
+![](http://tools.xiaoyaoji.cn/images/manual/start-1.gif)
 
 ## 特性
 
@@ -20,13 +21,9 @@
 
 ## 文档
 
-* [快速使用](https://www.yuque.com/zhulei-sbpfz/ua9nar/mdgwki)
-* [组件](https://www.yuque.com/zhulei-sbpfz/ua9nar/vtebqs)
-
-## 高级字段使用
-
-* [自定义扩展](https://github.com/GavinZhuLei/vue-form-making/blob/master/doc/blank.md "自定义扩展")
-* [图片上传](https://github.com/GavinZhuLei/vue-form-making/blob/master/doc/imgupload.md "图片上传")
+* [开发指南](http://tools.xiaoyaoji.cn/guide/installation.html)
+* [组件](http://tools.xiaoyaoji.cn/guide/making-form.html)
+* [使用手册](http://tools.xiaoyaoji.cn/manual/start.html)
 
 ## 社区资料笔记
 
@@ -42,12 +39,14 @@
 
 如果觉得还不错，请作者喝杯咖啡吧 ☺
 
-![](https://user-gold-cdn.xitu.io/2018/10/28/166ba780bb01fef7?w=2304&h=1050&f=jpeg&s=197327)
+![](http://tools.xiaoyaoji.cn/donation.jpeg)
 
 ## 开源协议
 
 [LGPL](https://opensource.org/licenses/LGPL-3.0)
 
+您可以将 vue-form-making 源码用于 LGPL 协议的开源项目中，并保留版权信息
+
 ## 商业许可
 
-开源版本遵循 LGPL 条款发布，如果您不能接受 LGPL，并且需要将该项目用于商业用途且不想保留版权信息（底部“Powered by GavinZhuLei”版权及链接），为保障您的合法权益，需购买[商业授权](http://tools.xiaoyaoji.cn/form/#/price)
+如果要将 vue-form-making 源码使用在非开源站点，项目和应用程序中，为保障您的合法权益，需购买[商业授权](http://tools.xiaoyaoji.cn/form/#/price)
