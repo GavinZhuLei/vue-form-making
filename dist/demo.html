@@ -1,58 +1,10 @@
-<!DOCTYPE html>
-  <html>
-  <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-    <link rel="stylesheet" href="https://unpkg.com/form-making/dist/FormMaking.css">
-  </head>
-  <body>
-    <div id="app">
-      <fm-generate-form :data="jsonData" :remote="remoteFuncs" :value="editData" ref="generateForm">
-        
-      </fm-generate-form>
-      <el-button type="primary" @click="handleSubmit">提交</el-button>
-    </div>
-    <script src="https://unpkg.com/vue/dist/vue.js"></script>
-    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
-    <script src="https://unpkg.com/form-making/dist/FormMaking.umd.js"></script>
-    <script>
-      new Vue({
-        el: '#app',
-        data: {
-          jsonData: {"list":[{"type":"input","name":"姓名","icon":"icon-input","options":{"width":"300px","defaultValue":"","required":false,"dataType":"string","pattern":"","placeholder":"请输入姓名","customClass":"form-item-custom","disabled":false,"remoteFunc":"func_1565231900239","remoteOptions":[]},"key":"1565231900239","model":"name","rules":[{"type":"string","message":"姓名格式不正确"}]},{"type":"select","name":"下拉选择框","icon":"icon-select","options":{"defaultValue":"","multiple":false,"disabled":false,"clearable":false,"placeholder":"","required":false,"showLabel":false,"width":"","options":[{"value":"下拉框1"},{"value":"下拉框2"},{"value":"下拉框3"}],"remote":true,"filterable":false,"remoteOptions":[],"props":{"value":"value","label":"label"},"remoteFunc":"func_test","customClass":""},"key":"1565314015515","model":"select_1565314015515","rules":[]}],"config":{"labelWidth":100,"labelPosition":"right","size":"small","customClass":"form-custom"}},
-          editData: {},
-          remoteFuncs: {
-            
-            func_test (resolve) {
-              // 下拉选择框 select_1565314015515
-              // 获取到远端数据后执行回调函数
-              // resolve(data)
-              // 模拟数据获取
-              setTimeout(function(){
-                var data = [
-                  {value: 'value1', label: 'label1'},
-                  {value: 'value2', label: 'label2'},
-                  {value: 'value3', label: 'label3'},
-                ]  
-                
-                resolve(data)
-                
-              }, 500)
-            },
-    
-          }
-        },
-        methods: {
-          handleSubmit () {
-            this.$refs.generateForm.getData().then(data => {
-              // 数据校验成功
-              // data 为获取的表单数据
-            }).catch(e => {
-              // 数据校验失败
-            })
-          }
-        }
-      })
-    </script>
-  </body>
-  </html>
+<meta charset="utf-8">
+<title>FormMaking demo</title>
+<script src="./FormMaking.umd.js"></script>
+
+<link rel="stylesheet" href="./FormMaking.css">
+
+
+<script>
+console.log(FormMaking)
+</script>
