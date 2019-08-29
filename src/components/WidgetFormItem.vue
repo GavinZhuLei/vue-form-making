@@ -173,13 +173,11 @@
         </template>
 
         <template v-if="element.type == 'editor'">
-          <fm-editor
+          <vue-editor
             v-model="element.options.defaultValue"
-            :width="element.options.width"
-            :height="element.options.height"
+            :style="{width: element.options.width}"
           >
-
-          </fm-editor>
+          </vue-editor>
         </template>
 
         <template v-if="element.type=='blank'">
@@ -200,12 +198,12 @@
 
 <script>
 import FmUpload from './Upload'
-import FmEditor from './Editor/tinymce'
+import { VueEditor } from "vue2-editor"
 export default {
   props: ['element', 'select', 'index', 'data'],
   components: {
     FmUpload,
-    FmEditor
+    VueEditor
   },
   data () {
     return {
