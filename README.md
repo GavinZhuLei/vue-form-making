@@ -4,7 +4,7 @@
 
 设计器地址：http://tools.xiaoyaoji.cn/form
 
-![](http://tools.xiaoyaoji.cn/images/manual/start-1.gif)
+![](http://tools.xiaoyaoji.cn/F.png)
 
 ## 特性
 
@@ -45,8 +45,8 @@
 
 [LGPL](https://opensource.org/licenses/LGPL-3.0)
 
-您可以将 vue-form-making 源码用于 LGPL 协议的开源项目中，并保留版权信息
+您可以将 vue-form-making 源码用于 LGPL 协议的开源项目中，并保留版权信息。
 
 ## 商业许可
 
-如果要将 vue-form-making 源码使用在非开源站点，项目和应用程序中，为保障您的合法权益，需购买[商业授权](http://tools.xiaoyaoji.cn/form/#/price)
+如果要将 vue-form-making 源码使用在非开源站点，项目和应用程序中，为保障您的合法权益，需购买[商业授权](http://tools.xiaoyaoji.cn/form/#/price)。
