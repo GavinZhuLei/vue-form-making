@@ -149,7 +149,7 @@ export const basicComponents = [
   {
     type: 'rate',
     name: '评分',
-    icon: 'icon-icon-test',
+    icon: 'icon-pingfen1',
     options: {
       defaultValue: null,
       max: 5,
@@ -227,6 +227,15 @@ export const basicComponents = [
       range: false,
       width: ''
     }
+  },
+  {
+    type: 'text',
+    name: '文字',
+    icon: 'icon-wenzishezhi-',
+    options: {
+      defaultValue: '这是一段文本',
+      customClass: '',
+    }
   }
 ]
 
@@ -234,7 +243,7 @@ export const advanceComponents = [
   {
     type: 'blank',
     name: '自定义',
-    icon: 'icon-ic',
+    icon: 'icon-zidingyishuju',
     options: {
       defaultType: 'String'
     }

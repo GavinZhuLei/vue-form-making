@@ -196,6 +196,10 @@
 
       </el-cascader>
     </template>
+
+    <template v-if="widget.type == 'text'">
+      <span>{{dataModel}}</span>
+    </template>
   </el-form-item>
 </template>
 

@@ -184,6 +184,10 @@
           <div style="height: 50px;color: #999;background: #eee;line-height:50px;text-align:center;">自定义区域</div>
         </template>
 
+        <template v-if="element.type == 'text'">
+          <span>{{element.options.defaultValue}}</span>
+        </template>
+
         <div class="widget-view-action" v-if="selectWidget.key == element.key">
           <i class="iconfont icon-icon_clone" @click.stop="handleWidgetClone(index)"></i>
           <i class="iconfont icon-trash" @click.stop="handleWidgetDelete(index)"></i>

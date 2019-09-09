@@ -203,7 +203,7 @@ export default {
     },
     basicFields: {
       type: Array,
-      default: () => ['input', 'textarea', 'number', 'radio', 'checkbox', 'time', 'date', 'rate', 'color', 'select', 'switch', 'slider']
+      default: () => ['input', 'textarea', 'number', 'radio', 'checkbox', 'time', 'date', 'rate', 'color', 'select', 'switch', 'slider', 'text']
     },
     advanceFields: {
       type: Array,

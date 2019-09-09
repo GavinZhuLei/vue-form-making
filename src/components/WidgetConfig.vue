@@ -313,7 +313,7 @@
           
         </el-form-item>
         <el-form-item label="校验">
-          <div>
+          <div v-if="Object.keys(data.options).indexOf('required')>=0">
             <el-checkbox v-model="data.options.required">必填</el-checkbox>
           </div>
           <el-select v-if="Object.keys(data.options).indexOf('dataType')>=0" v-model="data.options.dataType" size="mini" >
