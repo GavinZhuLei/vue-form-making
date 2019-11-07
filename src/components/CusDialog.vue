@@ -17,8 +17,8 @@
     <span v-if="action" slot="footer" class="dialog-footer" v-loading="loading"
       :element-loading-text="loadingText">
       <slot name="action">
-        <el-button @click="close">取消</el-button>
-        <el-button type="primary" @click="submit" >确 定</el-button>
+        <el-button @click="close">{{$t('fm.actions.cancel')}}</el-button>
+        <el-button type="primary" @click="submit" >{{$t('fm.actions.confirm')}}</el-button>
       </slot>
     </span>
   </el-dialog>

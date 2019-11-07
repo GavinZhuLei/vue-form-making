@@ -51,7 +51,7 @@ export default function (data) {
     funcTemplate += `
             ${funcList[i].func} (resolve) {
               // ${funcList[i].label} ${funcList[i].model}
-              // 获取到远端数据后执行回调函数
+              // Call callback function once get the data from remote server
               // resolve(data)
             },
     `
@@ -61,7 +61,7 @@ export default function (data) {
     funcTemplate += `
             ${tokenFuncList[i].func} (resolve) {
               // ${tokenFuncList[i].label} ${tokenFuncList[i].model}
-              // 获取到token数据后执行回调函数
+              // Call callback function once get the token
               // resolve(token)
             },
     `
@@ -71,7 +71,7 @@ export default function (data) {
     blankTemplate += `
         <template slot="${blankList[i].name}" slot-scope="scope">
           <!-- ${blankList[i].label} -->
-          <!-- 通过 v-model="scope.model.${blankList[i].name}" 绑定数据 -->
+          <!-- use v-model="scope.model.${blankList[i].name}" to bind data -->
         </template>
     `
   }
@@ -106,10 +106,10 @@ export default function (data) {
         methods: {
           handleSubmit () {
             this.$refs.generateForm.getData().then(data => {
-              // 数据校验成功
-              // data 为获取的表单数据
+              // data check success
+              // data - form data
             }).catch(e => {
-              // 数据校验失败
+              // data check failed
             })
           }
         }

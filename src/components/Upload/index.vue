@@ -21,9 +21,9 @@
         </label>
 
         <div class="uplaod-action" :style="{height: miniWidth / 4 + 'px'}" v-if="!disabled">
-          <i class="iconfont icon-tupianyulan" title="预览" @click="handlePreviewFile(item.key)" :style="{'font-size': miniWidth/8+'px'}"></i>
-          <i v-if="isEdit" class="iconfont icon-sync1" title="替换" @click="handleEdit(item.key)" :style="{'font-size': miniWidth/8+'px'}"></i>
-          <i v-if="isDelete && fileList.length > min" class="iconfont icon-delete" title="删除" @click="handleRemove(item.key)" :style="{'font-size': miniWidth/8+'px'}"></i>
+          <i class="iconfont icon-tupianyulan" :title="$t('fm.upload.preview')" @click="handlePreviewFile(item.key)" :style="{'font-size': miniWidth/8+'px'}"></i>
+          <i v-if="isEdit" class="iconfont icon-sync1" :title="$t('fm.upload.edit')" @click="handleEdit(item.key)" :style="{'font-size': miniWidth/8+'px'}"></i>
+          <i v-if="isDelete && fileList.length > min" class="iconfont icon-delete" :title="$t('fm.upload.delete')" @click="handleRemove(item.key)" :style="{'font-size': miniWidth/8+'px'}"></i>
         </div>
       </div>
     </draggable>

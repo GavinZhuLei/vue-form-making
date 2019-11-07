@@ -181,7 +181,7 @@
         </template>
 
         <template v-if="element.type=='blank'">
-          <div style="height: 50px;color: #999;background: #eee;line-height:50px;text-align:center;">自定义区域</div>
+          <div style="height: 50px;color: #999;background: #eee;line-height:50px;text-align:center;">{{$t('fm.components.fields.blank')}}</div>
         </template>
 
         <template v-if="element.type == 'text'">
