@@ -1,52 +1,56 @@
 # vue-form-making
 
-基于Vue的表单设计器，让表单开发简单而高效
+(Chinese)[./README.zh-CN.md] | English
 
-设计器地址：http://tools.xiaoyaoji.cn/form
+## Intro
 
-![](http://tools.xiaoyaoji.cn/F.png)
+The FormMaking developed base on [vue](https://github.com/vuejs/vue) and [element-ui](https://github.com/ElemeFE/element), equipts with the latest front-end technology stack, built-in i18n internationalization solution, all of those are aimed at making developmemt simpler, and more efficiently.
 
-## 特性
+- [Preview](http://form.xiaoyaoji.cn/basic-version)
 
-* 可视化配置页面
-* 提供栅格布局，并采用flex实现对齐
-* 一键预览配置的效果
-* 一键生成配置json数据
-* 一键生成代码，立即可运行
-* 提供自定义组件满足用户自定义需求
-* 提供远端数据接口，方便用户需要异步获取数据加载
-* 提供功能强大的高级组件
-* 支持表单验证
-* 快速获取表单数据
+- [Document](http://docs.form.xiaoyaoji.cn)
 
-## 文档
+- [Advanced](http://form.xiaoyaoji.cn) Privade more components and APIs
 
-* [开发指南](http://tools.xiaoyaoji.cn/guide/installation.html)
-* [组件](http://tools.xiaoyaoji.cn/guide/making-form.html)
-* [使用手册](http://tools.xiaoyaoji.cn/manual/start.html)
+## Feature
 
-## 社区资料笔记
+* Visual configuration page
+* Provide grid layout and align with flex
+* One-click preview of configuration effects
+* One-click generation of configuration json data
+* One-click generate code, ready to run
+* Provide custom components to meet user custom requirements
+* Provides a remote data interface for users to asynchronously fetch data
+* Provides powerful advanced components
+* Support for form validation
+* Get form data quickly
+* Internationalization support
 
-* [Vue.Draggable](https://note.youdao.com/share/?id=f525c8897d9d7f6648bc28d59f5d03f4&type=note#/) （by @[jianhunxia](https://github.com/jianhunxia) 提供)
+## Module
 
-* [jsonEditor、ace和clipboard](https://note.youdao.com/share/?id=4cb3b53c76cb9f5f733f171529f71501&type=note#/) （by @[jianhunxia](https://github.com/jianhunxia) 提供)
+- [MakingForm](http://docs.form.xiaoyaoji.cn/zh/guide/making-form.html) Designer(Quickly design the form page based on the visual operation and obtain the form configuration json data).
 
-## 支持
+- [GenerateForm](http://docs.form.xiaoyaoji.cn/zh/guide/generate-form.html) Generator(The generator will render a form page quickly base on the configuration json data captured in the designer).
 
-* 如果你发现了新的 bug，或者有新的 feature request，请新建一个 issue
+## Issue
 
-## 捐赠 
+* If you find a new bug or have a new feature request, please create a new issue.
 
-如果觉得还不错，请作者喝杯咖啡吧 ☺
+
+## Donation  
+
+If you like it, buy us a cup of coffee is a better choice than give us a star :) lol ☺
 
 ![](http://tools.xiaoyaoji.cn/donation.jpeg)
 
-## 开源协议
+[PayPal Me](https://paypal.me/gavinzhulei)
+
+## Open source licenses
 
 [LGPL](https://opensource.org/licenses/LGPL-3.0)
 
-您可以将 vue-form-making 源码用于 LGPL 协议的开源项目中，并保留版权信息。
+You can use the vue-form-making source code in an open source project under the LGPL license and retain the copyright information.
 
-## 商业许可
+## Business license
 
-如果要将 vue-form-making 源码使用在非开源站点，项目和应用程序中，为保障您的合法权益，需购买[商业授权](http://tools.xiaoyaoji.cn/form/#/price)。
+If you want to use vue-form-making source code in non-open source sites, projects and applications, you need to purchase [commercial license].(http://form.xiaoyaoji.cn/pricing).

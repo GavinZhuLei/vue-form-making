@@ -1,6 +1,9 @@
 <template>
   <div v-if="show">
     <el-form label-position="top">
+      <el-form-item :label="$t('fm.config.widget.model')" v-if="data.type!='grid'">
+        <el-input v-model="data.model"></el-input>
+      </el-form-item>
       <el-form-item :label="$t('fm.config.widget.name')" v-if="data.type!='grid'">
         <el-input v-model="data.name"></el-input>
       </el-form-item>
@@ -298,10 +301,6 @@
       
 
       <template v-if="data.type != 'grid'">
-        
-        <el-form-item :label="$t('fm.config.widget.model')">
-          <el-input v-model="data.model"></el-input>
-        </el-form-item>
         <el-form-item :label="$t('fm.config.widget.attribute')">
           <el-checkbox v-model="data.options.readonly" v-if="Object.keys(data.options).indexOf('readonly')>=0">{{$t('fm.config.widget.readonly')}}</el-checkbox>
           <el-checkbox v-model="data.options.disabled" v-if="Object.keys(data.options).indexOf('disabled')>=0">{{$t('fm.config.widget.disabled')}}	</el-checkbox>

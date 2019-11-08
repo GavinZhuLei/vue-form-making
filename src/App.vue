@@ -7,9 +7,9 @@
       <iframe style="vertical-align: middle;margin-top:10px;margin-left: 10px;" src="https://ghbtns.com/github-btn.html?user=GavinZhulei&repo=vue-form-making&type=star&count=true" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
 
       <div class="fm-link">
-        <a target="_blank" href="http://tools.xiaoyaoji.cn/form/#/price">{{$t('header.pricing')}}</a>
-        <a target="_blank" href="http://tools.xiaoyaoji.cn/guide/installation.html">{{$t('header.document')}}</a>
-        <a target="_blank" href="http://tools.xiaoyaoji.cn/other/course.html" v-if="$lang == 'zh-CN'">学习课程</a> 
+        <a target="_blank" href="http://form.xiaoyaoji.cn/pricing">{{$t('header.pricing')}}</a>
+        <a target="_blank" href="http://docs.form.xiaoyaoji.cn">{{$t('header.document')}}</a>
+        <a target="_blank" href="http://docs.form.xiaoyaoji.cn/zh/other/course.html" v-if="$lang == 'zh-CN'">学习课程</a> 
         <a target="_blank" href="https://github.com/GavinZhuLei/vue-form-making">GitHub</a>
 
         <div class="action-item">
