@@ -45,12 +45,12 @@ If you do like ours open source, would you mind to buy us a cup of coffee :) lol
 
 [PayPal Me](https://paypal.me/gavinzhulei)
 
-## Open source licenses
+## Open source Licenses
 
 [LGPL](https://opensource.org/licenses/LGPL-3.0)
 
 You can use the vue-form-making source code in an open source project under the LGPL license and retain the copyright information.
 
-## Business license
+## Business License
 
-If you want to use vue-form-making source code in non-open source sites, projects and applications, you need to purchase [Commercial license](http://form.xiaoyaoji.cn/pricing).
+If you want to use vue-form-making source code in non-open source sites, projects and applications, you need to purchase [Commercial License](http://form.xiaoyaoji.cn/pricing).
