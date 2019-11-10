@@ -19,7 +19,7 @@ The FormMaking developed base on [vue](https://github.com/vuejs/vue) and [elemen
 * One-click preview of configuration effects
 * One-click generation of configuration json data
 * One-click generate code, ready to run
-* Provide custom components to meet user custom requirements
+* Provide custom components to meet user's custom requirements
 * Provides a remote data interface for users to asynchronously fetch data
 * Provides powerful advanced components
 * Support for form validation
@@ -28,9 +28,9 @@ The FormMaking developed base on [vue](https://github.com/vuejs/vue) and [elemen
 
 ## Module
 
-- [MakingForm](http://docs.form.xiaoyaoji.cn/zh/guide/making-form.html) Designer(Quickly design the form page based on the visual operation and obtain the form configuration json data).
+- [MakingForm](http://docs.form.xiaoyaoji.cn/zh/guide/making-form.html) (Quickly design the form page based on the visual operation and obtain the form configuration json data).
 
-- [GenerateForm](http://docs.form.xiaoyaoji.cn/zh/guide/generate-form.html) Generator(The generator will render a form page quickly base on the configuration json data captured in the designer).
+- [GenerateForm](http://docs.form.xiaoyaoji.cn/zh/guide/generate-form.html) (The generator will render a form page quickly base on the configuration json data captured in the designer).
 
 ## Issue
 
@@ -39,7 +39,7 @@ The FormMaking developed base on [vue](https://github.com/vuejs/vue) and [elemen
 
 ## Donation  
 
-If you like it, buy us a cup of coffee is a better choice than give us a star :) lol ☺
+If you do like ours open source, would you mind to buy us a cup of coffee :) lol ☺
 
 ![](http://tools.xiaoyaoji.cn/donation.jpeg)
 
@@ -53,4 +53,4 @@ You can use the vue-form-making source code in an open source project under the 
 
 ## Business license
 
-If you want to use vue-form-making source code in non-open source sites, projects and applications, you need to purchase [commercial license](http://form.xiaoyaoji.cn/pricing).
+If you want to use vue-form-making source code in non-open source sites, projects and applications, you need to purchase [Commercial license](http://form.xiaoyaoji.cn/pricing).
