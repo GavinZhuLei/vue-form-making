@@ -53,4 +53,4 @@ You can use the vue-form-making source code in an open source project under the 
 
 ## Business license
 
-If you want to use vue-form-making source code in non-open source sites, projects and applications, you need to purchase [commercial license].(http://form.xiaoyaoji.cn/pricing).
+If you want to use vue-form-making source code in non-open source sites, projects and applications, you need to purchase [commercial license](http://form.xiaoyaoji.cn/pricing).
