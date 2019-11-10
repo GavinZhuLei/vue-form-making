@@ -1,7 +1,7 @@
 {
   "name": "form-making",
-  "description": "基于Vue的表单设计器，让表单开发简单而高效",
-  "version": "1.2.3",
+  "description": "A designer and generator of form base on Vue.js, make form development simple and efficient.",
+  "version": "1.2.6",
   "author": "GavinZhulei",
   "license": "LGPL",
   "keywords": [
