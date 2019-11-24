@@ -243,7 +243,7 @@ export default {
         key: Date.parse(new Date()) + '_' + Math.ceil(Math.random() * 99999)
       }
 
-      if (this.data.list[index].type === 'radio' || this.data.list[index].type === 'checkbox') {
+      if (this.data.list[index].type === 'radio' || this.data.list[index].type === 'checkbox' || this.data.list[index].type === 'select') {
 
         cloneData = {
           ...cloneData,
