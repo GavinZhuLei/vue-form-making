@@ -41,16 +41,22 @@ The FormMaking developed base on [vue](https://github.com/vuejs/vue) and [elemen
 
 If you do like ours open source, would you mind to buy us a cup of coffee :) lol ☺
 
-![](http://tools.xiaoyaoji.cn/donation.jpeg)
+![](http://docs.form.xiaoyaoji.cn/donation.jpeg)
 
 [PayPal Me](https://paypal.me/gavinzhulei)
 
-## Open source Licenses
+## Browsers support
+
+Modern browsers and Internet Explorer 10+.
+
+| [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" />](https://godban.github.io/browsers-support-badges/)</br>IE / Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](https://godban.github.io/browsers-support-badges/)</br>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](https://godban.github.io/browsers-support-badges/)</br>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](https://godban.github.io/browsers-support-badges/)</br>Safari |
+| --------- | --------- | --------- | --------- |
+| IE10, IE11, Edge| last 2 versions| last 2 versions| last 2 versions
+
+## Licenses
 
 [LGPL](https://opensource.org/licenses/LGPL-3.0)
 
 You can use the vue-form-making source code in an open source project under the LGPL license and retain the copyright information.
-
-## Business License
 
 If you want to use vue-form-making source code in non-open source sites, projects and applications, you need to purchase [Commercial License](http://form.xiaoyaoji.cn/pricing).
