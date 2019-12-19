@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import ElementUI from 'element-ui'
 import VueI18n from 'vue-i18n'
+import VueEditor from 'vue2-editor'
 
 import 'element-ui/lib/theme-chalk/index.css'
 
@@ -10,6 +11,7 @@ import enLocale from 'element-ui/lib/locale/lang/en'
 import zhLocale from 'element-ui/lib/locale/lang/zh-CN'
 
 Vue.use(VueI18n)
+Vue.use(VueEditor)
 
 const messages = {
   'en-US': {

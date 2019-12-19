@@ -202,12 +202,10 @@
 
 <script>
 import FmUpload from './Upload'
-import { VueEditor } from "vue2-editor"
 export default {
   props: ['element', 'select', 'index', 'data'],
   components: {
     FmUpload,
-    VueEditor
   },
   data () {
     return {

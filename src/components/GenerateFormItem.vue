@@ -205,13 +205,11 @@
 
 <script>
 import FmUpload from './Upload'
-import { VueEditor } from "vue2-editor"
 
 export default {
   props: ['widget', 'models', 'rules', 'remote'],
   components: {
-    FmUpload,
-    VueEditor
+    FmUpload
   },
   data () {
     return {
