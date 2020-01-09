@@ -3,7 +3,7 @@
     <template v-if="widget.type == 'input'" >
       <el-input 
         v-if="widget.options.dataType == 'number' || widget.options.dataType == 'integer' || widget.options.dataType == 'float'"
-        :type="widget.options.dataType"
+        type="number"
         v-model.number="dataModel"
         :placeholder="widget.options.placeholder"
         :style="{width: widget.options.width}"
