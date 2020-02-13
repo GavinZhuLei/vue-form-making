@@ -33,7 +33,7 @@ function findRemoteFunc (list, funcList, tokenFuncList, blankList) {
   }
 }
 
-export default function (data) {
+export default function (data, type = 'vue') {
 
   const funcList = []
 
@@ -76,7 +76,41 @@ export default function (data) {
     `
   }
 
-  return `<!DOCTYPE html>
+  if (type == 'vue') {
+    return `<template>
+  <div>
+    <fm-generate-form :data="jsonData" :remote="remoteFuncs" :value="editData" ref="generateForm">
+      ${blankTemplate}
+    </fm-generate-form>
+    <el-button type="primary" @click="handleSubmit">提交</el-button>
+  </div>
+</template>
+
+<script>
+  export default {
+    data () {
+      return {
+        jsonData: ${data},
+        editData: {},
+        remoteFuncs: {
+          ${funcTemplate}
+        }
+      }
+    },
+    methods: {
+      handleSubmit () {
+        this.$refs.generateForm.getData().then(data => {
+          // data check success
+          // data - form data
+        }).catch(e => {
+          // data check failed
+        })
+      }
+    }
+  }
+</script>`
+  } else {
+    return `<!DOCTYPE html>
   <html>
   <head>
     <meta charset="UTF-8">
@@ -117,4 +151,5 @@ export default function (data) {
     </script>
   </body>
   </html>`
+  }
 }

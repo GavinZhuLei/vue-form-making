@@ -148,7 +148,15 @@
           form
           :action="false"
         >
-          <div id="codeeditor" style="height: 500px; width: 100%;">{{htmlTemplate}}</div>
+          <!-- <div id="codeeditor" style="height: 500px; width: 100%;">{{htmlTemplate}}</div> -->
+          <el-tabs type="border-card" style="box-shadow: none;" v-model="codeActiveName">
+            <el-tab-pane label="Vue Component" name="vue">
+              <div id="vuecodeeditor" style="height: 500px; width: 100%;">{{vueTemplate}}</div>
+            </el-tab-pane>
+            <el-tab-pane label="HTML" name="html">
+              <div id="codeeditor" style="height: 500px; width: 100%;">{{htmlTemplate}}</div>
+            </el-tab-pane>
+          </el-tabs>
         </cus-dialog>
       </el-container>
     </el-main>
@@ -258,6 +266,7 @@ export default {
       widgetModels: {},
       blank: '',
       htmlTemplate: '',
+      vueTemplate: '',
       jsonTemplate: '',
       uploadEditor: null,
       jsonCopyValue: '',
@@ -269,7 +278,8 @@ export default {
     "labelPosition": "top",
     "size": "small"
   }
-}`
+}`,
+      codeActiveName: 'vue',
     }
   },
   mounted () {
@@ -345,11 +355,16 @@ export default {
       })
     },
     handleGenerateCode () {
+
       this.codeVisible = true
-      this.htmlTemplate = generateCode(JSON.stringify(this.widgetForm))
+      this.htmlTemplate = generateCode(JSON.stringify(this.widgetForm), 'html')
+      this.vueTemplate = generateCode(JSON.stringify(this.widgetForm), 'vue')
       this.$nextTick(() => {
         const editor = ace.edit('codeeditor')
         editor.session.setMode("ace/mode/html")
+
+        const vueeditor = ace.edit('vuecodeeditor')
+        vueeditor.session.setMode("ace/mode/html")
       })
     },
     handleUpload () {
