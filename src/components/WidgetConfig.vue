@@ -47,7 +47,7 @@
       <el-form-item :label="$t('fm.config.widget.filterable')" v-if="data.type=='select'">
         <el-switch v-model="data.options.filterable"></el-switch>
       </el-form-item>
-      <el-form-item label="$t('fm.config.widget.allowHalf')" v-if="Object.keys(data.options).indexOf('allowHalf')>=0">
+      <el-form-item :label="$t('fm.config.widget.allowHalf')" v-if="Object.keys(data.options).indexOf('allowHalf')>=0">
         <el-switch
             v-model="data.options.allowHalf"
           >

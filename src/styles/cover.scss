@@ -1,41 +1,41 @@
-
-.el-radio+.el-radio{
-  margin-left: 0 !important;
-}
-.el-radio{
-  margin-right: 30px;
-  
-}
-.el-checkbox+.el-checkbox{
-  margin-left: 0 !important;
-}
-.el-checkbox{
-  margin-right: 30px;
-}
-.el-form-item--small{
+.fm-style{
+  .el-radio+.el-radio{
+    margin-left: 0 !important;
+  }
   .el-radio{
-    line-height: 32px !important;
+    margin-right: 30px;
   }
+  .el-checkbox+.el-checkbox{
+    margin-left: 0 !important;
+  }
+  .el-checkbox{
+    margin-right: 30px;
+  }
+  .el-form-item--small{
+    .el-radio{
+      line-height: 32px !important;
+    }
 
-  .el-rate{
-    margin-top: 6px;
+    .el-rate{
+      margin-top: 6px;
+    }
   }
-}
-.el-form-item--mini{
-  .el-radio{
-    line-height: 28px !important;
-  }
+  .el-form-item--mini{
+    .el-radio{
+      line-height: 28px !important;
+    }
 
-  .el-rate{
-    margin-top: 4px;
+    .el-rate{
+      margin-top: 4px;
+    }
   }
-}
-.el-form-item--medium{
-  .el-radio{
-    line-height: 36px !important;
-  }
+  .el-form-item--medium{
+    .el-radio{
+      line-height: 36px !important;
+    }
 
-  .el-rate{
-    margin-top: 8px;
+    .el-rate{
+      margin-top: 8px;
+    }
   }
 }

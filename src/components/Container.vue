@@ -1,168 +1,169 @@
 <template>
-  <el-container class="fm2-container">
-    <el-main class="fm2-main">
-      <el-container>
-        <el-aside width="250px">
-          <div class="components-list">
-            <template v-if="basicFields.length">
-              <div class="widget-cate">{{$t('fm.components.basic.title')}}</div>
-              <draggable tag="ul" :list="basicComponents" 
-                v-bind="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
-                @end="handleMoveEnd"
-                @start="handleMoveStart"
-                :move="handleMove"
-              >
-                
-                <li v-if="basicFields.indexOf(item.type)>=0" class="form-edit-widget-label" :class="{'no-put': item.type == 'divider'}" v-for="(item, index) in basicComponents" :key="index">
-                  <a>
-                    <i class="icon iconfont" :class="item.icon"></i>
-                    <span>{{item.name}}</span>
-                  </a>
-                </li>
-              </draggable>
-            </template>
-            
-            <template v-if="advanceFields.length">
-              <div class="widget-cate">{{$t('fm.components.advance.title')}}</div>
-              <draggable tag="ul" :list="advanceComponents" 
-                v-bind="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
-                @end="handleMoveEnd"
-                @start="handleMoveStart"
-                :move="handleMove"
-              >
-                
-                <li v-if="advanceFields.indexOf(item.type) >= 0" class="form-edit-widget-label" :class="{'no-put': item.type == 'table'}" v-for="(item, index) in advanceComponents" :key="index">
-                  <a>
-                    <i class="icon iconfont" :class="item.icon"></i>
-                    <span>{{item.name}}</span>
-                  </a>
-                </li>
-              </draggable>
-            </template>
+  <span class="fm-style">
+    <el-container class="fm2-container">
+      <el-main class="fm2-main">
+        <el-container>
+          <el-aside width="250px">
+            <div class="components-list">
+              <template v-if="basicFields.length">
+                <div class="widget-cate">{{$t('fm.components.basic.title')}}</div>
+                <draggable tag="ul" :list="basicComponents" 
+                  v-bind="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
+                  @end="handleMoveEnd"
+                  @start="handleMoveStart"
+                  :move="handleMove"
+                >
+                  
+                  <li v-if="basicFields.indexOf(item.type)>=0" class="form-edit-widget-label" :class="{'no-put': item.type == 'divider'}" v-for="(item, index) in basicComponents" :key="index">
+                    <a>
+                      <i class="icon iconfont" :class="item.icon"></i>
+                      <span>{{item.name}}</span>
+                    </a>
+                  </li>
+                </draggable>
+              </template>
+              
+              <template v-if="advanceFields.length">
+                <div class="widget-cate">{{$t('fm.components.advance.title')}}</div>
+                <draggable tag="ul" :list="advanceComponents" 
+                  v-bind="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
+                  @end="handleMoveEnd"
+                  @start="handleMoveStart"
+                  :move="handleMove"
+                >
+                  
+                  <li v-if="advanceFields.indexOf(item.type) >= 0" class="form-edit-widget-label" :class="{'no-put': item.type == 'table'}" v-for="(item, index) in advanceComponents" :key="index">
+                    <a>
+                      <i class="icon iconfont" :class="item.icon"></i>
+                      <span>{{item.name}}</span>
+                    </a>
+                  </li>
+                </draggable>
+              </template>
 
+              
+              <template v-if="layoutFields.length">
+                <div class="widget-cate">{{$t('fm.components.layout.title')}}</div>
+                <draggable tag="ul" :list="layoutComponents" 
+                  v-bind="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
+                  @end="handleMoveEnd"
+                  @start="handleMoveStart"
+                  :move="handleMove"
+                >
+                  
+                  <li v-if="layoutFields.indexOf(item.type) >=0" class="form-edit-widget-label no-put" v-for="(item, index) in layoutComponents" :key="index">
+                    <a>
+                      <i class="icon iconfont" :class="item.icon"></i>
+                      <span>{{item.name}}</span>
+                    </a>
+                  </li>
+                </draggable>
+              </template>
+              
+            </div>
             
-            <template v-if="layoutFields.length">
-              <div class="widget-cate">{{$t('fm.components.layout.title')}}</div>
-              <draggable tag="ul" :list="layoutComponents" 
-                v-bind="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
-                @end="handleMoveEnd"
-                @start="handleMoveStart"
-                :move="handleMove"
-              >
-                
-                <li v-if="layoutFields.indexOf(item.type) >=0" class="form-edit-widget-label no-put" v-for="(item, index) in layoutComponents" :key="index">
-                  <a>
-                    <i class="icon iconfont" :class="item.icon"></i>
-                    <span>{{item.name}}</span>
-                  </a>
-                </li>
-              </draggable>
-            </template>
-            
-          </div>
-          
-        </el-aside>
-        <el-container class="center-container" direction="vertical">
-          <el-header class="btn-bar" style="height: 45px;">
-            <slot name="action">
-            </slot>
-            <el-button v-if="upload" type="text" size="medium" icon="el-icon-upload2" @click="handleUpload">{{$t('fm.actions.import')}}</el-button>
-            <el-button v-if="clearable" type="text" size="medium" icon="el-icon-delete" @click="handleClear">{{$t('fm.actions.clear')}}</el-button>
-            <el-button v-if="preview" type="text" size="medium" icon="el-icon-view" @click="handlePreview">{{$t('fm.actions.preview')}}</el-button>
-            <el-button v-if="generateJson" type="text" size="medium" icon="el-icon-tickets" @click="handleGenerateJson">{{$t('fm.actions.json')}}</el-button>
-            <el-button v-if="generateCode" type="text" size="medium" icon="el-icon-document" @click="handleGenerateCode">{{$t('fm.actions.code')}}</el-button>
-          </el-header>
-          <el-main :class="{'widget-empty': widgetForm.list.length == 0}">
-            
-            <widget-form v-if="!resetJson"  ref="widgetForm" :data="widgetForm" :select.sync="widgetFormSelect"></widget-form>
-          </el-main>
-        </el-container>
-        
-        <el-aside class="widget-config-container">
-          <el-container>
-            <el-header height="45px">
-              <div class="config-tab" :class="{active: configTab=='widget'}" @click="handleConfigSelect('widget')">{{$t('fm.config.widget.title')}}</div>
-              <div class="config-tab" :class="{active: configTab=='form'}" @click="handleConfigSelect('form')">{{$t('fm.config.form.title')}}</div>
+          </el-aside>
+          <el-container class="center-container" direction="vertical">
+            <el-header class="btn-bar" style="height: 45px;">
+              <slot name="action">
+              </slot>
+              <el-button v-if="upload" type="text" size="medium" icon="el-icon-upload2" @click="handleUpload">{{$t('fm.actions.import')}}</el-button>
+              <el-button v-if="clearable" type="text" size="medium" icon="el-icon-delete" @click="handleClear">{{$t('fm.actions.clear')}}</el-button>
+              <el-button v-if="preview" type="text" size="medium" icon="el-icon-view" @click="handlePreview">{{$t('fm.actions.preview')}}</el-button>
+              <el-button v-if="generateJson" type="text" size="medium" icon="el-icon-tickets" @click="handleGenerateJson">{{$t('fm.actions.json')}}</el-button>
+              <el-button v-if="generateCode" type="text" size="medium" icon="el-icon-document" @click="handleGenerateCode">{{$t('fm.actions.code')}}</el-button>
             </el-header>
-            <el-main class="config-content">
-              <widget-config v-show="configTab=='widget'" :data="widgetFormSelect"></widget-config>
-              <form-config v-show="configTab=='form'" :data="widgetForm.config"></form-config>
+            <el-main :class="{'widget-empty': widgetForm.list.length == 0}">
+              
+              <widget-form v-if="!resetJson"  ref="widgetForm" :data="widgetForm" :select.sync="widgetFormSelect"></widget-form>
             </el-main>
           </el-container>
           
-        </el-aside>
+          <el-aside class="widget-config-container">
+            <el-container>
+              <el-header height="45px">
+                <div class="config-tab" :class="{active: configTab=='widget'}" @click="handleConfigSelect('widget')">{{$t('fm.config.widget.title')}}</div>
+                <div class="config-tab" :class="{active: configTab=='form'}" @click="handleConfigSelect('form')">{{$t('fm.config.form.title')}}</div>
+              </el-header>
+              <el-main class="config-content">
+                <widget-config v-show="configTab=='widget'" :data="widgetFormSelect"></widget-config>
+                <form-config v-show="configTab=='form'" :data="widgetForm.config"></form-config>
+              </el-main>
+            </el-container>
+            
+          </el-aside>
 
-        <cus-dialog
-          :visible="previewVisible"
-          @on-close="previewVisible = false"
-          ref="widgetPreview"
-          width="1000px"
-          form
-        >
-          <generate-form insite="true" @on-change="handleDataChange" v-if="previewVisible" :data="widgetForm" :value="widgetModels" :remote="remoteFuncs" ref="generateForm">
+          <cus-dialog
+            :visible="previewVisible"
+            @on-close="previewVisible = false"
+            ref="widgetPreview"
+            width="1000px"
+            form
+          >
+            <generate-form insite="true" @on-change="handleDataChange" v-if="previewVisible" :data="widgetForm" :value="widgetModels" :remote="remoteFuncs" ref="generateForm">
 
-            <template v-slot:blank="scope">
-              Width <el-input v-model="scope.model.blank.width" style="width: 100px"></el-input>
-              Height <el-input v-model="scope.model.blank.height" style="width: 100px"></el-input>
+              <template v-slot:blank="scope">
+                Width <el-input v-model="scope.model.blank.width" style="width: 100px"></el-input>
+                Height <el-input v-model="scope.model.blank.height" style="width: 100px"></el-input>
+              </template>
+            </generate-form>
+
+            <template slot="action">
+              <el-button type="primary" @click="handleTest">{{$t('fm.actions.getData')}}</el-button>
+              <el-button @click="handleReset">{{$t('fm.actions.reset')}}</el-button>
             </template>
-          </generate-form>
+          </cus-dialog>
 
-          <template slot="action">
-            <el-button type="primary" @click="handleTest">{{$t('fm.actions.getData')}}</el-button>
-            <el-button @click="handleReset">{{$t('fm.actions.reset')}}</el-button>
-          </template>
-        </cus-dialog>
+          <cus-dialog
+            :visible="uploadVisible"
+            @on-close="uploadVisible = false"
+            @on-submit="handleUploadJson"
+            ref="uploadJson"
+            width="800px"
+            form
+          >
+            <el-alert type="info" :title="$t('fm.description.uploadJsonInfo')"></el-alert>
+            <div id="uploadeditor" style="height: 400px;width: 100%;">{{jsonEg}}</div>
+          </cus-dialog>
 
-        <cus-dialog
-          :visible="uploadVisible"
-          @on-close="uploadVisible = false"
-          @on-submit="handleUploadJson"
-          ref="uploadJson"
-          width="800px"
-          form
-        >
-          <el-alert type="info" :title="$t('fm.description.uploadJsonInfo')"></el-alert>
-          <div id="uploadeditor" style="height: 400px;width: 100%;">{{jsonEg}}</div>
-        </cus-dialog>
+          <cus-dialog
+            :visible="jsonVisible"
+            @on-close="jsonVisible = false"
+            ref="jsonPreview"
+            width="800px"
+            form
+          >
+            
+            <div id="jsoneditor" style="height: 400px;width: 100%;">{{jsonTemplate}}</div>
+            
+            <template slot="action">
+              <el-button type="primary" class="json-btn" :data-clipboard-text="jsonCopyValue">{{$t('fm.actions.copyData')}}</el-button>
+            </template>
+          </cus-dialog>
 
-        <cus-dialog
-          :visible="jsonVisible"
-          @on-close="jsonVisible = false"
-          ref="jsonPreview"
-          width="800px"
-          form
-        >
-          
-          <div id="jsoneditor" style="height: 400px;width: 100%;">{{jsonTemplate}}</div>
-          
-          <template slot="action">
-            <el-button type="primary" class="json-btn" :data-clipboard-text="jsonCopyValue">{{$t('fm.actions.copyData')}}</el-button>
-          </template>
-        </cus-dialog>
-
-        <cus-dialog
-          :visible="codeVisible"
-          @on-close="codeVisible = false"
-          ref="codePreview"
-          width="800px"
-          form
-          :action="false"
-        >
-          <!-- <div id="codeeditor" style="height: 500px; width: 100%;">{{htmlTemplate}}</div> -->
-          <el-tabs type="border-card" style="box-shadow: none;" v-model="codeActiveName">
-            <el-tab-pane label="Vue Component" name="vue">
-              <div id="vuecodeeditor" style="height: 500px; width: 100%;">{{vueTemplate}}</div>
-            </el-tab-pane>
-            <el-tab-pane label="HTML" name="html">
-              <div id="codeeditor" style="height: 500px; width: 100%;">{{htmlTemplate}}</div>
-            </el-tab-pane>
-          </el-tabs>
-        </cus-dialog>
-      </el-container>
-    </el-main>
-    <el-footer height="30px" style="font-weight: 600;">Powered by <a target="_blank" href="https://github.com/GavinZhuLei/vue-form-making">vue-form-making</a></el-footer>
-  </el-container>
-  
+          <cus-dialog
+            :visible="codeVisible"
+            @on-close="codeVisible = false"
+            ref="codePreview"
+            width="800px"
+            form
+            :action="false"
+          >
+            <!-- <div id="codeeditor" style="height: 500px; width: 100%;">{{htmlTemplate}}</div> -->
+            <el-tabs type="border-card" style="box-shadow: none;" v-model="codeActiveName">
+              <el-tab-pane label="Vue Component" name="vue">
+                <div id="vuecodeeditor" style="height: 500px; width: 100%;">{{vueTemplate}}</div>
+              </el-tab-pane>
+              <el-tab-pane label="HTML" name="html">
+                <div id="codeeditor" style="height: 500px; width: 100%;">{{htmlTemplate}}</div>
+              </el-tab-pane>
+            </el-tabs>
+          </cus-dialog>
+        </el-container>
+      </el-main>
+      <el-footer height="30px" style="font-weight: 600;">Powered by <a target="_blank" href="https://github.com/GavinZhuLei/vue-form-making">vue-form-making</a></el-footer>
+    </el-container>
+  </span>
 </template>
 
 <script>
@@ -430,10 +431,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-.widget-empty{
-  background-position: 50%;
-}
-
-</style>
