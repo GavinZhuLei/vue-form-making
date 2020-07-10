@@ -397,6 +397,9 @@ export default {
 
       this.widgetFormSelect = {}
     },
+    clear () {
+      this.handleClear()
+    },
     getJSON () {
       return this.widgetForm
     },
