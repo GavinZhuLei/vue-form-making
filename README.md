@@ -16,6 +16,8 @@
   <a href="https://github.com/GavinZhuLei/vue-form-making/blob/master/LICENSE">
     <img src="https://img.shields.io/github/license/GavinZhulei/vue-form-making" alt="license">
   </a>
+
+  [![xscode](https://img.shields.io/badge/Available%20on-xs%3Acode-blue?style=?style=plastic&logo=appveyor&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRF////////VXz1bAAAAAJ0Uk5T/wDltzBKAAAAlUlEQVR42uzXSwqAMAwE0Mn9L+3Ggtgkk35QwcnSJo9S+yGwM9DCooCbgn4YrJ4CIPUcQF7/XSBbx2TEz4sAZ2q1RAECBAiYBlCtvwN+KiYAlG7UDGj59MViT9hOwEqAhYCtAsUZvL6I6W8c2wcbd+LIWSCHSTeSAAECngN4xxIDSK9f4B9t377Wd7H5Nt7/Xz8eAgwAvesLRjYYPuUAAAAASUVORK5CYII=)](https://xscode.com/gavinzhulei/vue-form-making)
 </p>
 
 [简体中文](./README.zh-CN.md) | English
@@ -64,8 +66,8 @@ Modern browsers and Internet Explorer 10+.
 
 ## Licenses
 
-[LGPL](https://opensource.org/licenses/LGPL-3.0)
+[LGPL-3.0](https://opensource.org/licenses/LGPL-3.0)
 
-You can use the vue-form-making source code in an open source project under the LGPL license and retain the copyright information.
+[![xscode](https://img.shields.io/badge/Available%20on-xs%3Acode-blue?style=?style=plastic&logo=appveyor&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRF////////VXz1bAAAAAJ0Uk5T/wDltzBKAAAAlUlEQVR42uzXSwqAMAwE0Mn9L+3Ggtgkk35QwcnSJo9S+yGwM9DCooCbgn4YrJ4CIPUcQF7/XSBbx2TEz4sAZ2q1RAECBAiYBlCtvwN+KiYAlG7UDGj59MViT9hOwEqAhYCtAsUZvL6I6W8c2wcbd+LIWSCHSTeSAAECngN4xxIDSK9f4B9t377Wd7H5Nt7/Xz8eAgwAvesLRjYYPuUAAAAASUVORK5CYII=)](https://xscode.com/gavinzhulei/vue-form-making)
 
-If you want to use vue-form-making source code in non-open source sites, projects and applications, you need to purchase [Commercial License](http://form.xiaoyaoji.cn/pricing).
+Support and additional versions are available on xs:code
