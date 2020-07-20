@@ -1,6 +1,6 @@
 # Secondary Development
 
-Purchase of commercial license is required if you want to use  for commercial, for more details please refer to [Authorization](http://form.making.link/pricing).
+[![xscode](http://cdn.form.xiaoyaoji.cn/vue-form-making-banner.png)](https://xscode.com/gavinzhulei/vue-form-making)
 
 > The secondary need development need fundamental comment of vue, regards vue you can refer to [https://cn.vuejs.org/v2/guide/](https://cn.vuejs.org/v2/guide/).
 
@@ -63,7 +63,6 @@ src/components/Container.vue
 ### 2. Modify MakeForm
 
 open `src/components/FormConfig.vue`, modify the file to support your new attributes. the `props.data` is the config data widgetForm.config.
- 
 
 ### 3. Modify GenerateForm
 
