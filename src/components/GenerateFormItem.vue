@@ -35,6 +35,8 @@
         :step="widget.options.step"
         controls-position="right"
         :disabled="widget.options.disabled"
+        :min="widget.options.min"
+        :max="widget.options.max"
       ></el-input-number>
     </template>
 
