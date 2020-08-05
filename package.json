@@ -1,7 +1,7 @@
 {
   "name": "form-making",
   "description": "A designer and generator of form base on Vue.js, make form development simple and efficient.",
-  "version": "1.2.8",
+  "version": "1.2.9",
   "author": "GavinZhulei",
   "license": "LGPL",
   "keywords": [
@@ -25,7 +25,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "clipboard": "^2.0.1",
-    "element-ui": "^2.9.1",
+    "element-ui": "^2.13.0",
     "normalize.css": "^8.0.0",
     "qiniu": "^7.2.1",
     "qiniu-js": "^2.5.1",
@@ -44,15 +44,15 @@
     "@vue/cli-service": "^3.0.0",
     "babel-core": "^6.26.3",
     "core-js": "^2.6.5",
-    "node-sass": "^4.9.0",
     "rollup": "^0.57.1",
     "rollup-plugin-babel": "^3.0.7",
     "rollup-plugin-buble": "^0.19.2",
     "rollup-plugin-uglify-es": "0.0.1",
     "rollup-plugin-vue": "^3.0.0",
-    "sass-loader": "^7.0.1",
     "terser-webpack-plugin": "^1.2.4",
-    "vue-template-compiler": "^2.6.5"
+    "vue-template-compiler": "^2.6.5",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^8.0.2"
   },
   "babel": {
     "presets": [
@@ -63,7 +63,10 @@
     "root": true,
     "extends": [
       "plugin:vue/essential"
-    ]
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
   },
   "postcss": {
     "plugins": {
