@@ -7,11 +7,12 @@
       <iframe style="vertical-align: middle;margin-top:10px;margin-left: 10px;" src="https://ghbtns.com/github-btn.html?user=GavinZhulei&repo=vue-form-making&type=star&count=true" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
 
       <div class="fm-link">
-        <a class="ad" href="http://form.xiaoyaoji.cn" target="_blank">{{$t('header.advanced')}}</a>
 
         <a target="_blank" href="http://form.xiaoyaoji.cn/pricing">{{$t('header.pricing')}}</a>
-        <a target="_blank" href="http://docs.form.xiaoyaoji.cn">{{$t('header.document')}}</a>
-        <a target="_blank" href="http://docs.form.xiaoyaoji.cn/zh/other/course.html" v-if="$lang == 'zh-CN'">学习课程</a> 
+        <a target="_blank" href="https://gitee.com/gavinzhulei/vue-form-making/blob/master/README.zh-CN.md" v-if="$lang == 'zh-CN'">{{$t('header.document')}}</a>
+        <a target="_blank" href="https://github.com/GavinZhuLei/vue-form-making/blob/master/README.md" v-if="$lang == 'en-US'">{{$t('header.document')}}</a>
+        
+        <a target="_blank" href="https://gitee.com/gavinzhulei/vue-form-making" v-if="$lang == 'zh-CN'">Gitee</a> 
         <a target="_blank" href="https://github.com/GavinZhuLei/vue-form-making">GitHub</a>
 
         <div class="action-item">
@@ -26,7 +27,8 @@
           </el-dropdown>
         </div>
 
-        
+        <a class="ad" href="http://form.xiaoyaoji.cn" target="_blank">{{$t('header.advanced')}}</a>
+        <a class="ad" href="http://www.xiaoyaoji.cn" target="_blank" v-if="$lang == 'zh-CN'">小幺鸡接口工具</a>
       </div>
     </div>
     <div  class="fm-container"><router-view/></div>
