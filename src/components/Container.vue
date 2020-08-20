@@ -7,13 +7,13 @@
             <div class="components-list">
               <template v-if="basicFields.length">
                 <div class="widget-cate">{{$t('fm.components.basic.title')}}</div>
-                <draggable tag="ul" :list="basicComponents" 
+                <draggable tag="ul" :list="basicComponents"
                   v-bind="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
                   @end="handleMoveEnd"
                   @start="handleMoveStart"
                   :move="handleMove"
                 >
-                  
+
                   <li v-if="basicFields.indexOf(item.type)>=0" class="form-edit-widget-label" :class="{'no-put': item.type == 'divider'}" v-for="(item, index) in basicComponents" :key="index">
                     <a>
                       <i class="icon iconfont" :class="item.icon"></i>
@@ -22,16 +22,16 @@
                   </li>
                 </draggable>
               </template>
-              
+
               <template v-if="advanceFields.length">
                 <div class="widget-cate">{{$t('fm.components.advance.title')}}</div>
-                <draggable tag="ul" :list="advanceComponents" 
+                <draggable tag="ul" :list="advanceComponents"
                   v-bind="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
                   @end="handleMoveEnd"
                   @start="handleMoveStart"
                   :move="handleMove"
                 >
-                  
+
                   <li v-if="advanceFields.indexOf(item.type) >= 0" class="form-edit-widget-label" :class="{'no-put': item.type == 'table'}" v-for="(item, index) in advanceComponents" :key="index">
                     <a>
                       <i class="icon iconfont" :class="item.icon"></i>
@@ -41,16 +41,16 @@
                 </draggable>
               </template>
 
-              
+
               <template v-if="layoutFields.length">
                 <div class="widget-cate">{{$t('fm.components.layout.title')}}</div>
-                <draggable tag="ul" :list="layoutComponents" 
+                <draggable tag="ul" :list="layoutComponents"
                   v-bind="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
                   @end="handleMoveEnd"
                   @start="handleMoveStart"
                   :move="handleMove"
                 >
-                  
+
                   <li v-if="layoutFields.indexOf(item.type) >=0" class="form-edit-widget-label no-put" v-for="(item, index) in layoutComponents" :key="index">
                     <a>
                       <i class="icon iconfont" :class="item.icon"></i>
@@ -59,9 +59,9 @@
                   </li>
                 </draggable>
               </template>
-              
+
             </div>
-            
+
           </el-aside>
           <el-container class="center-container" direction="vertical">
             <el-header class="btn-bar" style="height: 45px;">
@@ -73,24 +73,24 @@
               <el-button v-if="generateJson" type="text" size="medium" icon="el-icon-tickets" @click="handleGenerateJson">{{$t('fm.actions.json')}}</el-button>
               <el-button v-if="generateCode" type="text" size="medium" icon="el-icon-document" @click="handleGenerateCode">{{$t('fm.actions.code')}}</el-button>
             </el-header>
-            <el-main :class="{'widget-empty': widgetForm.list.length == 0}">
-              
+            <el-main :class="{'widget-empty': widgetForm.list.length === 0}">
+
               <widget-form v-if="!resetJson"  ref="widgetForm" :data="widgetForm" :select.sync="widgetFormSelect"></widget-form>
             </el-main>
           </el-container>
-          
+
           <el-aside class="widget-config-container">
             <el-container>
               <el-header height="45px">
-                <div class="config-tab" :class="{active: configTab=='widget'}" @click="handleConfigSelect('widget')">{{$t('fm.config.widget.title')}}</div>
-                <div class="config-tab" :class="{active: configTab=='form'}" @click="handleConfigSelect('form')">{{$t('fm.config.form.title')}}</div>
+                <div class="config-tab" :class="{active: configTab ==='widget'}" @click="handleConfigSelect('widget')">{{$t('fm.config.widget.title')}}</div>
+                <div class="config-tab" :class="{active: configTab ==='form'}" @click="handleConfigSelect('form')">{{$t('fm.config.form.title')}}</div>
               </el-header>
               <el-main class="config-content">
-                <widget-config v-show="configTab=='widget'" :data="widgetFormSelect"></widget-config>
-                <form-config v-show="configTab=='form'" :data="widgetForm.config"></form-config>
+                <widget-config v-show="configTab ==='widget'" :data="widgetFormSelect"></widget-config>
+                <form-config v-show="configTab ==='form'" :data="widgetForm.config"></form-config>
               </el-main>
             </el-container>
-            
+
           </el-aside>
 
           <cus-dialog
@@ -133,9 +133,9 @@
             width="800px"
             form
           >
-            
+
             <div id="jsoneditor" style="height: 400px;width: 100%;">{{jsonTemplate}}</div>
-            
+
             <template slot="action">
               <el-button type="primary" class="json-btn" :data-clipboard-text="jsonCopyValue">{{$t('fm.actions.copyData')}}</el-button>
             </template>
@@ -161,7 +161,6 @@
           </cus-dialog>
         </el-container>
       </el-main>
-      <el-footer height="30px" style="font-weight: 600;">Powered by <a target="_blank" href="https://github.com/GavinZhuLei/vue-form-making">vue-form-making</a></el-footer>
     </el-container>
   </span>
 </template>
@@ -175,7 +174,6 @@ import CusDialog from './CusDialog'
 import GenerateForm from './GenerateForm'
 import Clipboard from 'clipboard'
 import {basicComponents, layoutComponents, advanceComponents} from './componentsConfig.js'
-import {loadJs, loadCss} from '../util/index.js'
 import request from '../util/request.js'
 import generateCode from './generateCode.js'
 
@@ -203,7 +201,7 @@ export default {
       default: false
     },
     upload: {
-      type: Boolean, 
+      type: Boolean,
       default: false
     },
     clearable: {

@@ -2,7 +2,7 @@ const TerserPlugin = require('terser-webpack-plugin')
 
 module.exports = {
   productionSourceMap: false,
-  publicPath: './',
+  publicPath: '/vue-form-making/',
   configureWebpack: config => {
     let plugins = [
       new TerserPlugin({
