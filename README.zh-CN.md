@@ -1,22 +1,6 @@
 # vue-form-making
 
-<p>
-  <a href="https://github.com/vuejs/vue">
-    <img src="https://img.shields.io/badge/vue-2.6.5-brightgreen.svg" alt="vue">
-  </a>
-  
-  <a href="https://github.com/ElemeFE/element">
-    <img src="https://img.shields.io/badge/element--ui-2.9.1-brightgreen.svg" alt="element-ui">
-  </a>
-  
-  <a href="https://www.npmjs.com/package/form-making">
-    <img src="https://img.shields.io/npm/dt/form-making" alt="downloads">
-  </a>
-  
-  <a href="https://github.com/GavinZhuLei/vue-form-making/blob/master/LICENSE">
-    <img src="https://img.shields.io/github/license/GavinZhulei/vue-form-making" alt="license">
-  </a>
-</p>
+[![Travis (.org)](https://img.shields.io/travis/upcwangying/vue-form-making)](https://travis-ci.org/github/upcwangying/vue-form-making)
 
 简体中文 | [English](./README.md)
 
@@ -54,14 +38,6 @@
 * [ace](https://github.com/ajaxorg/ace)
 * [vue2-editor](https://github.com/davidroyer/vue2-editor)
 
-## 捐赠
-
-如果觉得还不错，请作者喝杯咖啡吧 ☺
-
-![](http://docs.form.xiaoyaoji.cn/donation.jpeg)
-
-[PayPal Me](https://paypal.me/gavinzhulei)
-
 ## Browsers support
 
 Modern browsers and Internet Explorer 10+.
@@ -74,8 +50,3 @@ Modern browsers and Internet Explorer 10+.
 
 [LGPL-3.0](https://opensource.org/licenses/LGPL-3.0)
 
-您可以将 vue-form-making 源码用于 LGPL 协议的开源项目中，并保留版权信息（Powered by <a target="_blank" href="https://github.com/GavinZhuLei/vue-form-making">vue-form-making</a>）。
-
-## 商业许可
-
-如果要将 vue-form-making 源码使用在非开源站点，项目和应用程序中，为保障您的合法权益，需购买[商业授权](http://form.xiaoyaoji.cn/pricing)。

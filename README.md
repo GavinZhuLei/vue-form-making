@@ -1,26 +1,6 @@
 # vue-form-making
 
-<p>
-  <a href="https://github.com/vuejs/vue">
-    <img src="https://img.shields.io/badge/vue-2.6.5-brightgreen.svg" alt="vue">
-  </a>
-  
-  <a href="https://github.com/ElemeFE/element">
-    <img src="https://img.shields.io/badge/element--ui-2.9.1-brightgreen.svg" alt="element-ui">
-  </a>
-  
-  <a href="https://www.npmjs.com/package/form-making">
-    <img src="https://img.shields.io/npm/dt/form-making" alt="downloads">
-  </a>
-  
-  <a href="https://github.com/GavinZhuLei/vue-form-making/blob/master/LICENSE">
-    <img src="https://img.shields.io/github/license/GavinZhulei/vue-form-making" alt="license">
-  </a>
-
-  <a href="https://xscode.com/gavinzhulei/vue-form-making">
-    <img src="https://img.shields.io/badge/Available%20on-xs%3Acode-blue?style=?style=plastic&logo=appveyor&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRF////////VXz1bAAAAAJ0Uk5T/wDltzBKAAAAlUlEQVR42uzXSwqAMAwE0Mn9L+3Ggtgkk35QwcnSJo9S+yGwM9DCooCbgn4YrJ4CIPUcQF7/XSBbx2TEz4sAZ2q1RAECBAiYBlCtvwN+KiYAlG7UDGj59MViT9hOwEqAhYCtAsUZvL6I6W8c2wcbd+LIWSCHSTeSAAECngN4xxIDSK9f4B9t377Wd7H5Nt7/Xz8eAgwAvesLRjYYPuUAAAAASUVORK5CYII=" alt="xscode">
-  </a>
-</p>
+[![Travis (.org)](https://img.shields.io/travis/upcwangying/vue-form-making)](https://travis-ci.org/github/upcwangying/vue-form-making)
 
 [简体中文](./README.zh-CN.md) | English
 
@@ -70,8 +50,3 @@ Modern browsers and Internet Explorer 10+.
 
 [LGPL-3.0](https://opensource.org/licenses/LGPL-3.0)
 
-[![xscode](https://img.shields.io/badge/Available%20on-xs%3Acode-blue?style=?style=plastic&logo=appveyor&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRF////////VXz1bAAAAAJ0Uk5T/wDltzBKAAAAlUlEQVR42uzXSwqAMAwE0Mn9L+3Ggtgkk35QwcnSJo9S+yGwM9DCooCbgn4YrJ4CIPUcQF7/XSBbx2TEz4sAZ2q1RAECBAiYBlCtvwN+KiYAlG7UDGj59MViT9hOwEqAhYCtAsUZvL6I6W8c2wcbd+LIWSCHSTeSAAECngN4xxIDSK9f4B9t377Wd7H5Nt7/Xz8eAgwAvesLRjYYPuUAAAAASUVORK5CYII=)](https://xscode.com/gavinzhulei/vue-form-making)
-
-Support and additional versions are available on xs:code
-
-[![xscode](http://cdn.form.xiaoyaoji.cn/vue-form-making-banner.png)](https://xscode.com/gavinzhulei/vue-form-making)
