@@ -3,65 +3,38 @@
     <el-container class="fm2-container">
       <el-main class="fm2-main">
         <el-container>
-          <el-aside width="250px">
-            <div class="components-list">
-              <template v-if="basicFields.length">
-                <div class="widget-cate">{{$t('fm.components.basic.title')}}</div>
-                <draggable tag="ul" :list="basicComponents"
-                  v-bind="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
-                  @end="handleMoveEnd"
-                  @start="handleMoveStart"
-                  :move="handleMove"
-                >
-
-                  <li v-if="basicFields.indexOf(item.type)>=0" class="form-edit-widget-label" :class="{'no-put': item.type == 'divider'}" v-for="(item, index) in basicComponents" :key="index">
-                    <a>
-                      <i class="icon iconfont" :class="item.icon"></i>
-                      <span>{{item.name}}</span>
-                    </a>
-                  </li>
-                </draggable>
-              </template>
-
-              <template v-if="advanceFields.length">
-                <div class="widget-cate">{{$t('fm.components.advance.title')}}</div>
-                <draggable tag="ul" :list="advanceComponents"
-                  v-bind="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
-                  @end="handleMoveEnd"
-                  @start="handleMoveStart"
-                  :move="handleMove"
-                >
-
-                  <li v-if="advanceFields.indexOf(item.type) >= 0" class="form-edit-widget-label" :class="{'no-put': item.type == 'table'}" v-for="(item, index) in advanceComponents" :key="index">
-                    <a>
-                      <i class="icon iconfont" :class="item.icon"></i>
-                      <span>{{item.name}}</span>
-                    </a>
-                  </li>
-                </draggable>
-              </template>
-
-
-              <template v-if="layoutFields.length">
-                <div class="widget-cate">{{$t('fm.components.layout.title')}}</div>
-                <draggable tag="ul" :list="layoutComponents"
-                  v-bind="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
-                  @end="handleMoveEnd"
-                  @start="handleMoveStart"
-                  :move="handleMove"
-                >
-
-                  <li v-if="layoutFields.indexOf(item.type) >=0" class="form-edit-widget-label no-put" v-for="(item, index) in layoutComponents" :key="index">
-                    <a>
-                      <i class="icon iconfont" :class="item.icon"></i>
-                      <span>{{item.name}}</span>
-                    </a>
-                  </li>
-                </draggable>
-              </template>
-
-            </div>
-
+          <el-aside class="widget-config-container">
+            <el-container>
+              <el-header height="45px">
+                <div class="config-tab left" :class="{active: leftConfigTab ==='shiyan'}" @click="handleLeftConfigSelect('shiyan')">{{$t('fm.left.shiyan.title')}}</div>
+                <div class="config-tab left" :class="{active: leftConfigTab ==='jiandu'}" @click="handleLeftConfigSelect('jiandu')">{{$t('fm.left.jiandu.title')}}</div>
+              </el-header>
+              <el-main class="config-content">
+                <div style="height: 100%" v-show="leftConfigTab ==='shiyan'">
+                  <el-container style="height: 50% !important;">
+                    <el-header height="40px">
+                      <div class="config-tab all middle">报表分类</div>
+                    </el-header>
+                    <el-main>
+                      <div>报表模板占位符</div>
+                    </el-main>
+                  </el-container>
+                  <el-container style="height: 50% !important;">
+                    <el-header height="40px">
+                      <div class="config-tab all middle">指标分类</div>
+                    </el-header>
+                    <el-main>
+                      <div>
+                        指标列表占位符
+                      </div>
+                    </el-main>
+                  </el-container>
+                </div>
+                <div v-show="leftConfigTab ==='jiandu'">
+                  监督报表
+                </div>
+              </el-main>
+            </el-container>
           </el-aside>
           <el-container class="center-container" direction="vertical">
             <el-header class="btn-bar" style="height: 45px;">
@@ -82,10 +55,14 @@
           <el-aside class="widget-config-container">
             <el-container>
               <el-header height="45px">
+                <div class="config-tab" :class="{active: configTab ==='header'}" @click="handleConfigSelect('header')">{{$t('fm.config.header.title')}}</div>
+                <div class="config-tab" :class="{active: configTab ==='table'}" @click="handleConfigSelect('table')">{{$t('fm.config.table.title')}}</div>
                 <div class="config-tab" :class="{active: configTab ==='widget'}" @click="handleConfigSelect('widget')">{{$t('fm.config.widget.title')}}</div>
                 <div class="config-tab" :class="{active: configTab ==='form'}" @click="handleConfigSelect('form')">{{$t('fm.config.form.title')}}</div>
               </el-header>
               <el-main class="config-content">
+                <header-config v-show="configTab ==='header'" :data="headerFormSelect"></header-config>
+                <table-config v-show="configTab ==='table'" :data="tableSelect"></table-config>
                 <widget-config v-show="configTab ==='widget'" :data="widgetFormSelect"></widget-config>
                 <form-config v-show="configTab ==='form'" :data="widgetForm.config"></form-config>
               </el-main>
@@ -166,21 +143,22 @@
 </template>
 
 <script>
-import Draggable from 'vuedraggable'
+import HeaderConfig from './HeaderConfig'
+import TableConfig from './TableConfig'
 import WidgetConfig from './WidgetConfig'
 import FormConfig from './FormConfig'
 import WidgetForm from './WidgetForm'
 import CusDialog from './CusDialog'
 import GenerateForm from './GenerateForm'
 import Clipboard from 'clipboard'
-import {basicComponents, layoutComponents, advanceComponents} from './componentsConfig.js'
 import request from '../util/request.js'
 import generateCode from './generateCode.js'
 
 export default {
   name: 'fm-making-form',
   components: {
-    Draggable,
+    HeaderConfig,
+    TableConfig,
     WidgetConfig,
     FormConfig,
     WidgetForm,
@@ -208,24 +186,9 @@ export default {
       type: Boolean,
       default: false
     },
-    basicFields: {
-      type: Array,
-      default: () => ['input', 'textarea', 'number', 'radio', 'checkbox', 'time', 'date', 'rate', 'color', 'select', 'switch', 'slider', 'text']
-    },
-    advanceFields: {
-      type: Array,
-      default: () => ['blank', 'imgupload', 'editor', 'cascader']
-    },
-    layoutFields: {
-      type: Array,
-      default: () => ['grid']
-    }
   },
   data () {
     return {
-      basicComponents,
-      layoutComponents,
-      advanceComponents,
       resetJson: false,
       widgetForm: {
         list: [],
@@ -235,7 +198,12 @@ export default {
           size: 'small'
         },
       },
-      configTab: 'widget',
+      tableSelect: {
+        config: {}
+      },
+      leftConfigTab: 'shiyan',
+      configTab: 'header',
+      headerFormSelect: null,
       widgetFormSelect: null,
       previewVisible: false,
       jsonVisible: false,
@@ -281,44 +249,15 @@ export default {
       codeActiveName: 'vue',
     }
   },
-  mounted () {
-    this._loadComponents()
-  },
   methods: {
-    _loadComponents () {
-      this.basicComponents = this.basicComponents.map(item => {
-        return {
-          ...item,
-          name: this.$t(`fm.components.fields.${item.type}`)
-        }
-      })
-      this.advanceComponents = this.advanceComponents.map(item => {
-        return {
-          ...item,
-          name: this.$t(`fm.components.fields.${item.type}`)
-        }
-      })
-      this.layoutComponents = this.layoutComponents.map(item => {
-        return {
-          ...item,
-          name: this.$t(`fm.components.fields.${item.type}`)
-        }
-      })
-    },
     handleGoGithub () {
       window.location.href = 'https://github.com/GavinZhuLei/vue-form-making'
     },
+    handleLeftConfigSelect (value) {
+      this.leftConfigTab = value
+    },
     handleConfigSelect (value) {
       this.configTab = value
-    },
-    handleMoveEnd (evt) {
-      console.log('end', evt)
-    },
-    handleMoveStart ({oldIndex}) {
-      console.log('start', oldIndex, this.basicComponents)
-    },
-    handleMove () {
-      return true
     },
     handlePreview () {
       console.log(this.widgetForm)

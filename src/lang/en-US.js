@@ -62,7 +62,21 @@ export default {
       upload: 'Upload',
       add: 'Add'
     },
+    left: {
+      shiyan: {
+        title: '试验报表'
+      },
+      jiandu: {
+        title: '监督报表'
+      }
+    },
     config: {
+      header: {
+        title: 'Header Form'
+      },
+      table: {
+        title: 'Table Attribute'
+      },
       form: {
         title: 'Form Attribute',
         labelPosition: {

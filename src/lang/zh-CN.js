@@ -62,7 +62,21 @@ export default {
       upload: '点击上传',
       add: '添加'
     },
+    left: {
+      shiyan: {
+        title: '试验报表'
+      },
+      jiandu: {
+        title: '监督报表'
+      }
+    },
     config: {
+      header: {
+        title: '自由表头'
+      },
+      table: {
+        title: '行式列表'
+      },
       form: {
         title: '表单属性',
         labelPosition: {
