@@ -9,7 +9,10 @@
 
   <div class="table-container">
     <el-table
-        :data="tableData">
+        :data="tableData"
+        stripe
+        :show-header="false"
+    >
       <el-table-column
           prop="name"
           height="0">
@@ -48,11 +51,6 @@ export default {
   .table-container {
     height: calc(100% - 40px);
     width: 100%;
-    //padding-top: 40px;
-  }
-
-  ::v-deep .el-table__header-wrapper {
-    display: none;
   }
 }
 </style>

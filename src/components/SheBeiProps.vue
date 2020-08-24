@@ -1,12 +1,4 @@
 <template>
-<div class="template-tree-container">
-  <div class="search-container">
-    <el-input
-        placeholder="输入关键字进行过滤"
-        v-model="filterText">
-    </el-input>
-  </div>
-
   <el-tree
       class="filter-tree"
       :data="data"
@@ -16,26 +8,19 @@
       :filter-node-method="filterNode"
       ref="tree">
   </el-tree>
-</div>
 </template>
 
 <script>
 import templates from '@/mock/templates';
 export default {
-  name: 'TemplateTree',
+  name: 'SheBeiProps',
   data() {
     return {
-      filterText: '',
       data: templates,
       defaultProps: {
         children: 'children',
         label: 'label'
       }
-    }
-  },
-  watch: {
-    filterText(val) {
-      this.$refs.tree.filter(val);
     }
   },
 
@@ -49,16 +34,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.template-tree-container {
-  position: relative;
 
-  .search-container {
-    position: sticky;
-    top: 0;
-    left: 0;
-    background-color: white;
-    z-index: 10001;
-
-  }
-}
 </style>

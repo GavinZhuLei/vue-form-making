@@ -1,6 +1,6 @@
 <template>
 <div>
-  <el-aside width="250px">
+  <el-aside style="width: 100%;">
     <div class="components-list">
       <template v-if="basicFields.length">
         <div class="widget-cate">{{$t('fm.components.basic.title')}}</div>
@@ -38,7 +38,6 @@
         </draggable>
       </template>
 
-
       <template v-if="layoutFields.length">
         <div class="widget-cate">{{$t('fm.components.layout.title')}}</div>
         <draggable tag="ul" :list="layoutComponents"
@@ -56,8 +55,42 @@
           </li>
         </draggable>
       </template>
-
     </div>
+    <el-container>
+      <el-header height="45px">
+        <div class="config-tab all">控件属性</div>
+      </el-header>
+    </el-container>
+    <div class="btn-container">
+      <el-row>
+        <el-button type="primary">确定</el-button>
+        <el-button type="danger">重置</el-button>
+      </el-row>
+    </div>
+    <el-container style="height: 25% !important; overflow: auto;">
+      <el-header height="40px">
+        <div class="config-tab all middle">设备控件属性</div>
+      </el-header>
+      <el-main>
+        <she-bei-props />
+      </el-main>
+    </el-container>
+    <el-container style="height: 25% !important; overflow: auto;">
+      <el-header height="40px">
+        <div class="config-tab all middle">设备技术参数控件属性</div>
+      </el-header>
+      <el-main>
+        <she-bei-attribute-props />
+      </el-main>
+    </el-container>
+    <el-container style="height: 25% !important; overflow: auto;">
+      <el-header height="40px">
+        <div class="config-tab all middle">机组控件属性</div>
+      </el-header>
+      <el-main>
+        <ji-zu-props />
+      </el-main>
+    </el-container>
   </el-aside>
 </div>
 </template>
@@ -67,9 +100,15 @@ import Draggable from 'vuedraggable'
 import {basicComponents, layoutComponents, advanceComponents} from './componentsConfig.js'
 import Clipboard from 'clipboard';
 import generateCode from '@/components/generateCode';
+import SheBeiProps from '@/components/SheBeiProps';
+import SheBeiAttributeProps from '@/components/SheBeiAttributeProps';
+import JiZuProps from '@/components/JiZuProps';
 export default {
   name: 'HeaderConfig',
   components: {
+    JiZuProps,
+    SheBeiAttributeProps,
+    SheBeiProps,
     Draggable,
   },
   props: {
@@ -130,6 +169,11 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+.btn-container {
+  display: flex;
+  flex-direction: row-reverse;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
 </style>
