@@ -151,8 +151,6 @@ export default {
         borderCard: '卡片化',
         tabPosition: '选项卡位置',
         top: '顶部',
-        left: '左侧',
-        right: '右侧',
         bottom: '底部',
         tabOption: '标签配置项',
         tabName: '标签名称',
