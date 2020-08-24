@@ -1,6 +1,19 @@
 <template>
   <span class="fm-style">
     <el-container class="fm2-container">
+      <el-header height="45">
+        <el-row class="btn-container">
+          <el-button>创建报表</el-button>
+          <el-button>创建自由列表</el-button>
+          <el-button>创建行式列表</el-button>
+          <el-button>保存</el-button>
+          <el-button>删除</el-button>
+          <el-button>参考创建</el-button>
+          <el-button>预览</el-button>
+          <el-button>发布</el-button>
+          <el-button>启用</el-button>
+        </el-row>
+      </el-header>
       <el-main class="fm2-main">
         <el-container>
           <el-aside class="widget-config-container">
@@ -373,3 +386,12 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.btn-container {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+</style>
