@@ -150,7 +150,7 @@ export default {
         card: 'Tabs',
         borderCard: 'Border-Card',
         tabPosition: 'Tab Position',
-        top: 'Tob',
+        top: 'Top',
         bottom: 'Bottom',
         tabOption: 'Label Configuration',
         tabName: 'Tab Name',
