@@ -36,9 +36,9 @@ export default {
       }
     },
     description: {
-      containerEmpty: '从左侧拖拽来添加字段',
+      containerEmpty: '从右侧拖拽来添加字段',
       configEmpty: '请添加字段',
-      tableEmpty: '从左侧拖拽来添加字段',
+      tableEmpty: '从右侧拖拽来添加字段',
       uploadJsonInfo: 'JSON格式如下，直接复制生成的json覆盖此处代码点击确定即可'
     },
     message: {

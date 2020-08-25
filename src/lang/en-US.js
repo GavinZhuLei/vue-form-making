@@ -36,9 +36,9 @@ export default {
       }
     },
     description: {
-      containerEmpty: 'You can drag and drop the item from the left to add components',
+      containerEmpty: 'You can drag and drop the item from the right to add components',
       configEmpty: 'Please add a component',
-      tableEmpty: 'You can drag and drop the item from the left to add components',
+      tableEmpty: 'You can drag and drop the item from the right to add components',
       uploadJsonInfo: 'There is the format of JSON below，you can overwrite it with you own JSON code'
     },
     message: {
