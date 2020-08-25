@@ -235,10 +235,16 @@ export default {
       })
     },
     handleWidgetClone (index) {
+      const key = Date.parse(new Date().toString()) + '_' + Math.ceil(Math.random() * 99999)
       let cloneData = {
         ...this.data.list[index],
-        options: {...this.data.list[index].options},
-        key: Date.parse(new Date()) + '_' + Math.ceil(Math.random() * 99999)
+        options: {
+          ...this.data.list[index].options,
+          remoteFunc: 'func_' + key
+        },
+        key,
+        model: this.data.list[index].type + '_' + key,
+        rules: this.data.list[index].rules || []
       }
 
       if (this.data.list[index].type === 'radio' || this.data.list[index].type === 'checkbox' || this.data.list[index].type === 'select') {
