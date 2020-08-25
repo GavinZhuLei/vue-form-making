@@ -77,6 +77,9 @@ export default {
       table: {
         title: 'Table Attribute'
       },
+      zhibiao: {
+        title: '指标信息'
+      },
       form: {
         title: 'Form Attribute',
         labelPosition: {

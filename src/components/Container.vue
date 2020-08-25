@@ -63,17 +63,19 @@
             </el-main>
           </el-container>
 
-          <el-aside class="widget-config-container">
+          <el-aside class="widget-config-container" style="width: 400px;">
             <el-container>
               <el-header height="45px">
                 <div class="config-tab" :class="{active: configTab ==='header'}" @click="handleConfigSelect('header')">{{$t('fm.config.header.title')}}</div>
                 <div class="config-tab" :class="{active: configTab ==='table'}" @click="handleConfigSelect('table')">{{$t('fm.config.table.title')}}</div>
+                <div class="config-tab" :class="{active: configTab ==='zhibiao'}" @click="handleConfigSelect('zhibiao')">{{$t('fm.config.zhibiao.title')}}</div>
                 <div class="config-tab" :class="{active: configTab ==='widget'}" @click="handleConfigSelect('widget')">{{$t('fm.config.widget.title')}}</div>
                 <div class="config-tab" :class="{active: configTab ==='form'}" @click="handleConfigSelect('form')">{{$t('fm.config.form.title')}}</div>
               </el-header>
               <el-main class="config-content">
                 <header-config v-show="configTab ==='header'" :data="headerFormSelect"></header-config>
                 <table-config v-show="configTab ==='table'" :data="tableSelect"></table-config>
+                <zhi-biao-config v-show="configTab ==='zhibiao'" :data="zhiBiaoSelect"></zhi-biao-config>
                 <widget-config v-show="configTab ==='widget'" :data="widgetFormSelect"></widget-config>
                 <form-config v-show="configTab ==='form'" :data="widgetForm.config"></form-config>
               </el-main>
@@ -166,10 +168,12 @@ import request from '../util/request.js'
 import generateCode from './generateCode.js'
 import TemplateTree from '@/components/TemplateTree';
 import QuotaTable from '@/components/QuotaTable';
+import ZhiBiaoConfig from '@/components/ZhiBiaoConfig';
 
 export default {
   name: 'fm-making-form',
   components: {
+    ZhiBiaoConfig,
     QuotaTable,
     TemplateTree,
     HeaderConfig,
@@ -214,6 +218,9 @@ export default {
         },
       },
       tableSelect: {
+        config: {}
+      },
+      zhiBiaoSelect: {
         config: {}
       },
       leftConfigTab: 'shiyan',

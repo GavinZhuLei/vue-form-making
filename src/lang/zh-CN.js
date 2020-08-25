@@ -77,6 +77,9 @@ export default {
       table: {
         title: '行式列表'
       },
+      zhibiao: {
+        title: '指标信息'
+      },
       form: {
         title: '表单属性',
         labelPosition: {
