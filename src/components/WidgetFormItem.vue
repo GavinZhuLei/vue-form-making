@@ -217,6 +217,7 @@
     </template>
 
     <div class="widget-view-action" v-if="selectWidget.key === element.key">
+      <i class="el-icon-edit" v-if="element.type === 'table'" @click.stop="handleEditTable(index)"></i>
       <i class="iconfont icon-icon_clone" @click.stop="handleWidgetClone(index)"></i>
       <i class="iconfont icon-trash" @click.stop="handleWidgetDelete(index)"></i>
     </div>
@@ -262,6 +263,10 @@ export default {
       this.$nextTick(() => {
         this.data.list.splice(index, 1)
       })
+    },
+
+    handleEditTable(index) {
+      this.$message('表格编辑');
     },
     handleWidgetClone(index) {
       const key = Date.parse(new Date().toString()) + '_' + Math.ceil(Math.random() * 99999)

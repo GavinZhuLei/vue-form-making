@@ -329,8 +329,7 @@ export const layoutComponents = [
     options: {
       stripe: true,
       height: '300',
-      border: true,
-      clearable: false
+      border: true
     }
   }
 ]
