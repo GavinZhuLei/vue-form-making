@@ -1,12 +1,12 @@
 <template>
   <div class="fm-style">
-    <el-form ref="generateForm" 
+    <el-form ref="generateForm"
       label-suffix=":"
       :size="data.config.size"
       :model="models" :rules="rules" :label-position="data.config.labelPosition" :label-width="data.config.labelWidth + 'px'">
       <template v-for="item in data.list">
 
-        <template v-if="item.type == 'grid'">
+        <template v-if="item.type === 'grid'">
           <el-row
             :key="item.key"
             type="flex"
@@ -15,17 +15,17 @@
             :align="item.options.align"
           >
             <el-col v-for="(col, colIndex) in item.columns" :key="colIndex" :span="col.span">
-              
+
 
               <template v-for="citem in col.list" >
-                <el-form-item v-if="citem.type=='blank'" :label="citem.name" :prop="citem.model" :key="citem.key">
+                <el-form-item v-if="citem.type === 'blank'" :label="citem.name" :prop="citem.model" :key="citem.key">
                   <slot :name="citem.model" :model="models"></slot>
                 </el-form-item>
-                <genetate-form-item v-else 
-                  :key="citem.key" 
-                  :models.sync="models" 
-                  :remote="remote" 
-                  :rules="rules" 
+                <genetate-form-item v-else
+                  :key="citem.key"
+                  :models.sync="models"
+                  :remote="remote"
+                  :rules="rules"
                   :widget="citem"
                   @input-change="onInputChange">
                 </genetate-form-item>
@@ -34,23 +34,23 @@
           </el-row>
         </template>
 
-        <template v-else-if="item.type == 'blank'">
+        <template v-else-if="item.type === 'blank'">
           <el-form-item :label="item.name" :prop="item.model" :key="item.key">
             <slot :name="item.model" :model="models"></slot>
           </el-form-item>
         </template>
 
         <template v-else>
-          <genetate-form-item 
-            :key="item.key" 
-            :models.sync="models" 
-            :rules="rules" 
-            :widget="item" 
+          <genetate-form-item
+            :key="item.key"
+            :models.sync="models"
+            :rules="rules"
+            :widget="item"
             @input-change="onInputChange"
             :remote="remote">
           </genetate-form-item>
         </template>
-        
+
       </template>
     </el-form>
   </div>
@@ -92,11 +92,11 @@ export default {
               this.$set(this.models, genList[i].model, genList[i].options.defaultType === 'String' ? '' : (genList[i].options.defaultType === 'Object' ? {} : []))
             } else {
               this.models[genList[i].model] = genList[i].options.defaultValue
-            }      
+            }
           }
-          
+
           if (this.rules[genList[i].model]) {
-            
+
             this.rules[genList[i].model] = [...this.rules[genList[i].model], ...genList[i].rules.map(item => {
               if (item.pattern) {
                 return {...item, pattern: eval(item.pattern)}
@@ -105,7 +105,7 @@ export default {
               }
             })]
           } else {
-            
+
             this.rules[genList[i].model] = [...genList[i].rules.map(item => {
               if (item.pattern) {
                 return {...item, pattern: eval(item.pattern)}
@@ -113,7 +113,7 @@ export default {
                 return {...item}
               }
             })]
-          }      
+          }
         }
       }
     },
@@ -135,7 +135,7 @@ export default {
       this.$emit('on-change', field, value, this.models)
     },
     refresh () {
-      
+
     }
   },
   watch: {

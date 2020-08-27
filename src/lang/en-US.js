@@ -20,7 +20,7 @@ export default {
         imgupload: 'Image',
         editor: 'Editor',
         cascader: 'Cascader',
-        table: 'Sub-table',
+        table: 'Table',
         grid: 'Grid',
         tabs: 'Tabs',
         divider: 'Divider'

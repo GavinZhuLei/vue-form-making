@@ -47,7 +47,7 @@
                    :move="handleMove"
         >
 
-          <li v-if="layoutFields.indexOf(item.type) >=0" class="form-edit-widget-label no-put" v-for="(item, index) in layoutComponents" :key="index">
+          <li v-if="layoutFields.indexOf(item.type) >= 0" class="form-edit-widget-label no-put" v-for="(item, index) in layoutComponents" :key="index">
             <a>
               <i class="icon iconfont" :class="item.icon"></i>
               <span>{{item.name}}</span>
@@ -122,7 +122,7 @@ export default {
     },
     layoutFields: {
       type: Array,
-      default: () => ['grid']
+      default: () => ['grid', 'table']
     }
   },
   data() {
