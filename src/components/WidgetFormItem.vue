@@ -180,6 +180,10 @@
           :height="element.options.height"
           :border="element.options.border"
           :stripe="element.options.stripe"
+          :fit="element.options.fit"
+          :show-header="element.options.showHeader"
+          :highlight-current-row="element.options.highlightCurrentRow"
+          :show-summary="element.options.showSummary"
           style="width: 100%">
         <el-table-column
             prop="date"

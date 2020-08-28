@@ -327,9 +327,13 @@ export const layoutComponents = [
       address: '上海市普陀区金沙江路 1516 弄'
     }],
     options: {
-      stripe: true,
+      stripe: false,
       height: '300',
-      border: true
+      border: false,
+      fit: true,
+      showHeader: true,
+      highlightCurrentRow: false,
+      showSummary: false
     }
   }
 ]

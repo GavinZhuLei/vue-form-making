@@ -214,6 +214,10 @@
           :height="widget.options.height"
           :border="widget.options.border"
           :stripe="widget.options.stripe"
+          :fit="widget.options.fit"
+          :show-header="widget.options.showHeader"
+          :highlight-current-row="widget.options.highlightCurrentRow"
+          :show-summary="widget.options.showSummary"
           style="width: 100%">
         <el-table-column
             prop="date"

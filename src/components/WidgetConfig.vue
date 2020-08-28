@@ -344,24 +344,28 @@
             </li>
           </draggable>
           <div style="margin-left: 22px;">
-            <el-button type="text" @click="handleAddTableColumn">{{ $t('fm.actions.addColumn') }}</el-button>
+            <el-button type="text" @click="handleAddTableRow">{{ $t('fm.actions.addRow') }}</el-button>
           </div>
         </el-form-item>
-        <el-form-item :label="$t('fm.config.widget.justify')">
-          <el-select v-model="data.options.justify">
-            <el-option value="start" :label="$t('fm.config.widget.justifyStart')"></el-option>
-            <el-option value="end" :label="$t('fm.config.widget.justifyEnd')"></el-option>
-            <el-option value="center" :label="$t('fm.config.widget.justifyCenter')"></el-option>
-            <el-option value="space-around" :label="$t('fm.config.widget.justifySpaceAround')"></el-option>
-            <el-option value="space-between" :label="$t('fm.config.widget.justifySpaceBetween')"></el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item :label="$t('fm.config.widget.align')">
-          <el-select v-model="data.options.align">
-            <el-option value="top" :label="$t('fm.config.widget.alignTop')"></el-option>
-            <el-option value="middle" :label="$t('fm.config.widget.alignMiddle')"></el-option>
-            <el-option value="bottom" :label="$t('fm.config.widget.alignBottom')"></el-option>
-          </el-select>
+        <el-form-item :label="$t('fm.config.widget.attribute')">
+          <el-checkbox v-model="data.options.stripe" v-if="Object.keys(data.options).indexOf('stripe')>=0">
+            {{ $t('fm.config.widget.stripe') }}
+          </el-checkbox>
+          <el-checkbox v-model="data.options.border" v-if="Object.keys(data.options).indexOf('border')>=0">
+            {{ $t('fm.config.widget.border') }}
+          </el-checkbox>
+          <el-checkbox v-model="data.options.fit" v-if="Object.keys(data.options).indexOf('fit')>=0">
+            {{ $t('fm.config.widget.fit') }}
+          </el-checkbox>
+          <el-checkbox v-model="data.options.showHeader" v-if="Object.keys(data.options).indexOf('showHeader')>=0">
+            {{ $t('fm.config.widget.showHeader') }}
+          </el-checkbox>
+          <el-checkbox v-model="data.options.highlightCurrentRow" v-if="Object.keys(data.options).indexOf('highlightCurrentRow')>=0">
+            {{ $t('fm.config.widget.highlightCurrentRow') }}
+          </el-checkbox>
+          <el-checkbox v-model="data.options.showSummary" v-if="Object.keys(data.options).indexOf('showSummary')>=0">
+            {{ $t('fm.config.widget.showSummary') }}
+          </el-checkbox>
         </el-form-item>
       </template>
 
@@ -467,8 +471,12 @@ export default {
         list: []
       })
     },
-    handleAddTableColumn() {
-
+    handleAddTableRow() {
+      this.data.columns.push({
+        date: '2020-08-28',
+        name: '王小二',
+        address: '山东省青岛市市南区'
+      })
     },
     generateRule() {
       this.data.rules = []
