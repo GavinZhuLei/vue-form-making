@@ -75,9 +75,9 @@ export default {
       header: {
         title: 'Header Form'
       },
-      table: {
-        title: 'Table Attribute'
-      },
+      // table: {
+      //   title: 'Table Attribute'
+      // },
       zhibiao: {
         title: '指标信息'
       },

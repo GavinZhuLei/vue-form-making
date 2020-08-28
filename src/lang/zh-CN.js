@@ -75,9 +75,9 @@ export default {
       header: {
         title: '自由表头'
       },
-      table: {
-        title: '行式列表'
-      },
+      // table: {
+      //   title: '行式列表'
+      // },
       zhibiao: {
         title: '指标信息'
       },
