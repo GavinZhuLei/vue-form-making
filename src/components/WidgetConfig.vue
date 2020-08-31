@@ -528,6 +528,10 @@ export default {
       this.$prompt('请输入表头', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
+        inputValidator: (value) => {
+          return !!value
+        },
+        inputErrorMessage: '请输入表头',
       }).then(({ value }) => {
         this.data.columns.push({
           prop: 'address',
