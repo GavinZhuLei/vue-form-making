@@ -1,5 +1,5 @@
 <template>
-  <div class="fm-uplaod-container"
+  <div class="fm-upload-container"
     :id="uploadId"
   >
     <draggable class="drag-img-list"
@@ -20,7 +20,7 @@
           <i class="el-icon-upload-success el-icon-check"></i>
         </label>
 
-        <div class="uplaod-action" :style="{height: miniWidth / 4 + 'px'}" v-if="!disabled">
+        <div class="upload-action" :style="{height: miniWidth / 4 + 'px'}" v-if="!disabled">
           <i class="iconfont icon-tupianyulan" :title="$t('fm.upload.preview')" @click="handlePreviewFile(item.key)" :style="{'font-size': miniWidth/8+'px'}"></i>
           <i v-if="isEdit" class="iconfont icon-sync1" :title="$t('fm.upload.edit')" @click="handleEdit(item.key)" :style="{'font-size': miniWidth/8+'px'}"></i>
           <i v-if="isDelete && fileList.length > min" class="iconfont icon-delete" :title="$t('fm.upload.delete')" @click="handleRemove(item.key)" :style="{'font-size': miniWidth/8+'px'}"></i>
@@ -168,16 +168,16 @@ export default {
 
           this.$nextTick(() => {
             if (this.isQiniu) {
-              this.uplaodAction2(reader.result, file, key)
+              this.uploadAction2(reader.result, file, key)
             } else {
-              this.uplaodAction(reader.result, file, key)
+              this.uploadAction(reader.result, file, key)
             }
           })
         }
       }
       this.$refs.uploadInput.value = []
     }, 
-    uplaodAction (res, file, key) {
+    uploadAction (res, file, key) {
       let changeIndex = this.fileList.findIndex(item => item.key === key)
       console.log(this.fileList.findIndex(item => item.key === key))
       const xhr = new XMLHttpRequest()
@@ -224,7 +224,7 @@ export default {
         }
       }
     },
-    uplaodAction2 (res, file, key) {
+    uploadAction2 (res, file, key) {
       const _this = this
       const observable = qiniu.upload(file, key, this.token, {
         fname: key,
@@ -303,7 +303,7 @@ export default {
 </script>
 
 <style lang="scss">
-.fm-uplaod-container{
+.fm-upload-container{
   .is-disabled{
     position: relative;
 
@@ -334,11 +334,11 @@ export default {
     position: relative;
     vertical-align: top;
     &:hover{
-      .uplaod-action{
+      .upload-action{
         display: flex;
       }
     }
-    .uplaod-action{
+    .upload-action{
       position: absolute;
       // top: 0;
       // height: 30px;
