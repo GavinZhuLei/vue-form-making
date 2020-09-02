@@ -41,8 +41,23 @@
                     </el-main>
                   </el-container>
                 </div>
-                <div v-show="leftConfigTab ==='jiandu'">
-                  监督报表
+                <div style="height: 100%" v-show="leftConfigTab ==='jiandu'">
+                  <el-container style="height: 50% !important;">
+                    <el-header height="40px">
+                      <div class="config-tab all middle">报表分类</div>
+                    </el-header>
+                    <el-main>
+                      <jian-du-report-classify />
+                    </el-main>
+                  </el-container>
+                  <el-container style="height: 50% !important;">
+                    <el-header height="40px">
+                      <div class="config-tab all middle">指标分类</div>
+                    </el-header>
+                    <el-main>
+                      <jian-du-index-classify />
+                    </el-main>
+                  </el-container>
                 </div>
               </el-main>
             </el-container>
@@ -168,12 +183,16 @@ import request from '../util/request.js'
 import generateCode from './generateCode.js'
 import TemplateTree from '@/components/TemplateTree';
 import QuotaTable from '@/components/QuotaTable';
+import JianDuReportClassify from '@/components/JianDuReportClassify';
+import JianDuIndexClassify from '@/components/JianDuIndexClassify';
 import ZhiBiaoConfig from '@/components/ZhiBiaoConfig';
 
 export default {
   name: 'fm-making-form',
   components: {
     ZhiBiaoConfig,
+    JianDuIndexClassify,
+    JianDuReportClassify,
     QuotaTable,
     TemplateTree,
     HeaderConfig,
