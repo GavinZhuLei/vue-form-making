@@ -2,6 +2,7 @@
   <span class="fm-style">
     <el-container class="fm2-container">
       <div class="add-column-mask-container" v-if="showAddColumn"></div>
+<!--      <table-editable />-->
       <el-header height="45">
         <el-row class="btn-container">
           <el-button>创建报表</el-button>
@@ -16,7 +17,7 @@
         </el-row>
       </el-header>
       <el-main class="fm2-main">
-        <add-column class="add-column-container" v-if="showAddColumn" @submit="submitColumnInfo" />
+        <add-column class="add-column-container" v-if="showAddColumn" @submit="submitColumnInfo" @cancel="showAddColumn = false" />
         <el-container>
           <el-aside class="widget-config-container">
             <el-container>
@@ -189,10 +190,12 @@ import JianDuReportClassify from '@/components/JianDuReportClassify';
 import JianDuIndexClassify from '@/components/JianDuIndexClassify';
 import ZhiBiaoConfig from '@/components/ZhiBiaoConfig';
 import AddColumn from '@/components/AddColumn';
+import TableEditable from '@/components/TableEditable';
 
 export default {
   name: 'fm-making-form',
   components: {
+    TableEditable,
     AddColumn,
     ZhiBiaoConfig,
     JianDuIndexClassify,
@@ -305,7 +308,7 @@ export default {
           console.log(item.options.defaultValue)
         }
       }
-      console.log(this.widgetForm.config)
+      // console.log(this.widgetForm.config)
     },
     addColumn(fn) {
       this.showAddColumn = true
@@ -451,6 +454,6 @@ export default {
   z-index: 1000;
   width: 100%;
   height: 100%;
-  background-color: rgba(144, 144, 144, 0.4);
+  background-color: rgba(0, 0, 0, .5);
 }
 </style>
