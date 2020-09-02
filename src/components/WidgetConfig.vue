@@ -167,9 +167,11 @@
 
       <el-form-item :label="$t('fm.config.widget.defaultValue')"
                     v-if="Object.keys(data.options).indexOf('defaultValue')>=0 && (data.type === 'textarea' || data.type === 'input' || data.type==='rate' || data.type==='color' || data.type==='switch')">
-        <el-input v-if="data.type==='textarea'" type="textarea" :rows="5" v-model="data.options.defaultValue"></el-input>
+        <el-input v-if="data.type==='textarea'" type="textarea" :rows="5"
+                  v-model="data.options.defaultValue"></el-input>
         <el-input v-if="data.type==='input'" v-model="data.options.defaultValue"></el-input>
-        <el-rate v-if="data.type === 'rate'" style="display:inline-block;vertical-align: middle;" :max="data.options.max"
+        <el-rate v-if="data.type === 'rate'" style="display:inline-block;vertical-align: middle;"
+                 :max="data.options.max"
                  :allow-half="data.options.allowHalf" v-model="data.options.defaultValue"></el-rate>
         <el-button type="text" v-if="data.type === 'rate'"
                    style="display:inline-block;vertical-align: middle;margin-left: 10px;"
@@ -324,14 +326,15 @@
       </template>
 
       <template v-if="data.type === 'table'">
-<!--        <el-form-item :label="$t('fm.config.widget.gutter')">-->
-<!--          <el-input type="number" v-model.number="data.options.gutter"></el-input>-->
-<!--        </el-form-item>-->
+        <!--        <el-form-item :label="$t('fm.config.widget.gutter')">-->
+        <!--          <el-input type="number" v-model.number="data.options.gutter"></el-input>-->
+        <!--        </el-form-item>-->
         <el-form-item :label="$t('fm.config.widget.rows')">
           <el-input type="number" min="1" v-model.number="data.rows.length"></el-input>
         </el-form-item>
         <el-form-item :label="$t('fm.config.widget.columns')">
-          <el-input type="number" min="1" v-model.number="Object.keys(data.rows.length > 0 ? data.rows[0] : {}).length"></el-input>
+          <el-input type="number" min="1"
+                    v-model.number="Object.keys(data.rows.length > 0 ? data.rows[0] : {}).length"></el-input>
         </el-form-item>
         <el-form-item :label="$t('fm.config.widget.rowOption')">
           <draggable tag="ul" :list="data.rows"
@@ -364,7 +367,8 @@
               <el-input :placeholder="$t('fm.config.widget.span')" size="mini" style="width: 100px;" readonly
                         v-model="item.label"></el-input>
 
-              <el-button @click="handleOptionsRemoveColumn(index)" circle plain type="danger" size="mini" icon="el-icon-minus"
+              <el-button @click="handleOptionsRemoveColumn(index)" circle plain type="danger" size="mini"
+                         icon="el-icon-minus"
                          style="padding: 4px;margin-left: 5px;"></el-button>
 
             </li>
@@ -381,18 +385,30 @@
         </el-form-item>
         <el-form-item label="单元格属性">
           <el-row type="flex" justify="space-around">
-            <el-col><el-button>显示指标符号</el-button></el-col>
-            <el-col><el-button>显示指标单位</el-button></el-col>
+            <el-col>
+              <el-button>显示指标符号</el-button>
+            </el-col>
+            <el-col>
+              <el-button>显示指标单位</el-button>
+            </el-col>
           </el-row>
           <br>
           <el-row type="flex" justify="space-around">
-            <el-col><el-button>显示指标标准值</el-button></el-col>
-            <el-col><el-button>显示指标期望值</el-button></el-col>
+            <el-col>
+              <el-button>显示指标标准值</el-button>
+            </el-col>
+            <el-col>
+              <el-button>显示指标期望值</el-button>
+            </el-col>
           </el-row>
           <br>
           <el-row type="flex" justify="space-around">
-            <el-col><el-button>显示机组</el-button></el-col>
-            <el-col><el-button>重置</el-button></el-col>
+            <el-col>
+              <el-button>显示机组</el-button>
+            </el-col>
+            <el-col>
+              <el-button>重置</el-button>
+            </el-col>
           </el-row>
         </el-form-item>
         <el-form-item :label="$t('fm.config.widget.attribute')">
@@ -408,7 +424,8 @@
           <el-checkbox v-model="data.options.showHeader" v-if="Object.keys(data.options).indexOf('showHeader')>=0">
             {{ $t('fm.config.widget.showHeader') }}
           </el-checkbox>
-          <el-checkbox v-model="data.options.highlightCurrentRow" v-if="Object.keys(data.options).indexOf('highlightCurrentRow')>=0">
+          <el-checkbox v-model="data.options.highlightCurrentRow"
+                       v-if="Object.keys(data.options).indexOf('highlightCurrentRow')>=0">
             {{ $t('fm.config.widget.highlightCurrentRow') }}
           </el-checkbox>
           <el-checkbox v-model="data.options.showSummary" v-if="Object.keys(data.options).indexOf('showSummary')>=0">
@@ -471,10 +488,12 @@
 
 <script>
 import Draggable from 'vuedraggable'
+import AddColumn from '@/components/AddColumn';
 
 export default {
   components: {
-    Draggable
+    Draggable,
+    AddColumn,
   },
   props: ['data'],
   data() {
@@ -525,6 +544,7 @@ export default {
       })
     },
     handleAddTableColumn() {
+      this.$emit('showAddColumn')
       this.$prompt('请输入表头', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
@@ -543,6 +563,7 @@ export default {
           message: '取消输入'
         });
       });
+
     },
     handleAddTableRow() {
       this.data.rows.push({

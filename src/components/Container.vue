@@ -6,7 +6,7 @@
           <el-button>创建报表</el-button>
 <!--          <el-button>创建自由列表</el-button>-->
 <!--          <el-button>创建行式列表</el-button>-->
-          <el-button>保存</el-button>
+          <el-button @click="saveToJSON">保存</el-button>
           <el-button>删除</el-button>
           <el-button>参考创建</el-button>
           <el-button>预览</el-button>
@@ -15,6 +15,7 @@
         </el-row>
       </el-header>
       <el-main class="fm2-main">
+        <add-column class="add-column-container" v-if="showAddColumn" @submit="showAddColumn = false" />
         <el-container>
           <el-aside class="widget-config-container">
             <el-container>
@@ -76,7 +77,7 @@
                 <header-config v-show="configTab ==='header'" :data="headerFormSelect"></header-config>
 <!--                <table-config v-show="configTab ==='table'" :data="tableSelect"></table-config>-->
                 <zhi-biao-config v-show="configTab ==='zhibiao'" :data="zhiBiaoSelect"></zhi-biao-config>
-                <widget-config v-show="configTab ==='widget'" :data="widgetFormSelect"></widget-config>
+                <widget-config v-show="configTab ==='widget'" :data="widgetFormSelect" @showAddColumn="showAddColumn = true"></widget-config>
                 <form-config v-show="configTab ==='form'" :data="widgetForm.config"></form-config>
               </el-main>
             </el-container>
@@ -169,10 +170,12 @@ import generateCode from './generateCode.js'
 import TemplateTree from '@/components/TemplateTree';
 import QuotaTable from '@/components/QuotaTable';
 import ZhiBiaoConfig from '@/components/ZhiBiaoConfig';
+import AddColumn from '@/components/AddColumn';
 
 export default {
   name: 'fm-making-form',
   components: {
+    AddColumn,
     ZhiBiaoConfig,
     QuotaTable,
     TemplateTree,
@@ -209,6 +212,7 @@ export default {
   data () {
     return {
       resetJson: false,
+      showAddColumn:false,
       widgetForm: {
         list: [],
         config: {
@@ -272,6 +276,17 @@ export default {
     }
   },
   methods: {
+    saveToJSON() {
+      const list = this.widgetForm.list
+      for (const item of list) {
+        if (item.type === 'table') {
+          console.log(item.rows)
+        } else {
+          console.log(item.options.defaultValue)
+        }
+      }
+      console.log(this.widgetForm.config)
+    },
     handleGoGithub () {
       window.location.href = 'https://github.com/GavinZhuLei/vue-form-making'
     },
@@ -400,5 +415,16 @@ export default {
   justify-content: flex-end;
   padding-top: 4px;
   padding-bottom: 4px;
+}
+
+.add-column-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -328px;
+  margin-top: -223px;
+  z-index: 1001;
+  background-color: white;
+
 }
 </style>
