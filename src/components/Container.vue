@@ -1,6 +1,7 @@
 <template>
   <span class="fm-style">
     <el-container class="fm2-container">
+      <div class="add-column-mask-container" v-if="showAddColumn"></div>
       <el-header height="45">
         <el-row class="btn-container">
           <el-button>创建报表</el-button>
@@ -15,7 +16,7 @@
         </el-row>
       </el-header>
       <el-main class="fm2-main">
-        <add-column class="add-column-container" v-if="showAddColumn" @submit="showAddColumn = false" />
+        <add-column class="add-column-container" v-if="showAddColumn" @submit="submitColumnInfo" />
         <el-container>
           <el-aside class="widget-config-container">
             <el-container>
@@ -77,7 +78,7 @@
                 <header-config v-show="configTab ==='header'" :data="headerFormSelect"></header-config>
 <!--                <table-config v-show="configTab ==='table'" :data="tableSelect"></table-config>-->
                 <zhi-biao-config v-show="configTab ==='zhibiao'" :data="zhiBiaoSelect"></zhi-biao-config>
-                <widget-config v-show="configTab ==='widget'" :data="widgetFormSelect" @showAddColumn="showAddColumn = true"></widget-config>
+                <widget-config v-show="configTab ==='widget'" :data="widgetFormSelect" @showAddColumn="addColumn"></widget-config>
                 <form-config v-show="configTab ==='form'" :data="widgetForm.config"></form-config>
               </el-main>
             </el-container>
@@ -287,6 +288,13 @@ export default {
       }
       console.log(this.widgetForm.config)
     },
+    addColumn(fn) {
+      this.showAddColumn = true
+      fn && fn()
+    },
+    submitColumnInfo(label, prop) {
+      console.log(label, prop)
+    },
     handleGoGithub () {
       window.location.href = 'https://github.com/GavinZhuLei/vue-form-making'
     },
@@ -314,7 +322,7 @@ export default {
     handleGenerateJson () {
       this.jsonVisible = true
       this.jsonTemplate = this.widgetForm
-      console.log(JSON.stringify(this.widgetForm))
+      // console.log(JSON.stringify(this.widgetForm))
       this.$nextTick(() => {
 
         const editor = ace.edit('jsoneditor')
@@ -417,14 +425,13 @@ export default {
   padding-bottom: 4px;
 }
 
-.add-column-container {
+.add-column-mask-container {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  margin-left: -328px;
-  margin-top: -223px;
-  z-index: 1001;
-  background-color: white;
-
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(144, 144, 144, 0.4);
 }
 </style>

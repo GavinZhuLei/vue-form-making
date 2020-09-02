@@ -1,25 +1,22 @@
 <template>
-  <el-form :model="dynamicValidateForm" ref="dynamicValidateForm" label-width="100px" class="demo-dynamic">
+  <el-form :model="dynamicValidateForm" ref="dynamicValidateForm" label-width="100px" class="add-column-container">
     <el-form-item
-        prop="email"
-        label="邮箱"
+        prop="label"
+        label="表头label"
         :rules="[
-      { required: true, message: '请输入邮箱地址', trigger: 'blur' },
-      { type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change'] }
+      { required: true, message: '表头label不能为空', trigger: 'blur' }
     ]"
     >
-      <el-input v-model="dynamicValidateForm.email"></el-input>
+      <el-input v-model="dynamicValidateForm.label"></el-input>
     </el-form-item>
     <el-form-item
-        v-for="(domain, index) in dynamicValidateForm.domains"
-        :label="'域名' + index"
-        :key="domain.key"
-        :prop="'domains.' + index + '.value'"
+        label="表头prop"
+        prop="prop"
         :rules="{
-      required: true, message: '域名不能为空', trigger: 'blur'
+      required: true, message: '表头prop不能为空', trigger: 'blur'
     }"
     >
-      <el-input v-model="domain.value"></el-input>
+      <el-input v-model="dynamicValidateForm.prop"></el-input>
     </el-form-item>
     <el-form-item>
       <el-button type="primary" @click="submitForm('dynamicValidateForm')">提交</el-button>
@@ -34,21 +31,17 @@ export default {
   data() {
     return {
       dynamicValidateForm: {
-        domains: [{
-          value: ''
-        }],
-        email: ''
+        prop: '',
+        label: ''
       }
     };
   },
   methods: {
     submitForm(formName) {
-      this.$emit('submit')
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          alert('submit!');
+          this.$emit('submit', this.dynamicValidateForm.label, this.dynamicValidateForm.prop)
         } else {
-          console.log('error submit!!');
           return false;
         }
       });
@@ -60,6 +53,21 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+.add-column-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -180px;
+  margin-top: -120px;
+  z-index: 1001;
+  width: 360px;
+  height: 240px;
+  padding-right: 40px;
+  background-color: white;
+  border-radius: 10px;
+}
 </style>

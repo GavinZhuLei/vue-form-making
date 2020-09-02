@@ -43,7 +43,7 @@ export default {
     height: 40px;
     top: 0;
     left: 0;
-    z-index: 1001;
+    z-index: 999;
     padding-top: 4px;
     background-color: white;
   }

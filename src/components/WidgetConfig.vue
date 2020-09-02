@@ -544,26 +544,29 @@ export default {
       })
     },
     handleAddTableColumn() {
-      this.$emit('showAddColumn')
-      this.$prompt('请输入表头', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        inputValidator: (value) => {
-          return !!value
-        },
-        inputErrorMessage: '请输入表头',
-      }).then(({ value }) => {
-        this.data.columns.push({
-          prop: 'address',
-          label: value,
-        })
-      }).catch(() => {
-        this.$message({
-          type: 'info',
-          message: '取消输入'
-        });
-      });
-
+      const saveTableHeaderColumn = this.saveTableHeaderColumn.bind(this)
+      this.$emit('showAddColumn', saveTableHeaderColumn)
+      // this.$prompt('请输入表头', '提示', {
+      //   confirmButtonText: '确定',
+      //   cancelButtonText: '取消',
+      //   inputValidator: (value) => {
+      //     return !!value
+      //   },
+      //   inputErrorMessage: '请输入表头',
+      // }).then(({ value }) => {
+      //   this.data.columns.push({
+      //     prop: 'address',
+      //     label: value,
+      //   })
+      // }).catch(() => {
+      //   this.$message({
+      //     type: 'info',
+      //     message: '取消输入'
+      //   });
+      // });
+    },
+    saveTableHeaderColumn() {
+      console.log(this.type)
     },
     handleAddTableRow() {
       this.data.rows.push({
