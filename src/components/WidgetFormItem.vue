@@ -1,5 +1,5 @@
 <template>
-  <el-form-item class="widget-view "
+  <el-form-item class="widget-view"
                 v-if="element && element.key"
                 :class="{active: selectWidget.key === element.key, 'is_req': element.options.required}"
                 :label="element.type === 'table' ? '' : element.name"
@@ -221,7 +221,7 @@
     </template>
 
     <div class="widget-view-action" v-if="selectWidget.key === element.key">
-      <i class="el-icon-edit" v-if="element.type === 'table'" @click.stop="handleEditTable(index)"></i>
+      <i class="el-icon-edit" v-if="element.type === 'table'" @click.stop="handleEditTable(index, element.columns)"></i>
       <i class="iconfont icon-icon_clone" @click.stop="handleWidgetClone(index)"></i>
       <i class="iconfont icon-trash" @click.stop="handleWidgetDelete(index)"></i>
     </div>
@@ -229,6 +229,14 @@
     <div class="widget-view-drag" v-if="selectWidget.key === element.key">
       <i class="iconfont icon-drag drag-widget"></i>
     </div>
+
+    <el-dialog title="表格编辑" :visible.sync="dialogEidtableTableVisible">
+      <el-table :data="editableTableData">
+        <el-table-column property="date" label="日期" width="180"></el-table-column>
+        <el-table-column property="name" label="姓名" width="180"></el-table-column>
+        <el-table-column property="address" label="地址"></el-table-column>
+      </el-table>
+    </el-dialog>
 
   </el-form-item>
 </template>
@@ -243,7 +251,9 @@ export default {
   },
   data() {
     return {
-      selectWidget: this.select
+      selectWidget: this.select,
+      editableTableData: [],
+      dialogEidtableTableVisible: false
     }
   },
   mounted() {
@@ -269,8 +279,11 @@ export default {
       })
     },
 
-    handleEditTable(index) {
-      this.$message('表格编辑');
+    handleEditTable(index, tableData) {
+      this.$message('表格编辑', index);
+      // this.editableTableData = element.columns  // 双向绑定
+      this.editableTableData = tableData          // 非双向绑定
+      this.dialogEidtableTableVisible = true
     },
     handleWidgetClone(index) {
       const key = Date.parse(new Date().toString()) + '_' + Math.ceil(Math.random() * 99999)
