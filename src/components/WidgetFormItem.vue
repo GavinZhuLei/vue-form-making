@@ -216,7 +216,7 @@
     </template>
 
     <div class="widget-view-action" v-if="selectWidget.key === element.key">
-      <i class="el-icon-edit" v-if="element.type === 'table'" @click.stop="handleEditTable(index, element.columns)"></i>
+      <i class="el-icon-edit" v-if="element.type === 'table'" @click.stop="handleEditTable(index, element.rows)"></i>
       <i class="iconfont icon-icon_clone" @click.stop="handleWidgetClone(index)"></i>
       <i class="iconfont icon-trash" @click.stop="handleWidgetDelete(index)"></i>
     </div>
@@ -276,8 +276,8 @@ export default {
 
     handleEditTable(index, tableData) {
       this.$message('表格编辑', index);
-      // this.editableTableData = element.columns  // 双向绑定
-      this.editableTableData = tableData          // 非双向绑定
+      this.editableTableData = this.element.rows  // 双向绑定
+      // this.editableTableData = tableData          // 非双向绑定
       this.dialogEidtableTableVisible = true
     },
     handleWidgetClone(index) {
