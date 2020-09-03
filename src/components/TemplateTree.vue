@@ -57,7 +57,7 @@ export default {
     top: 0;
     left: 0;
     background-color: white;
-    z-index: 1001;
+    z-index: 999;
 
   }
 }

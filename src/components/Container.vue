@@ -1,12 +1,14 @@
 <template>
   <span class="fm-style">
     <el-container class="fm2-container">
+      <div class="add-column-mask-container" v-if="showAddColumn"></div>
+<!--      <table-editable />-->
       <el-header height="45">
         <el-row class="btn-container">
           <el-button>创建报表</el-button>
-          <el-button>创建自由列表</el-button>
-          <el-button>创建行式列表</el-button>
-          <el-button>保存</el-button>
+<!--          <el-button>创建自由列表</el-button>-->
+<!--          <el-button>创建行式列表</el-button>-->
+          <el-button @click="saveToJSON">保存</el-button>
           <el-button>删除</el-button>
           <el-button>参考创建</el-button>
           <el-button>预览</el-button>
@@ -15,6 +17,7 @@
         </el-row>
       </el-header>
       <el-main class="fm2-main">
+        <add-column class="add-column-container" v-if="showAddColumn" @submit="submitColumnInfo" @cancel="showAddColumn = false" />
         <el-container>
           <el-aside class="widget-config-container">
             <el-container>
@@ -82,16 +85,16 @@
             <el-container>
               <el-header height="45px">
                 <div class="config-tab" :class="{active: configTab ==='header'}" @click="handleConfigSelect('header')">{{$t('fm.config.header.title')}}</div>
-                <div class="config-tab" :class="{active: configTab ==='table'}" @click="handleConfigSelect('table')">{{$t('fm.config.table.title')}}</div>
+<!--                <div class="config-tab" :class="{active: configTab ==='table'}" @click="handleConfigSelect('table')">{{$t('fm.config.table.title')}}</div>-->
                 <div class="config-tab" :class="{active: configTab ==='zhibiao'}" @click="handleConfigSelect('zhibiao')">{{$t('fm.config.zhibiao.title')}}</div>
                 <div class="config-tab" :class="{active: configTab ==='widget'}" @click="handleConfigSelect('widget')">{{$t('fm.config.widget.title')}}</div>
                 <div class="config-tab" :class="{active: configTab ==='form'}" @click="handleConfigSelect('form')">{{$t('fm.config.form.title')}}</div>
               </el-header>
               <el-main class="config-content">
                 <header-config v-show="configTab ==='header'" :data="headerFormSelect"></header-config>
-                <table-config v-show="configTab ==='table'" :data="tableSelect"></table-config>
+<!--                <table-config v-show="configTab ==='table'" :data="tableSelect"></table-config>-->
                 <zhi-biao-config v-show="configTab ==='zhibiao'" :data="zhiBiaoSelect"></zhi-biao-config>
-                <widget-config v-show="configTab ==='widget'" :data="widgetFormSelect"></widget-config>
+                <widget-config v-show="configTab ==='widget'" :data="widgetFormSelect" @showAddColumn="addColumn"></widget-config>
                 <form-config v-show="configTab ==='form'" :data="widgetForm.config"></form-config>
               </el-main>
             </el-container>
@@ -186,10 +189,14 @@ import QuotaTable from '@/components/QuotaTable';
 import JianDuReportClassify from '@/components/JianDuReportClassify';
 import JianDuIndexClassify from '@/components/JianDuIndexClassify';
 import ZhiBiaoConfig from '@/components/ZhiBiaoConfig';
+import AddColumn from '@/components/AddColumn';
+import TableEditable from '@/components/TableEditable';
 
 export default {
   name: 'fm-making-form',
   components: {
+    TableEditable,
+    AddColumn,
     ZhiBiaoConfig,
     JianDuIndexClassify,
     JianDuReportClassify,
@@ -228,6 +235,7 @@ export default {
   data () {
     return {
       resetJson: false,
+      showAddColumn:false,
       widgetForm: {
         list: [],
         config: {
@@ -291,6 +299,24 @@ export default {
     }
   },
   methods: {
+    saveToJSON() {
+      const list = this.widgetForm.list
+      for (const item of list) {
+        if (item.type === 'table') {
+          console.log(item.rows)
+        } else {
+          console.log(item.options.defaultValue)
+        }
+      }
+      // console.log(this.widgetForm.config)
+    },
+    addColumn(fn) {
+      this.showAddColumn = true
+      fn && fn()
+    },
+    submitColumnInfo(label, prop) {
+      console.log(label, prop)
+    },
     handleGoGithub () {
       window.location.href = 'https://github.com/GavinZhuLei/vue-form-making'
     },
@@ -318,7 +344,7 @@ export default {
     handleGenerateJson () {
       this.jsonVisible = true
       this.jsonTemplate = this.widgetForm
-      console.log(JSON.stringify(this.widgetForm))
+      // console.log(JSON.stringify(this.widgetForm))
       this.$nextTick(() => {
 
         const editor = ace.edit('jsoneditor')
@@ -419,5 +445,15 @@ export default {
   justify-content: flex-end;
   padding-top: 4px;
   padding-bottom: 4px;
+}
+
+.add-column-mask-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .5);
 }
 </style>

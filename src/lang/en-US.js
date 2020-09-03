@@ -75,9 +75,9 @@ export default {
       header: {
         title: 'Header Form'
       },
-      table: {
-        title: 'Table Attribute'
-      },
+      // table: {
+      //   title: 'Table Attribute'
+      // },
       zhibiao: {
         title: '指标信息'
       },
@@ -151,6 +151,7 @@ export default {
         email: 'E-mail',
         hex: 'Hexadecimal',
         gutter: 'Grid Spacing',
+        rowOption: 'Row Configuration',
         columnOption: 'Column Configuration',
         span: 'Grid spans',
         justify: 'Horizontal Arrangement',
@@ -176,6 +177,8 @@ export default {
         attribute: 'Attribute Action',
         dataBind: 'Data Binding',
         hidden: 'Hidden',
+        rows: 'Rows',
+        columns: 'Columns',
         stripe: 'Stripe',
         border: 'Border',
         fit: 'Fit',

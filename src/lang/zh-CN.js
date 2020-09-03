@@ -75,9 +75,9 @@ export default {
       header: {
         title: '自由表头'
       },
-      table: {
-        title: '行式列表'
-      },
+      // table: {
+      //   title: '行式列表'
+      // },
       zhibiao: {
         title: '指标信息'
       },
@@ -151,6 +151,7 @@ export default {
         email: '邮箱地址',
         hex: '十六进制',
         gutter: '栅格间隔',
+        rowOption: '行配置项',
         columnOption: '列配置项',
         span: '栅格值',
         justify: '水平排列方式',
@@ -176,6 +177,8 @@ export default {
         attribute: '操作属性',
         dataBind: '数据绑定',
         hidden: '隐藏',
+        rows: '行数',
+        columns: '列数',
         stripe: '斑马纹',
         border: '边框',
         fit: '列的宽度自撑开',

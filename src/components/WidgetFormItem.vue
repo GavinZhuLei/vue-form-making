@@ -176,7 +176,7 @@
 
     <template v-if="element.type === 'table'">
       <el-table
-          :data="element.columns"
+          :data="element.rows"
           :height="element.options.height"
           :border="element.options.border"
           :stripe="element.options.stripe"
@@ -185,20 +185,15 @@
           :highlight-current-row="element.options.highlightCurrentRow"
           :show-summary="element.options.showSummary"
           style="width: 100%">
-        <el-table-column
-            prop="date"
-            label="日期"
-            width="180">
-        </el-table-column>
-        <el-table-column
-            prop="name"
-            label="姓名"
-            width="180">
-        </el-table-column>
-        <el-table-column
-            prop="address"
-            label="地址">
-        </el-table-column>
+
+        <template v-for="column in element.columns">
+          <el-table-column
+              :key="column.label"
+              :prop="column.prop"
+              :label="column.label"
+              :width="column.width">
+          </el-table-column>
+        </template>
       </el-table>
     </template>
 
