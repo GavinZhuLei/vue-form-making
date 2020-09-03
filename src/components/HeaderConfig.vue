@@ -1,7 +1,7 @@
 <template>
 <div style="height: 100%; overflow: hidden;">
   <el-aside style="width: 100%; height: 100%; overflow: hidden;">
-    <div class="components-list" style="height: calc(40% - 93px) !important; overflow: auto;">
+    <div class="components-list">
       <template v-if="basicFields.length">
         <div class="widget-cate">{{$t('fm.components.basic.title')}}</div>
         <draggable tag="ul" :list="basicComponents"
@@ -56,41 +56,41 @@
         </draggable>
       </template>
     </div>
-    <el-container style="height: 93px !important; overflow: auto;">
-      <el-header height="45px">
-        <div class="config-tab all">控件属性</div>
-      </el-header>
-      <el-main>
-        <el-row class="btn-container">
-          <el-button type="primary">确定</el-button>
-          <el-button type="danger">重置</el-button>
-        </el-row>
-      </el-main>
-    </el-container>
-    <el-container style="height: 20% !important; overflow: auto;">
-      <el-header height="40px">
-        <div class="config-tab all middle">设备控件属性</div>
-      </el-header>
-      <el-main>
-        <she-bei-props />
-      </el-main>
-    </el-container>
-    <el-container style="height: 20% !important; overflow: auto;">
-      <el-header height="40px">
-        <div class="config-tab all middle">设备技术参数控件属性</div>
-      </el-header>
-      <el-main>
-        <she-bei-attribute-props />
-      </el-main>
-    </el-container>
-    <el-container style="height: 20% !important; overflow: auto;">
-      <el-header height="40px">
-        <div class="config-tab all middle">机组控件属性</div>
-      </el-header>
-      <el-main>
-        <ji-zu-props />
-      </el-main>
-    </el-container>
+<!--    <el-container style="height: 93px !important; overflow: auto;">-->
+<!--      <el-header height="45px">-->
+<!--        <div class="config-tab all">控件属性</div>-->
+<!--      </el-header>-->
+<!--      <el-main>-->
+<!--        <el-row class="btn-container">-->
+<!--          <el-button type="primary">确定</el-button>-->
+<!--          <el-button type="danger">重置</el-button>-->
+<!--        </el-row>-->
+<!--      </el-main>-->
+<!--    </el-container>-->
+<!--    <el-container style="height: 20% !important; overflow: auto;">-->
+<!--      <el-header height="40px">-->
+<!--        <div class="config-tab all middle">设备控件属性</div>-->
+<!--      </el-header>-->
+<!--      <el-main>-->
+<!--        <she-bei-props />-->
+<!--      </el-main>-->
+<!--    </el-container>-->
+<!--    <el-container style="height: 20% !important; overflow: auto;">-->
+<!--      <el-header height="40px">-->
+<!--        <div class="config-tab all middle">设备技术参数控件属性</div>-->
+<!--      </el-header>-->
+<!--      <el-main>-->
+<!--        <she-bei-attribute-props />-->
+<!--      </el-main>-->
+<!--    </el-container>-->
+<!--    <el-container style="height: 20% !important; overflow: auto;">-->
+<!--      <el-header height="40px">-->
+<!--        <div class="config-tab all middle">机组控件属性</div>-->
+<!--      </el-header>-->
+<!--      <el-main>-->
+<!--        <ji-zu-props />-->
+<!--      </el-main>-->
+<!--    </el-container>-->
   </el-aside>
 </div>
 </template>
