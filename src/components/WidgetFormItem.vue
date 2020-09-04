@@ -275,7 +275,7 @@ export default {
     },
 
     handleEditTable(index, tableData) {
-      this.$message('表格编辑', index);
+      // this.$message('表格编辑', index);
       this.editableTableData = this.element.rows  // 双向绑定
       // this.editableTableData = tableData          // 非双向绑定
       this.dialogEidtableTableVisible = true
