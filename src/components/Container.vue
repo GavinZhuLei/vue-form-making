@@ -309,7 +309,7 @@ export default {
             let data = Object.create(null)
             data['type'] = item.type
             data['rows'] = item.rows
-
+            data['key'] = item.model
             dataList.push(data)
           } else if (item.type === 'grid') {
             const { columns } = item
@@ -324,6 +324,7 @@ export default {
           } else {
             let data = Object.create(null)
             data['type'] = item.type
+            data['key'] = item.model
             data['value'] = item.options.defaultValue
             data['datasource'] = item.options.datasource
             data['table'] = item.options.table
