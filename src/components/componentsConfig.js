@@ -10,6 +10,9 @@ export const basicComponents = [
       pattern: '',
       placeholder: '',
       disabled: false,
+      datasource: '',
+      table: '',
+      field: ''
     }
   },
   {
@@ -21,7 +24,10 @@ export const basicComponents = [
       required: false,
       disabled: false,
       pattern: '',
-      placeholder: ''
+      placeholder: '',
+      datasource: '',
+      table: '',
+      field: ''
     }
   },
   {
@@ -35,7 +41,10 @@ export const basicComponents = [
       max: '',
       step: 1,
       disabled: false,
-      controlsPosition: ''
+      controlsPosition: '',
+      datasource: '',
+      table: '',
+      field: ''
     }
   },
   {
@@ -69,6 +78,9 @@ export const basicComponents = [
       },
       remoteFunc: '',
       disabled: false,
+      datasource: '',
+      table: '',
+      field: ''
     }
   },
   {
@@ -99,6 +111,9 @@ export const basicComponents = [
       },
       remoteFunc: '',
       disabled: false,
+      datasource: '',
+      table: '',
+      field: ''
     }
   },
   {
@@ -118,6 +133,9 @@ export const basicComponents = [
       format: 'HH:mm:ss',
       required: false,
       width: '',
+      datasource: '',
+      table: '',
+      field: ''
     }
   },
   {
@@ -137,6 +155,9 @@ export const basicComponents = [
       timestamp: false,
       required: false,
       width: '',
+      datasource: '',
+      table: '',
+      field: ''
     }
   },
   {
@@ -147,7 +168,10 @@ export const basicComponents = [
       max: 5,
       disabled: false,
       allowHalf: false,
-      required: false
+      required: false,
+      datasource: '',
+      table: '',
+      field: ''
     }
   },
   {
@@ -157,7 +181,10 @@ export const basicComponents = [
       defaultValue: '',
       disabled: false,
       showAlpha: false,
-      required: false
+      required: false,
+      datasource: '',
+      table: '',
+      field: ''
     }
   },
   {
@@ -189,7 +216,10 @@ export const basicComponents = [
         value: 'value',
         label: 'label'
       },
-      remoteFunc: ''
+      remoteFunc: '',
+      datasource: '',
+      table: '',
+      field: ''
     }
   },
   {
@@ -199,6 +229,9 @@ export const basicComponents = [
       defaultValue: false,
       required: false,
       disabled: false,
+      datasource: '',
+      table: '',
+      field: ''
     }
   },
   {
@@ -213,7 +246,10 @@ export const basicComponents = [
       step: 1,
       showInput: false,
       range: false,
-      width: ''
+      width: '',
+      datasource: '',
+      table: '',
+      field: ''
     }
   },
   {
@@ -222,6 +258,9 @@ export const basicComponents = [
     options: {
       defaultValue: 'This is a text',
       customClass: '',
+      datasource: '',
+      table: '',
+      field: ''
     }
   }
 ]
@@ -254,7 +293,10 @@ export const advanceComponents = [
       isDelete: false,
       min: 0,
       isEdit: false,
-      action: 'https://jsonplaceholder.typicode.com/photos/'
+      action: 'https://jsonplaceholder.typicode.com/photos/',
+      datasource: '',
+      table: '',
+      field: ''
     }
   },
   {
@@ -262,7 +304,10 @@ export const advanceComponents = [
     icon: 'icon-fuwenbenkuang',
     options: {
       defaultValue: '',
-      width: ''
+      width: '',
+      datasource: '',
+      table: '',
+      field: ''
     }
   },
   {
@@ -281,7 +326,10 @@ export const advanceComponents = [
         label: 'label',
         children: 'children'
       },
-      remoteFunc: ''
+      remoteFunc: '',
+      datasource: '',
+      table: '',
+      field: ''
     }
   }
 ]

@@ -301,13 +301,39 @@ export default {
   methods: {
     saveToJSON() {
       const list = this.widgetForm.list
+      let dataList = []
       for (const item of list) {
         if (item.type === 'table') {
-          console.log(item.rows)
-        } else {
-          console.log(item.options.defaultValue)
+          let data = Object.create(null)
+          data['type'] = item.type
+          data['rows'] = item.rows
+          dataList.push(data)
+        } else if (item.type !== 'grid') {
+          let data = Object.create(null)
+          data['type'] = item.type
+          data['value'] = item.options.defaultValue
+          data['datasource'] = item.options.datasource
+          data['table'] = item.options.table
+          data['field'] = item.options.field
+          dataList.push(data)
         }
       }
+      console.log(dataList)
+      this.jsonVisible = true
+      this.jsonTemplate = dataList
+      this.$nextTick(() => {
+
+        const editor = ace.edit('jsoneditor')
+        editor.session.setMode("ace/mode/json")
+
+        if (!this.jsonClipboard) {
+          this.jsonClipboard = new Clipboard('.json-btn')
+          this.jsonClipboard.on('success', (e) => {
+            this.$message.success(this.$t('fm.message.copySuccess'))
+          })
+        }
+        this.jsonCopyValue = JSON.stringify(dataList)
+      })
       // console.log(this.widgetForm.config)
     },
     addColumn(fn) {

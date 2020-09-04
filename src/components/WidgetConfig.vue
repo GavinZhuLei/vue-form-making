@@ -7,6 +7,15 @@
       <el-form-item :label="$t('fm.config.widget.name')" v-if="data.type!=='grid'">
         <el-input v-model="data.name"></el-input>
       </el-form-item>
+      <el-form-item :label="$t('fm.config.widget.datasource')" v-if="data.type!=='grid' || data.type !== 'table'">
+        <el-input v-model="data.options.datasource"></el-input>
+      </el-form-item>
+      <el-form-item :label="$t('fm.config.widget.table')" v-if="data.type!=='grid' || data.type !== 'table'">
+        <el-input v-model="data.options.table"></el-input>
+      </el-form-item>
+      <el-form-item :label="$t('fm.config.widget.field')" v-if="data.type!=='grid' || data.type !== 'table'">
+        <el-input v-model="data.options.field"></el-input>
+      </el-form-item>
       <el-form-item :label="$t('fm.config.widget.width')" v-if="Object.keys(data.options).indexOf('width')>=0">
         <el-input v-model="data.options.width"></el-input>
       </el-form-item>
