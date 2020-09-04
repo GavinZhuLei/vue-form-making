@@ -300,25 +300,41 @@ export default {
   },
   methods: {
     saveToJSON() {
-      const list = this.widgetForm.list
+      const { list } = this.widgetForm
+
       let dataList = []
-      for (const item of list) {
-        if (item.type === 'table') {
-          let data = Object.create(null)
-          data['type'] = item.type
-          data['rows'] = item.rows
-          dataList.push(data)
-        } else if (item.type !== 'grid') {
-          let data = Object.create(null)
-          data['type'] = item.type
-          data['value'] = item.options.defaultValue
-          data['datasource'] = item.options.datasource
-          data['table'] = item.options.table
-          data['field'] = item.options.field
-          dataList.push(data)
+      const listFunc = (data) => {
+        for (const item of list) {
+          if (item.type === 'table') {
+            let data = Object.create(null)
+            data['type'] = item.type
+            data['rows'] = item.rows
+
+            dataList.push(data)
+          } else if (item.type === 'grid') {
+            const { columns } = item
+            if (columns) {
+              const gridData = []
+              for (const column of columns) {
+                gridData.push(column.list)
+              }
+              console.log(gridData)
+              // gridData && listFunc(gridData)
+            }
+          } else {
+            let data = Object.create(null)
+            data['type'] = item.type
+            data['value'] = item.options.defaultValue
+            data['datasource'] = item.options.datasource
+            data['table'] = item.options.table
+            data['field'] = item.options.field
+            dataList.push(data)
+          }
         }
       }
-      console.log(dataList)
+
+      listFunc(list)
+      // console.log(dataList)
       this.jsonVisible = true
       this.jsonTemplate = dataList
       this.$nextTick(() => {
