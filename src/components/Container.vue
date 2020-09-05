@@ -2,7 +2,6 @@
   <span class="fm-style">
     <el-container class="fm2-container">
       <div class="add-column-mask-container" v-if="showAddColumn"></div>
-<!--      <table-editable />-->
       <el-header height="45">
         <el-row class="btn-container">
           <el-button>创建报表</el-button>
@@ -239,9 +238,15 @@ export default {
       widgetForm: {
         list: [],
         config: {
-          labelWidth: 100,
-          labelPosition: 'right',
-          size: 'small'
+          templateName: '', // 名称
+          templateGrade: 'group', // 编码
+          publishDanWei: '', // 单位
+          publisher: '', // 类型
+          createTime: '', // 数据源
+          publishTime: '', // 属性
+          templateStatus: 'beta',
+          enabler: '',
+          enabledTime: '',
         },
       },
       tableSelect: {
@@ -290,9 +295,15 @@ export default {
       jsonEg: `{
   "list": [],
   "config": {
-    "labelWidth": 100,
-    "labelPosition": "top",
-    "size": "small"
+    "templateName": "",
+    "templateGrade": "group",
+    "publishDanWei": "",
+    "publisher": "",
+    "createTime": "",
+    "publishTime": "",
+    "templateStatus": "beta",
+    "enabler": "",
+    "enabledTime": ""
   }
 }`,
       codeActiveName: 'vue',
@@ -361,7 +372,7 @@ export default {
       console.log(label, prop)
     },
     handleGoGithub () {
-      window.location.href = 'https://github.com/GavinZhuLei/vue-form-making'
+      window.location.href = 'https://github.com/upcwangying/vue-form-making'
     },
     handleLeftConfigSelect (value) {
       this.leftConfigTab = value
