@@ -446,10 +446,15 @@ export default {
       this.widgetForm = {
         list: [],
         config: {
-          labelWidth: 100,
-          labelPosition: 'right',
-          size: 'small',
-          customClass: ''
+          templateName: '', // 名称
+          templateGrade: 'group', // 编码
+          publishDanWei: '', // 单位
+          publisher: '', // 类型
+          createTime: '', // 数据源
+          publishTime: '', // 属性
+          templateStatus: 'beta',
+          enabler: '',
+          enabledTime: '',
         },
       }
 
