@@ -2,7 +2,6 @@
   <span class="fm-style">
     <el-container class="fm2-container">
       <div class="add-column-mask-container" v-if="showAddColumn"></div>
-<!--      <table-editable />-->
       <el-header height="45">
         <el-row class="btn-container">
           <el-button>创建报表</el-button>
@@ -11,7 +10,7 @@
           <el-button @click="saveToJSON">保存</el-button>
           <el-button>删除</el-button>
           <el-button>参考创建</el-button>
-          <el-button>预览</el-button>
+          <el-button @click="handlePreview">预览</el-button>
           <el-button>发布</el-button>
           <el-button>启用</el-button>
         </el-row>
@@ -71,7 +70,6 @@
               </slot>
               <el-button v-if="upload" type="text" size="medium" icon="el-icon-upload2" @click="handleUpload">{{$t('fm.actions.import')}}</el-button>
               <el-button v-if="clearable" type="text" size="medium" icon="el-icon-delete" @click="handleClear">{{$t('fm.actions.clear')}}</el-button>
-              <el-button v-if="preview" type="text" size="medium" icon="el-icon-view" @click="handlePreview">{{$t('fm.actions.preview')}}</el-button>
               <el-button v-if="generateJson" type="text" size="medium" icon="el-icon-tickets" @click="handleGenerateJson">{{$t('fm.actions.json')}}</el-button>
               <el-button v-if="generateCode" type="text" size="medium" icon="el-icon-document" @click="handleGenerateCode">{{$t('fm.actions.code')}}</el-button>
             </el-header>
@@ -131,7 +129,14 @@
             form
           >
             <el-alert type="info" :title="$t('fm.description.uploadJsonInfo')"></el-alert>
-            <div id="uploadeditor" style="height: 400px;width: 100%;">{{jsonEg}}</div>
+            <el-tabs type="border-card" style="box-shadow: none;" v-model="dataActiveName">
+              <el-tab-pane label="Template Data" name="template">
+                <div id="uploadeditor" style="height: 400px; width: 100%;">{{jsonTemplateEg}}</div>
+              </el-tab-pane>
+              <el-tab-pane label="Report Data" name="report">
+                <div id="reporteditor" style="height: 400px; width: 100%;">{{jsonReportEg}}</div>
+              </el-tab-pane>
+            </el-tabs>
           </cus-dialog>
 
           <cus-dialog
@@ -191,6 +196,9 @@ import JianDuIndexClassify from '@/components/JianDuIndexClassify';
 import ZhiBiaoConfig from '@/components/ZhiBiaoConfig';
 import AddColumn from '@/components/AddColumn';
 import TableEditable from '@/components/TableEditable';
+import templateInitialData from '@/components/templateInitialData';
+import templateJson from '../mock/template.json';
+import reportJson from '../mock/report.json';
 
 export default {
   name: 'fm-making-form',
@@ -211,10 +219,6 @@ export default {
     GenerateForm
   },
   props: {
-    preview: {
-      type: Boolean,
-      default: false
-    },
     generateCode: {
       type: Boolean,
       default: false
@@ -236,14 +240,7 @@ export default {
     return {
       resetJson: false,
       showAddColumn:false,
-      widgetForm: {
-        list: [],
-        config: {
-          labelWidth: 100,
-          labelPosition: 'right',
-          size: 'small'
-        },
-      },
+      widgetForm: JSON.parse(JSON.stringify(templateInitialData)),
       tableSelect: {
         config: {}
       },
@@ -285,30 +282,72 @@ export default {
       vueTemplate: '',
       jsonTemplate: '',
       uploadEditor: null,
+      reportEditor: null,
       jsonCopyValue: '',
       jsonClipboard: null,
-      jsonEg: `{
-  "list": [],
-  "config": {
-    "labelWidth": 100,
-    "labelPosition": "top",
-    "size": "small"
-  }
-}`,
+      jsonTemplateEg: templateJson,
+      jsonReportEg: reportJson,
       codeActiveName: 'vue',
+      dataActiveName: 'template',
     }
   },
   methods: {
     saveToJSON() {
-      const list = this.widgetForm.list
-      for (const item of list) {
-        if (item.type === 'table') {
-          console.log(item.rows)
-        } else {
-          console.log(item.options.defaultValue)
+      const { list } = this.widgetForm
+
+      let dataList = []
+      const listFunc = (data) => {
+        for (const item of list) {
+          if (item.type === 'table') {
+            let data = Object.create(null)
+            data['type'] = item.type
+            data['rows'] = item.rows
+            data['key'] = item.model
+            dataList.push(data)
+          } else if (item.type === 'grid') {
+            const { columns } = item
+            if (columns) {
+              const gridData = []
+              for (const column of columns) {
+                gridData.push(column.list)
+              }
+              console.log(gridData)
+              // gridData && listFunc(gridData)
+            }
+          } else {
+            let data = Object.create(null)
+            data['type'] = item.type
+            data['key'] = item.model
+            data['value'] = item.options.defaultValue
+            data['datasource'] = item.options.datasource
+            data['table'] = item.options.table
+            data['field'] = item.options.field
+            dataList.push(data)
+          }
         }
       }
+
+      listFunc(list)
+      // console.log(dataList)
+      this.jsonVisible = true
+      this.jsonTemplate = dataList
+      this.$nextTick(() => {
+
+        const editor = ace.edit('jsoneditor')
+        editor.session.setMode("ace/mode/json")
+
+        if (!this.jsonClipboard) {
+          this.jsonClipboard = new Clipboard('.json-btn')
+          this.jsonClipboard.on('success', (e) => {
+            this.$message.success(this.$t('fm.message.copySuccess'))
+          })
+        }
+        this.jsonCopyValue = JSON.stringify(dataList)
+      })
       // console.log(this.widgetForm.config)
+    },
+    handlePreview() {
+      this.previewVisible = true
     },
     addColumn(fn) {
       this.showAddColumn = true
@@ -318,17 +357,13 @@ export default {
       console.log(label, prop)
     },
     handleGoGithub () {
-      window.location.href = 'https://github.com/GavinZhuLei/vue-form-making'
+      window.location.href = 'https://github.com/upcwangying/vue-form-making'
     },
     handleLeftConfigSelect (value) {
       this.leftConfigTab = value
     },
     handleConfigSelect (value) {
       this.configTab = value
-    },
-    handlePreview () {
-      console.log(this.widgetForm)
-      this.previewVisible = true
     },
     handleTest () {
       this.$refs.generateForm.getData().then(data => {
@@ -376,12 +411,14 @@ export default {
       this.uploadVisible = true
       this.$nextTick(() => {
         this.uploadEditor = ace.edit('uploadeditor')
+        this.reportEditor = ace.edit('reporteditor')
         this.uploadEditor.session.setMode("ace/mode/json")
+        this.reportEditor.session.setMode("ace/mode/json")
       })
     },
     handleUploadJson () {
       try {
-        this.setJSON(JSON.parse(this.uploadEditor.getValue()))
+        this.setJSON(JSON.parse(this.uploadEditor.getValue()), JSON.parse(this.reportEditor.getValue()))
         this.uploadVisible = false
       } catch (e) {
         this.$message.error(e.message)
@@ -389,15 +426,7 @@ export default {
       }
     },
     handleClear () {
-      this.widgetForm = {
-        list: [],
-        config: {
-          labelWidth: 100,
-          labelPosition: 'right',
-          size: 'small',
-          customClass: ''
-        },
-      }
+      this.widgetForm = JSON.parse(JSON.stringify(templateInitialData))
 
       this.widgetFormSelect = {}
     },
@@ -410,15 +439,37 @@ export default {
     getHtml () {
       return generateCode(JSON.stringify(this.widgetForm))
     },
-    setJSON (json) {
-      this.widgetForm = json
+    setJSON (templateJson, reportJson) {
+      console.log(templateJson, reportJson)
 
-      if (json.list.length> 0) {
-        this.widgetFormSelect = json.list[0]
+      const { list } = templateJson
+      if (list) {
+        for (const listElement of list) {
+          const { type, model } = listElement
+          if (type !== 'table') {
+            if (reportJson) {
+              for (const reportJsonElement of reportJson) {
+                if (reportJsonElement.type === type && reportJsonElement.key === model) {
+                  listElement.options.defaultValue = reportJsonElement.value
+                  listElement.options.datasource = reportJsonElement.datasource
+                  listElement.options.table = reportJsonElement.table
+                  listElement.options.field = reportJsonElement.field
+                }
+              }
+            }
+          } else if (type === 'table') {
+            // todo
+          }
+        }
+      }
+
+      this.widgetForm = templateJson
+
+      if (templateJson.list.length > 0) {
+        this.widgetFormSelect = templateJson.list[0]
       }
     },
     handleInput (val) {
-      console.log(val)
       this.blank = val
     },
     handleDataChange (field, value, data) {

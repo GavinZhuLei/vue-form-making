@@ -1,0 +1,83 @@
+{
+  "list": [
+    {
+      "type": "input",
+      "icon": "icon-input",
+      "options": {
+        "width": "100%",
+        "defaultValue": "",
+        "required": false,
+        "dataType": "string",
+        "pattern": "",
+        "placeholder": "",
+        "disabled": false,
+        "datasource": "",
+        "table": "",
+        "field": "",
+        "remoteFunc": "func_1599353105000_34942"
+      },
+      "name": "单行文本",
+      "key": "1599353105000_34942",
+      "model": "input_1599353105000_34942",
+      "rules": [
+        {
+          "type": "string",
+          "message": "单行文本格式不正确"
+        }
+      ]
+    },
+    {
+      "type": "textarea",
+      "icon": "icon-diy-com-textarea",
+      "options": {
+        "width": "100%",
+        "defaultValue": "",
+        "required": false,
+        "disabled": false,
+        "pattern": "",
+        "placeholder": "",
+        "datasource": "",
+        "table": "",
+        "field": "",
+        "remoteFunc": "func_1599353108000_69884"
+      },
+      "name": "多行文本",
+      "key": "1599353108000_69884",
+      "model": "textarea_1599353108000_69884",
+      "rules": []
+    },
+    {
+      "type": "table",
+      "icon": "icon-table",
+      "columns": [],
+      "rows": [],
+      "options": {
+        "rows": 4,
+        "columns": 3,
+        "stripe": false,
+        "height": "300",
+        "border": false,
+        "fit": true,
+        "showHeader": true,
+        "highlightCurrentRow": false,
+        "showSummary": false,
+        "remoteFunc": "func_1599354168000_64341"
+      },
+      "name": "表格布局",
+      "key": "1599354168000_64341",
+      "model": "table_1599354168000_64341",
+      "rules": []
+    }
+  ],
+  "config": {
+    "templateName": "",
+    "templateGrade": "group",
+    "publishDanWei": "",
+    "publisher": "",
+    "createTime": "",
+    "publishTime": "",
+    "templateStatus": "beta",
+    "enabler": "",
+    "enabledTime": ""
+  }
+}
