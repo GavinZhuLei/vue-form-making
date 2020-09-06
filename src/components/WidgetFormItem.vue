@@ -216,7 +216,7 @@
     </template>
 
     <div class="widget-view-action" v-if="selectWidget.key === element.key">
-      <i class="el-icon-edit" v-if="element.type === 'table'" @click.stop="handleEditTable(index, element.columns)"></i>
+      <i class="el-icon-edit" v-if="element.type === 'table'" @click.stop="handleEditTable(index, element.rows)"></i>
       <i class="iconfont icon-icon_clone" @click.stop="handleWidgetClone(index)"></i>
       <i class="iconfont icon-trash" @click.stop="handleWidgetDelete(index)"></i>
     </div>
@@ -227,9 +227,21 @@
 
     <el-dialog title="表格编辑" :visible.sync="dialogEidtableTableVisible">
       <el-table :data="editableTableData">
-        <el-table-column property="date" label="日期" width="180"></el-table-column>
-        <el-table-column property="name" label="姓名" width="180"></el-table-column>
-        <el-table-column property="address" label="地址"></el-table-column>
+        <el-table-column property="date" label="日期" width="180">
+          <template slot-scope="{row}">
+            <el-input v-model="row.date" placeholder="请输入" size="small" />
+          </template>
+        </el-table-column>
+        <el-table-column property="name" label="姓名" width="180">
+          <template slot-scope="{row}">
+            <el-input v-model="row.name" placeholder="请输入" size="small" />
+          </template>
+        </el-table-column>
+        <el-table-column property="address" label="地址">
+          <template slot-scope="{row}">
+            <el-input v-model="row.address" placeholder="请输入" size="small" />
+          </template>
+        </el-table-column>
       </el-table>
     </el-dialog>
 
@@ -276,8 +288,8 @@ export default {
 
     handleEditTable(index, tableData) {
       this.$message('表格编辑', index);
-      // this.editableTableData = element.columns  // 双向绑定
-      this.editableTableData = tableData          // 非双向绑定
+      this.editableTableData = this.element.rows  // 双向绑定
+      // this.editableTableData = tableData          // 非双向绑定
       this.dialogEidtableTableVisible = true
     },
     handleWidgetClone(index) {
