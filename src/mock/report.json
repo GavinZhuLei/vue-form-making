@@ -1,0 +1,49 @@
+[
+  {
+    "baobid": "",
+    "type": "input",
+    "key": "input_1599353105000_34942",
+    "value": "单行文本测试内容",
+    "datasource": "a",
+    "table": "b",
+    "field": "c"
+  },
+  {
+    "baobid": "",
+    "type": "textarea",
+    "key": "textarea_1599353108000_69884",
+    "value": "多行文本测试内容",
+    "datasource": "a1",
+    "table": "b1",
+    "field": "c1"
+  },
+  {
+    "type": "table",
+    "baobid": "12",
+    "model": "model1",
+    "rows": [
+      {
+        "jz": "#1",
+        "shebid": "",
+        "zbid1": "2016-05-02",
+        "zbid2": "王小虎",
+        "zbid3": "上海市普陀区金沙江路 1518 弄"
+      },
+      {
+        "jz": "#2",
+        "shebid": "",
+        "zbid1": "2016-05-04",
+        "zbid2": "王小虎",
+        "zbid3": "上海市普陀区金沙江路 1517 弄"
+      },
+      {
+        "jz": "#3",
+        "shebid": "",
+        "zbid1": "2016-05-01",
+        "zbid2": "王小虎",
+        "zbid3": "上海市普陀区金沙江路 1519 弄"
+      }
+    ],
+    "key": "table_1599354168000_64341"
+  }
+]
