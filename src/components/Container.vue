@@ -328,7 +328,6 @@ export default {
       }
 
       listFunc(list)
-      // console.log(dataList)
       this.jsonVisible = true
       this.jsonTemplate = dataList
       this.$nextTick(() => {
@@ -440,8 +439,6 @@ export default {
       return generateCode(JSON.stringify(this.widgetForm))
     },
     setJSON (templateJson, reportJson) {
-      console.log(templateJson, reportJson)
-
       const { list } = templateJson
       if (list) {
         for (const listElement of list) {

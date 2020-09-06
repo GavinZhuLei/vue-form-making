@@ -9,18 +9,15 @@ request.interceptors.request.use(
     return config
   },
   error => {
-    console.log('error', error)
     return Promise.reject(new Error(error).message)
   }
 )
 
 request.interceptors.response.use(
   response => {
-    console.log('.....', response)
     return response.data
   },
   error => {
-    console.log('error', error)
     return Promise.reject(new Error(error).message)
   }
 )
