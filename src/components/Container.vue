@@ -190,6 +190,7 @@ import JianDuIndexClassify from '@/components/JianDuIndexClassify';
 import ZhiBiaoConfig from '@/components/ZhiBiaoConfig';
 import AddColumn from '@/components/AddColumn';
 import TableEditable from '@/components/TableEditable';
+import templateInitialData from '@/components/templateInitialData';
 
 export default {
   name: 'fm-making-form',
@@ -235,20 +236,7 @@ export default {
     return {
       resetJson: false,
       showAddColumn:false,
-      widgetForm: {
-        list: [],
-        config: {
-          templateName: '', // 名称
-          templateGrade: 'group', // 编码
-          publishDanWei: '', // 单位
-          publisher: '', // 类型
-          createTime: '', // 数据源
-          publishTime: '', // 属性
-          templateStatus: 'beta',
-          enabler: '',
-          enabledTime: '',
-        },
-      },
+      widgetForm: JSON.parse(JSON.stringify(templateInitialData)),
       tableSelect: {
         config: {}
       },
@@ -292,20 +280,7 @@ export default {
       uploadEditor: null,
       jsonCopyValue: '',
       jsonClipboard: null,
-      jsonEg: `{
-  "list": [],
-  "config": {
-    "templateName": "",
-    "templateGrade": "group",
-    "publishDanWei": "",
-    "publisher": "",
-    "createTime": "",
-    "publishTime": "",
-    "templateStatus": "beta",
-    "enabler": "",
-    "enabledTime": ""
-  }
-}`,
+      jsonEg: JSON.stringify(templateInitialData),
       codeActiveName: 'vue',
     }
   },
@@ -443,20 +418,7 @@ export default {
       }
     },
     handleClear () {
-      this.widgetForm = {
-        list: [],
-        config: {
-          templateName: '', // 名称
-          templateGrade: 'group', // 编码
-          publishDanWei: '', // 单位
-          publisher: '', // 类型
-          createTime: '', // 数据源
-          publishTime: '', // 属性
-          templateStatus: 'beta',
-          enabler: '',
-          enabledTime: '',
-        },
-      }
+      this.widgetForm = JSON.parse(JSON.stringify(templateInitialData))
 
       this.widgetFormSelect = {}
     },
