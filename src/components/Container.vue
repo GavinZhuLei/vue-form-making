@@ -92,7 +92,7 @@
                 <header-config v-show="configTab ==='header'" :data="headerFormSelect"></header-config>
 <!--                <table-config v-show="configTab ==='table'" :data="tableSelect"></table-config>-->
                 <zhi-biao-config v-show="configTab ==='zhibiao'" :data="zhiBiaoSelect"></zhi-biao-config>
-                <widget-config ref="widgetConfig" v-show="configTab ==='widget'" :data="widgetFormSelect" @showAddColumn="addColumn"></widget-config>
+                <widget-config ref="widgetConfig" v-show="configTab ==='widget'" :data="widgetFormSelect" @showAddColumn="addColumn" @showAddRow="addRow"></widget-config>
                 <form-config v-show="configTab ==='form'" :data="widgetForm.config"></form-config>
               </el-main>
             </el-container>
@@ -350,6 +350,15 @@ export default {
     },
     addColumn() {
       this.showAddColumn = true
+    },
+    addRow() {
+        if (this.widgetFormSelect.columns.length > 0) {
+            const props = []
+            this.widgetFormSelect.columns.forEach(item => {
+                props.push(item.prop)
+            })
+            this.$refs['widgetConfig'].saveTableRow(props)
+        }
     },
     submitColumnInfo(label, prop) {
       this.$refs['widgetConfig'].saveTableHeaderColumn(label, prop)
