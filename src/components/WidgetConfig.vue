@@ -576,10 +576,11 @@ export default {
       //   });
       // });
     },
-    saveTableHeaderColumn(label, prop) {
+    saveTableHeaderColumn(label, prop, width) {
       this.data.columns.push({
         prop,
         label,
+        width,
       })
     },
     handleAddTableRow() {
@@ -588,7 +589,7 @@ export default {
     saveTableRow(props) {
         const rowMode = {}
         props.forEach(item => {
-            rowMode[props[item]] = ''
+            rowMode[item] = ''
         })
         this.data.rows.push(rowMode )
     },
