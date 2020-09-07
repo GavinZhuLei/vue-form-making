@@ -18,6 +18,12 @@
     >
       <el-input v-model="dynamicValidateForm.prop"></el-input>
     </el-form-item>
+    <el-form-item
+            label="表头width:"
+            prop="width"
+    >
+      <el-input v-model="dynamicValidateForm.width"></el-input>
+    </el-form-item>
     <el-form-item>
       <el-button type="primary" @click="submitForm('dynamicValidateForm')">提交</el-button>
       <el-button @click="cancel">取消</el-button>
@@ -40,7 +46,7 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          this.$emit('submit', this.dynamicValidateForm.label, this.dynamicValidateForm.prop)
+          this.$emit('submit', this.dynamicValidateForm.label, this.dynamicValidateForm.prop, this.dynamicValidateForm.width)
         } else {
           return false;
         }

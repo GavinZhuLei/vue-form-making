@@ -360,8 +360,8 @@ export default {
             this.$refs['widgetConfig'].saveTableRow(props)
         }
     },
-    submitColumnInfo(label, prop) {
-      this.$refs['widgetConfig'].saveTableHeaderColumn(label, prop)
+    submitColumnInfo(label, prop, width) {
+      this.$refs['widgetConfig'].saveTableHeaderColumn(label, prop, width)
       this.showAddColumn = false
     },
     handleGoGithub () {
