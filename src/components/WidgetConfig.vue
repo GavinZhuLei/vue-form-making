@@ -583,11 +583,14 @@ export default {
       })
     },
     handleAddTableRow() {
-      this.data.rows.push({
-        date: '2020-08-28',
-        name: '王小二',
-        address: '山东省青岛市市南区'
-      })
+        this.$emit('showAddRow')
+    },
+    saveTableRow(props) {
+        const rowMode = {}
+        props.forEach(item => {
+            rowMode[props[item]] = ''
+        })
+        this.data.rows.push(rowMode )
     },
     generateRule() {
       this.data.rules = []
