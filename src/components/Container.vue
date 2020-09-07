@@ -92,7 +92,7 @@
                 <header-config v-show="configTab ==='header'" :data="headerFormSelect"></header-config>
 <!--                <table-config v-show="configTab ==='table'" :data="tableSelect"></table-config>-->
                 <zhi-biao-config v-show="configTab ==='zhibiao'" :data="zhiBiaoSelect"></zhi-biao-config>
-                <widget-config v-show="configTab ==='widget'" :data="widgetFormSelect" @showAddColumn="addColumn"></widget-config>
+                <widget-config ref="widgetConfig" v-show="configTab ==='widget'" :data="widgetFormSelect" @showAddColumn="addColumn"></widget-config>
                 <form-config v-show="configTab ==='form'" :data="widgetForm.config"></form-config>
               </el-main>
             </el-container>
@@ -348,12 +348,12 @@ export default {
     handlePreview() {
       this.previewVisible = true
     },
-    addColumn(fn) {
+    addColumn() {
       this.showAddColumn = true
-      fn && fn()
     },
     submitColumnInfo(label, prop) {
-      console.log(label, prop)
+      this.$refs['widgetConfig'].saveTableHeaderColumn(label, prop)
+      this.showAddColumn = false
     },
     handleGoGithub () {
       window.location.href = 'https://github.com/upcwangying/vue-form-making'
