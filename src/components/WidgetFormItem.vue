@@ -243,7 +243,7 @@
                   :label="column.label"
                   :width="column.width">
             <template slot-scope="{row}">
-              <el-input v-model="row.address" placeholder="请输入" size="small" />
+              <el-input v-model="row[column.prop]" placeholder="请输入" size="small" />
             </template>
           </el-table-column>
         </template>
