@@ -7,13 +7,13 @@
       <el-form-item :label="$t('fm.config.widget.name')" v-if="data.type!=='grid'">
         <el-input v-model="data.name"></el-input>
       </el-form-item>
-      <el-form-item :label="$t('fm.config.widget.datasource')" v-if="data.type!=='grid' || data.type !== 'table'">
+      <el-form-item :label="$t('fm.config.widget.datasource')" v-if="data.type!=='grid' && data.type !== 'table'">
         <el-input v-model="data.options.datasource"></el-input>
       </el-form-item>
-      <el-form-item :label="$t('fm.config.widget.table')" v-if="data.type!=='grid' || data.type !== 'table'">
+      <el-form-item :label="$t('fm.config.widget.table')" v-if="data.type!=='grid' && data.type !== 'table'">
         <el-input v-model="data.options.table"></el-input>
       </el-form-item>
-      <el-form-item :label="$t('fm.config.widget.field')" v-if="data.type!=='grid' || data.type !== 'table'">
+      <el-form-item :label="$t('fm.config.widget.field')" v-if="data.type!=='grid' && data.type !== 'table'">
         <el-input v-model="data.options.field"></el-input>
       </el-form-item>
       <el-form-item :label="$t('fm.config.widget.width')" v-if="Object.keys(data.options).indexOf('width')>=0">
@@ -521,6 +521,9 @@ export default {
       return this.data && Object.keys(this.data).length > 0;
     }
   },
+  mounted() {
+    const saveTableHeaderColumn = this.saveTableHeaderColumn.bind(this)
+  },
   methods: {
     handleOptionsRemove(index) {
       if (this.data.type === 'grid') {
@@ -553,8 +556,7 @@ export default {
       })
     },
     handleAddTableColumn() {
-      const saveTableHeaderColumn = this.saveTableHeaderColumn.bind(this)
-      this.$emit('showAddColumn', saveTableHeaderColumn)
+      this.$emit('showAddColumn')
       // this.$prompt('请输入表头', '提示', {
       //   confirmButtonText: '确定',
       //   cancelButtonText: '取消',
@@ -574,8 +576,11 @@ export default {
       //   });
       // });
     },
-    saveTableHeaderColumn() {
-      console.log(this.type)
+    saveTableHeaderColumn(label, prop) {
+      this.data.columns.push({
+        prop,
+        label,
+      })
     },
     handleAddTableRow() {
       this.data.rows.push({
