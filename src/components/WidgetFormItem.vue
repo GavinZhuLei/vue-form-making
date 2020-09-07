@@ -226,22 +226,27 @@
     </div>
 
     <el-dialog title="表格编辑" :visible.sync="dialogEidtableTableVisible">
-      <el-table :data="editableTableData">
-        <el-table-column property="date" label="日期" width="180">
-          <template slot-scope="{row}">
-            <el-input v-model="row.date" placeholder="请输入" size="small" />
-          </template>
-        </el-table-column>
-        <el-table-column property="name" label="姓名" width="180">
-          <template slot-scope="{row}">
-            <el-input v-model="row.name" placeholder="请输入" size="small" />
-          </template>
-        </el-table-column>
-        <el-table-column property="address" label="地址">
-          <template slot-scope="{row}">
-            <el-input v-model="row.address" placeholder="请输入" size="small" />
-          </template>
-        </el-table-column>
+      <el-table
+              :data="element.rows"
+              :height="element.options.height"
+              :border="element.options.border"
+              :stripe="element.options.stripe"
+              :fit="element.options.fit"
+              :show-header="element.options.showHeader"
+              :highlight-current-row="element.options.highlightCurrentRow"
+              :show-summary="element.options.showSummary"
+              style="width: 100%">
+        <template v-for="column in element.columns">
+          <el-table-column
+                  :key="column.label"
+                  :prop="column.prop"
+                  :label="column.label"
+                  :width="column.width">
+            <template slot-scope="{row}">
+              <el-input v-model="row.address" placeholder="请输入" size="small" />
+            </template>
+          </el-table-column>
+        </template>
       </el-table>
     </el-dialog>
 
@@ -288,8 +293,6 @@ export default {
 
     handleEditTable(index, tableData) {
       // this.$message('表格编辑', index);
-      this.editableTableData = this.element.rows  // 双向绑定
-      // this.editableTableData = tableData          // 非双向绑定
       this.dialogEidtableTableVisible = true
     },
     handleWidgetClone(index) {
