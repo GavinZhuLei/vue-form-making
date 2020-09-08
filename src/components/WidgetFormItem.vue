@@ -176,6 +176,9 @@
 
     <template v-if="element.type === 'table'">
       <el-table
+          v-if="changeShowTableTag"
+          key="widgetFormItemTable_1"
+          ref="widgetFormItemTable_1"
           :data="element.rows"
           :height="element.options.height"
           :border="element.options.border"
@@ -192,6 +195,28 @@
               :prop="column.prop"
               :label="column.label"
               :width="column.width">
+          </el-table-column>
+        </template>
+      </el-table>
+      <el-table
+        v-else
+        key="widgetFormItemTable_2"
+        ref="widgetFormItemTable_2"
+        :data="element.rows"
+        :height="element.options.height"
+        :border="element.options.border"
+        :stripe="element.options.stripe"
+        :fit="element.options.fit"
+        :show-header="element.options.showHeader"
+        :highlight-current-row="element.options.highlightCurrentRow"
+        :show-summary="element.options.showSummary"
+        style="width: 100%">
+        <template v-for="column in element.columns">
+          <el-table-column
+            :key="column.label"
+            :prop="column.prop"
+            :label="column.label"
+            :width="column.width">
           </el-table-column>
         </template>
       </el-table>
@@ -227,6 +252,7 @@
 
     <el-dialog title="表格编辑" :visible.sync="dialogEidtableTableVisible">
       <el-table
+              v-if="dialogEidtableTableVisible"
               :data="element.rows"
               :height="element.options.height"
               :border="element.options.border"
@@ -257,13 +283,14 @@
 import FmUpload from './Upload'
 
 export default {
-  props: ['element', 'select', 'index', 'data'],
+  props: ['element', 'select', 'index', 'data', 'changeshowtt'],
   components: {
     FmUpload,
   },
   data() {
     return {
       selectWidget: this.select,
+      changeShowTableTag: true,
       editableTableData: [],
       dialogEidtableTableVisible: false
     }
@@ -335,7 +362,10 @@ export default {
         this.$emit('update:select', val)
       },
       deep: true
-    }
+    },
+    changeshowtt(val) {
+      this.changeShowTableTag = val
+    },
   }
 }
 </script>

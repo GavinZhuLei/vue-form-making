@@ -54,7 +54,7 @@
                 </el-row>
             </template>
             <template v-else>
-              <widget-form-item v-if="element && element.key"  :key="element.key" :element="element" :select.sync="selectWidget" :index="index" :data="data"></widget-form-item>
+              <widget-form-item v-if="element && element.key" :key="element.key" :element="element" :select.sync="selectWidget" :index="index" :data="data" :changeshowtt="changeShowTableTag"></widget-form-item>
             </template>
           </template>
         </transition-group>
@@ -75,7 +75,8 @@ export default {
   props: ['data', 'select'],
   data () {
     return {
-      selectWidget: this.select
+      selectWidget: this.select,
+      changeShowTableTag: true,
     }
   },
   mounted () {
@@ -190,6 +191,11 @@ export default {
 
       this.$nextTick(() => {
         this.data.list.splice(index, 1)
+      })
+    },
+    changeTag() {
+      this.$nextTick(() => {
+        this.changeShowTableTag = !this.changeShowTableTag
       })
     },
   },

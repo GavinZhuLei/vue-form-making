@@ -369,6 +369,7 @@
           <draggable tag="ul" :list="data.columns"
                      v-bind="{group:{ name:'options'}, ghostClass: 'ghost',handle: '.drag-item'}"
                      handle=".drag-item"
+                     @end="endevent"
           >
             <li v-for="(item, index) in data.columns" :key="index">
               <i class="drag-item" style="font-size: 16px;margin: 0 5px;cursor: move;"><i
@@ -666,7 +667,10 @@ export default {
       }
 
       this.generateRule()
-    }
+    },
+    endevent(evt) {
+      this.$emit('draggableend', evt)
+    },
   },
   watch: {
     'data.options.isRange': function (val) {
