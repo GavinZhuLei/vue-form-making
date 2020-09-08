@@ -9,7 +9,6 @@ export function get() {
 }
 
 export function post(data) {
-  console.log('data', data)
   return request({
     url: '/dev-api/vue-element-admin/user/login',
     method: 'post',
