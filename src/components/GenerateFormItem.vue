@@ -210,7 +210,7 @@
 
     <template v-if="widget.type === 'table'">
       <el-table
-          :data="widget.columns"
+          :data="widget.rows"
           :height="widget.options.height"
           :border="widget.options.border"
           :stripe="widget.options.stripe"
@@ -219,20 +219,17 @@
           :highlight-current-row="widget.options.highlightCurrentRow"
           :show-summary="widget.options.showSummary"
           style="width: 100%">
-        <el-table-column
-            prop="date"
-            label="日期"
-            width="180">
-        </el-table-column>
-        <el-table-column
-            prop="name"
-            label="姓名"
-            width="180">
-        </el-table-column>
-        <el-table-column
-            prop="address"
-            label="地址">
-        </el-table-column>
+        <template v-for="column in widget.columns">
+          <el-table-column
+            :key="column.label"
+            :prop="column.prop"
+            :label="column.label"
+            :width="column.width">
+            <template slot-scope="{row}">
+              <el-input v-model="row[column.prop]" placeholder="请输入" size="small" readonly />
+            </template>
+          </el-table-column>
+        </template>
       </el-table>
     </template>
 

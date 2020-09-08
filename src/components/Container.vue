@@ -199,6 +199,7 @@ import TableEditable from '@/components/TableEditable';
 import templateInitialData from '@/components/templateInitialData';
 import templateJson from '../mock/template.json';
 import reportJson from '../mock/report.json';
+import { get, post } from '@/api/template';
 
 export default {
   name: 'fm-making-form',
@@ -344,6 +345,7 @@ export default {
         this.jsonCopyValue = JSON.stringify(dataList)
       })
       // console.log(this.widgetForm.config)
+      post(dataList)
     },
     handlePreview() {
       this.previewVisible = true
