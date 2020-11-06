@@ -1,5 +1,5 @@
 <template>
-  <span class="fm-style">
+  <div class="fm-style">
     <el-container class="fm2-container">
       <el-main class="fm2-main">
         <el-container>
@@ -163,7 +163,7 @@
       </el-main>
       <el-footer height="30px" style="font-weight: 600;">Powered by <a target="_blank" href="https://github.com/GavinZhuLei/vue-form-making">vue-form-making</a></el-footer>
     </el-container>
-  </span>
+  </div>
 </template>
 
 <script>
