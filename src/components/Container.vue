@@ -13,16 +13,16 @@
                   @start="handleMoveStart"
                   :move="handleMove"
                 >
-                  
-                  <li v-if="basicFields.indexOf(item.type)>=0" class="form-edit-widget-label" :class="{'no-put': item.type == 'divider'}" v-for="(item, index) in basicComponents" :key="index">
-                    <a>
-                      <i class="icon iconfont" :class="item.icon"></i>
-                      <span>{{item.name}}</span>
-                    </a>
-                  </li>
+                  <template v-for="(item, index) in basicComponents">
+                    <li v-if="basicFields.indexOf(item.type)>=0" class="form-edit-widget-label" :class="{'no-put': item.type == 'divider'}" :key="index">
+                      <a>
+                        <i class="icon iconfont" :class="item.icon"></i>
+                        <span>{{item.name}}</span>
+                      </a>
+                    </li>
+                  </template>                
                 </draggable>
-              </template>
-              
+              </template>            
               <template v-if="advanceFields.length">
                 <div class="widget-cate">{{$t('fm.components.advance.title')}}</div>
                 <draggable tag="ul" :list="advanceComponents" 
@@ -31,13 +31,14 @@
                   @start="handleMoveStart"
                   :move="handleMove"
                 >
-                  
-                  <li v-if="advanceFields.indexOf(item.type) >= 0" class="form-edit-widget-label" :class="{'no-put': item.type == 'table'}" v-for="(item, index) in advanceComponents" :key="index">
-                    <a>
-                      <i class="icon iconfont" :class="item.icon"></i>
-                      <span>{{item.name}}</span>
-                    </a>
-                  </li>
+                  <template v-for="(item, index) in advanceComponents">
+                    <li v-if="advanceFields.indexOf(item.type) >= 0" class="form-edit-widget-label" :class="{'no-put': item.type == 'table'}" :key="index">
+                      <a>
+                        <i class="icon iconfont" :class="item.icon"></i>
+                        <span>{{item.name}}</span>
+                      </a>
+                    </li>                  
+                  </template>
                 </draggable>
               </template>
 
@@ -50,13 +51,14 @@
                   @start="handleMoveStart"
                   :move="handleMove"
                 >
-                  
-                  <li v-if="layoutFields.indexOf(item.type) >=0" class="form-edit-widget-label no-put" v-for="(item, index) in layoutComponents" :key="index">
-                    <a>
-                      <i class="icon iconfont" :class="item.icon"></i>
-                      <span>{{item.name}}</span>
-                    </a>
-                  </li>
+                  <template v-for="(item, index) in layoutComponents">
+                    <li v-if="layoutFields.indexOf(item.type) >=0" class="form-edit-widget-label no-put" :key="index">
+                      <a>
+                        <i class="icon iconfont" :class="item.icon"></i>
+                        <span>{{item.name}}</span>
+                      </a>
+                    </li>
+                  </template>               
                 </draggable>
               </template>
               

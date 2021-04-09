@@ -30,15 +30,17 @@
                         @add="handleWidgetColAdd($event, element, colIndex)"
                       >
                         <transition-group name="fade" tag="div" class="widget-col-list">
-                          <widget-form-item 
-                            v-for="(el, i) in col.list"
-                            :key="el.key"
-                            v-if="el.key"
-                            :element="el" 
-                            :select.sync="selectWidget" 
-                            :index="i" 
-                            :data="col">
-                          </widget-form-item>
+                          <template v-for="(el, i) in col.list">
+                            <widget-form-item                             
+                              :key="el.key"
+                              v-if="el.key"
+                              :element="el" 
+                              :select.sync="selectWidget" 
+                              :index="i" 
+                              :data="col">
+                            </widget-form-item>
+                          </template>
+                          
                         </transition-group>
                         
                       </draggable>
