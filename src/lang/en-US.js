@@ -173,7 +173,9 @@ export default {
         tab: 'Tab',
         validatorRequired: 'Required',
         validatorType: 'Invaild format',
-        validatorPattern: 'Unmatched pattern'
+        validatorPattern: 'Unmatched pattern',
+        showWordLimit: 'Show word limit',
+        maxlength: 'Max length',
       }
     },
     upload: {

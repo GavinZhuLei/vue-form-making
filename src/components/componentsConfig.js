@@ -10,6 +10,8 @@ export const basicComponents = [
       pattern: '',
       placeholder: '',
       disabled: false,
+      maxlength: -1,
+      showWordLimit: false,
     }
   },
   {
@@ -21,7 +23,9 @@ export const basicComponents = [
       required: false,
       disabled: false,
       pattern: '',
-      placeholder: ''
+      placeholder: '',
+      maxlength: -1,
+      showWordLimit: false,
     }
   },
   {
