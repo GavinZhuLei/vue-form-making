@@ -99,7 +99,7 @@ export default {
             
             this.rules[genList[i].model] = [...this.rules[genList[i].model], ...genList[i].rules.map(item => {
               if (item.pattern) {
-                return {...item, pattern: eval(item.pattern)}
+                return {...item, pattern: new RegExp(item.pattern)}
               } else {
                 return {...item}
               }
@@ -108,7 +108,7 @@ export default {
             
             this.rules[genList[i].model] = [...genList[i].rules.map(item => {
               if (item.pattern) {
-                return {...item, pattern: eval(item.pattern)}
+                return {...item, pattern: new RegExp(item.pattern)}
               } else {
                 return {...item}
               }

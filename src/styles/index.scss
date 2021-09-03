@@ -688,6 +688,12 @@ $primary-background-color: #ecf5ff;
         border-bottom: solid 1px #e1e1e1;
         padding-bottom: 10px;
       }
+
+      .config-pattern-input{
+        .el-input-group__prepend,.el-input-group__append{
+          padding: 0 8px;
+        }
+      }
     }
   
     .ghost{

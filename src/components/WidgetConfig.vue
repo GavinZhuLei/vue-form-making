@@ -328,7 +328,10 @@
           </el-select>
           
           <div v-if="Object.keys(data.options).indexOf('pattern')>=0">
-            <el-input size="mini" v-model.lazy="data.options.pattern"  style=" width: 240px;" :placeholder="$t('fm.config.widget.patternPlaceholder')"></el-input>
+            <el-input size="mini" class="config-pattern-input" v-model.lazy="data.options.pattern"  style=" width: 240px;" :placeholder="$t('fm.config.widget.patternPlaceholder')">
+              <template slot="prepend" >/</template>
+              <template slot="append" >/</template>
+            </el-input>
           </div>
         </el-form-item>
       </template>
