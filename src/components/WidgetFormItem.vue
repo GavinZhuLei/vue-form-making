@@ -1,16 +1,18 @@
 <template>
   <el-form-item class="widget-view "
-      v-if="element && element.key" 
+      v-if="element && element.key"
       :class="{active: selectWidget.key == element.key, 'is_req': element.options.required}"
       :label="element.name"
       @click.native.stop="handleSelectWidget(index)"
     >
         <template v-if="element.type == 'input'">
-          <el-input 
+          <el-input
             v-model="element.options.defaultValue"
             :style="{width: element.options.width}"
             :placeholder="element.options.placeholder"
             :disabled="element.options.disabled"
+			      :maxlength="element.options.maxlength"
+			      :show-word-limit="element.options.showWordLimit"
           ></el-input>
         </template>
 
@@ -20,12 +22,14 @@
             :style="{width: element.options.width}"
             :disabled="element.options.disabled"
             :placeholder="element.options.placeholder"
+			      :maxlength="element.options.maxlength"
+			      :show-word-limit="element.options.showWordLimit"
           ></el-input>
         </template>
 
         <template v-if="element.type == 'number'">
-          <el-input-number 
-            v-model="element.options.defaultValue" 
+          <el-input-number
+            v-model="element.options.defaultValue"
             :disabled="element.options.disabled"
             :controls-position="element.options.controlsPosition"
             :style="{width: element.options.width}"
@@ -37,10 +41,10 @@
             :style="{width: element.options.width}"
             :disabled="element.options.disabled"
           >
-            <el-radio  
+            <el-radio
               :style="{display: element.options.inline ? 'inline-block' : 'block'}"
               :label="item.value" v-for="(item, index) in element.options.options" :key="item.value + index"
-              
+
             >
               {{element.options.showLabel ? item.label : item.value}}
             </el-radio>
@@ -62,7 +66,7 @@
         </template>
 
         <template v-if="element.type == 'time'">
-          <el-time-picker 
+          <el-time-picker
             v-model="element.options.defaultValue"
             :is-range="element.options.isRange"
             :placeholder="element.options.placeholder"
@@ -90,7 +94,7 @@
             :disabled="element.options.disabled"
             :editable="element.options.editable"
             :clearable="element.options.clearable"
-            :style="{width: element.options.width}"  
+            :style="{width: element.options.width}"
           >
           </el-date-picker>
         </template>
@@ -104,7 +108,7 @@
         </template>
 
         <template v-if="element.type == 'color'">
-          <el-color-picker 
+          <el-color-picker
             v-model="element.options.defaultValue"
             :disabled="element.options.disabled"
             :show-alpha="element.options.showAlpha"
@@ -133,7 +137,7 @@
         </template>
 
         <template v-if="element.type=='slider'">
-          <el-slider 
+          <el-slider
             v-model="element.options.defaultValue"
             :min="element.options.min"
             :max="element.options.max"
@@ -155,7 +159,7 @@
             token="xxx"
             domain="xxx"
           >
-            
+
           </fm-upload>
         </template>
 
@@ -196,7 +200,7 @@
         <div class="widget-view-drag" v-if="selectWidget.key == element.key">
           <i class="iconfont icon-drag drag-widget"></i>
         </div>
-        
+
     </el-form-item>
 </template>
 
@@ -213,7 +217,7 @@ export default {
     }
   },
   mounted () {
-    
+
   },
   methods: {
     handleSelectWidget (index) {
