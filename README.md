@@ -26,16 +26,16 @@
 
 The FormMaking developed base on [vue](https://github.com/vuejs/vue) and [element-ui](https://github.com/ElemeFE/element), equipts with the latest front-end technology stack, built-in i18n internationalization solution, all of those are aimed at making developmemt simpler, and more efficiently.
 
-![](http://cdn.form.xiaoyaoji.cn/Jietu20200708-202415-HD.gif)
+![](https://cdn.form.making.link/Jietu20200708-202415-HD.gif)
 
-* [Preview](http://form.xiaoyaoji.cn/basic-version)
+* [Preview](https://form.making.link/basic-version)
 * [Development](/docs/guide.md)
 * [Components](/docs/component.md)
   * [MakingForm](/docs/component.md#makingform) (Quickly design the form page based on the visual operation.)
   * [GenerateForm](/docs/component.md#generateform) (The generator will render a form page quickly base on the configuration json data captured in the designer.)
 * [Secondary Development](/docs/develop.md)
 
-This project is the base version, and if you need to experience the [Advanced](http://form.making.link), you can go to the advanced version, which provides more components and functionality.
+This project is the base version, and if you need to experience the [Advanced](http://form.making.link), you can go to the advanced version, which provides more components and functionality, add support Vue3.
 
 ## Feature
 
@@ -50,6 +50,37 @@ This project is the base version, and if you need to experience the [Advanced](h
 * Support for form validation
 * Get form data quickly
 * Internationalization support
+
+## Advanced version
+
+The advanced version provides more functionality than the base version:
+
+
+* More beautiful pages;
+
+* Add fields quickly by clicking;
+
+* More property Settings, including data source and form events;
+
+* More control fields (subforms, custom components, etc.);
+
+* More layout containers and can be nested with each other (grids, tables, tabs);
+
+* More apis for more complex business needs;
+
+* Add custom fields, you can quickly introduce your own components;
+
+* Can quickly add custom styles;
+
+* Support data source, convenient form data configuration;
+
+* Support action events, which can make forms more flexible configuration;
+
+* Multi-terminal adaptation display;
+
+* Provides Ant Design-style components (modified by the introduction of ANTD Vue);
+
+* Support Vue3;
 
 ## Third-party plug-ins
 
@@ -68,10 +99,4 @@ Modern browsers and Internet Explorer 10+.
 
 ## Licenses
 
-[LGPL-3.0](https://opensource.org/licenses/LGPL-3.0)
-
-[![xscode](https://img.shields.io/badge/Available%20on-xs%3Acode-blue?style=?style=plastic&logo=appveyor&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRF////////VXz1bAAAAAJ0Uk5T/wDltzBKAAAAlUlEQVR42uzXSwqAMAwE0Mn9L+3Ggtgkk35QwcnSJo9S+yGwM9DCooCbgn4YrJ4CIPUcQF7/XSBbx2TEz4sAZ2q1RAECBAiYBlCtvwN+KiYAlG7UDGj59MViT9hOwEqAhYCtAsUZvL6I6W8c2wcbd+LIWSCHSTeSAAECngN4xxIDSK9f4B9t377Wd7H5Nt7/Xz8eAgwAvesLRjYYPuUAAAAASUVORK5CYII=)](https://xscode.com/gavinzhulei/vue-form-making)
-
-Support and additional versions are available on xs:code
-
-[![xscode](http://cdn.form.xiaoyaoji.cn/vue-form-making-banner.png)](https://xscode.com/gavinzhulei/vue-form-making)
+MIT

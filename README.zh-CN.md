@@ -22,16 +22,16 @@
 
 基于 [vue](https://github.com/vuejs/vue) 和 [element-ui](https://github.com/ElemeFE/element) 实现的可视化表单设计器，使用了最新的前端技术栈，内置了 i18n 国际化解决方案，可以让表单开发简单而高效。
 
-![](http://cdn.form.xiaoyaoji.cn/Jietu20200708-202415-HD.gif)
+![](https://cdn.form.making.link/Jietu20200708-202415-HD.gif)
 
-* [在线预览](http://form.xiaoyaoji.cn/basic-version)
+* [在线预览](https://form.making.link/basic-version)
 * [开发指南](/docs/guide.zh-CN.md)
 * [组件](/docs/component.zh-CN.md)
   * [MakingForm](/docs/component.zh-CN.md#表单设计器makingform) 表单设计器（基于可视化操作快速设计出表单页面）。
   * [GenerateForm](/docs/component.zh-CN.md#表单生成器generateform) 表单生成器（根据设计器中获取的配置 json 数据，快速渲染出表单页面）。
 * [二次开发](/docs/develop.zh-CN.md)
 
-该项目为基础版本，如果需要体验高级版本的功能，可以前往  [高级版本](http://form.making.link)，提供了更多的组件和功能。
+该项目为基础版本，如果需要体验高级版本的功能，可以前往  [高级版本](http://form.making.link)，提供了更多的组件和功能，并且支持 Vue3 。
 
 ## 特性
 
@@ -46,6 +46,26 @@
 * 支持表单验证
 * 快速获取表单数据
 * 国际化支持
+
+## 高级版本
+
+相较于基础版本，高级版本提供了更丰富的功能：
+
+* 页面更加美观；
+* 通过点击即可快速添加字段；
+* 更多的属性设置，包括数据源与表单事件；
+* 更多的控件字段（子表单、自定义组件等）；
+* 更多的布局容器，并且可以相互嵌套（栅格、表格、标签页）；
+* 更多的API，满足更复杂的业务需求；
+* 加入自定义字段，可以快速将自己开发的组件引入；
+* 可快速添加自定义样式；
+* 支持数据源，方便表单数据配置；
+* 支持动作事件，可以让表单更加灵活配置；
+* 多终端适配展示；
+* 提供了 Ant Design 风格的组件（通过引入 antd vue 修改）；
+* 支持 Vue3；
+
+[点击前往](https://form.making.link)
 
 ## 第三方插件
 
@@ -72,10 +92,4 @@ Modern browsers and Internet Explorer 10+.
 
 ## 开源协议
 
-[LGPL-3.0](https://opensource.org/licenses/LGPL-3.0)
-
-您可以将 vue-form-making 源码用于 LGPL 协议的开源项目中，并保留版权信息（Powered by <a target="_blank" href="https://github.com/GavinZhuLei/vue-form-making">vue-form-making</a>）。
-
-## 商业许可
-
-如果要将 vue-form-making 源码使用在非开源站点，项目和应用程序中，为保障您的合法权益，需购买[商业授权](http://form.xiaoyaoji.cn/pricing)。
+MIT

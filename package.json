@@ -1,9 +1,9 @@
 {
   "name": "form-making",
   "description": "A designer and generator of form base on Vue.js, make form development simple and efficient.",
-  "version": "1.2.10",
+  "version": "1.2.11",
   "author": "GavinZhulei",
-  "license": "LGPL",
+  "license": "MIT",
   "keywords": [
     "component",
     "vue",
@@ -23,7 +23,7 @@
     "build-bundle": "vue-cli-service build --target lib --name FormMaking ./src/index.js"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.27.2",
     "clipboard": "^2.0.1",
     "element-ui": "^2.13.0",
     "normalize.css": "^8.0.0",

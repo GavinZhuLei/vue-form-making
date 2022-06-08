@@ -258,7 +258,7 @@ export default {
           }, 2000)
         },
         funcGetToken (resolve) {
-          request.get('http://tools-server.xiaoyaoji.cn/api/uptoken').then(res => {
+          request.get('http://tools-server.making.link/api/uptoken').then(res => {
             resolve(res.uptoken)
           })
         },

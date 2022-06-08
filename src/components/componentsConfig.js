@@ -246,7 +246,7 @@ export const advanceComponents = [
       width: '',
       tokenFunc: 'funcGetToken',
       token: '',
-      domain: 'http://pfp81ptt6.bkt.clouddn.com/',
+      domain: 'https://tcdn.form.making.link/',
       disabled: false,
       length: 8,
       multiple: false,
@@ -254,7 +254,7 @@ export const advanceComponents = [
       isDelete: false,
       min: 0,
       isEdit: false,
-      action: 'https://jsonplaceholder.typicode.com/photos/'
+      action: 'https://tools-server.making.link/api/transfer'
     }
   },
   {
