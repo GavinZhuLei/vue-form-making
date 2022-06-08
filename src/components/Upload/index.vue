@@ -189,7 +189,6 @@ export default {
       let formData = new FormData()
       formData.append('file', file)
 
-      xhr.send(formData)
       xhr.onreadystatechange = () => {
         console.log(xhr)
         if (xhr.readyState === 4) {
@@ -217,12 +216,14 @@ export default {
           }
         }
       }
-      xhr.onprogress = (res) => {
+      xhr.upload.onprogress = (res) => {
         console.log('progress', res)
         if (res.total && res.loaded) {
           this.$set(this.fileList[this.fileList.findIndex(item => item.key === key)], 'percent', res.loaded/res.total*100)
         }
       }
+
+      xhr.send(formData)
     },
     uplaodAction2 (res, file, key) {
       const _this = this
@@ -231,7 +232,6 @@ export default {
         mimeType: []
       }, {
         useCdnDomain: true,
-        region: qiniu.region.z2
       })
       observable.subscribe({
         next (res) {
