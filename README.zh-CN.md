@@ -78,7 +78,7 @@
 
 如果觉得还不错，请作者喝杯咖啡吧 ☺
 
-![](http://docs.form.xiaoyaoji.cn/donation.jpeg)
+![](http://docs.form.making.link/donation.jpeg)
 
 [PayPal Me](https://paypal.me/gavinzhulei)
 
