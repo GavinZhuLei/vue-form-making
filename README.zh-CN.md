@@ -22,6 +22,8 @@
 
 基于 [vue](https://github.com/vuejs/vue) 和 [element-ui](https://github.com/ElemeFE/element) 实现的可视化表单设计器，使用了最新的前端技术栈，内置了 i18n 国际化解决方案，可以让表单开发简单而高效。
 
+** 该项目为基础版本，如果需要体验高级版本的功能，可以前往  [高级版本](http://form.making.link)，提供了更多的组件和功能，并且支持 Vue3 。**
+
 ![](https://cdn.form.making.link/Jietu20200708-202415-HD.gif)
 
 * [在线预览](https://form.making.link/basic-version)
@@ -30,8 +32,6 @@
   * [MakingForm](/docs/component.zh-CN.md#表单设计器makingform) 表单设计器（基于可视化操作快速设计出表单页面）。
   * [GenerateForm](/docs/component.zh-CN.md#表单生成器generateform) 表单生成器（根据设计器中获取的配置 json 数据，快速渲染出表单页面）。
 * [二次开发](/docs/develop.zh-CN.md)
-
-该项目为基础版本，如果需要体验高级版本的功能，可以前往  [高级版本](http://form.making.link)，提供了更多的组件和功能，并且支持 Vue3 。
 
 ## 特性
 
