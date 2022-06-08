@@ -19,7 +19,7 @@ npm install
 如果安装失败，需要使用淘宝镜像地址，设置方法如下：
 
 ``` bash
-npm config set registry https://registry.npm.taobao.org
+npm config set registry https://registry.npmmirror.com
 ```
 
 ## 运行项目
