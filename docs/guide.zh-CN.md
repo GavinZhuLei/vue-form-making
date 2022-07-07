@@ -128,7 +128,7 @@ Vue.component(MakingForm.name, MakingForm)
 
 ## 国际化
 
-组件使用 `vue-i18n@5.x` 进行多语言支持
+组件使用 `vue-i18n@8.x` 进行多语言支持
 
 ### 语言配置
 
@@ -142,7 +142,9 @@ Vue.use(FormMaking, {lang: 'en-US'})
 
 ```html
 <script>
-  Vue.config.lang = 'zh-CN'
+  Vue.use(FormMaking, {
+    lang: 'en-US'
+  })
   new Vue({
     el: '#app'
   })
@@ -150,32 +152,6 @@ Vue.use(FormMaking, {lang: 'en-US'})
 ```
 
 ### 在多语言项目中使用
-
-#### 兼容 `vue-i18n@5.x`
-
-```js
-import Vue from 'vue'
-import Element from 'element-ui'
-import FormMaking from 'form-making'
-import VueI18n from 'vue-i18n'
-import enLocale from 'element-ui/lib/locale/lang/en'
-import zhLocale from 'element-ui/lib/locale/lang/zh-CN'
-
-Vue.use(VueI18n)
-Vue.locale('zh-CN', {...zhLocale, message: 'hello'})
-Vue.locale('en-US', {...enLocale, message: '你好'})
-Vue.config.lang = 'zh-CN'
-
-Vue.use(Element)
-
-Vue.use(FormMaking, {lang: 'zh-CN', locale: Vue.locale})
-
-new Vue({
-  render: h => h(App)
-}).$mount('#app')
-```
-
-#### 兼容 `vue-i18n@6.x` 以上版本
 
 ```js
 import Vue from 'vue'

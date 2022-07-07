@@ -22,9 +22,21 @@ const loadLang = function (Vue, lang, locale, i18n) {
     i18n.locale = lang
   } else {
     Vue.use(VueI18n)
-    Vue.locale('en-US', {...Vue.locale('en-US'), ...enUS})
-    Vue.locale('zh-CN', {...Vue.locale('zh-CN'), ...zhCN})
-    Vue.config.lang = lang
+    const localI18n = new VueI18n({
+      locale: lang,
+      messages: {
+        'en-US': {...enUS},
+        'zh-CN': {...zhCN}
+      }
+    })
+
+    const init = Vue.prototype._init
+    Vue.prototype._init = function (options) {
+      init.call(this, {
+        i18n: localI18n,
+        ...options
+      })
+    }
   }
 }
 
@@ -56,6 +68,13 @@ const install = function (Vue, opts = {
   locale: null,
   i18n: null
 }) {
+  opts = {
+    lang: 'zh-CN',
+    locale: null,
+    i18n: null,
+    ...opts
+  }
+
   loadLang(Vue, opts.lang, opts.locale, opts.i18n)
   components.forEach(component => {
     Vue.component(component.name, component)

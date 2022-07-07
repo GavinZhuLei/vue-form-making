@@ -31,7 +31,7 @@
     "qiniu-js": "^2.5.1",
     "viewerjs": "^1.2.0",
     "vue": "^2.6.5",
-    "vue-i18n": "5.0.3",
+    "vue-i18n": "^8.27.2",
     "vue-router": "^3.0.1",
     "vue2-editor": "^2.10.2",
     "vuedraggable": "^2.16.0"

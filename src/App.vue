@@ -9,10 +9,10 @@
       <div class="fm-link">
 
         <a class="ad" href="http://form.xiaoyaoji.cn" target="_blank">{{$t('header.advanced')}}</a>
-        <a target="_blank" href="https://gitee.com/gavinzhulei/vue-form-making/blob/master/README.zh-CN.md" v-if="$lang == 'zh-CN'">{{$t('header.document')}}</a>
-        <a target="_blank" href="https://github.com/GavinZhuLei/vue-form-making/blob/master/README.md" v-if="$lang == 'en-US'">{{$t('header.document')}}</a>
+        <a target="_blank" href="https://gitee.com/gavinzhulei/vue-form-making/blob/master/README.zh-CN.md" v-if="$i18n.locale == 'zh-CN'">{{$t('header.document')}}</a>
+        <a target="_blank" href="https://github.com/GavinZhuLei/vue-form-making/blob/master/README.md" v-if="$i18n.locale == 'en-US'">{{$t('header.document')}}</a>
         
-        <a target="_blank" href="https://gitee.com/gavinzhulei/vue-form-making" v-if="$lang == 'zh-CN'">Gitee</a> 
+        <a target="_blank" href="https://gitee.com/gavinzhulei/vue-form-making" v-if="$i18n.locale == 'zh-CN'">Gitee</a> 
         <a target="_blank" href="https://github.com/GavinZhuLei/vue-form-making">GitHub</a>
 
         <div class="action-item">

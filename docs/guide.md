@@ -132,7 +132,7 @@ For detailed usage of components, please refer to [Components](/docs/component.z
 
 ## Internationalization
 
-Use `vue-i18n@5.x` for multi-language support.
+Use `vue-i18n@8.x` for multi-language support.
 
 ### Language configuration
 
@@ -146,7 +146,9 @@ If CDN is used for introduction, the configuration is as follows：
 
 ```html
 <script>
-  Vue.config.lang = 'zh-CN'
+  Vue.use(FormMaking, {
+    lang: 'en-US'
+  })
   new Vue({
     el: '#app'
   })
@@ -154,32 +156,6 @@ If CDN is used for introduction, the configuration is as follows：
 ```
 
 ### Used in multilingual projects
-
-#### compatibility with `vue-i18n@5.x`
-
-```js
-import Vue from 'vue'
-import Element from 'element-ui'
-import FormMaking from 'form-making'
-import VueI18n from 'vue-i18n'
-import enLocale from 'element-ui/lib/locale/lang/en'
-import zhLocale from 'element-ui/lib/locale/lang/zh-CN'
-
-Vue.use(VueI18n)
-Vue.locale('zh-CN', {...zhLocale, message: 'hello'})
-Vue.locale('en-US', {...enLocale, message: '你好'})
-Vue.config.lang = 'zh-CN'
-
-Vue.use(Element)
-
-Vue.use(FormMaking, {lang: 'zh-CN', locale: Vue.locale})
-
-new Vue({
-  render: h => h(App)
-}).$mount('#app')
-```
-
-#### compatibility with `vue-i18n@6.x` version or higher
 
 ```js
 import Vue from 'vue'

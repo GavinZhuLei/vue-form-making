@@ -430,7 +430,7 @@ export default {
         console.log(this.$refs.widgetForm)
       }
     },
-    '$lang': function (val) {
+    '$i18n.locale': function (val) {
       this._loadComponents()
     }
   }
