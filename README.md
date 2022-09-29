@@ -24,7 +24,6 @@ The FormMaking developed base on [vue](https://github.com/vuejs/vue) and [elemen
 
 **This project is the base version, and if you need to experience the [Advanced](http://form.making.link), you can go to the advanced version, which provides more components and functionality, add support Vue3.**
 
-![](https://cdn.form.making.link/Jietu20200708-202415-HD.gif)
 
 * [Preview](https://form.making.link/basic-version)
 * [Development](/docs/guide.md)
