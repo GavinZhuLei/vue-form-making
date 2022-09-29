@@ -24,7 +24,6 @@
 
 **该项目为基础版本，如果需要体验高级版本的功能，可以前往  [高级版本](http://form.making.link)，提供了更多的组件和功能，并且支持 Vue3 。**
 
-![](https://cdn.form.making.link/Jietu20200708-202415-HD.gif)
 
 * [在线预览](https://form.making.link/basic-version)
 * [开发指南](/docs/guide.zh-CN.md)
