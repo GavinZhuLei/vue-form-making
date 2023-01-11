@@ -22,15 +22,15 @@
 
 基于 [vue](https://github.com/vuejs/vue) 和 [element-ui](https://github.com/ElemeFE/element) 实现的可视化表单设计器，使用了最新的前端技术栈，内置了 i18n 国际化解决方案，可以让表单开发简单而高效。
 
-**该项目为基础版本，如果需要体验高级版本的功能，可以前往  [高级版本](http://form.making.link)，提供了更多的组件和功能，并且支持 Vue3 。**
-
 
 * [在线预览](https://form.making.link/basic-version)
-* [开发指南](/docs/guide.zh-CN.md)
-* [组件](/docs/component.zh-CN.md)
-  * [MakingForm](/docs/component.zh-CN.md#表单设计器makingform) 表单设计器（基于可视化操作快速设计出表单页面）。
-  * [GenerateForm](/docs/component.zh-CN.md#表单生成器generateform) 表单生成器（根据设计器中获取的配置 json 数据，快速渲染出表单页面）。
-* [二次开发](/docs/develop.zh-CN.md)
+* [开发指南](https://form.making.link/docs/bv/guide.html)
+* [组件](https://form.making.link/docs/bv/component.html)
+  * [MakingForm](https://form.making.link/docs/bv/component.html#%E8%A1%A8%E5%8D%95%E8%AE%BE%E8%AE%A1%E5%99%A8-makingform) 表单设计器（基于可视化操作快速设计出表单页面）。
+  * [GenerateForm](https://form.making.link/docs/bv/component.html#%E8%A1%A8%E5%8D%95%E7%94%9F%E6%88%90%E5%99%A8-generateform) 表单生成器（根据设计器中获取的配置 json 数据，快速渲染出表单页面）。
+* [二次开发](https://form.making.link/docs/bv/develop.html)
+
+**该项目为基础版本，如果需要体验高级版本的功能，可以前往  [高级版本](http://form.making.link)，提供了更多的组件和功能，并且支持 Vue3 。**
 
 ## 特性
 
@@ -72,14 +72,6 @@
 * [element-ui](https://github.com/ElemeFE/element)
 * [ace](https://github.com/ajaxorg/ace)
 * [vue2-editor](https://github.com/davidroyer/vue2-editor)
-
-## 捐赠
-
-如果觉得还不错，请作者喝杯咖啡吧 ☺
-
-![](http://docs.form.making.link/donation.jpeg)
-
-[PayPal Me](https://paypal.me/gavinzhulei)
 
 ## Browsers support
 

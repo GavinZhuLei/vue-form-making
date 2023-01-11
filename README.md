@@ -22,10 +22,10 @@
 
 The FormMaking developed base on [vue](https://github.com/vuejs/vue) and [element-ui](https://github.com/ElemeFE/element), equipts with the latest front-end technology stack, built-in i18n internationalization solution, all of those are aimed at making developmemt simpler, and more efficiently.
 
-**This project is the base version, and if you need to experience the [Advanced](http://form.making.link), you can go to the advanced version, which provides more components and functionality, add support Vue3.**
+**This project is the base version, and if you need to experience the [Advanced](https://form.making.link/#/en-US/), you can go to the advanced version, which provides more components and functionality, add support Vue3.**
 
 
-* [Preview](https://form.making.link/basic-version)
+* [Preview](https://form.making.link/basic-version#/en-US/)
 * [Development](/docs/guide.md)
 * [Components](/docs/component.md)
   * [MakingForm](/docs/component.md#makingform) (Quickly design the form page based on the visual operation.)
@@ -75,7 +75,9 @@ The advanced version provides more functionality than the base version:
 
 * Provides Ant Design-style components (modified by the introduction of ANTD Vue);
 
-* Support Vue3;
+* Support Vue3.
+
+[Click here](https://form.making.link/#/en-US/).
 
 ## Third-party plug-ins
 

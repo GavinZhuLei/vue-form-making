@@ -106,5 +106,3 @@ Modify src/components/WidgetConfig.vue according to your requirement, now you c
 ## Customized Icon
 
 For default,we used Alibaba font icon library [iconfont](https://www.iconfont.cn/) , if you want to customized the icon, you can copy you own icon file into the project to replace the default icon, if default icon is in src/iconfont.
-
-![image.png](http://docs.form.making.link/images/other/develop-1.en.png)

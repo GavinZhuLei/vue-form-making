@@ -113,6 +113,4 @@ src/components/WidgetConfig.vue 下根据自己要求添加配置信息, props.
 
 ## 自定义图标
 
-项目使用的是阿里字体图标库 [iconfont](https://www.iconfont.cn/) , 如果需要自定义图标配置，请将图标加入到自己的项目中，然后选择Font class，将代码下载到本地替换 src/iconfont 文件夹下的文件
-
-![image.png](http://docs.form.making.link/images/other/develop-1.en.png)
+项目使用的是阿里字体图标库 [iconfont](https://www.iconfont.cn/) , 如果需要自定义图标配置，请将图标加入到自己的项目中，然后选择Font class，将代码下载到本地替换 src/iconfont 文件夹下的文件。
