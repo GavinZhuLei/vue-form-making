@@ -26,11 +26,11 @@ The FormMaking developed base on [vue](https://github.com/vuejs/vue) and [elemen
 
 
 * [Preview](https://form.making.link/basic-version#/en-US/)
-* [Development](/docs/guide.md)
-* [Components](/docs/component.md)
-  * [MakingForm](/docs/component.md#makingform) (Quickly design the form page based on the visual operation.)
-  * [GenerateForm](/docs/component.md#generateform) (The generator will render a form page quickly base on the configuration json data captured in the designer.)
-* [Secondary Development](/docs/develop.md)
+* [Development](https://form.making.link/docs/en/bv/guide.html)
+* [Components](https://form.making.link/docs/en/bv/component.html)
+  * [MakingForm](https://form.making.link/docs/en/bv/component.html#form-designer-makingform) (Quickly design the form page based on the visual operation.)
+  * [GenerateForm](https://form.making.link/docs/en/bv/component.html#form-generator-generateform) (The generator will render a form page quickly base on the configuration json data captured in the designer.)
+* [Secondary Development](https://form.making.link/docs/en/bv/develop.html)
 
 ## Feature
 

@@ -10,7 +10,7 @@
 
         <a class="ad" href="https://form.making.link" target="_blank">{{$t('header.advanced')}}</a>
         <a target="_blank" href="https://form.making.link/docs/bv/guide.html" v-if="$i18n.locale == 'zh-CN'">{{$t('header.document')}}</a>
-        <a target="_blank" href="https://github.com/GavinZhuLei/vue-form-making/blob/master/README.md" v-if="$i18n.locale == 'en-US'">{{$t('header.document')}}</a>
+        <a target="_blank" href="https://form.making.link/docs/en/bv/guide.html" v-if="$i18n.locale == 'en-US'">{{$t('header.document')}}</a>
         
         <a target="_blank" href="https://gitee.com/gavinzhulei/vue-form-making" v-if="$i18n.locale == 'zh-CN'">Gitee</a> 
         <a target="_blank" href="https://github.com/GavinZhuLei/vue-form-making">GitHub</a>
