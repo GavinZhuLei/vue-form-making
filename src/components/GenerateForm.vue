@@ -27,6 +27,7 @@
                   :remote="remote" 
                   :rules="rules" 
                   :widget="citem"
+                  :edit="edit"
                   @input-change="onInputChange">
                 </genetate-form-item>
               </template>
@@ -46,6 +47,7 @@
             :models.sync="models" 
             :rules="rules" 
             :widget="item" 
+            :edit="edit"
             @input-change="onInputChange"
             :remote="remote">
           </genetate-form-item>
@@ -65,7 +67,24 @@ export default {
   components: {
     GenetateFormItem
   },
-  props: ['data', 'remote', 'value', 'insite'],
+  props: {
+    data: {
+      type: Object,
+      default: () => ({})
+    },
+    remote: {
+      type: Object,
+      default: () => ({})
+    },
+    value: {
+      type: Object,
+      default: () => ({})
+    },
+    edit: {
+      type: Boolean,
+      default: true
+    }
+  },
   data () {
     return {
       models: {},
@@ -134,9 +153,26 @@ export default {
     onInputChange (value, field) {
       this.$emit('on-change', field, value, this.models)
     },
-    refresh () {
-      
-    }
+    disabled (fields, disabled) {
+      if (typeof fields === 'string') {
+        fields = [fields]
+      }
+      this._setDisabled(this.data.list, fields, disabled)
+    },
+    _setDisabled (genList, fields, disabled) {
+      for (let i = 0; i < genList.length; i++) {
+        if (genList[i].type === 'grid') {
+          genList[i].columns.forEach(item => {
+            this._setDisabled(item.list, fields, disabled)
+          })
+        } else {
+          if (fields.indexOf(genList[i].model) >= 0) {
+            
+            this.$set(genList[i].options, 'disabled', disabled)
+          }
+        }
+      }
+    },
   },
   watch: {
     data: {

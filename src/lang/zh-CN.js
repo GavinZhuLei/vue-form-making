@@ -60,7 +60,9 @@ export default {
       addColumn: '添加列',
       addTab: '添加标签',
       upload: '点击上传',
-      add: '添加'
+      add: '添加',
+      enabledEdit: '启用编辑',
+      disabledEdit: '禁用编辑',
     },
     config: {
       form: {

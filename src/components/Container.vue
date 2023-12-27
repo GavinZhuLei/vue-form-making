@@ -102,7 +102,7 @@
             width="1000px"
             form
           >
-            <generate-form insite="true" @on-change="handleDataChange" v-if="previewVisible" :data="widgetForm" :value="widgetModels" :remote="remoteFuncs" ref="generateForm">
+            <generate-form :edit="formEdit" @on-change="handleDataChange" v-if="previewVisible" :data="widgetForm" :value="widgetModels" :remote="remoteFuncs" ref="generateForm">
 
               <template v-slot:blank="scope">
                 Width <el-input v-model="scope.model.blank.width" style="width: 100px"></el-input>
@@ -112,6 +112,8 @@
 
             <template slot="action">
               <el-button type="primary" @click="handleTest">{{$t('fm.actions.getData')}}</el-button>
+              <el-button @click="formEdit = false" v-if="formEdit" >{{$t('fm.actions.disabledEdit')}}</el-button>
+              <el-button @click="formEdit = true" v-else >{{$t('fm.actions.enabledEdit')}}</el-button>
               <el-button @click="handleReset">{{$t('fm.actions.reset')}}</el-button>
             </template>
           </cus-dialog>
@@ -283,6 +285,7 @@ export default {
   }
 }`,
       codeActiveName: 'vue',
+      formEdit: true
     }
   },
   mounted () {

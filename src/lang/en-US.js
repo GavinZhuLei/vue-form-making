@@ -60,7 +60,9 @@ export default {
       addColumn: 'Add Column',
       addTab: 'Add Tab',
       upload: 'Upload',
-      add: 'Add'
+      add: 'Add',
+      enabledEdit: 'Enabled edit',
+      disabledEdit: 'Disabled edit',
     },
     config: {
       form: {

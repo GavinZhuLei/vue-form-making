@@ -266,7 +266,8 @@ export const advanceComponents = [
     icon: 'icon-fuwenbenkuang',
     options: {
       defaultValue: '',
-      width: ''
+      width: '',
+      disabled: false,
     }
   },
   {
