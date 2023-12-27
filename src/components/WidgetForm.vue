@@ -25,7 +25,7 @@
                       <draggable
                         v-model="col.list"
                         :no-transition-on-drag="true"
-                        v-bind="{group:'people', ghostClass: 'ghost',animation: 200, handle: '.drag-widget'}"
+                        v-bind="{group:{name: 'people', put: handlePut}, ghostClass: 'ghost',animation: 200, handle: '.drag-widget'}"
                         @end="handleMoveEnd"
                         @add="handleWidgetColAdd($event, element, colIndex)"
                       >
@@ -145,19 +145,6 @@ export default {
       const oldIndex = $event.oldIndex
       const item = $event.item
 
-      // 防止布局元素的嵌套拖拽
-      if (item.className.indexOf('data-grid') >= 0) {
-
-        // 如果是列表中拖拽的元素需要还原到原来位置
-        item.tagName === 'DIV' && this.data.list.splice(oldIndex, 0, row.columns[colIndex].list[newIndex])
-
-        row.columns[colIndex].list.splice(newIndex, 1)
-
-        return false
-      }
-
-      console.log('from', item)
-
       const key = Date.parse(new Date()) + '_' + Math.ceil(Math.random() * 99999)
 
       this.$set(row.columns[colIndex].list, newIndex, {
@@ -201,6 +188,13 @@ export default {
         this.data.list.splice(index, 1)
       })
     },
+
+    handlePut (a, b, c) {
+      if (c.className.split(' ').indexOf('widget-col') >=0 || c.className.split(' ').indexOf('no-put') >= 0) {
+        return false
+      }
+      return true
+    }
   },
   watch: {
     select (val) {
