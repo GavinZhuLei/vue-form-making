@@ -20,7 +20,6 @@ module.exports = {
     ]
     if (process.env.NODE_ENV !== 'development') {
       config.plugins = [...config.plugins, ...plugins]
-      config.externals = ['element-ui']
       config.performance = {
         hints: false
       }
